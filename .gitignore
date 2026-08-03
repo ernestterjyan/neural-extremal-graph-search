@@ -1,0 +1,25 @@
+.DS_Store
+.venv/
+.coverage
+.hypothesis/
+.pytest_cache/
+.ruff_cache/
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+
+# Generated experiment artifacts. Keep only the curated final evidence.
+runs/
+results/*
+!results/mvp/
+results/mvp/*
+!results/mvp/evaluation.csv
+!results/mvp/summary.csv
+!results/mvp/summary.md
+reports/figures/*
+!reports/figures/.gitkeep
+!reports/figures/exact_optimum_rate.png
+!reports/figures/optimality_ratio.png
+!reports/figures/training_curve.png

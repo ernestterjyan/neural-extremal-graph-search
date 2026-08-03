@@ -1,0 +1,16 @@
+[evaluation]
+name = "smoke"
+run_dir = "runs"
+checkpoint_glob = "smoke-seed-*/best.pt"
+output_csv = "results/smoke/evaluation.csv"
+sizes = [4, 6, 8]
+seeds = [0]
+episodes_per_method = 3
+methods = ["gnn", "untrained_gnn", "random", "least_degree", "turan_oracle"]
+device = "cpu"
+
+[model]
+node_feature_dim = 4
+candidate_feature_dim = 5
+hidden_dim = 16
+message_passing_layers = 2

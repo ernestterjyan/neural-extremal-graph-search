@@ -1,0 +1,18 @@
+cff-version: 1.2.0
+title: Neural Extremal Graph Search
+message: If you use this software, please cite it using this metadata.
+type: software
+version: 0.1.0
+date-released: 2026-07-31
+license: MIT
+authors:
+  - name: Neural Extremal Graph Search contributors
+abstract: >-
+  A reproducible benchmark for testing whether a permutation-equivariant graph
+  neural network can learn and extrapolate the Turan construction of dense
+  triangle-free graphs.
+keywords:
+  - extremal graph theory
+  - graph neural networks
+  - Turan theorem
+  - size generalization
