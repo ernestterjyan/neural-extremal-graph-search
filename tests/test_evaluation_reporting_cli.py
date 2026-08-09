@@ -63,4 +63,4 @@ def test_cli_version(capsys) -> None:
         main(["--version"])
     except SystemExit as error:
         assert error.code == 0
-    assert "0.1.0" in capsys.readouterr().out
+    assert "0.1.1" in capsys.readouterr().out

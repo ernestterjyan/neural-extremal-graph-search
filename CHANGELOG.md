@@ -4,6 +4,20 @@ All notable project changes are documented here.
 
 ## [Unreleased]
 
+## [0.1.1] - 2026-08-09
+
+### Fixed
+
+- Restored the best validation model and matching optimizer state before
+  advancing to the next curriculum stage.
+- Saved the restored best state in `latest.pt`, keeping resumed and
+  uninterrupted training aligned.
+
+### Changed
+
+- Limited push-triggered CI to `main`; pull requests now receive one validation
+  run instead of duplicate push and pull-request runs.
+
 ### Documentation
 
 - Added a code-level architecture and extension guide.
@@ -28,5 +42,6 @@ All notable project changes are documented here.
   and a complete MVP research report.
 - Automated tests, linting, formatting checks, and GitHub Actions CI.
 
-[Unreleased]: https://github.com/ernestterjyan/neural-extremal-graph-search/compare/v0.1.0...HEAD
+[Unreleased]: https://github.com/ernestterjyan/neural-extremal-graph-search/compare/v0.1.1...HEAD
+[0.1.1]: https://github.com/ernestterjyan/neural-extremal-graph-search/compare/v0.1.0...v0.1.1
 [0.1.0]: https://github.com/ernestterjyan/neural-extremal-graph-search/releases/tag/v0.1.0
