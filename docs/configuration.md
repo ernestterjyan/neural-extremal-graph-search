@@ -33,3 +33,7 @@ The supported method names are `gnn`, `untrained_gnn`, `mlp`,
 `smoke.toml` and `smoke-eval.toml` validate the GNN integration.
 `mlp-smoke.toml` and `mlp-smoke-eval.toml` do the same for the fixed-size
 control. These tiny budgets do not produce research-quality evidence.
+
+Reports generated from `results/mvp/evaluation.csv` retain the release figure
+paths under `reports/figures/`. Other result sets write to a named subdirectory,
+so smoke or v0.2 reporting cannot overwrite the published MVP figures.

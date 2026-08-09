@@ -147,34 +147,42 @@ def _plot_metric(
 
 
 def _plot_training_curve(run_name: str, output: Path) -> bool:
-    records: list[dict[str, float | int]] = []
-    for metrics_path in sorted(Path("runs").glob(f"{run_name}-seed-*/metrics.jsonl")):
-        seed = int(metrics_path.parent.name.rsplit("-", 1)[-1])
-        for line in metrics_path.read_text(encoding="utf-8").splitlines():
-            if not line:
-                continue
-            value = json.loads(line)
-            if "validation_mean_ratio" in value:
-                records.append(
-                    {
-                        "seed": seed,
-                        "global_step": int(value["global_step"]),
-                        "validation_mean_ratio": float(value["validation_mean_ratio"]),
-                    }
-                )
+    run_names = [run_name]
+    if run_name.endswith("-v0.2"):
+        base_name = run_name.removesuffix("-v0.2")
+        run_names = [base_name, f"{base_name}-mlp"]
+    records: list[dict[str, float | int | str]] = []
+    for training_run_name in run_names:
+        family = "mlp" if training_run_name.endswith("-mlp") else "gnn"
+        for metrics_path in sorted(Path("runs").glob(f"{training_run_name}-seed-*/metrics.jsonl")):
+            seed = int(metrics_path.parent.name.rsplit("-", 1)[-1])
+            for line in metrics_path.read_text(encoding="utf-8").splitlines():
+                if not line:
+                    continue
+                value = json.loads(line)
+                if "validation_mean_ratio" in value:
+                    records.append(
+                        {
+                            "family": family,
+                            "seed": seed,
+                            "global_step": int(value["global_step"]),
+                            "validation_mean_ratio": float(value["validation_mean_ratio"]),
+                        }
+                    )
     if not records:
         return False
     frame = pd.DataFrame(records)
     sns.set_theme(style="whitegrid", context="talk")
     figure, axis = plt.subplots(figsize=(10.5, 6.2), constrained_layout=True)
-    for seed, group in frame.groupby("seed"):
+    multiple_families = frame["family"].nunique() > 1
+    for (family, seed), group in frame.groupby(["family", "seed"]):
         group = group.sort_values("global_step")
         axis.plot(
             group["global_step"],
             group["validation_mean_ratio"],
             marker="o",
             alpha=0.75,
-            label=f"seed {seed}",
+            label=f"{family} seed {seed}" if multiple_families else f"seed {seed}",
         )
     axis.set_xlabel("Training iteration")
     axis.set_ylabel("Mean validation optimality ratio")
@@ -222,6 +230,8 @@ def generate_report(results_path: str | Path) -> Path:
     summary.to_csv(summary_path, index=False)
 
     figure_dir = Path("reports/figures")
+    if source.parent.name != "mvp":
+        figure_dir /= source.parent.name
     _plot_metric(
         summary,
         mean_column="optimality_ratio_mean",

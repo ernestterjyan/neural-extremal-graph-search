@@ -47,7 +47,7 @@ message_passing_layers = 1
     monkeypatch.chdir(tmp_path)
     summary = generate_report(results)
     assert summary.exists()
-    assert (tmp_path / "reports" / "figures" / "optimality_ratio.png").exists()
+    assert (tmp_path / "reports" / "figures" / "test" / "optimality_ratio.png").exists()
     assert (results.parent / "summary.md").exists()
 
     graph_path = tmp_path / "turan.json"
