@@ -1,5 +1,9 @@
 # Neural Extremal Graph Search
 
+[![CI](https://github.com/ernestterjyan/neural-extremal-graph-search/actions/workflows/ci.yml/badge.svg)](https://github.com/ernestterjyan/neural-extremal-graph-search/actions/workflows/ci.yml)
+[![Release](https://img.shields.io/github/v/release/ernestterjyan/neural-extremal-graph-search)](https://github.com/ernestterjyan/neural-extremal-graph-search/releases/latest)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+
 Can a graph neural network trained only on small graphs learn the construction
 behind Turán's theorem and transfer it to larger, unseen graph sizes?
 
@@ -44,6 +48,9 @@ Read the [final report](reports/final_report.md), inspect the
 [complete summary](results/mvp/summary.md), or view the
 [optimality plot](reports/figures/optimality_ratio.png).
 
+To understand or extend the implementation, start with the
+[architecture guide](docs/architecture.md).
+
 ## Quick start
 
 Install [uv](https://docs.astral.sh/uv/), then create the isolated environment:
@@ -82,8 +89,9 @@ Verify a serialized graph independently:
 uv run negs verify path/to/graph.json
 ```
 
-See [configuration](docs/configuration.md), [public API](docs/api.md), and the
-[final report](reports/final_report.md) for details.
+See the [architecture guide](docs/architecture.md),
+[configuration reference](docs/configuration.md), [public API](docs/api.md),
+and [final report](reports/final_report.md) for details.
 
 ## Recreate the reported figures
 
@@ -113,6 +121,18 @@ The primary metric is
 Reported uncertainty intervals are 95% Student-t intervals over seed-level
 means. The full evaluation uses 200 episodes for every method, size, and seed.
 
+## Development
+
+Read the [architecture guide](docs/architecture.md) before changing model,
+feature, checkpoint, or evaluation contracts. The [changelog](CHANGELOG.md)
+records release-level changes. Run the complete local quality gate with:
+
+```bash
+uv run ruff check .
+uv run ruff format --check .
+uv run pytest
+```
+
 ## Related work and positioning
 
 This project is inspired by Wagner-style reinforcement learning for graph
@@ -124,6 +144,12 @@ theory, including:
 
 The contribution here is narrower: an exactly verifiable study of size
 extrapolation and structural construction against a known extremal theorem.
+
+## Citation
+
+If you use this software or its results, cite the metadata in
+[CITATION.cff](CITATION.cff) and the archived
+[v0.1.0 release](https://github.com/ernestterjyan/neural-extremal-graph-search/releases/tag/v0.1.0).
 
 ## License
 
