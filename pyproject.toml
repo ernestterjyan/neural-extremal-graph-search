@@ -9,7 +9,7 @@ description = "A size-generalization benchmark for neural construction of extrem
 readme = "README.md"
 requires-python = ">=3.12,<3.13"
 license = { file = "LICENSE" }
-authors = [{ name = "Neural Extremal Graph Search contributors" }]
+authors = [{ name = "Ernest Terjyan" }]
 keywords = [
   "extremal-graph-theory",
   "graph-neural-networks",
