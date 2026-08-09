@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "neural-extremal-graph-search"
-version = "0.1.1"
+version = "0.2.0"
 description = "A size-generalization benchmark for neural construction of extremal triangle-free graphs."
 readme = "README.md"
 requires-python = ">=3.12,<3.13"

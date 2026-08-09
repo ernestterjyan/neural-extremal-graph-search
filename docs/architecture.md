@@ -56,6 +56,7 @@ path.
 | `baselines.py` | Implements uniform-random and least-degree construction policies. |
 | `features.py` | Converts variable-size graph states and legal edges into padded tensor batches. |
 | `policy.py` | Implements dense message passing, symmetric edge scoring, masking, and sampling. |
+| `mlp_policy.py` | Implements the fixed-capacity, position-sensitive v0.2 control policy. |
 | `rollouts.py` | Runs complete stochastic neural-policy episodes, batching all active graphs. |
 | `training.py` | Collects rollouts, selects elites, optimizes the policy, validates stages, and saves artifacts. |
 | `evaluation.py` | Runs frozen checkpoints and controls, independently verifies outputs, and writes episode rows. |
@@ -386,4 +387,5 @@ Use these dependency paths when extending the project:
 The first planned `v0.2` experiment is a fixed-size MLP control. It should reuse
 the same environment, episode seeds, evaluation rows, verification, and
 reporting so the comparison isolates model architecture rather than changing
-the experimental protocol.
+the experimental protocol. Its fixed representation is specified in
+[`mlp_baseline.md`](mlp_baseline.md).

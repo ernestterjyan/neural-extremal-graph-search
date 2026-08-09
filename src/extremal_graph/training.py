@@ -18,6 +18,7 @@ from torch.nn import functional as F
 from .config import FullTrainingConfig, ModelConfig, load_training_config
 from .features import action_indices, collate_graph_states, legal_edges_from_state
 from .graph import Edge, GraphState, Trajectory
+from .mlp_policy import FixedSizeMLPPolicy
 from .policy import EdgePolicy
 from .rollouts import run_episode_batch
 from .serialization import graph_to_dict
@@ -30,8 +31,22 @@ from .utils import (
 )
 
 
-def build_model(config: ModelConfig) -> EdgePolicy:
-    return EdgePolicy(**asdict(config))
+def build_model(config: ModelConfig) -> nn.Module:
+    if config.family == "gnn":
+        return EdgePolicy(
+            node_feature_dim=config.node_feature_dim,
+            candidate_feature_dim=config.candidate_feature_dim,
+            hidden_dim=config.hidden_dim,
+            message_passing_layers=config.message_passing_layers,
+        )
+    if config.family == "mlp":
+        return FixedSizeMLPPolicy(
+            node_feature_dim=config.node_feature_dim,
+            candidate_feature_dim=config.candidate_feature_dim,
+            hidden_dim=config.hidden_dim,
+            max_nodes=config.max_nodes,
+        )
+    raise ValueError(f"unsupported model family: {config.family!r}")
 
 
 def _toml_value(value: Any) -> str:
@@ -65,7 +80,7 @@ def _rollout_seed(seed: int, global_step: int, n: int, episode: int) -> int:
 
 
 def _collect_rollouts(
-    model: EdgePolicy,
+    model: nn.Module,
     *,
     sizes: tuple[int, ...],
     count: int,
@@ -122,7 +137,7 @@ def _training_pairs(trajectories: list[Trajectory]) -> list[tuple[GraphState, Ed
 
 
 def optimize_on_elite(
-    model: EdgePolicy,
+    model: nn.Module,
     optimizer: torch.optim.Optimizer,
     elite: list[Trajectory],
     *,
@@ -159,7 +174,7 @@ def optimize_on_elite(
 
 
 def _validate(
-    model: EdgePolicy,
+    model: nn.Module,
     *,
     sizes: tuple[int, ...],
     episodes: int,
@@ -186,7 +201,7 @@ def _validate(
     return results
 
 
-def _cpu_state_dict(model: EdgePolicy) -> dict[str, torch.Tensor]:
+def _cpu_state_dict(model: nn.Module) -> dict[str, torch.Tensor]:
     return {key: value.detach().cpu().clone() for key, value in model.state_dict().items()}
 
 
@@ -206,6 +221,7 @@ def _save_best(
             "format_version": 1,
             "model_state": model_state,
             "model_config": asdict(model_config),
+            "model_family": model_config.family,
             "seed": seed,
             "stage_size": stage_size,
             "iteration": iteration,
@@ -220,12 +236,15 @@ def load_model_checkpoint(
     path: str | Path,
     *,
     device: torch.device | str = "cpu",
-) -> tuple[EdgePolicy, dict[str, Any]]:
+) -> tuple[nn.Module, dict[str, Any]]:
     checked_device = torch.device(device)
     payload = torch.load(Path(path), map_location=checked_device, weights_only=False)
     if payload.get("format_version") != 1:
         raise ValueError("unsupported checkpoint format")
-    model = EdgePolicy(**payload["model_config"]).to(checked_device)
+    model_config = ModelConfig(**payload["model_config"])
+    if payload.get("model_family", model_config.family) != model_config.family:
+        raise ValueError("checkpoint model_family conflicts with model_config.family")
+    model = build_model(model_config).to(checked_device)
     model.load_state_dict(payload["model_state"])
     model.eval()
     return model, payload
@@ -243,7 +262,8 @@ def _trajectory_record(trajectory: Trajectory) -> dict[str, Any]:
 
 def _latest_checkpoint(
     *,
-    model: EdgePolicy,
+    model: nn.Module,
+    model_config: ModelConfig,
     optimizer: torch.optim.Optimizer,
     seed: int,
     next_stage_index: int,
@@ -260,6 +280,8 @@ def _latest_checkpoint(
     return {
         "format_version": 1,
         "model_state": _cpu_state_dict(model),
+        "model_config": asdict(model_config),
+        "model_family": model_config.family,
         "optimizer_state": copy.deepcopy(optimizer.state_dict()),
         "seed": seed,
         "next_stage_index": next_stage_index,
@@ -325,6 +347,11 @@ def train(
         payload = torch.load(Path(resume), map_location=device, weights_only=False)
         if payload.get("format_version") != 1 or payload.get("seed") != seed:
             raise ValueError("resume checkpoint format or seed does not match the configuration")
+        checkpoint_config = payload.get("model_config")
+        if checkpoint_config is not None and ModelConfig(**checkpoint_config) != config.model:
+            raise ValueError("resume checkpoint model configuration does not match")
+        if payload.get("model_family", config.model.family) != config.model.family:
+            raise ValueError("resume checkpoint model family does not match")
         model.load_state_dict(payload["model_state"])
         optimizer.load_state_dict(payload["optimizer_state"])
         start_stage_index = int(payload["next_stage_index"])
@@ -444,6 +471,7 @@ def train(
             torch.save(
                 _latest_checkpoint(
                     model=model,
+                    model_config=config.model,
                     optimizer=optimizer,
                     seed=seed,
                     next_stage_index=next_stage,

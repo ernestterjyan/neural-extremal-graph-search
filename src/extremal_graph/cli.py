@@ -17,7 +17,7 @@ def _parser() -> argparse.ArgumentParser:
         prog="negs",
         description="Neural Extremal Graph Search",
     )
-    parser.add_argument("--version", action="version", version="%(prog)s 0.1.1")
+    parser.add_argument("--version", action="version", version="%(prog)s 0.2.0")
     subcommands = parser.add_subparsers(dest="command", required=True)
 
     train_parser = subcommands.add_parser("train", help="train one curriculum seed")

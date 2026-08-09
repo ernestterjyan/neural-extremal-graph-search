@@ -1,0 +1,34 @@
+[evaluation]
+name = "mvp-v0.2"
+run_dir = "runs"
+checkpoint_glob = "mvp-seed-*/best.pt"
+mlp_checkpoint_glob = "mvp-mlp-seed-*/best.pt"
+output_csv = "results/mvp-v0.2/evaluation.csv"
+sizes = [6, 8, 10, 12, 14, 16, 20, 24]
+seeds = [0, 1, 2, 3, 4]
+episodes_per_method = 200
+methods = [
+  "gnn",
+  "mlp",
+  "untrained_gnn",
+  "untrained_mlp",
+  "random",
+  "least_degree",
+  "turan_oracle",
+]
+device = "cpu"
+
+[model]
+family = "gnn"
+node_feature_dim = 4
+candidate_feature_dim = 5
+hidden_dim = 64
+message_passing_layers = 3
+
+[mlp_model]
+family = "mlp"
+node_feature_dim = 4
+candidate_feature_dim = 5
+hidden_dim = 67
+message_passing_layers = 3
+max_nodes = 24

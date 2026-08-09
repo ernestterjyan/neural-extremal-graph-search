@@ -4,6 +4,22 @@ All notable project changes are documented here.
 
 ## [Unreleased]
 
+## [0.2.0] - 2026-08-10
+
+### Added
+
+- Added a fixed-capacity, position-sensitive MLP policy for the v0.2
+  size-generalization control.
+- Added trained and untrained MLP evaluation methods, parameter-count
+  reporting, full and smoke configurations, and focused compatibility tests.
+- Published five trained MLP checkpoints, 56,000 combined evaluation records,
+  aggregate tables, isolated figures, and a research addendum.
+
+### Changed
+
+- Generalized neural rollouts and checkpoints across GNN and MLP model
+  families while retaining legacy v0.1 checkpoint compatibility.
+
 ## [0.1.1] - 2026-08-09
 
 ### Fixed
@@ -43,6 +59,7 @@ All notable project changes are documented here.
   and a complete MVP research report.
 - Automated tests, linting, formatting checks, and GitHub Actions CI.
 
-[Unreleased]: https://github.com/ernestterjyan/neural-extremal-graph-search/compare/v0.1.1...HEAD
+[Unreleased]: https://github.com/ernestterjyan/neural-extremal-graph-search/compare/v0.2.0...HEAD
+[0.2.0]: https://github.com/ernestterjyan/neural-extremal-graph-search/compare/v0.1.1...v0.2.0
 [0.1.1]: https://github.com/ernestterjyan/neural-extremal-graph-search/compare/v0.1.0...v0.1.1
 [0.1.0]: https://github.com/ernestterjyan/neural-extremal-graph-search/releases/tag/v0.1.0

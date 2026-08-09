@@ -3,16 +3,17 @@
 from __future__ import annotations
 
 import torch
+from torch import nn
 
 from .env import GraphConstructionEnv
 from .features import collate_graph_states
 from .graph import Edge, GraphState, Trajectory
-from .policy import EdgePolicy, sample_actions
+from .policy import sample_actions
 from .turan import turan_edge_count
 
 
 def run_episode_batch(
-    policy: EdgePolicy,
+    policy: nn.Module,
     *,
     n: int,
     seeds: list[int] | tuple[int, ...],
@@ -87,7 +88,7 @@ def run_episode_batch(
 
 
 def run_episode(
-    policy: EdgePolicy,
+    policy: nn.Module,
     *,
     n: int,
     seed: int,
