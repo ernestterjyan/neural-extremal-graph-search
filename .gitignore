@@ -18,8 +18,16 @@ results/mvp/*
 !results/mvp/evaluation.csv
 !results/mvp/summary.csv
 !results/mvp/summary.md
+!results/mvp-v0.2/
+results/mvp-v0.2/*
+!results/mvp-v0.2/evaluation.csv
+!results/mvp-v0.2/summary.csv
+!results/mvp-v0.2/summary.md
+!results/mvp-v0.2/training_summary.csv
 reports/figures/*
 !reports/figures/.gitkeep
 !reports/figures/exact_optimum_rate.png
 !reports/figures/optimality_ratio.png
 !reports/figures/training_curve.png
+!reports/figures/mvp-v0.2/
+!reports/figures/mvp-v0.2/*.png

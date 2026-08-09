@@ -63,7 +63,7 @@ def test_cli_version(capsys) -> None:
         main(["--version"])
     except SystemExit as error:
         assert error.code == 0
-    assert "0.1.1" in capsys.readouterr().out
+    assert "0.2.0" in capsys.readouterr().out
 
 
 def test_mlp_evaluation_and_parameter_count(tmp_path) -> None:

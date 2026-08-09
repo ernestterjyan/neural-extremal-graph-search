@@ -44,9 +44,10 @@ shared equivariant parameters.
 - MLP configuration rejects curriculum or evaluation sizes above `max_nodes`.
 - The existing `GraphTensorBatch` and candidate-mask contract are unchanged.
 
-## Delivery phases
+## Completed study
 
-1. Model, configuration, checkpoint compatibility, and focused tests.
-2. Smoke experiment and end-to-end evaluation confirmation.
-3. Five full CPU seeds, combined evaluation episodes,
-   updated figures, and a v0.2 research addendum.
+All five CPU seeds and 56,000 combined evaluation episodes completed. The MLP
+reached 91.55% mean optimality and 17.3% exact success at `n = 24`, compared
+with 91.82% and 29.5% for the GNN. It produced zero constraint violations and
+all outputs were terminal-maximal. The full interpretation, including missed
+curriculum gates, is in [`reports/v0.2_report.md`](../reports/v0.2_report.md).

@@ -7,10 +7,14 @@
 Can a graph neural network trained only on small graphs learn the construction
 behind Turán's theorem and transfer it to larger, unseen graph sizes?
 
-**MVP status: complete.** The trained policy reached 91.82% mean optimality and
-29.5% exact-optimum success at the unseen size \(n=24\), versus 62.76% and 0%
-for uniform random construction. Across 40,000 evaluated graphs there were no
-constraint violations and every terminal graph was maximal.
+**v0.2 study status: complete.** The trained GNN reached 91.82% mean
+optimality and 29.5% exact-optimum success at the unseen size \(n=24\), versus
+62.76% and 0% for uniform random construction. Across 40,000 evaluated graphs
+there were no constraint violations and every terminal graph was maximal.
+
+The fixed-size MLP control reached 91.55% mean optimality but only 17.3% exact
+success at \(n=24\). Across the combined 56,000-graph evaluation there were
+again zero violations and every terminal graph was maximal.
 
 This repository is a controlled mathematical machine-learning experiment. An
 agent starts with an empty graph, repeatedly adds an edge without creating a
@@ -24,17 +28,13 @@ optimum is known: the balanced complete bipartite Turán graph \(T_2(n)\).
 - independent constraint and maximality verification;
 - uniform-random and least-degree baselines;
 - a custom permutation-equivariant PyTorch edge policy;
+- a parameter-matched, position-sensitive fixed-size MLP control;
 - elite-trajectory cross-entropy training with a size curriculum;
 - frozen-policy evaluation on both training and unseen graph sizes;
 - seed-level result aggregation and publication-ready figures.
 
-The MVP deliberately excludes \(K_4\)-free construction, fixed-size MLPs,
-ablation studies, embedding analysis, and an interactive application.
-
-The post-MVP `v0.2` work now includes a tested fixed-size, position-sensitive
-MLP control behind the same rollout and evaluation interfaces. Full five-seed
-results are intentionally not claimed until the controlled CPU runs finish;
-see [issue #3](https://github.com/ernestterjyan/neural-extremal-graph-search/issues/3).
+The project still excludes \(K_4\)-free construction, embedding analysis, and
+an interactive application.
 
 ## Main result
 
@@ -52,6 +52,27 @@ success declined as evaluation moved farther beyond the training range.
 Read the [final report](reports/final_report.md), inspect the
 [complete summary](results/mvp/summary.md), or view the
 [optimality plot](reports/figures/optimality_ratio.png).
+
+## v0.2 fixed-size control
+
+The MLP has 37,990 trainable parameters versus 38,337 for the GNN and reuses
+the same environment, features, legal-action mask, training algorithm, seeds,
+and evaluation protocol. Unlike the GNN, it depends on absolute padded vertex
+positions and is deliberately not permutation equivariant.
+
+| Size | Split | GNN ratio | MLP ratio | GNN exact | MLP exact |
+|---:|:---|---:|---:|---:|---:|
+| 14 | trained | 98.20% | 97.12% | 84.5% | 53.4% |
+| 16 | unseen | 97.45% | 95.50% | 76.1% | 44.2% |
+| 20 | unseen | 95.08% | 93.99% | 54.3% | 31.8% |
+| 24 | unseen | 91.82% | 91.55% | 29.5% | 17.3% |
+
+The control weakens a simple architecture-only explanation: a non-equivariant
+MLP also learned a strong transferable heuristic. The GNN nevertheless had
+higher exact-optimum success at every tested size and better mean optimality
+through most of the range. Read the
+[v0.2 research addendum](reports/v0.2_report.md) and
+[complete v0.2 summary](results/mvp-v0.2/summary.md).
 
 To understand or extend the implementation, start with the
 [architecture guide](docs/architecture.md).
@@ -94,6 +115,9 @@ After all five seeds finish:
 uv run negs evaluate --config experiments/configs/mvp-eval.toml
 uv run negs report --results results/mvp/evaluation.csv
 ```
+
+The corresponding fixed-size control uses `mvp-mlp.toml`; the combined frozen
+evaluation uses `mvp-v0.2-eval.toml`.
 
 Verify a serialized graph independently:
 
@@ -161,7 +185,7 @@ extrapolation and structural construction against a known extremal theorem.
 
 If you use this software or its results, cite the metadata in
 [CITATION.cff](CITATION.cff) and the archived
-[v0.1.0 release](https://github.com/ernestterjyan/neural-extremal-graph-search/releases/tag/v0.1.0).
+[v0.2.0 release](https://github.com/ernestterjyan/neural-extremal-graph-search/releases/tag/v0.2.0).
 
 ## License
 

@@ -275,8 +275,9 @@ def generate_report(results_path: str | Path) -> Path:
         + " |\n"
         + "".join("| " + " | ".join(row) + " |\n" for row in rows)
     )
+    summary_name = "MVP" if source.parent.name == "mvp" else source.parent.name
     markdown_path.write_text(
-        "# MVP result summary\n\n"
+        f"# {summary_name} result summary\n\n"
         "Intervals are 95% Student-t intervals over seed-level means.\n\n" + table,
         encoding="utf-8",
     )
