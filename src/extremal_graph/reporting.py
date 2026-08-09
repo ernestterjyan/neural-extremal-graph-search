@@ -80,6 +80,11 @@ def _summary(seed_frame: pd.DataFrame) -> pd.DataFrame:
                 "exact_optimum_rate_mean": exact_mean,
                 "exact_optimum_rate_ci95": exact_ci,
                 "mean_inference_time_seconds": float(group["inference_time_seconds"].mean()),
+                **(
+                    {"parameter_count": int(group["parameter_count"].max())}
+                    if "parameter_count" in group
+                    else {}
+                ),
                 "constraint_violations": int(group["constraint_violations"].sum()),
                 "terminal_maximal_rate": float(group["terminal_maximal"].mean()),
             }
@@ -100,9 +105,11 @@ def _plot_metric(
     preferred_order = [
         "turan_oracle",
         "gnn",
+        "mlp",
         "least_degree",
         "random",
         "untrained_gnn",
+        "untrained_mlp",
     ]
     available = set(summary["method"])
     methods = [method for method in preferred_order if method in available]
@@ -196,15 +203,18 @@ def generate_report(results_path: str | Path) -> Path:
     if missing:
         raise ValueError(f"evaluation CSV is missing columns: {sorted(missing)}")
 
+    aggregations = {
+        "optimality_ratio": ("optimality_ratio", "mean"),
+        "exact_optimum": ("exact_optimum", "mean"),
+        "inference_time_seconds": ("inference_time_seconds", "mean"),
+        "constraint_violations": ("constraint_violations", "sum"),
+        "terminal_maximal": ("terminal_maximal", "mean"),
+    }
+    if "parameter_count" in frame:
+        aggregations["parameter_count"] = ("parameter_count", "first")
     seed_frame = (
         frame.groupby(["method", "n", "seed"], as_index=False)
-        .agg(
-            optimality_ratio=("optimality_ratio", "mean"),
-            exact_optimum=("exact_optimum", "mean"),
-            inference_time_seconds=("inference_time_seconds", "mean"),
-            constraint_violations=("constraint_violations", "sum"),
-            terminal_maximal=("terminal_maximal", "mean"),
-        )
+        .agg(**aggregations)
         .sort_values(["method", "n", "seed"])
     )
     summary = _summary(seed_frame)
@@ -230,16 +240,17 @@ def generate_report(results_path: str | Path) -> Path:
     _plot_training_curve(run_name, figure_dir / "training_curve.png")
 
     markdown_path = source.parent / "summary.md"
-    selected = summary[
-        [
-            "method",
-            "n",
-            "optimality_ratio_mean",
-            "optimality_ratio_ci95",
-            "exact_optimum_rate_mean",
-            "exact_optimum_rate_ci95",
-        ]
-    ].copy()
+    columns = [
+        "method",
+        "n",
+        "optimality_ratio_mean",
+        "optimality_ratio_ci95",
+        "exact_optimum_rate_mean",
+        "exact_optimum_rate_ci95",
+    ]
+    if "parameter_count" in summary:
+        columns.append("parameter_count")
+    selected = summary[columns].copy()
     headers = list(selected.columns)
     rows = [
         [f"{value:.4f}" if isinstance(value, float | np.floating) else str(value) for value in row]

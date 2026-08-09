@@ -4,6 +4,7 @@ from .baselines import LeastDegreePolicy, UniformRandomPolicy, run_baseline_epis
 from .env import GraphConstructionEnv, InvalidActionError
 from .features import GraphTensorBatch
 from .graph import Edge, GraphState, Trajectory, Transition
+from .mlp_policy import FixedSizeMLPPolicy
 from .policy import EdgePolicy, sample_actions
 from .rollouts import run_episode, run_episode_batch
 from .serialization import load_graph, save_graph
@@ -17,6 +18,7 @@ __all__ = [
     "GraphTensorBatch",
     "InvalidActionError",
     "LeastDegreePolicy",
+    "FixedSizeMLPPolicy",
     "Trajectory",
     "Transition",
     "UniformRandomPolicy",

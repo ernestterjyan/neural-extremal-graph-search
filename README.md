@@ -31,6 +31,11 @@ optimum is known: the balanced complete bipartite Turán graph \(T_2(n)\).
 The MVP deliberately excludes \(K_4\)-free construction, fixed-size MLPs,
 ablation studies, embedding analysis, and an interactive application.
 
+The post-MVP `v0.2` work now includes a tested fixed-size, position-sensitive
+MLP control behind the same rollout and evaluation interfaces. Full five-seed
+results are intentionally not claimed until the controlled CPU runs finish;
+see [issue #3](https://github.com/ernestterjyan/neural-extremal-graph-search/issues/3).
+
 ## Main result
 
 | Size | Split | GNN optimality | Exact optimum | Random optimality |
@@ -64,6 +69,13 @@ Run the fast smoke experiment first:
 ```bash
 uv run negs train --config experiments/configs/smoke.toml --seed 0
 uv run negs evaluate --config experiments/configs/smoke-eval.toml
+```
+
+Exercise the fixed-size MLP control end to end:
+
+```bash
+uv run negs train --config experiments/configs/mlp-smoke.toml --seed 0
+uv run negs evaluate --config experiments/configs/mlp-smoke-eval.toml
 ```
 
 Run the five full curriculum seeds (each command is independently resumable):

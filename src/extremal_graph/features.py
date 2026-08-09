@@ -28,7 +28,7 @@ def legal_edges_from_state(state: GraphState) -> list[Edge]:
 
 @dataclass(frozen=True, slots=True)
 class GraphTensorBatch:
-    """A dynamic padded batch consumed by :class:`EdgePolicy`."""
+    """A dynamic padded batch consumed by neural edge policies."""
 
     adjacency: torch.Tensor
     node_features: torch.Tensor

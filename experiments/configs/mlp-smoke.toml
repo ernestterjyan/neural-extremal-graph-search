@@ -1,0 +1,35 @@
+[run]
+name = "mlp-smoke"
+output_dir = "runs"
+device = "cpu"
+deterministic = true
+
+[environment]
+r = 2
+
+[model]
+family = "mlp"
+node_feature_dim = 4
+candidate_feature_dim = 5
+hidden_dim = 64
+message_passing_layers = 3
+max_nodes = 24
+
+[training]
+curriculum_sizes = [4, 6]
+rollouts_per_iteration = 8
+temperature = 1.0
+elite_fraction = 0.25
+learning_rate = 0.0003
+weight_decay = 0.0001
+optimization_epochs = 1
+gradient_clip_norm = 1.0
+validation_interval = 1
+validation_episodes = 4
+advancement_threshold = 0.90
+advancement_patience = 1
+max_iterations_per_stage = 2
+seed = 0
+
+[artifacts]
+trajectory_sample_count = 2

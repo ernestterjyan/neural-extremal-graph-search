@@ -1,0 +1,26 @@
+[evaluation]
+name = "mlp-smoke"
+run_dir = "runs"
+checkpoint_glob = "unused-gnn-*.pt"
+mlp_checkpoint_glob = "mlp-smoke-seed-*/best.pt"
+output_csv = "results/mlp-smoke/evaluation.csv"
+sizes = [4, 6, 8]
+seeds = [0]
+episodes_per_method = 3
+methods = ["mlp", "untrained_mlp", "random", "least_degree", "turan_oracle"]
+device = "cpu"
+
+[model]
+family = "gnn"
+node_feature_dim = 4
+candidate_feature_dim = 5
+hidden_dim = 64
+message_passing_layers = 3
+
+[mlp_model]
+family = "mlp"
+node_feature_dim = 4
+candidate_feature_dim = 5
+hidden_dim = 64
+message_passing_layers = 3
+max_nodes = 24

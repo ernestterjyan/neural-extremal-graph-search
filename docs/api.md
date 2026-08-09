@@ -31,10 +31,13 @@ Verification intentionally does not reuse the optimized legality routine.
 
 - `GraphTensorBatch`
 - `EdgePolicy`
+- `FixedSizeMLPPolicy`
 - `sample_actions`
 - `Trajectory`
 - `run_episode`
 - `run_episode_batch`
 
 `EdgePolicy` accepts padded dynamic batches; neither parameter shapes nor
-features depend on a fixed graph size.
+features depend on a fixed graph size. `FixedSizeMLPPolicy` deliberately uses
+absolute padded vertex positions and rejects inputs above its declared
+`max_nodes` capacity.

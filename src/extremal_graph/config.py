@@ -5,7 +5,7 @@ from __future__ import annotations
 import tomllib
 from dataclasses import asdict, dataclass
 from pathlib import Path
-from typing import Any
+from typing import Any, Literal
 
 
 @dataclass(frozen=True, slots=True)
@@ -18,10 +18,12 @@ class RunConfig:
 
 @dataclass(frozen=True, slots=True)
 class ModelConfig:
+    family: Literal["gnn", "mlp"] = "gnn"
     node_feature_dim: int = 4
     candidate_feature_dim: int = 5
     hidden_dim: int = 64
     message_passing_layers: int = 3
+    max_nodes: int = 24
 
 
 @dataclass(frozen=True, slots=True)
@@ -71,6 +73,8 @@ class EvaluationConfig:
     methods: tuple[str, ...]
     device: str
     model: ModelConfig
+    mlp_checkpoint_glob: str | None = None
+    mlp_model: ModelConfig | None = None
 
 
 def _read_toml(path: str | Path) -> dict[str, Any]:
@@ -109,10 +113,18 @@ def _validate_training(
         raise ValueError("the MVP supports only environment.r = 2")
     if model.node_feature_dim != 4 or model.candidate_feature_dim != 5:
         raise ValueError("the MVP feature dimensions are fixed at 4 node and 5 candidate features")
+    if model.family not in {"gnn", "mlp"}:
+        raise ValueError("model.family must be 'gnn' or 'mlp'")
+    if model.hidden_dim < 1 or model.message_passing_layers < 1:
+        raise ValueError("model hidden width and depth must be positive")
+    if model.max_nodes < 2:
+        raise ValueError("model.max_nodes must be at least 2")
     if not training.curriculum_sizes or any(size < 2 for size in training.curriculum_sizes):
         raise ValueError("curriculum_sizes must contain values >= 2")
     if tuple(sorted(set(training.curriculum_sizes))) != training.curriculum_sizes:
         raise ValueError("curriculum_sizes must be strictly increasing")
+    if model.family == "mlp" and max(training.curriculum_sizes) > model.max_nodes:
+        raise ValueError("MLP curriculum sizes cannot exceed model.max_nodes")
     positive_values = (
         training.rollouts_per_iteration,
         training.optimization_epochs,
@@ -142,10 +154,23 @@ def load_evaluation_config(path: str | Path) -> EvaluationConfig:
         raw["sizes"] = tuple(raw["sizes"])
         raw["seeds"] = tuple(raw["seeds"])
         raw["methods"] = tuple(raw["methods"])
-        config = EvaluationConfig(**raw, model=ModelConfig(**value["model"]))
+        mlp_model = ModelConfig(**value["mlp_model"]) if "mlp_model" in value else None
+        config = EvaluationConfig(
+            **raw,
+            model=ModelConfig(**value["model"]),
+            mlp_model=mlp_model,
+        )
     except (KeyError, TypeError, ValueError) as error:
         raise ValueError(f"invalid evaluation configuration: {error}") from error
-    supported = {"gnn", "untrained_gnn", "random", "least_degree", "turan_oracle"}
+    supported = {
+        "gnn",
+        "untrained_gnn",
+        "mlp",
+        "untrained_mlp",
+        "random",
+        "least_degree",
+        "turan_oracle",
+    }
     unknown = set(config.methods) - supported
     if unknown:
         raise ValueError(f"unknown evaluation methods: {sorted(unknown)}")
@@ -153,4 +178,16 @@ def load_evaluation_config(path: str | Path) -> EvaluationConfig:
         raise ValueError("evaluation sizes must contain values >= 2")
     if not config.seeds or config.episodes_per_method < 1:
         raise ValueError("evaluation seeds and a positive episode count are required")
+    if config.model.family != "gnn":
+        raise ValueError("evaluation model.family must be 'gnn'")
+    mlp_methods = {"mlp", "untrained_mlp"} & set(config.methods)
+    if mlp_methods and config.mlp_model is None:
+        raise ValueError("MLP evaluation methods require an [mlp_model] section")
+    if "mlp" in config.methods and not config.mlp_checkpoint_glob:
+        raise ValueError("the trained MLP method requires evaluation.mlp_checkpoint_glob")
+    if config.mlp_model is not None:
+        if config.mlp_model.family != "mlp":
+            raise ValueError("mlp_model.family must be 'mlp'")
+        if max(config.sizes) > config.mlp_model.max_nodes:
+            raise ValueError("MLP evaluation sizes cannot exceed mlp_model.max_nodes")
     return config

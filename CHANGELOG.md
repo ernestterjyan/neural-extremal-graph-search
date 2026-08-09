@@ -4,6 +4,18 @@ All notable project changes are documented here.
 
 ## [Unreleased]
 
+### Added
+
+- Added a fixed-capacity, position-sensitive MLP policy for the v0.2
+  size-generalization control.
+- Added trained and untrained MLP evaluation methods, parameter-count
+  reporting, full and smoke configurations, and focused compatibility tests.
+
+### Changed
+
+- Generalized neural rollouts and checkpoints across GNN and MLP model
+  families while retaining legacy v0.1 checkpoint compatibility.
+
 ## [0.1.1] - 2026-08-09
 
 ### Fixed
