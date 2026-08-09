@@ -2,14 +2,14 @@ cff-version: 1.2.0
 title: Neural Extremal Graph Search
 message: If you use this software, please cite it using this metadata.
 type: software
-version: 0.1.0
+version: 0.1.1
 date-released: 2026-08-09
 license: MIT
 authors:
   - family-names: Terjyan
     given-names: Ernest
 repository-code: https://github.com/ernestterjyan/neural-extremal-graph-search
-url: https://github.com/ernestterjyan/neural-extremal-graph-search/releases/tag/v0.1.0
+url: https://github.com/ernestterjyan/neural-extremal-graph-search/releases/tag/v0.1.1
 abstract: >-
   A reproducible benchmark for testing whether a permutation-equivariant graph
   neural network can learn and extrapolate the Turan construction of dense
