@@ -254,6 +254,7 @@ def _latest_checkpoint(
     consecutive: int,
     best_stage_score: float,
     best_stage_state: dict[str, torch.Tensor] | None,
+    best_stage_optimizer_state: dict[str, Any] | None,
     best_stage_iteration: int,
 ) -> dict[str, Any]:
     return {
@@ -269,6 +270,7 @@ def _latest_checkpoint(
         "consecutive": consecutive,
         "best_stage_score": best_stage_score,
         "best_stage_state": best_stage_state,
+        "best_stage_optimizer_state": best_stage_optimizer_state,
         "best_stage_iteration": best_stage_iteration,
     }
 
@@ -316,6 +318,7 @@ def train(
     resumed_consecutive = 0
     resumed_best_score = -math.inf
     resumed_best_state: dict[str, torch.Tensor] | None = None
+    resumed_best_optimizer_state: dict[str, Any] | None = None
     resumed_best_iteration = 1
 
     if resume is not None:
@@ -332,6 +335,7 @@ def train(
         resumed_consecutive = int(payload["consecutive"])
         resumed_best_score = float(payload["best_stage_score"])
         resumed_best_state = payload["best_stage_state"]
+        resumed_best_optimizer_state = payload.get("best_stage_optimizer_state")
         resumed_best_iteration = int(payload.get("best_stage_iteration", start_iteration))
 
     latest_elite: list[Trajectory] = []
@@ -344,11 +348,13 @@ def train(
             consecutive = resumed_consecutive
             best_stage_score = resumed_best_score
             best_stage_state = resumed_best_state
+            best_stage_optimizer_state = resumed_best_optimizer_state
             best_stage_iteration = resumed_best_iteration
         else:
             consecutive = 0
             best_stage_score = -math.inf
             best_stage_state = None
+            best_stage_optimizer_state = None
             best_stage_iteration = iteration_start
 
         for iteration in range(iteration_start, config.training.max_iterations_per_stage + 1):
@@ -412,6 +418,7 @@ def train(
                 if validation_score > best_stage_score:
                     best_stage_score = validation_score
                     best_stage_state = _cpu_state_dict(model)
+                    best_stage_optimizer_state = copy.deepcopy(optimizer.state_dict())
                     best_stage_iteration = iteration
                 if validation[current_size] >= config.training.advancement_threshold:
                     consecutive += 1
@@ -424,6 +431,13 @@ def train(
             record["stage_gate_passed"] = consecutive >= config.training.advancement_patience
             record["stage_complete"] = stage_done
             append_jsonl(metrics_path, record)
+
+            if stage_done:
+                if best_stage_state is None:
+                    raise RuntimeError("stage completed without a validation checkpoint")
+                model.load_state_dict(best_stage_state)
+                if best_stage_optimizer_state is not None:
+                    optimizer.load_state_dict(best_stage_optimizer_state)
 
             next_stage = stage_index + 1 if stage_done else stage_index
             next_iteration = 1 if stage_done else iteration + 1
@@ -440,13 +454,12 @@ def train(
                     consecutive=consecutive,
                     best_stage_score=best_stage_score,
                     best_stage_state=best_stage_state,
+                    best_stage_optimizer_state=best_stage_optimizer_state,
                     best_stage_iteration=best_stage_iteration,
                 ),
                 run_dir / "latest.pt",
             )
             if stage_done:
-                if best_stage_state is None:
-                    raise RuntimeError("stage completed without a validation checkpoint")
                 stage_path = run_dir / f"stage-n{current_size}.pt"
                 _save_best(
                     stage_path,
