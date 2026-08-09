@@ -17,6 +17,7 @@ All notable project changes are documented here.
 
 - Limited push-triggered CI to `main`; pull requests now receive one validation
   run instead of duplicate push and pull-request runs.
+- Updated CI actions to Node.js 24-compatible releases.
 
 ### Documentation
 
