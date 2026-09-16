@@ -1,0 +1,36 @@
+[run]
+name = "corrected-endpoint"
+output_dir = "study/artifacts/training"
+device = "cpu"
+deterministic = true
+sampling_protocol = "episode-v2"
+num_threads = 1
+
+[environment]
+r = 2
+
+[model]
+family = "endpoint"
+node_feature_dim = 4
+candidate_feature_dim = 5
+hidden_dim = 64
+message_passing_layers = 3
+
+[training]
+curriculum_sizes = [6, 8, 10, 12, 14]
+rollouts_per_iteration = 256
+temperature = 1.0
+elite_fraction = 0.20
+learning_rate = 0.0003
+weight_decay = 0.0001
+optimization_epochs = 2
+gradient_clip_norm = 1.0
+validation_interval = 5
+validation_episodes = 100
+advancement_threshold = 0.97
+advancement_patience = 2
+max_iterations_per_stage = 100
+seed = 0
+
+[artifacts]
+trajectory_sample_count = 10

@@ -31,3 +31,7 @@ reports/figures/*
 !reports/figures/training_curve.png
 !reports/figures/mvp-v0.2/
 !reports/figures/mvp-v0.2/*.png
+
+# Corrected-study evidence is distributed as a separate checksummed bundle.
+study/artifacts/
+study/logs/

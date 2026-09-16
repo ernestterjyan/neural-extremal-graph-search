@@ -14,11 +14,13 @@ class RunConfig:
     output_dir: str
     device: str = "cpu"
     deterministic: bool = True
+    sampling_protocol: str = "episode-v2"
+    num_threads: int = 1
 
 
 @dataclass(frozen=True, slots=True)
 class ModelConfig:
-    family: Literal["gnn", "mlp"] = "gnn"
+    family: Literal["gnn", "mlp", "candidate", "endpoint"] = "gnn"
     node_feature_dim: int = 4
     candidate_feature_dim: int = 5
     hidden_dim: int = 64
@@ -109,12 +111,16 @@ def _validate_training(
 ) -> None:
     if not run.name or not run.output_dir:
         raise ValueError("run name and output_dir are required")
+    if run.sampling_protocol not in {"episode-v2", "legacy-batch-v1"}:
+        raise ValueError("unknown sampling protocol")
+    if run.num_threads < 1:
+        raise ValueError("num_threads must be positive")
     if r != 2:
         raise ValueError("the MVP supports only environment.r = 2")
     if model.node_feature_dim != 4 or model.candidate_feature_dim != 5:
         raise ValueError("the MVP feature dimensions are fixed at 4 node and 5 candidate features")
-    if model.family not in {"gnn", "mlp"}:
-        raise ValueError("model.family must be 'gnn' or 'mlp'")
+    if model.family not in {"gnn", "mlp", "candidate", "endpoint"}:
+        raise ValueError("unknown model family")
     if model.hidden_dim < 1 or model.message_passing_layers < 1:
         raise ValueError("model hidden width and depth must be positive")
     if model.max_nodes < 2:

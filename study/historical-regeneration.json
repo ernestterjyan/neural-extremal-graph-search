@@ -1,0 +1,15 @@
+{
+  "note": "Six historical figures regenerated from retained inputs. Historical overlapping evaluations are not independent cohorts.",
+  "outputs": {
+    "study/artifacts/historical-regenerated/mvp-v0.2/exact_optimum_rate.png": "1b274c9a4169fea29ccb10038fc903d9cc7165dd9a2bd7c5e3500e0bb3383fcb",
+    "study/artifacts/historical-regenerated/mvp-v0.2/optimality_ratio.png": "0fce83126ea2ff4e800aabf8a896f9c588081e19f0bc9469d61db7acd0f34e40",
+    "study/artifacts/historical-regenerated/mvp-v0.2/summary.csv": "c93fa8f1ce27054e594534a8700f55b791cd69f469664f744a3be0b2acde5ce0",
+    "study/artifacts/historical-regenerated/mvp-v0.2/summary.md": "a6fd37f73e74066ae53c92604135f9b7496ad4524093d69d002c424701511a50",
+    "study/artifacts/historical-regenerated/mvp-v0.2/training_curve.png": "0e9420857687d54e25bd2ff3421c1c654f3a54aa32eadb433380ea301b3fbbfa",
+    "study/artifacts/historical-regenerated/mvp/exact_optimum_rate.png": "c39a8c4a70c302f2caa77b8aa77d1558bac9f2181cc88e5ae3cfdef73e6e2e85",
+    "study/artifacts/historical-regenerated/mvp/optimality_ratio.png": "9c853041cd08d0d41106382d7aa51cb46fbaa50608164979b63b37c03624c6b7",
+    "study/artifacts/historical-regenerated/mvp/summary.csv": "a756213a1feba6a9aecc69d7ac88e9a4b0dec8b9ead2828d71fe84da55991d9a",
+    "study/artifacts/historical-regenerated/mvp/summary.md": "e5d60b373b6527b86e11a5a77a91fc7905cc96cd8cb211e0ddf2e1817a8ec599",
+    "study/artifacts/historical-regenerated/mvp/training_curve.png": "0c20a6b1e42c6fecafb16ad2fc582de75ce45079a89fce449bb9982462de6bdb"
+  }
+}

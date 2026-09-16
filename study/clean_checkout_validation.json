@@ -1,0 +1,129 @@
+{
+  "valid": true,
+  "source_commit": "79223ed5291f2f95b263a58f12965540258a6763",
+  "clean_checkout": "/var/folders/88/mhls43mx6_d8c33q4gg9sjnr0000gn/T/negs-clean-validation-2z0mqh8x/checkout",
+  "source_import": "/var/folders/88/mhls43mx6_d8c33q4gg9sjnr0000gn/T/negs-clean-validation-2z0mqh8x/checkout/src/extremal_graph/__init__.py",
+  "python": "/Users/ernestterjyan/Projects/neural-extremal-graph-search/.venv/bin/python",
+  "scope": "Fresh clone and checksummed archive extraction. Shared preinstalled dependency environment; not a new-machine install or full independent retraining.",
+  "input_archive_sha256": "bd14aa8233b7d41650c2ba07fe14e1e0262cdc5e81ef83a48562ed12fc4fd060",
+  "extracted_files_checked": 5233,
+  "regenerated_output_matches": {
+    "study/tables/summary.csv": true,
+    "study/tables/validation.csv": true,
+    "study/tables/training.csv": true,
+    "study/tables/budget_seed_results.csv": true,
+    "study/tables/probe_seed_results.csv": true,
+    "study/tables/budget_comparisons.csv": true,
+    "study/tables/seed_results.csv": true,
+    "study/tables/stratified_examples.csv": true,
+    "study/tables/intervention_summary.csv": true,
+    "study/tables/probes.csv": true,
+    "study/tables/budget_summary.csv": true,
+    "study/tables/comparisons.csv": true,
+    "study/tables/probe_summary.csv": true,
+    "study/tables/intervention_comparisons.csv": true,
+    "study/tables/outcome_quality.csv": true,
+    "study/tables/intervention_seed_results.csv": true,
+    "study/figures/parity_intervention.png": true,
+    "study/figures/budget_comparison.png": true,
+    "study/figures/failure_categories.png": true,
+    "study/figures/transfer.png": true,
+    "study/figures/training_fixed_size.png": true,
+    "study/artifacts/historical-regenerated/mvp/summary.csv": true,
+    "study/artifacts/historical-regenerated/mvp/exact_optimum_rate.png": true,
+    "study/artifacts/historical-regenerated/mvp/summary.md": true,
+    "study/artifacts/historical-regenerated/mvp/training_curve.png": true,
+    "study/artifacts/historical-regenerated/mvp/optimality_ratio.png": true,
+    "study/artifacts/historical-regenerated/mvp-v0.2/summary.csv": true,
+    "study/artifacts/historical-regenerated/mvp-v0.2/exact_optimum_rate.png": true,
+    "study/artifacts/historical-regenerated/mvp-v0.2/summary.md": true,
+    "study/artifacts/historical-regenerated/mvp-v0.2/training_curve.png": true,
+    "study/artifacts/historical-regenerated/mvp-v0.2/optimality_ratio.png": true
+  },
+  "commands": [
+    {
+      "arguments": [
+        "-c",
+        "import extremal_graph; print(extremal_graph.__file__)"
+      ],
+      "exit_code": 0,
+      "seconds": 0.8658775000003516,
+      "log": "/var/folders/88/mhls43mx6_d8c33q4gg9sjnr0000gn/T/negs-clean-validation-2z0mqh8x/command-0.log"
+    },
+    {
+      "arguments": [
+        "experiments/run_study.py",
+        "verify"
+      ],
+      "exit_code": 0,
+      "seconds": 31.662457749998794,
+      "log": "/var/folders/88/mhls43mx6_d8c33q4gg9sjnr0000gn/T/negs-clean-validation-2z0mqh8x/command-1.log"
+    },
+    {
+      "arguments": [
+        "experiments/analyze_study.py"
+      ],
+      "exit_code": 0,
+      "seconds": 24.0521645000008,
+      "log": "/var/folders/88/mhls43mx6_d8c33q4gg9sjnr0000gn/T/negs-clean-validation-2z0mqh8x/command-2.log"
+    },
+    {
+      "arguments": [
+        "experiments/parity_intervention.py"
+      ],
+      "exit_code": 0,
+      "seconds": 11.119424874999822,
+      "log": "/var/folders/88/mhls43mx6_d8c33q4gg9sjnr0000gn/T/negs-clean-validation-2z0mqh8x/command-3.log"
+    },
+    {
+      "arguments": [
+        "experiments/analyze_intervention.py"
+      ],
+      "exit_code": 0,
+      "seconds": 1.570298874999935,
+      "log": "/var/folders/88/mhls43mx6_d8c33q4gg9sjnr0000gn/T/negs-clean-validation-2z0mqh8x/command-4.log"
+    },
+    {
+      "arguments": [
+        "experiments/regenerate_historical_reports.py"
+      ],
+      "exit_code": 0,
+      "seconds": 2.374848249999559,
+      "log": "/var/folders/88/mhls43mx6_d8c33q4gg9sjnr0000gn/T/negs-clean-validation-2z0mqh8x/command-5.log"
+    },
+    {
+      "arguments": [
+        "experiments/reproduce_release.py",
+        "--output",
+        "study/artifacts/clean-checkout-release-replay"
+      ],
+      "exit_code": 0,
+      "seconds": 47.79325404100018,
+      "log": "/var/folders/88/mhls43mx6_d8c33q4gg9sjnr0000gn/T/negs-clean-validation-2z0mqh8x/command-6.log"
+    }
+  ],
+  "main_and_budget_verification": {
+    "budget": {
+      "cells": 40,
+      "graphs": 4000,
+      "valid": true
+    },
+    "evaluation": {
+      "cells": 870,
+      "graphs": 87000,
+      "valid": true
+    }
+  },
+  "supplementary_verification": {
+    "cells": 60,
+    "graphs": 6000,
+    "valid": true
+  },
+  "fresh_release_replay": {
+    "cells": 10,
+    "graphs": 640,
+    "historical_counts_match": true,
+    "valid": true
+  },
+  "note": "Fresh replay artifacts and validation command logs are copied into the handoff after checking; the final archive adds these validation outputs to the checked inputs."
+}

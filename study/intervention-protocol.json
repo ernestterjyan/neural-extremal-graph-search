@@ -1,0 +1,20 @@
+{
+  "study_id": "supplementary-parity-v1",
+  "status": "specified-before-intervention-evaluation",
+  "rationale": "The predeclared seed-0 primary diagnostic cells showed first loss caused by an odd cycle in 6/100 n14, 63/100 n24, and 97/100 n40 outputs; imbalance caused 1,5,1 losses. C8 also shows a parity relation unavailable to the node-to-edge representation at that state.",
+  "relationship_to_primary_protocol": "Exploratory extension of the intervention gate: motivated by observed odd-cycle failures, even if consequential structural aliasing is rare. Primary training/evaluation settings are unchanged. This intervention does NOT identify aliasing as the cause of the original failures.",
+  "methods": ["gnn_fresh", "gnn_parity", "uniform_parity"],
+  "training_seeds": [0, 1, 2, 3, 4],
+  "evaluation_seed_rule": "(101+training_seed)*1000000+n*10000+episode",
+  "sizes": [15, 24, 30, 40],
+  "episodes_per_cell": 100,
+  "batch_size": 32,
+  "workers": 4,
+  "threads": 1,
+  "additional_information": "Connected-component membership and within-component bipartite color parity, computed from the current graph. On legal candidates, forbid edges joining equal-color vertices of the same component. Disconnected components may still be joined in either orientation. No balanced-completion/subset-sum oracle is provided.",
+  "implementation": "Frozen GNN scores the ORIGINAL full candidate set and original features. Parity mask is applied only afterward. Uniform-parity uses zero logits with exactly the same post-scoring parity mask. Fresh GNN has neither parity computation nor extra mask. Same independent episode RNG streams across arms. No training or tuning.",
+  "prediction": "Both parity arms eliminate odd-cycle failures by construction. This alone need not produce balanced graphs. Compare density, exact success and imbalance to determine whether the learned scorer adds useful balancing behavior beyond the supplied information.",
+  "outcomes": ["edge ratio", "exact success", "unbalanced bipartite rate", "first loss cause", "generation cost including parity calculation"],
+  "inference": "Paired differences of five seed-level means; descriptive 95 percent t intervals, not adjusted for these exploratory comparisons. Do not pool with main results or claim a new learned algorithm.",
+  "controls": "C8 parity mask must retain exactly the eight 16-edge-completable choices, excluding the four 13-edge choices. Small-state masks independently checked by NetworkX after each proposed edge; single/batch consistency checked before the follow-up. Every saved final graph independently verified."
+}

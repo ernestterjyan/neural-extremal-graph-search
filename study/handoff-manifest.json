@@ -1,0 +1,17 @@
+{
+  "source_revision": "690efc9db039cf13bfec1e257ff2276777435796",
+  "branch": "research/corrected-transfer-study",
+  "files": {
+    "source-corrected-v1.bundle": {
+      "sha256": "15b06f68ec99c0af10f4e1c7a35552fae7c8c0090b822ff8c21c101eabe29c2e",
+      "bytes": 4892003
+    },
+    "evidence-corrected-v1.tar.gz": {
+      "sha256": "dd8dc3332c9d04c7eac1e476c98f4b4ed7890814b458c5aaec795df1f57eff04",
+      "bytes": 60512949
+    }
+  },
+  "guide": "study/README.md",
+  "report": "study/RESEARCH_REPORT.md",
+  "published": false
+}

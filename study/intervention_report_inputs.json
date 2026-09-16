@@ -1,0 +1,13 @@
+{
+  "analysis_sha256": "5dc2bc321be8ec19e6465a4adf296b91da837b57d8c4bd9a478f7d091ae943ec",
+  "evaluation_sha256": "5fc0b4fcbcf7bdc22111ccde284af02696b4faaf976b9a8861fe53b8bb55a56e",
+  "figure_sha256": "bf4a9feb2c04ab280f690dc26140a5e27248cd0b0732e7976d958439bd2084a1",
+  "graphs": 6000,
+  "protocol_sha256": "c606600dcf9c869f46c8a4dcbbe839756483c4c74fbc9eee4d95933d738dc5d8",
+  "seed_count": 5,
+  "tables": {
+    "intervention_comparisons.csv": "ce12e1e148ace49778673a255aa6c008901318ae5e6a5c45ff7042dd5e3c0478",
+    "intervention_seed_results.csv": "7e00b0f8254f104cabf582fc9599a0447d35c6420df9cc5af58ec27c4c8db4c5",
+    "intervention_summary.csv": "d1f4dcaaefea77ba38eeaf6b45ce744cb1c2140da5e04376d51d0c35e5b73d4a"
+  }
+}

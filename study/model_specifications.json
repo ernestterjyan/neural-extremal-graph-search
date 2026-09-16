@@ -1,0 +1,198 @@
+[
+  {
+    "family": "gnn",
+    "parameters": 38337,
+    "config": {
+      "run": {
+        "name": "corrected-gnn",
+        "output_dir": "study/artifacts/training",
+        "device": "cpu",
+        "deterministic": true,
+        "sampling_protocol": "episode-v2",
+        "num_threads": 1
+      },
+      "r": 2,
+      "model": {
+        "family": "gnn",
+        "node_feature_dim": 4,
+        "candidate_feature_dim": 5,
+        "hidden_dim": 64,
+        "message_passing_layers": 3,
+        "max_nodes": 24
+      },
+      "training": {
+        "curriculum_sizes": [
+          6,
+          8,
+          10,
+          12,
+          14
+        ],
+        "rollouts_per_iteration": 256,
+        "temperature": 1.0,
+        "elite_fraction": 0.2,
+        "learning_rate": 0.0003,
+        "weight_decay": 0.0001,
+        "optimization_epochs": 2,
+        "gradient_clip_norm": 1.0,
+        "validation_interval": 5,
+        "validation_episodes": 100,
+        "advancement_threshold": 0.97,
+        "advancement_patience": 2,
+        "max_iterations_per_stage": 100,
+        "seed": 0
+      },
+      "artifacts": {
+        "trajectory_sample_count": 10
+      }
+    },
+    "effective_message_passing_layers": 3
+  },
+  {
+    "family": "mlp",
+    "parameters": 37990,
+    "config": {
+      "run": {
+        "name": "corrected-mlp",
+        "output_dir": "study/artifacts/training",
+        "device": "cpu",
+        "deterministic": true,
+        "sampling_protocol": "episode-v2",
+        "num_threads": 1
+      },
+      "r": 2,
+      "model": {
+        "family": "mlp",
+        "node_feature_dim": 4,
+        "candidate_feature_dim": 5,
+        "hidden_dim": 67,
+        "message_passing_layers": 3,
+        "max_nodes": 24
+      },
+      "training": {
+        "curriculum_sizes": [
+          6,
+          8,
+          10,
+          12,
+          14
+        ],
+        "rollouts_per_iteration": 256,
+        "temperature": 1.0,
+        "elite_fraction": 0.2,
+        "learning_rate": 0.0003,
+        "weight_decay": 0.0001,
+        "optimization_epochs": 2,
+        "gradient_clip_norm": 1.0,
+        "validation_interval": 5,
+        "validation_episodes": 100,
+        "advancement_threshold": 0.97,
+        "advancement_patience": 2,
+        "max_iterations_per_stage": 100,
+        "seed": 0
+      },
+      "artifacts": {
+        "trajectory_sample_count": 10
+      }
+    },
+    "effective_message_passing_layers": 0
+  },
+  {
+    "family": "candidate",
+    "parameters": 449,
+    "config": {
+      "run": {
+        "name": "corrected-candidate",
+        "output_dir": "study/artifacts/training",
+        "device": "cpu",
+        "deterministic": true,
+        "sampling_protocol": "episode-v2",
+        "num_threads": 1
+      },
+      "r": 2,
+      "model": {
+        "family": "candidate",
+        "node_feature_dim": 4,
+        "candidate_feature_dim": 5,
+        "hidden_dim": 64,
+        "message_passing_layers": 3,
+        "max_nodes": 24
+      },
+      "training": {
+        "curriculum_sizes": [
+          6,
+          8,
+          10,
+          12,
+          14
+        ],
+        "rollouts_per_iteration": 256,
+        "temperature": 1.0,
+        "elite_fraction": 0.2,
+        "learning_rate": 0.0003,
+        "weight_decay": 0.0001,
+        "optimization_epochs": 2,
+        "gradient_clip_norm": 1.0,
+        "validation_interval": 5,
+        "validation_episodes": 100,
+        "advancement_threshold": 0.97,
+        "advancement_patience": 2,
+        "max_iterations_per_stage": 100,
+        "seed": 0
+      },
+      "artifacts": {
+        "trajectory_sample_count": 10
+      }
+    },
+    "effective_message_passing_layers": 0
+  },
+  {
+    "family": "endpoint",
+    "parameters": 13185,
+    "config": {
+      "run": {
+        "name": "corrected-endpoint",
+        "output_dir": "study/artifacts/training",
+        "device": "cpu",
+        "deterministic": true,
+        "sampling_protocol": "episode-v2",
+        "num_threads": 1
+      },
+      "r": 2,
+      "model": {
+        "family": "endpoint",
+        "node_feature_dim": 4,
+        "candidate_feature_dim": 5,
+        "hidden_dim": 64,
+        "message_passing_layers": 3,
+        "max_nodes": 24
+      },
+      "training": {
+        "curriculum_sizes": [
+          6,
+          8,
+          10,
+          12,
+          14
+        ],
+        "rollouts_per_iteration": 256,
+        "temperature": 1.0,
+        "elite_fraction": 0.2,
+        "learning_rate": 0.0003,
+        "weight_decay": 0.0001,
+        "optimization_epochs": 2,
+        "gradient_clip_norm": 1.0,
+        "validation_interval": 5,
+        "validation_episodes": 100,
+        "advancement_threshold": 0.97,
+        "advancement_patience": 2,
+        "max_iterations_per_stage": 100,
+        "seed": 0
+      },
+      "artifacts": {
+        "trajectory_sample_count": 10
+      }
+    },
+    "effective_message_passing_layers": 0
+  }
+]

@@ -1,0 +1,197 @@
+{
+  "environment": {
+    "code_commit": "2ea4165374b08c6abc1a34312d05057e2e1c578a",
+    "cpu_count": 10,
+    "device": "cpu",
+    "machine": "arm64",
+    "packages": {
+      "matplotlib": "3.11.1",
+      "networkx": "3.6.1",
+      "numpy": "2.5.1",
+      "pandas": "3.0.5",
+      "seaborn": "0.13.2",
+      "torch": "2.13.0"
+    },
+    "platform": "macOS-27.0-arm64-arm-64bit",
+    "process_id": 8128,
+    "python": "3.12.13 (main, Jun 23 2026, 15:44:24) [Clang 22.1.3 ]",
+    "source": {
+      "files": {
+        "experiments/configs/corrected-candidate.toml": "e5a6d557d1d5e29d481fd7ff4808a8d3aa4b18f4c445290210c574dd5a840353",
+        "experiments/configs/corrected-endpoint.toml": "230bd3933a50da4d9022f7c565bfdbd932d13745a364c9cb871d0ee86fe48613",
+        "experiments/configs/corrected-gnn.toml": "7a36ca3167c4502ba6648fe432e742390cecb96c4996c8e8b3bfeb7de5c3bb92",
+        "experiments/configs/corrected-mlp.toml": "976fd6491b186eae057e2ec8a257b5082e17261653ec950d380a3c3f2876692e",
+        "experiments/configs/mlp-smoke-eval.toml": "a4269d7518cb923fbd952b0ede99d8585fff47344a01d7891688db798672380a",
+        "experiments/configs/mlp-smoke.toml": "91e49241961135b61c55a161b322538fd2e6662567b732854d69c36db55a38c6",
+        "experiments/configs/mvp-eval.toml": "e287ac45ad7191bbfc46217534961876e29e3d472cc7078a44514412a09e81c6",
+        "experiments/configs/mvp-mlp.toml": "7eff096e62840b1b48bd7e108d61a41bffc9824bd74674cd4fb82c8e420981d0",
+        "experiments/configs/mvp-v0.2-eval.toml": "b82eb29350b73d345aa04b6aa968d3580d2f5b4332e82313db83d8a4a457385e",
+        "experiments/configs/mvp.toml": "a0a66a36082c2436d9ec5d2fae03147ac071209372a9cc3aee9b55cd10841090",
+        "experiments/configs/smoke-eval.toml": "695b0c12d0269eb455ed03d0ddbcf1caaf6bd455cf330a32b5addb06f9fc2402",
+        "experiments/configs/smoke.toml": "f86b83a31a9a67d519d7e03573ca26fb3245d9b6c745090eae3e656ec85e7c1b",
+        "pyproject.toml": "e9b313ddb6c80a2bea4deeab5f5021278b9455c965a65457649a95b56b9a8689",
+        "src/extremal_graph/__init__.py": "c29a99a83e6cd0743f03098229333f965200a05138f348d92bd3673d2ac14f48",
+        "src/extremal_graph/baselines.py": "2e53c6c7c2ba78143bbc701d23f0c21d70c944038830662d75b1342b4e6f5e57",
+        "src/extremal_graph/cli.py": "8ecd96bd663e2fbff5bd0752b020772b2f96950e59a4188274d89b9a41cb87b4",
+        "src/extremal_graph/config.py": "6de606b69973e238840632408b605fcc55de8a3b6101846c308f0f6575d0b942",
+        "src/extremal_graph/controls.py": "5aac8a72eb793edd57d40a7cbc670b8cea38fb4bad8413a320a21c2ef8dc0b8e",
+        "src/extremal_graph/diagnostics.py": "ed62a8bc64cd02c5682255df2500b2c739f52c35610cd9b768af1fcda77f4e9e",
+        "src/extremal_graph/env.py": "bc052ce4e0b818e9ce80b9e361f6d1abb50f3c8a35e4c5c487cbd549dcc36bea",
+        "src/extremal_graph/evaluation.py": "b18b2520483b3b0c5e9b703663a14db59ee85e634620187c82647247f4163a4d",
+        "src/extremal_graph/features.py": "91bfb4cf5507fead28a3fb79311c6e978b50cef8daf981efe8f35e83ff824ce4",
+        "src/extremal_graph/graph.py": "d25f3db43ff2015b71d347a2676a5c9bfc4212e26e8485a4af0a0475e4093c76",
+        "src/extremal_graph/mlp_policy.py": "ed0a76104e2b6f183b262ee4d8e88b689315992ee81c9d21f5a0b8c8d1471b5d",
+        "src/extremal_graph/policy.py": "0f73ebdcd1a06887418807d7896cea4eb000f8b40073ecb8b18562a784583257",
+        "src/extremal_graph/reporting.py": "fa11e1c39b01dcd223d22661e81f213210548f9ae1ab31780a835fa7ca4a13a7",
+        "src/extremal_graph/rollouts.py": "46fd5856ad783ada6c5cfc101ab1e43da81d2ceea1a8172bcc90d65f34539976",
+        "src/extremal_graph/serialization.py": "5b712214809deedab10117dba5ebb5d9f1c798c9c2f930698cd42231714311fa",
+        "src/extremal_graph/study.py": "3db2ced970c2a56533fa4170665b53c2cd0789fed2d3b336efe94d596c457147",
+        "src/extremal_graph/training.py": "d4ad6047ac9f64c135a8d514e0561cda93e574752f06b618f2e6b1f6d7538bd2",
+        "src/extremal_graph/turan.py": "54225d5c9cb1b9938b850919c462489cd39fa345e06ce7ea573970cf071e0949",
+        "src/extremal_graph/utils.py": "6023e3c77b855e7c260d6aa35a3508699e7c97e6d63ee620193e27feb0f3a0b7",
+        "src/extremal_graph/verification.py": "39ae9a39f57cbec17266bdec2b7a0449916636bec5a1db57a5553b44fb2a4f85",
+        "uv.lock": "c4b8d231d172bc9b121f54ead192905f27a7271af671cce804c1e9721cd923a7"
+      },
+      "git_status": "M experiments/analyze_study.py\n M experiments/parity_intervention.py\n M experiments/profile_inference.py\n M experiments/reproduce_release.py\n M study/MATHEMATICS.md\n M study/README.md\n M study/RELATED_WORK.md\n M study/ledger.jsonl\n?? experiments/analyze_intervention.py\n?? experiments/profile_intervention_cost.py\n?? study/dependency_lock_check.json\n?? study/figures/\n?? study/independent_audit.json\n?? study/intervention-validation.json\n?? study/intervention-verification.json\n?? study/intervention_report_inputs.json\n?? study/report_inputs.json\n?? study/serial_inference_profile.json\n?? study/tables/\n?? study/verification.json",
+      "root": "/Users/ernestterjyan/.codex/.chatgpt-projects/g-p-6a6bd217ed048191939d14cf8ea7ac0e/neural-extremal-graph-search-study",
+      "sha256": "a8a3a332c737ace349fcf878811e69ef28441034da86cf24818c52837e0ad8b7"
+    },
+    "torch_interop_threads": 10,
+    "torch_threads": 1
+  },
+  "protocol": "Serial CPU one thread, one warmup and three repeats; seed-0 frozen GNN. Count=1 measures graph latency, count=8 amortized cost. Includes parity coloring and all construction steps; different arms can construct different edge counts. Timing seeds are excluded from quality studies; no diagnostics in timed section.",
+  "rows": [
+    {
+      "batch_size": 1,
+      "mean_seconds_per_graph": 0.103537194333209,
+      "method": "gnn_fresh",
+      "n": 24,
+      "seconds": [
+        0.1050468749999709,
+        0.10482108299947868,
+        0.10074362500017742
+      ]
+    },
+    {
+      "batch_size": 1,
+      "mean_seconds_per_graph": 0.12483195833374339,
+      "method": "gnn_parity",
+      "n": 24,
+      "seconds": [
+        0.12469283300015377,
+        0.1254992920003133,
+        0.1243037500007631
+      ]
+    },
+    {
+      "batch_size": 1,
+      "mean_seconds_per_graph": 0.08990623633326322,
+      "method": "uniform_parity",
+      "n": 24,
+      "seconds": [
+        0.09030437500041444,
+        0.094216666999273,
+        0.08519766700010223
+      ]
+    },
+    {
+      "batch_size": 8,
+      "mean_seconds_per_graph": 0.08014770479174634,
+      "method": "gnn_fresh",
+      "n": 24,
+      "seconds": [
+        0.6327947909994691,
+        0.659826791001251,
+        0.6309233330011921
+      ]
+    },
+    {
+      "batch_size": 8,
+      "mean_seconds_per_graph": 0.09894094616667341,
+      "method": "gnn_parity",
+      "n": 24,
+      "seconds": [
+        0.7970437919993856,
+        0.7934558329998254,
+        0.7840830830009509
+      ]
+    },
+    {
+      "batch_size": 8,
+      "mean_seconds_per_graph": 0.08067154166671268,
+      "method": "uniform_parity",
+      "n": 24,
+      "seconds": [
+        0.6408994590001384,
+        0.6532103749996168,
+        0.6420071660013491
+      ]
+    },
+    {
+      "batch_size": 1,
+      "mean_seconds_per_graph": 0.581277819666866,
+      "method": "gnn_fresh",
+      "n": 40,
+      "seconds": [
+        0.5851397500009625,
+        0.7104145419998531,
+        0.4482791669997823
+      ]
+    },
+    {
+      "batch_size": 1,
+      "mean_seconds_per_graph": 0.7769690276678981,
+      "method": "gnn_parity",
+      "n": 40,
+      "seconds": [
+        0.755551625001317,
+        0.7538161250013218,
+        0.8215393330010556
+      ]
+    },
+    {
+      "batch_size": 1,
+      "mean_seconds_per_graph": 0.6286930556670995,
+      "method": "uniform_parity",
+      "n": 40,
+      "seconds": [
+        0.6373881250001432,
+        0.6370568750007806,
+        0.6116341670003749
+      ]
+    },
+    {
+      "batch_size": 8,
+      "mean_seconds_per_graph": 0.48330649829161604,
+      "method": "gnn_fresh",
+      "n": 40,
+      "seconds": [
+        3.781552083999486,
+        4.0046993750002,
+        3.813104499999099
+      ]
+    },
+    {
+      "batch_size": 8,
+      "mean_seconds_per_graph": 0.6944504374999573,
+      "method": "gnn_parity",
+      "n": 40,
+      "seconds": [
+        5.554736291998779,
+        5.584229582998887,
+        5.527844625001308
+      ]
+    },
+    {
+      "batch_size": 8,
+      "mean_seconds_per_graph": 0.614852706583406,
+      "method": "uniform_parity",
+      "n": 40,
+      "seconds": [
+        4.923819584000739,
+        4.906841291000092,
+        4.925804083000912
+      ]
+    }
+  ]
+}

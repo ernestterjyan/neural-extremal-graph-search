@@ -1,0 +1,6 @@
+{
+  "C8_retained": 8,
+  "batch_consistency": true,
+  "networkx_mask_check": true,
+  "unmodified_arm_matches_canonical": true
+}

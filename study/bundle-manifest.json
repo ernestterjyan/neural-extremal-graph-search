@@ -1,0 +1,10 @@
+{
+  "archive": "study/evidence-corrected-v1.tar.gz",
+  "sha256": "dd8dc3332c9d04c7eac1e476c98f4b4ed7890814b458c5aaec795df1f57eff04",
+  "bytes": 60512949,
+  "file_count": 5262,
+  "uncompressed_bytes": 90091019,
+  "file_manifest": "study/artifact-manifest.json",
+  "file_manifest_sha256": "4e03d1d3c3295163a48eac5a11488ba5407b8dce223c5194d6225e9fc6effcc9",
+  "scope": "Local evidence archive. Extract at repository root with matching source checkout. Primary and supplementary research cohorts, historical inputs/replays, and engineering checks are distinct namespaces; do not count replay copies as new observations."
+}

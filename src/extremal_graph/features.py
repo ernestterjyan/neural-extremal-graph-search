@@ -100,27 +100,31 @@ def collate_graph_states(
 
         scale = max(1, n - 1)
         progress = state.edge_count / max(1, turan_edge_count(n, state.r))
-        for vertex in range(n):
-            node_features[graph_index, vertex] = torch.tensor(
+        # Construct each block once. Values use the same Python divisions and
+        # float32 conversion as the original per-element implementation.
+        node_features[graph_index, :n] = torch.tensor(
+            [
+                [degrees[v] / scale, legal_incident[v] / scale, progress, 1.0 / state.r]
+                for v in range(n)
+            ],
+            dtype=torch.float32,
+        )
+        if legal_edges:
+            count = len(legal_edges)
+            candidates[graph_index, :count] = torch.tensor(legal_edges, dtype=torch.long)
+            candidate_mask[graph_index, :count] = True
+            candidate_features[graph_index, :count] = torch.tensor(
                 [
-                    degrees[vertex] / scale,
-                    legal_incident[vertex] / scale,
-                    progress,
-                    1.0 / state.r,
-                ]
-            )
-
-        for candidate_index, (u, v) in enumerate(legal_edges):
-            candidates[graph_index, candidate_index] = torch.tensor([u, v])
-            candidate_mask[graph_index, candidate_index] = True
-            candidate_features[graph_index, candidate_index] = torch.tensor(
-                [
-                    (degrees[u] + degrees[v]) / (2 * scale),
-                    abs(degrees[u] - degrees[v]) / scale,
-                    (legal_incident[u] + legal_incident[v]) / (2 * scale),
-                    abs(legal_incident[u] - legal_incident[v]) / scale,
-                    len(neighbours[u] & neighbours[v]) / max(1, n - 2),
-                ]
+                    [
+                        (degrees[u] + degrees[v]) / (2 * scale),
+                        abs(degrees[u] - degrees[v]) / scale,
+                        (legal_incident[u] + legal_incident[v]) / (2 * scale),
+                        abs(legal_incident[u] - legal_incident[v]) / scale,
+                        len(neighbours[u] & neighbours[v]) / max(1, n - 2),
+                    ]
+                    for u, v in legal_edges
+                ],
+                dtype=torch.float32,
             )
 
     return GraphTensorBatch(

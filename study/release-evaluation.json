@@ -1,0 +1,13 @@
+{
+  "description": "Direct evaluation of included v0.2 weights; preserves historical batch sampling. This is a replay, not independent confirmation.",
+  "checkpoint_templates": {"gnn": "artifacts/checkpoints/mvp-seed-{seed}.pt", "mlp": "artifacts/checkpoints/mvp-mlp-seed-{seed}.pt"},
+  "seeds": [0, 1, 2, 3, 4],
+  "full_sizes": [6, 8, 10, 12, 14, 16, 20, 24],
+  "full_episodes": 200,
+  "quick_sizes": [24],
+  "quick_episodes": 64,
+  "batch_size": 64,
+  "sampling_protocol": "legacy-batch-v1",
+  "reference_csv": "results/mvp-v0.2/evaluation.csv",
+  "output": "study/artifacts/release-replay"
+}

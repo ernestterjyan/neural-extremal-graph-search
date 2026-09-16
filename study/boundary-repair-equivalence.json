@@ -1,0 +1,8 @@
+{
+  "all_weights_bitwise_equal": true,
+  "all_losses_rewards_validation_actions_updates_identical": true,
+  "iterations": 60,
+  "selected_global_step": 60,
+  "repair_source_sha256": "d4ad6047ac9f64c135a8d514e0561cda93e574752f06b618f2e6b1f6d7538bd2",
+  "note": "Full seed-0 GNN replication of frozen training under transaction-order repair. Excluded from research replication counts."
+}

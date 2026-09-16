@@ -1,0 +1,425 @@
+{
+  "environment": {
+    "code_commit": "2ea4165374b08c6abc1a34312d05057e2e1c578a",
+    "cpu_count": 10,
+    "device": "cpu",
+    "machine": "arm64",
+    "packages": {
+      "matplotlib": "3.11.1",
+      "networkx": "3.6.1",
+      "numpy": "2.5.1",
+      "pandas": "3.0.5",
+      "seaborn": "0.13.2",
+      "torch": "2.13.0"
+    },
+    "platform": "macOS-27.0-arm64-arm-64bit",
+    "process_id": 8015,
+    "python": "3.12.13 (main, Jun 23 2026, 15:44:24) [Clang 22.1.3 ]",
+    "source": {
+      "files": {
+        "experiments/configs/corrected-candidate.toml": "e5a6d557d1d5e29d481fd7ff4808a8d3aa4b18f4c445290210c574dd5a840353",
+        "experiments/configs/corrected-endpoint.toml": "230bd3933a50da4d9022f7c565bfdbd932d13745a364c9cb871d0ee86fe48613",
+        "experiments/configs/corrected-gnn.toml": "7a36ca3167c4502ba6648fe432e742390cecb96c4996c8e8b3bfeb7de5c3bb92",
+        "experiments/configs/corrected-mlp.toml": "976fd6491b186eae057e2ec8a257b5082e17261653ec950d380a3c3f2876692e",
+        "experiments/configs/mlp-smoke-eval.toml": "a4269d7518cb923fbd952b0ede99d8585fff47344a01d7891688db798672380a",
+        "experiments/configs/mlp-smoke.toml": "91e49241961135b61c55a161b322538fd2e6662567b732854d69c36db55a38c6",
+        "experiments/configs/mvp-eval.toml": "e287ac45ad7191bbfc46217534961876e29e3d472cc7078a44514412a09e81c6",
+        "experiments/configs/mvp-mlp.toml": "7eff096e62840b1b48bd7e108d61a41bffc9824bd74674cd4fb82c8e420981d0",
+        "experiments/configs/mvp-v0.2-eval.toml": "b82eb29350b73d345aa04b6aa968d3580d2f5b4332e82313db83d8a4a457385e",
+        "experiments/configs/mvp.toml": "a0a66a36082c2436d9ec5d2fae03147ac071209372a9cc3aee9b55cd10841090",
+        "experiments/configs/smoke-eval.toml": "695b0c12d0269eb455ed03d0ddbcf1caaf6bd455cf330a32b5addb06f9fc2402",
+        "experiments/configs/smoke.toml": "f86b83a31a9a67d519d7e03573ca26fb3245d9b6c745090eae3e656ec85e7c1b",
+        "pyproject.toml": "e9b313ddb6c80a2bea4deeab5f5021278b9455c965a65457649a95b56b9a8689",
+        "src/extremal_graph/__init__.py": "c29a99a83e6cd0743f03098229333f965200a05138f348d92bd3673d2ac14f48",
+        "src/extremal_graph/baselines.py": "2e53c6c7c2ba78143bbc701d23f0c21d70c944038830662d75b1342b4e6f5e57",
+        "src/extremal_graph/cli.py": "8ecd96bd663e2fbff5bd0752b020772b2f96950e59a4188274d89b9a41cb87b4",
+        "src/extremal_graph/config.py": "6de606b69973e238840632408b605fcc55de8a3b6101846c308f0f6575d0b942",
+        "src/extremal_graph/controls.py": "5aac8a72eb793edd57d40a7cbc670b8cea38fb4bad8413a320a21c2ef8dc0b8e",
+        "src/extremal_graph/diagnostics.py": "ed62a8bc64cd02c5682255df2500b2c739f52c35610cd9b768af1fcda77f4e9e",
+        "src/extremal_graph/env.py": "bc052ce4e0b818e9ce80b9e361f6d1abb50f3c8a35e4c5c487cbd549dcc36bea",
+        "src/extremal_graph/evaluation.py": "b18b2520483b3b0c5e9b703663a14db59ee85e634620187c82647247f4163a4d",
+        "src/extremal_graph/features.py": "91bfb4cf5507fead28a3fb79311c6e978b50cef8daf981efe8f35e83ff824ce4",
+        "src/extremal_graph/graph.py": "d25f3db43ff2015b71d347a2676a5c9bfc4212e26e8485a4af0a0475e4093c76",
+        "src/extremal_graph/mlp_policy.py": "ed0a76104e2b6f183b262ee4d8e88b689315992ee81c9d21f5a0b8c8d1471b5d",
+        "src/extremal_graph/policy.py": "0f73ebdcd1a06887418807d7896cea4eb000f8b40073ecb8b18562a784583257",
+        "src/extremal_graph/reporting.py": "fa11e1c39b01dcd223d22661e81f213210548f9ae1ab31780a835fa7ca4a13a7",
+        "src/extremal_graph/rollouts.py": "46fd5856ad783ada6c5cfc101ab1e43da81d2ceea1a8172bcc90d65f34539976",
+        "src/extremal_graph/serialization.py": "5b712214809deedab10117dba5ebb5d9f1c798c9c2f930698cd42231714311fa",
+        "src/extremal_graph/study.py": "3db2ced970c2a56533fa4170665b53c2cd0789fed2d3b336efe94d596c457147",
+        "src/extremal_graph/training.py": "d4ad6047ac9f64c135a8d514e0561cda93e574752f06b618f2e6b1f6d7538bd2",
+        "src/extremal_graph/turan.py": "54225d5c9cb1b9938b850919c462489cd39fa345e06ce7ea573970cf071e0949",
+        "src/extremal_graph/utils.py": "6023e3c77b855e7c260d6aa35a3508699e7c97e6d63ee620193e27feb0f3a0b7",
+        "src/extremal_graph/verification.py": "39ae9a39f57cbec17266bdec2b7a0449916636bec5a1db57a5553b44fb2a4f85",
+        "uv.lock": "c4b8d231d172bc9b121f54ead192905f27a7271af671cce804c1e9721cd923a7"
+      },
+      "git_status": "M experiments/analyze_study.py\n M experiments/parity_intervention.py\n M experiments/profile_inference.py\n M experiments/reproduce_release.py\n M study/MATHEMATICS.md\n M study/README.md\n M study/RELATED_WORK.md\n M study/ledger.jsonl\n?? experiments/analyze_intervention.py\n?? study/dependency_lock_check.json\n?? study/figures/\n?? study/independent_audit.json\n?? study/intervention-validation.json\n?? study/intervention-verification.json\n?? study/intervention_report_inputs.json\n?? study/report_inputs.json\n?? study/tables/\n?? study/verification.json",
+      "root": "/Users/ernestterjyan/.codex/.chatgpt-projects/g-p-6a6bd217ed048191939d14cf8ea7ac0e/neural-extremal-graph-search-study",
+      "sha256": "a8a3a332c737ace349fcf878811e69ef28441034da86cf24818c52837e0ad8b7"
+    },
+    "torch_interop_threads": 10,
+    "torch_threads": 1
+  },
+  "protocol": "serial CPU one thread; one warmup then three repeats per cell. Count=1 is graph latency; count=8 is amortized batch generation cost. Baselines execute sequentially. Diagnostics excluded. Timing seeds excluded from study; no quality selection.",
+  "rows": [
+    {
+      "batch_size": 1,
+      "mean_seconds_per_graph": 0.08934218066739656,
+      "method": "gnn",
+      "n": 24,
+      "repeats": 3,
+      "seconds": [
+        0.08116370800053119,
+        0.08733983400088619,
+        0.0995230000007723
+      ]
+    },
+    {
+      "batch_size": 8,
+      "mean_seconds_per_graph": 0.07008576387503733,
+      "method": "gnn",
+      "n": 24,
+      "repeats": 3,
+      "seconds": [
+        0.5776190420001512,
+        0.535283208000692,
+        0.5691560830000526
+      ]
+    },
+    {
+      "batch_size": 1,
+      "mean_seconds_per_graph": 0.4471760279999823,
+      "method": "gnn",
+      "n": 40,
+      "repeats": 3,
+      "seconds": [
+        0.43246662499950617,
+        0.43018195900003775,
+        0.4788795000004029
+      ]
+    },
+    {
+      "batch_size": 8,
+      "mean_seconds_per_graph": 0.38814061979163245,
+      "method": "gnn",
+      "n": 40,
+      "repeats": 3,
+      "seconds": [
+        3.14448079199974,
+        3.1085310830003436,
+        3.0623629999990953
+      ]
+    },
+    {
+      "batch_size": 1,
+      "mean_seconds_per_graph": 0.0666875696661009,
+      "method": "mlp",
+      "n": 24,
+      "repeats": 3,
+      "seconds": [
+        0.07061545799842861,
+        0.0637544169985631,
+        0.06569283400131098
+      ]
+    },
+    {
+      "batch_size": 8,
+      "mean_seconds_per_graph": 0.05760105212501306,
+      "method": "mlp",
+      "n": 24,
+      "repeats": 3,
+      "seconds": [
+        0.4570294169989211,
+        0.4351879590012686,
+        0.49020787500012375
+      ]
+    },
+    {
+      "batch_size": 1,
+      "mean_seconds_per_graph": 0.06647854133370856,
+      "method": "candidate",
+      "n": 24,
+      "repeats": 3,
+      "seconds": [
+        0.060624125000686035,
+        0.07564445800016983,
+        0.06316704100026982
+      ]
+    },
+    {
+      "batch_size": 8,
+      "mean_seconds_per_graph": 0.05897052949997791,
+      "method": "candidate",
+      "n": 24,
+      "repeats": 3,
+      "seconds": [
+        0.45010875000116357,
+        0.5091380409994599,
+        0.4560459169988462
+      ]
+    },
+    {
+      "batch_size": 1,
+      "mean_seconds_per_graph": 0.34854976400068455,
+      "method": "candidate",
+      "n": 40,
+      "repeats": 3,
+      "seconds": [
+        0.37591791700106114,
+        0.33766654200007906,
+        0.3320648330009135
+      ]
+    },
+    {
+      "batch_size": 8,
+      "mean_seconds_per_graph": 0.3672431875417412,
+      "method": "candidate",
+      "n": 40,
+      "repeats": 3,
+      "seconds": [
+        2.9968105420011852,
+        2.95051841699933,
+        2.8665075420012727
+      ]
+    },
+    {
+      "batch_size": 1,
+      "mean_seconds_per_graph": 0.07567643066613527,
+      "method": "endpoint",
+      "n": 24,
+      "repeats": 3,
+      "seconds": [
+        0.06280433400024776,
+        0.08318545799920685,
+        0.08103949999895121
+      ]
+    },
+    {
+      "batch_size": 8,
+      "mean_seconds_per_graph": 0.06719782116670103,
+      "method": "endpoint",
+      "n": 24,
+      "repeats": 3,
+      "seconds": [
+        0.5459850830011419,
+        0.545070250000208,
+        0.5216923749994749
+      ]
+    },
+    {
+      "batch_size": 1,
+      "mean_seconds_per_graph": 0.43722872233289917,
+      "method": "endpoint",
+      "n": 40,
+      "repeats": 3,
+      "seconds": [
+        0.4561219999995956,
+        0.43252983299862535,
+        0.4230343340004765
+      ]
+    },
+    {
+      "batch_size": 8,
+      "mean_seconds_per_graph": 0.43136764237503183,
+      "method": "endpoint",
+      "n": 40,
+      "repeats": 3,
+      "seconds": [
+        3.513983750000989,
+        3.4766456249999464,
+        3.362194041999828
+      ]
+    },
+    {
+      "batch_size": 1,
+      "mean_seconds_per_graph": 0.0074048889994931715,
+      "method": "random",
+      "n": 24,
+      "repeats": 3,
+      "seconds": [
+        0.006679666999843903,
+        0.007477541999833193,
+        0.00805745799880242
+      ]
+    },
+    {
+      "batch_size": 8,
+      "mean_seconds_per_graph": 0.007355062499982523,
+      "method": "random",
+      "n": 24,
+      "repeats": 3,
+      "seconds": [
+        0.05956191699988267,
+        0.05983095800002047,
+        0.05712862499967741
+      ]
+    },
+    {
+      "batch_size": 1,
+      "mean_seconds_per_graph": 0.04617176433384884,
+      "method": "random",
+      "n": 40,
+      "repeats": 3,
+      "seconds": [
+        0.049078625001129694,
+        0.044533583999509574,
+        0.044903084000907256
+      ]
+    },
+    {
+      "batch_size": 8,
+      "mean_seconds_per_graph": 0.0460573385000013,
+      "method": "random",
+      "n": 40,
+      "repeats": 3,
+      "seconds": [
+        0.37430583300010767,
+        0.3648951249997481,
+        0.3661751660001755
+      ]
+    },
+    {
+      "batch_size": 1,
+      "mean_seconds_per_graph": 0.00855955600006079,
+      "method": "least_degree",
+      "n": 24,
+      "repeats": 3,
+      "seconds": [
+        0.009283792000132962,
+        0.0078702089995204,
+        0.008524667000529007
+      ]
+    },
+    {
+      "batch_size": 8,
+      "mean_seconds_per_graph": 0.008490749999964464,
+      "method": "least_degree",
+      "n": 24,
+      "repeats": 3,
+      "seconds": [
+        0.06899725000039325,
+        0.06622237499868788,
+        0.06855837500006601
+      ]
+    },
+    {
+      "batch_size": 1,
+      "mean_seconds_per_graph": 0.0514338886666034,
+      "method": "least_degree",
+      "n": 40,
+      "repeats": 3,
+      "seconds": [
+        0.049447040999439196,
+        0.052347124999869266,
+        0.05250750000050175
+      ]
+    },
+    {
+      "batch_size": 8,
+      "mean_seconds_per_graph": 0.05254314583324534,
+      "method": "least_degree",
+      "n": 40,
+      "repeats": 3,
+      "seconds": [
+        0.4184310419987014,
+        0.42285699999956705,
+        0.41974745799961966
+      ]
+    },
+    {
+      "batch_size": 1,
+      "mean_seconds_per_graph": 0.01924934733384968,
+      "method": "lookahead",
+      "n": 24,
+      "repeats": 3,
+      "seconds": [
+        0.019214750000173808,
+        0.019244709001213778,
+        0.019288583000161452
+      ]
+    },
+    {
+      "batch_size": 8,
+      "mean_seconds_per_graph": 0.019228090291638484,
+      "method": "lookahead",
+      "n": 24,
+      "repeats": 3,
+      "seconds": [
+        0.15387808400009817,
+        0.15367349999905855,
+        0.15392258300016692
+      ]
+    },
+    {
+      "batch_size": 1,
+      "mean_seconds_per_graph": 0.15544799999952374,
+      "method": "lookahead",
+      "n": 40,
+      "repeats": 3,
+      "seconds": [
+        0.15567516699957196,
+        0.15553937499862514,
+        0.15512945800037414
+      ]
+    },
+    {
+      "batch_size": 8,
+      "mean_seconds_per_graph": 0.15491339758333803,
+      "method": "lookahead",
+      "n": 40,
+      "repeats": 3,
+      "seconds": [
+        1.2356267499999376,
+        1.2414262919992325,
+        1.2408685000009427
+      ]
+    },
+    {
+      "batch_size": 1,
+      "mean_seconds_per_graph": 4.336100028012879e-05,
+      "method": "turan_oracle",
+      "n": 24,
+      "repeats": 3,
+      "seconds": [
+        4.495800021686591e-05,
+        4.262500078766607e-05,
+        4.2499999835854396e-05
+      ]
+    },
+    {
+      "batch_size": 8,
+      "mean_seconds_per_graph": 4.160241663460814e-05,
+      "method": "turan_oracle",
+      "n": 24,
+      "repeats": 3,
+      "seconds": [
+        0.0003361250001034932,
+        0.0003332500000396976,
+        0.00032908299908740446
+      ]
+    },
+    {
+      "batch_size": 1,
+      "mean_seconds_per_graph": 0.00011488866645474143,
+      "method": "turan_oracle",
+      "n": 40,
+      "repeats": 3,
+      "seconds": [
+        0.00012199999946460593,
+        0.00011183300011907704,
+        0.00011083299978054129
+      ]
+    },
+    {
+      "batch_size": 8,
+      "mean_seconds_per_graph": 0.00011041145838438145,
+      "method": "turan_oracle",
+      "n": 40,
+      "repeats": 3,
+      "seconds": [
+        0.000884667000718764,
+        0.0008775830010563368,
+        0.000887624999450054
+      ]
+    }
+  ]
+}

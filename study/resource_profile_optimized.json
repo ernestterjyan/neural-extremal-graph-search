@@ -1,0 +1,81 @@
+{
+  "timings": {
+    "gnn": {
+      "n": 40,
+      "episodes": 8,
+      "seconds": 1.9278214169999046
+    },
+    "mlp": {
+      "n": 24,
+      "episodes": 8,
+      "seconds": 0.3114215409996177
+    },
+    "candidate": {
+      "n": 40,
+      "episodes": 8,
+      "seconds": 1.6001168339998912
+    },
+    "endpoint": {
+      "n": 40,
+      "episodes": 8,
+      "seconds": 1.8065431669992904
+    }
+  },
+  "environment": {
+    "code_commit": "87a6bc5a52f973b8025bdd5efeb0791fcc4dcb01",
+    "source": {
+      "root": "/Users/ernestterjyan/.codex/.chatgpt-projects/g-p-6a6bd217ed048191939d14cf8ea7ac0e/neural-extremal-graph-search-study",
+      "files": {
+        "experiments/configs/mlp-smoke-eval.toml": "a4269d7518cb923fbd952b0ede99d8585fff47344a01d7891688db798672380a",
+        "experiments/configs/mlp-smoke.toml": "91e49241961135b61c55a161b322538fd2e6662567b732854d69c36db55a38c6",
+        "experiments/configs/mvp-eval.toml": "e287ac45ad7191bbfc46217534961876e29e3d472cc7078a44514412a09e81c6",
+        "experiments/configs/mvp-mlp.toml": "7eff096e62840b1b48bd7e108d61a41bffc9824bd74674cd4fb82c8e420981d0",
+        "experiments/configs/mvp-v0.2-eval.toml": "b82eb29350b73d345aa04b6aa968d3580d2f5b4332e82313db83d8a4a457385e",
+        "experiments/configs/mvp.toml": "a0a66a36082c2436d9ec5d2fae03147ac071209372a9cc3aee9b55cd10841090",
+        "experiments/configs/smoke-eval.toml": "695b0c12d0269eb455ed03d0ddbcf1caaf6bd455cf330a32b5addb06f9fc2402",
+        "experiments/configs/smoke.toml": "f86b83a31a9a67d519d7e03573ca26fb3245d9b6c745090eae3e656ec85e7c1b",
+        "pyproject.toml": "e9b313ddb6c80a2bea4deeab5f5021278b9455c965a65457649a95b56b9a8689",
+        "src/extremal_graph/__init__.py": "c29a99a83e6cd0743f03098229333f965200a05138f348d92bd3673d2ac14f48",
+        "src/extremal_graph/baselines.py": "2e53c6c7c2ba78143bbc701d23f0c21d70c944038830662d75b1342b4e6f5e57",
+        "src/extremal_graph/cli.py": "8ecd96bd663e2fbff5bd0752b020772b2f96950e59a4188274d89b9a41cb87b4",
+        "src/extremal_graph/config.py": "6de606b69973e238840632408b605fcc55de8a3b6101846c308f0f6575d0b942",
+        "src/extremal_graph/controls.py": "5aac8a72eb793edd57d40a7cbc670b8cea38fb4bad8413a320a21c2ef8dc0b8e",
+        "src/extremal_graph/diagnostics.py": "ed62a8bc64cd02c5682255df2500b2c739f52c35610cd9b768af1fcda77f4e9e",
+        "src/extremal_graph/env.py": "bc052ce4e0b818e9ce80b9e361f6d1abb50f3c8a35e4c5c487cbd549dcc36bea",
+        "src/extremal_graph/evaluation.py": "b18b2520483b3b0c5e9b703663a14db59ee85e634620187c82647247f4163a4d",
+        "src/extremal_graph/features.py": "91bfb4cf5507fead28a3fb79311c6e978b50cef8daf981efe8f35e83ff824ce4",
+        "src/extremal_graph/graph.py": "d25f3db43ff2015b71d347a2676a5c9bfc4212e26e8485a4af0a0475e4093c76",
+        "src/extremal_graph/mlp_policy.py": "ed0a76104e2b6f183b262ee4d8e88b689315992ee81c9d21f5a0b8c8d1471b5d",
+        "src/extremal_graph/policy.py": "0f73ebdcd1a06887418807d7896cea4eb000f8b40073ecb8b18562a784583257",
+        "src/extremal_graph/reporting.py": "bd5f56aeefbee13b06022b6a1a36cb9576ae6fe0e0e486dbf93b3dffe0dc313c",
+        "src/extremal_graph/rollouts.py": "46fd5856ad783ada6c5cfc101ab1e43da81d2ceea1a8172bcc90d65f34539976",
+        "src/extremal_graph/serialization.py": "5b712214809deedab10117dba5ebb5d9f1c798c9c2f930698cd42231714311fa",
+        "src/extremal_graph/study.py": "9bd198c5ece6a1ddb1618789a413270d5f04fd003fde4686897453a7c6696b51",
+        "src/extremal_graph/training.py": "4d604cdb084a3e3abe0bf8eed3f84a13c583df8f95bf6137bafd61f16f66bf80",
+        "src/extremal_graph/turan.py": "54225d5c9cb1b9938b850919c462489cd39fa345e06ce7ea573970cf071e0949",
+        "src/extremal_graph/utils.py": "0fe1fe3dd19040db89d95c4456f65b51f5490b896bd91dee4456a0b6890c0729",
+        "src/extremal_graph/verification.py": "39ae9a39f57cbec17266bdec2b7a0449916636bec5a1db57a5553b44fb2a4f85",
+        "uv.lock": "c4b8d231d172bc9b121f54ead192905f27a7271af671cce804c1e9721cd923a7"
+      },
+      "sha256": "28992358317d5d7fc83db0bd33a06098c58aca25b96a40355e48de1afc4abb56",
+      "git_status": "M src/extremal_graph/baselines.py\n M src/extremal_graph/config.py\n M src/extremal_graph/features.py\n M src/extremal_graph/policy.py\n M src/extremal_graph/rollouts.py\n M src/extremal_graph/training.py\n M src/extremal_graph/utils.py\n?? src/extremal_graph/controls.py\n?? src/extremal_graph/diagnostics.py\n?? src/extremal_graph/study.py\n?? study/\n?? tests/test_research_repairs.py\n?? tests/test_study_bundle.py"
+    },
+    "cpu_count": 10,
+    "torch_threads": 1,
+    "torch_interop_threads": 10,
+    "python": "3.12.13 (main, Jun 23 2026, 15:44:24) [Clang 22.1.3 ]",
+    "platform": "macOS-27.0-arm64-arm-64bit",
+    "machine": "arm64",
+    "device": "cpu",
+    "packages": {
+      "torch": "2.13.0",
+      "numpy": "2.5.1",
+      "networkx": "3.6.1",
+      "pandas": "3.0.5",
+      "matplotlib": "3.11.1",
+      "seaborn": "0.13.2"
+    },
+    "process_id": 2938
+  },
+  "note": "Timing-only pilot; quality not inspected."
+}

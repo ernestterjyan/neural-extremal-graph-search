@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+import math
+
 import torch
 from torch import nn
 
@@ -42,8 +44,8 @@ class EdgePolicy(nn.Module):
         super().__init__()
         if node_feature_dim < 1 or candidate_feature_dim < 0 or hidden_dim < 1:
             raise ValueError("model dimensions must be positive")
-        if message_passing_layers < 1:
-            raise ValueError("at least one message-passing layer is required")
+        if message_passing_layers < 0:
+            raise ValueError("message-passing depth cannot be negative")
         self.node_feature_dim = node_feature_dim
         self.candidate_feature_dim = candidate_feature_dim
         self.hidden_dim = hidden_dim
@@ -93,23 +95,67 @@ class EdgePolicy(nn.Module):
         return logits.masked_fill(~batch.candidate_mask, -torch.inf)
 
 
+def action_probabilities(
+    masked_logits: torch.Tensor,
+    *,
+    candidate_mask: torch.Tensor | None = None,
+    temperature: float = 1.0,
+) -> tuple[torch.Tensor, torch.Tensor]:
+    """Validate legal logits; reserve -inf exclusively for padding/terminal masks."""
+    if masked_logits.ndim != 2 or masked_logits.shape[1] == 0:
+        raise ValueError("masked_logits must have shape [batch, nonempty candidates]")
+    if not math.isfinite(temperature) or temperature <= 0:
+        raise ValueError("temperature must be finite and positive")
+    logits = masked_logits.detach().to("cpu")
+    # Compatibility for callers without an explicit mask: -inf denotes masking.
+    # Rollouts always supply the true mask, allowing detection of illegal -inf.
+    mask = ~torch.isneginf(logits) if candidate_mask is None else candidate_mask.to("cpu")
+    if mask.shape != logits.shape or mask.dtype != torch.bool:
+        raise ValueError("candidate_mask must be boolean and match logits")
+    if torch.isnan(logits).any() or torch.isposinf(logits).any():
+        raise FloatingPointError("policy produced NaN or positive-infinite logits")
+    if not torch.isfinite(logits[mask]).all():
+        raise FloatingPointError("policy produced a nonfinite legal-candidate logit")
+    if not torch.isneginf(logits[~mask]).all():
+        raise ValueError("masked candidates must have negative-infinity logits")
+    active = mask.any(dim=1)
+    safe = logits.clone()
+    safe[~active, 0] = 0.0
+    scaled = safe / temperature
+    if not torch.isfinite(scaled[mask]).all():
+        raise FloatingPointError("temperature scaling overflowed legal logits")
+    probabilities = torch.softmax(scaled, dim=1)
+    return probabilities, active
+
+
 def sample_actions(
     masked_logits: torch.Tensor,
     *,
     temperature: float = 1.0,
     generator: torch.Generator | None = None,
+    generators: list[torch.Generator] | None = None,
+    candidate_mask: torch.Tensor | None = None,
 ) -> torch.Tensor:
-    """Sample one candidate index per active row; return ``-1`` for terminal rows."""
-    if masked_logits.ndim != 2:
-        raise ValueError("masked_logits must have shape [batch, candidates]")
-    if temperature <= 0:
-        raise ValueError("temperature must be positive")
+    """Sample valid indices, with independent inverse-CDF streams when supplied.
 
-    active = torch.isfinite(masked_logits).any(dim=1)
-    safe_logits = masked_logits.detach().to("cpu") / temperature
-    safe_logits[~active.to("cpu")] = -torch.inf
-    safe_logits[~active.to("cpu"), 0] = 0.0
-    probabilities = torch.softmax(safe_logits, dim=1)
-    sampled = torch.multinomial(probabilities, 1, generator=generator).squeeze(1)
-    sampled[~active.to("cpu")] = -1
+    The single-generator path preserves historical torch.multinomial sampling.
+    One uniform draw per active episode makes episode-v2 streams independent
+    of batch order, padding, companion termination, and chunk boundaries.
+    """
+    probabilities, active = action_probabilities(
+        masked_logits, candidate_mask=candidate_mask, temperature=temperature
+    )
+    if generators is not None:
+        if generator is not None or len(generators) != len(probabilities):
+            raise ValueError("supply exactly one generator per row, not both generator modes")
+        sampled = torch.full((len(probabilities),), -1, dtype=torch.long)
+        for row, rng in enumerate(generators):
+            if active[row]:
+                uniform = torch.rand((), generator=rng, dtype=torch.float64)
+                cdf = probabilities[row].double().cumsum(0)
+                cdf = cdf / cdf[-1]
+                sampled[row] = torch.searchsorted(cdf, uniform, right=True).clamp_max(len(cdf) - 1)
+    else:
+        sampled = torch.multinomial(probabilities, 1, generator=generator).squeeze(1)
+        sampled[~active] = -1
     return sampled.to(masked_logits.device)

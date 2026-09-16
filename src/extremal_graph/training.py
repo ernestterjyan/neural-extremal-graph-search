@@ -16,6 +16,7 @@ from torch import nn
 from torch.nn import functional as F
 
 from .config import FullTrainingConfig, ModelConfig, load_training_config
+from .controls import CandidatePolicy
 from .features import action_indices, collate_graph_states, legal_edges_from_state
 from .graph import Edge, GraphState, Trajectory
 from .mlp_policy import FixedSizeMLPPolicy
@@ -24,9 +25,14 @@ from .rollouts import run_episode_batch
 from .serialization import graph_to_dict
 from .utils import (
     append_jsonl,
+    atomic_torch_save,
+    capture_random_state,
     environment_metadata,
     resolve_device,
+    restore_random_state,
+    save_source_snapshot,
     set_global_seed,
+    sha256_file,
     write_json,
 )
 
@@ -38,6 +44,15 @@ def build_model(config: ModelConfig) -> nn.Module:
             candidate_feature_dim=config.candidate_feature_dim,
             hidden_dim=config.hidden_dim,
             message_passing_layers=config.message_passing_layers,
+        )
+    if config.family == "candidate":
+        return CandidatePolicy(config.candidate_feature_dim, config.hidden_dim)
+    if config.family == "endpoint":
+        return EdgePolicy(
+            node_feature_dim=config.node_feature_dim,
+            candidate_feature_dim=config.candidate_feature_dim,
+            hidden_dim=config.hidden_dim,
+            message_passing_layers=0,
         )
     if config.family == "mlp":
         return FixedSizeMLPPolicy(
@@ -89,6 +104,7 @@ def _collect_rollouts(
     r: int,
     temperature: float,
     device: torch.device,
+    sampling_protocol: str = "episode-v2",
 ) -> list[Trajectory]:
     quotient, remainder = divmod(count, len(sizes))
     trajectories: list[Trajectory] = []
@@ -103,6 +119,7 @@ def _collect_rollouts(
                 r=r,
                 temperature=temperature,
                 device=device,
+                sampling_protocol=sampling_protocol,
             )
         )
     return trajectories
@@ -165,7 +182,7 @@ def optimize_on_elite(
             logits = model(batch)
             loss = F.cross_entropy(logits, targets)
             if not torch.isfinite(loss):
-                raise RuntimeError("encountered a non-finite training loss")
+                raise FloatingPointError("encountered a non-finite training loss")
             loss.backward()
             nn.utils.clip_grad_norm_(model.parameters(), gradient_clip_norm)
             optimizer.step()
@@ -183,6 +200,7 @@ def _validate(
     r: int,
     temperature: float,
     device: torch.device,
+    sampling_protocol: str = "episode-v2",
 ) -> dict[int, float]:
     results: dict[int, float] = {}
     for n in sizes:
@@ -196,6 +214,7 @@ def _validate(
             r=r,
             temperature=temperature,
             device=device,
+            sampling_protocol=sampling_protocol,
         )
         results[n] = sum(item.optimality_ratio for item in trajectories) / len(trajectories)
     return results
@@ -215,9 +234,11 @@ def _save_best(
     iteration: int,
     validation_score: float,
     run_name: str,
+    provenance: dict[str, Any] | None = None,
 ) -> None:
-    torch.save(
+    atomic_torch_save(
         {
+            "provenance": provenance,
             "format_version": 1,
             "model_state": model_state,
             "model_config": asdict(model_config),
@@ -297,7 +318,7 @@ def _latest_checkpoint(
     }
 
 
-def train(
+def _train(
     config_path: str | Path,
     *,
     seed_override: int | None = None,
@@ -307,24 +328,27 @@ def train(
     config = load_training_config(config_path, seed_override)
     seed = config.training.seed
     device = resolve_device(config.run.device)
+    torch.set_num_threads(config.run.num_threads)
     set_global_seed(seed, deterministic=config.run.deterministic)
     run_dir = Path(config.run.output_dir) / f"{config.run.name}-seed-{seed}"
-    run_dir.mkdir(parents=True, exist_ok=True)
     metrics_path = run_dir / "metrics.jsonl"
     trajectories_path = run_dir / "sample_trajectories.jsonl"
-    if resume is None:
-        metrics_path.write_text("", encoding="utf-8")
-        trajectories_path.write_text("", encoding="utf-8")
-    _write_resolved_toml(run_dir / "config.toml", config)
-    write_json(
-        run_dir / "metadata.json",
-        {
-            **environment_metadata(device),
-            "seed": seed,
-            "started_at_unix": time.time(),
-            "configuration": config.as_dict(),
-        },
-    )
+    contract = config.as_dict()
+    contract["run"].pop("output_dir")
+    contract["run"].pop("name")
+    # JSON canonicalization makes tuple/list differences irrelevant on reload.
+    contract = json.loads(json.dumps(contract))
+    payload = None
+    if resume is not None:
+        payload = torch.load(Path(resume), map_location=device, weights_only=False)
+        if payload.get("resume_contract_version") != 2:
+            raise ValueError("legacy checkpoint lacks a validated resume contract; start a new run")
+        if payload.get("training_contract") != contract:
+            raise ValueError(
+                "resume training contract differs; optimizer/curriculum overrides rejected"
+            )
+    elif (run_dir / "metadata.json").exists():
+        raise ValueError("run already exists; choose a new name or explicitly resume")
 
     model = build_model(config.model).to(device)
     optimizer = torch.optim.AdamW(
@@ -344,7 +368,7 @@ def train(
     resumed_best_iteration = 1
 
     if resume is not None:
-        payload = torch.load(Path(resume), map_location=device, weights_only=False)
+        assert payload is not None
         if payload.get("format_version") != 1 or payload.get("seed") != seed:
             raise ValueError("resume checkpoint format or seed does not match the configuration")
         checkpoint_config = payload.get("model_config")
@@ -364,6 +388,77 @@ def train(
         resumed_best_state = payload["best_stage_state"]
         resumed_best_optimizer_state = payload.get("best_stage_optimizer_state")
         resumed_best_iteration = int(payload.get("best_stage_iteration", start_iteration))
+
+    # No files are changed until checkpoint and optimizer compatibility passed.
+    run_dir.mkdir(parents=True, exist_ok=True)
+    if resume is None:
+        metrics_path.write_text("", encoding="utf-8")
+        trajectories_path.write_text("", encoding="utf-8")
+        _write_resolved_toml(run_dir / "config.toml", config)
+        snapshot = save_source_snapshot(run_dir / "source.tar.gz")
+        write_json(
+            run_dir / "metadata.json",
+            {
+                **environment_metadata(device),
+                "seed": seed,
+                "started_at_unix": time.time(),
+                "configuration": config.as_dict(),
+                "source_snapshot": snapshot,
+                "sampling_protocol": config.run.sampling_protocol,
+                "validation_seed_rule": (
+                    "fresh panel keyed by training seed, global step, size, episode"
+                ),
+                "checkpoint_selection": "maximum mean validation across introduced sizes",
+            },
+        )
+    else:
+        assert payload is not None
+        restore_random_state(payload["random_state"])
+        if not (run_dir / "metadata.json").exists():
+            raise ValueError("resume requires the original run directory and metadata")
+        append_jsonl(
+            run_dir / "resume_events.jsonl",
+            {
+                "resumed_at_unix": time.time(),
+                "checkpoint": str(resume),
+                "checkpoint_sha256": sha256_file(resume),
+                "global_step": global_step,
+                "environment": environment_metadata(device),
+            },
+        )
+        if start_stage_index >= len(config.training.curriculum_sizes):
+            # A completed latest checkpoint has durable final weights, but the
+            # process may have stopped before writing the completion record.
+            if not (run_dir / "completion.json").exists():
+                if "trajectory_samples" not in payload:
+                    raise ValueError("legacy finished checkpoint lacks recovery samples")
+                trajectories_path.write_text(
+                    "".join(
+                        json.dumps(x, sort_keys=True) + "\n" for x in payload["trajectory_samples"]
+                    )
+                )
+                write_json(
+                    run_dir / "completion.json",
+                    {
+                        "completed_at_unix": time.time(),
+                        "global_steps": global_step,
+                        "best_checkpoint": str(run_dir / "best.pt"),
+                        "checkpoint_sha256": sha256_file(run_dir / "best.pt"),
+                        "recovered_finalization": True,
+                    },
+                )
+            return run_dir / "best.pt"
+        # A saved checkpoint defines the committed iteration boundary. Remove
+        # a possible trailing metrics record written before an interrupted save.
+        records = [json.loads(line) for line in metrics_path.read_text().splitlines()]
+        metrics_path.write_text(
+            "".join(
+                json.dumps(x, sort_keys=True) + "\n"
+                for x in records
+                if x["global_step"] <= global_step
+            )
+        )
+    metadata = json.loads((run_dir / "metadata.json").read_text())
 
     latest_elite: list[Trajectory] = []
     curriculum = config.training.curriculum_sizes
@@ -395,6 +490,7 @@ def train(
                 global_step=global_step,
                 r=config.r,
                 temperature=config.training.temperature,
+                sampling_protocol=config.run.sampling_protocol,
                 device=device,
             )
             elite = select_elite_trajectories(
@@ -421,6 +517,14 @@ def train(
                 / len(trajectories),
                 "elite_mean_ratio": sum(t.optimality_ratio for t in elite) / len(elite),
                 "duration_seconds": time.perf_counter() - started,
+                "rollout_episodes": len(trajectories),
+                "sampled_actions": sum(len(t.actions) for t in trajectories),
+                "optimizer_updates": math.ceil(sum(len(t.actions) for t in elite) / 256)
+                * config.training.optimization_epochs,
+                "actions_by_size": {
+                    str(n): sum(len(t.actions) for t in trajectories if t.n == n)
+                    for n in introduced
+                },
             }
 
             should_validate = (
@@ -437,6 +541,7 @@ def train(
                     global_step=global_step,
                     r=config.r,
                     temperature=config.training.temperature,
+                    sampling_protocol=config.run.sampling_protocol,
                     device=device,
                 )
                 validation_score = sum(validation.values()) / len(validation)
@@ -457,7 +562,24 @@ def train(
             stage_done = stage_done or budget_exhausted
             record["stage_gate_passed"] = consecutive >= config.training.advancement_patience
             record["stage_complete"] = stage_done
+            record["iteration_wall_seconds"] = time.perf_counter() - started
             append_jsonl(metrics_path, record)
+
+            # A predeclared equal-rollout-budget snapshot, before stage restoration.
+            if global_step == 50:
+                atomic_torch_save(
+                    {
+                        "format_version": 1,
+                        "checkpoint_kind": "fixed-budget-current-model",
+                        "global_step": global_step,
+                        "model_state": _cpu_state_dict(model),
+                        "model_config": asdict(config.model),
+                        "model_family": config.model.family,
+                        "seed": seed,
+                        "provenance": {"configuration": config.as_dict(), "environment": metadata},
+                    },
+                    run_dir / "budget-0050.pt",
+                )
 
             if stage_done:
                 if best_stage_state is None:
@@ -468,25 +590,6 @@ def train(
 
             next_stage = stage_index + 1 if stage_done else stage_index
             next_iteration = 1 if stage_done else iteration + 1
-            torch.save(
-                _latest_checkpoint(
-                    model=model,
-                    model_config=config.model,
-                    optimizer=optimizer,
-                    seed=seed,
-                    next_stage_index=next_stage,
-                    next_iteration=next_iteration,
-                    global_step=global_step,
-                    selection_rng=selection_rng,
-                    current_stage_index=stage_index,
-                    consecutive=consecutive,
-                    best_stage_score=best_stage_score,
-                    best_stage_state=best_stage_state,
-                    best_stage_optimizer_state=best_stage_optimizer_state,
-                    best_stage_iteration=best_stage_iteration,
-                ),
-                run_dir / "latest.pt",
-            )
             if stage_done:
                 stage_path = run_dir / f"stage-n{current_size}.pt"
                 _save_best(
@@ -498,6 +601,12 @@ def train(
                     iteration=best_stage_iteration,
                     validation_score=best_stage_score,
                     run_name=config.run.name,
+                    provenance={
+                        "configuration": config.as_dict(),
+                        "environment": metadata,
+                        "selected_global_step": global_step - iteration + best_stage_iteration,
+                        "sampling_protocol": config.run.sampling_protocol,
+                    },
                 )
                 _save_best(
                     run_dir / "best.pt",
@@ -508,7 +617,44 @@ def train(
                     iteration=best_stage_iteration,
                     validation_score=best_stage_score,
                     run_name=config.run.name,
+                    provenance={
+                        "configuration": config.as_dict(),
+                        "environment": metadata,
+                        "selected_global_step": global_step - iteration + best_stage_iteration,
+                        "sampling_protocol": config.run.sampling_protocol,
+                    },
                 )
+            atomic_torch_save(
+                {
+                    "resume_contract_version": 2,
+                    "training_contract": contract,
+                    "random_state": capture_random_state(),
+                    "trajectory_samples": [
+                        _trajectory_record(t)
+                        for t in sorted(
+                            latest_elite, key=lambda item: item.optimality_ratio, reverse=True
+                        )[: config.artifacts.trajectory_sample_count]
+                    ],
+                    **_latest_checkpoint(
+                        model=model,
+                        model_config=config.model,
+                        optimizer=optimizer,
+                        seed=seed,
+                        next_stage_index=next_stage,
+                        next_iteration=next_iteration,
+                        global_step=global_step,
+                        selection_rng=selection_rng,
+                        current_stage_index=stage_index,
+                        consecutive=consecutive,
+                        best_stage_score=best_stage_score,
+                        best_stage_state=best_stage_state,
+                        best_stage_optimizer_state=best_stage_optimizer_state,
+                        best_stage_iteration=best_stage_iteration,
+                    ),
+                },
+                run_dir / "latest.pt",
+            )
+            if stage_done:
                 break
 
     sample_count = config.artifacts.trajectory_sample_count
@@ -522,6 +668,23 @@ def train(
             "completed_at_unix": time.time(),
             "global_steps": global_step,
             "best_checkpoint": str(run_dir / "best.pt"),
+            "checkpoint_sha256": sha256_file(run_dir / "best.pt"),
         },
     )
     return run_dir / "best.pt"
+
+
+def train(
+    config_path: str | Path, *, seed_override: int | None = None, resume: str | Path | None = None
+) -> Path:
+    """Run validated training and persist numerical failures without fabricating scores."""
+    try:
+        return _train(config_path, seed_override=seed_override, resume=resume)
+    except FloatingPointError as error:
+        config = load_training_config(config_path, seed_override)
+        path = Path(config.run.output_dir) / f"{config.run.name}-seed-{config.training.seed}"
+        write_json(
+            path / "failure.json",
+            {"status": "numerical_failure", "error": str(error), "time": time.time()},
+        )
+        raise
