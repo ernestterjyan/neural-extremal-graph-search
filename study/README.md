@@ -20,7 +20,7 @@ uv run python experiments/analyze_study.py
 uv run python experiments/exact_diagnostics.py
 ```
 
-Individual stages are `train`, `evaluate`, `budget`, and `verify`. A stage resumes completed compatible cells and training checkpoints. Training is limited to five seeds for four families and 100 iterations per curriculum stage. Main evaluation covers 87,000 graphs and the fixed-budget comparison another 4,000. The fixed-budget checkpoints are current models after 50 iterations (12,800 training episodes), before stage restoration; action counts, updates and size exposure still differ.
+Individual stages are `train`, `evaluate`, `budget`, and `verify`. A stage resumes completed compatible cells and training checkpoints. Training is limited to five seeds for four families and 100 iterations per curriculum stage. Main evaluation covers 87,000 graphs and the fixed-budget comparison another 4,000. The fixed-budget checkpoints are current models after 50 iterations (12,800 training episodes), before stage restoration; action counts, updates, validation episodes and size exposure still differ. The equal budget refers to training rollouts, not all environment calls; both training and validation counts are reported.
 
 To regenerate tables and figures from the evidence bundle without retraining:
 
@@ -70,12 +70,24 @@ The environment supplies legality and informative handcrafted features. The dire
 
 ```sh
 uv run python experiments/parity_intervention.py
+uv run python experiments/analyze_intervention.py
 uv run python experiments/audit_study_evidence.py
 uv run python experiments/check_trained_symmetry.py
 uv run python experiments/regenerate_historical_reports.py
 uv run python experiments/profile_inference.py
+uv run python experiments/profile_intervention_cost.py
 ```
 
 Run the serial inference profile only after other workers have stopped. It measures single-graph latency separately from batch throughput. The historical regeneration command requires all ten archived training logs and writes six figures into a separate directory, preserving the published originals.
 
 A final-stage interruption regression was discovered after the frozen training cohort began. Its repair saves stage artifacts before the resume checkpoint advances, and retains recovery samples for interrupted finalization. The full seed-0 GNN repetition under this repair matched every loss, reward, validation value, action count, update count and final model parameter exactly. `boundary-repair-equivalence.json` records that check. The primary 20-run cohort uses the original common training snapshot; final evaluation uses the repaired source with unchanged inference code. Both snapshots and the protocol deviation are retained.
+
+## Seed formulas and effective architectures
+
+For training seed `s`, global iteration `g`, size `n`, and zero-based episode `e`, the training episode seed is `(s+1)*1_000_000_000 + g*100_000 + n*1_000 + e`. Validation substitutes `s+10_000` for `s`; each size has 100 validation episodes. Training's 256 episodes are split as evenly as possible across introduced sizes, assigning any remainder to the smaller sizes. Main/fixed-budget evaluation uses `(s+1)*1_000_000 + n*10_000 + e`. Supplementary intervention evaluation uses `(101+s)*1_000_000 + n*10_000 + e`. These domains do not overlap for this protocol.
+
+The GNN has 38,337 parameters, MLP 37,990, endpoint policy 13,185, and candidate-only policy 449. The shared model configuration retains generic fields that some families ignore: `endpoint` explicitly forces zero message-passing layers even though the generic depth field is 3; only `mlp` uses `max_nodes`. `model_specifications.json` records effective depth explicitly. No claim of parameter-matched isolation is made for the smaller controls.
+
+## Validate a portable checkout
+
+After committing the source and generating all outputs, `uv run python experiments/package_evidence.py` builds the deterministic local archive. `uv run python experiments/check_clean_checkout.py` clones the committed source into a temporary directory, verifies and extracts the archive, checks all 97,000 research graphs, regenerates every study table and all eleven figures, and performs a fresh 640-output release replay. It retains its logs and replay graphs. Rebuild the archive afterward to include those validation outputs. The check requires a fresh replay namespace and deliberately refuses to overwrite a prior validation. `clean_checkout_validation.json` records the actual source commit and scope. The same installed environment is reused; cross-machine installation and full retraining are separate reproduction exercises.

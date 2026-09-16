@@ -126,6 +126,12 @@ def self_check():
     fresh = generate(model, "gnn_fresh", 8, [7, 9])
     canonical = run_episode_batch(model, n=8, seeds=[7, 9])
     assert [x.actions for x in fresh] == [x.actions for x in canonical]
+    trained, _ = load_model_checkpoint(
+        ROOT / "study/artifacts/training/corrected-gnn-seed-0/best.pt"
+    )
+    larger = generate(trained, "gnn_fresh", 40, [9_000_100, 9_000_101])
+    expected = run_episode_batch(trained, n=40, seeds=[9_000_100, 9_000_101])
+    assert [x.actions for x in larger] == [x.actions for x in expected]
     return {
         "networkx_mask_check": True,
         "C8_retained": 8,

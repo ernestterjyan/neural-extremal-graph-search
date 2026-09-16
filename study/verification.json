@@ -1,0 +1,12 @@
+{
+  "budget": {
+    "cells": 40,
+    "graphs": 4000,
+    "valid": true
+  },
+  "evaluation": {
+    "cells": 870,
+    "graphs": 87000,
+    "valid": true
+  }
+}

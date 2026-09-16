@@ -20,10 +20,11 @@ from extremal_graph.utils import write_json  # noqa: E402
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--full", action="store_true")
+    parser.add_argument("--output", type=Path, help="fresh output root for an independent replay")
     args = parser.parse_args()
     config = json.loads((ROOT / "study/release-evaluation.json").read_text())
     mode = "full" if args.full else "quick"
-    output = ROOT / config["output"] / mode
+    output = args.output.resolve() if args.output else ROOT / config["output"] / mode
     for method, template in config["checkpoint_templates"].items():
         for seed in config["seeds"]:
             for n in config[mode + "_sizes"]:

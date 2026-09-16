@@ -4,6 +4,8 @@ For a simple undirected graph G on n≥2 vertices, an absent edge uv can be adde
 
 Mantel's theorem identifies T(n) and its balanced complete bipartite equality case. The policy maximizes expected terminal |E|/T(n). The cross-entropy update imitates actions from high-return sampled trajectories; it is not a proof procedure. Reporting both density and exact success is essential: losing one edge and losing the possibility of any optimal completion answer different questions.
 
+A short bound-and-equality argument makes the reference explicit. Choose a maximum-degree vertex v with degree Δ. Its neighborhood A is independent because G is triangle-free; let B be the remaining n−Δ vertices. Then |E| = sum(deg(x), x in B) − |E(B)| ≤ Δ(n−Δ) ≤ floor(n²/4). A complete bipartite graph with balanced sides attains the bound. Equality forces E(B) to be empty, every vertex of B to meet every vertex of A, and the side sizes to be balanced. Thus the exact-success edge-count test also identifies the extremal structure in this setting.
+
 ## Exact completion feasibility
 
 For each connected component of a bipartite partial graph, let its color-class sizes be (a_i,b_i). A balanced bipartite completion exists if and only if one can independently choose either a_i or b_i from each component so that their sum is floor(n/2). The other side then has ceil(n/2) vertices. Isolated vertices contribute (1,0).

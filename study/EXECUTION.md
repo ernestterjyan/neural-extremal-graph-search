@@ -13,3 +13,9 @@
 - Constructed-state study: six exact continuation collections enumerated; C8 values and uniform-action limitation reproduced at depths 0, 1, 3 and 8 across five initializations.
 
 Final completion counts, resource usage and evidence conclusions are recorded in `RESEARCH_REPORT.md`, `verification.json`, `report_inputs.json`, and the durable ledger. This record distinguishes engineering/replay checks from new research observations.
+
+- Completed 20 canonical runs, 870 main cells (87,000 graphs), 40 fixed-budget cells (4,000 graphs), and 60 supplementary cells (6,000 graphs). All persisted research graphs verified; no numerical or verification failures.
+- Final stage-boundary repair: full seed-0 GNN rerun matches every iteration and final parameter; full suite 64 passed. Training and evaluation snapshots retained separately.
+- Additional audit: 250 independent trajectory annotations and 165 differently grouped checkpoint replays passed.
+- Serial primary and supplementary inference profiles completed after concurrent workers stopped; latency and amortized generation cost reported separately.
+- All five new figures and six historical figures regenerated from retained evidence. Portable archive and clean-checkout validation are documented separately with checksums.

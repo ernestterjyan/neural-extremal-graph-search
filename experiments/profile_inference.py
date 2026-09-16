@@ -19,13 +19,23 @@ from extremal_graph.baselines import (  # noqa: E402
 )
 from extremal_graph.rollouts import run_episode_batch  # noqa: E402
 from extremal_graph.training import load_model_checkpoint  # noqa: E402
+from extremal_graph.turan import construct_turan  # noqa: E402
 from extremal_graph.utils import environment_metadata, write_json  # noqa: E402
 
 
 def main():
     torch.set_num_threads(1)
     rows = []
-    for method in ["gnn", "mlp", "candidate", "endpoint", "random", "least_degree", "lookahead"]:
+    for method in [
+        "gnn",
+        "mlp",
+        "candidate",
+        "endpoint",
+        "random",
+        "least_degree",
+        "lookahead",
+        "turan_oracle",
+    ]:
         for n in [24, 40]:
             if method == "mlp" and n > 24:
                 continue
@@ -41,6 +51,9 @@ def main():
                     start = time.perf_counter()
                     if model is not None:
                         run_episode_batch(model, n=n, seeds=seeds)
+                    elif method == "turan_oracle":
+                        for _ in seeds:
+                            construct_turan(n, 2)
                     else:
                         policy = {
                             "random": UniformRandomPolicy,

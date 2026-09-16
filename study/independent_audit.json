@@ -1,0 +1,6 @@
+{
+  "checkpoint_replays": 165,
+  "independent_trajectory_diagnostics": 250,
+  "selection": "episodes 0 and 1, all seeds/methods at n14/24/40 (supported cells); learned families also single/reversed-pair replay",
+  "valid": true
+}

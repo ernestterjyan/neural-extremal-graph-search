@@ -13,6 +13,9 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 os.environ.setdefault("MPLCONFIGDIR", str(Path(tempfile.gettempdir()) / "negs-study-mpl"))
+cache = Path(tempfile.gettempdir()) / "negs-study-cache"
+cache.mkdir(parents=True, exist_ok=True)
+os.environ.setdefault("XDG_CACHE_HOME", str(cache))
 import matplotlib  # noqa: E402
 
 matplotlib.use("Agg")
@@ -137,6 +140,10 @@ def training_tables():
                     x["stage_complete"] and x["stage_gate_passed"] for x in metrics
                 ),
                 budget_rollouts=sum(x["rollout_episodes"] for x in budget),
+                budget_validation_episodes=sum(len(x.get("validation", {})) * 100 for x in budget),
+                launch_to_completion_seconds=(
+                    completion["completed_at_unix"] - metadata["started_at_unix"]
+                ),
                 budget_actions=sum(x["sampled_actions"] for x in budget),
                 budget_updates=sum(x["optimizer_updates"] for x in budget),
                 budget_stage_size=budget[-1]["stage_size"],
@@ -189,6 +196,17 @@ def probe_tables():
                 probe["trajectory_has_unavoidable_alias"] = int(
                     probe["unavoidable_alias_states"] > 0
                 )
+                if row["method"] in {"mlp", "untrained_mlp"}:
+                    # Raw structural accumulators mean not measured for the MLP.
+                    for field in [
+                        "mixed_group_states",
+                        "unavoidable_alias_states",
+                        "sum_bad_mass_in_mixed_groups",
+                        "chosen_bad_in_mixed_group",
+                        "trajectory_has_mixed_group",
+                        "trajectory_has_unavoidable_alias",
+                    ]:
+                        probe[field] = np.nan
                 probes.append(
                     dict(
                         method=row["method"],
@@ -245,8 +263,14 @@ def figures(summary, frame, training, validations, iterations, budget):
                     sub.n,
                     sub["mean"],
                     yerr=sub.ci95_halfwidth,
-                    marker=".",
+                    marker="o" if method == "lookahead" else ".",
+                    linestyle="--"
+                    if method == "turan_oracle"
+                    else "none"
+                    if method == "lookahead"
+                    else "-",
                     lw=1.5,
+                    zorder=4 if method == "lookahead" else 2,
                     label=method,
                     color=colors[method],
                     capsize=2,
@@ -254,8 +278,12 @@ def figures(summary, frame, training, validations, iterations, budget):
             ax.set(
                 xlabel="Vertices n",
                 ylabel="Mean edge ratio" if col == 0 else "Exact success rate",
-                ylim=(-0.025, 1.025),
+                ylim=((0.78, 1.025) if row == 0 else (0.45, 1.025))
+                if col == 0
+                else (-0.025, 1.025),
             )
+            if row == 1:
+                ax.text(18, 0.965, "look-ahead and oracle: 1.00 throughout", fontsize=8)
             ax.axvline(14.5, c="gray", ls=":", lw=1)
             ax.grid(alpha=0.2)
             ax.legend(fontsize=8, ncol=2)
@@ -298,9 +326,9 @@ def figures(summary, frame, training, validations, iterations, budget):
                 # Each seed has its own transition schedule; dots show transition iterations.
                 for _, event in transitions.iterrows():
                     ax.plot(
-                        event.global_step, 0.50 + 0.012 * seed, "|", c=plt.get_cmap("tab10")(seed)
+                        event.global_step, 0.845 + 0.006 * seed, "|", c=plt.get_cmap("tab10")(seed)
                     )
-            ax.set(title=f"{family}: fixed n={n}", xlabel="Training iteration", ylim=(0.48, 1.015))
+            ax.set(title=f"{family}: fixed n={n}", xlabel="Training iteration", ylim=(0.84, 1.015))
             ax.grid(alpha=0.2)
     axes[0, 0].legend(fontsize=7)
     axes[0, 0].set_ylabel("Validation edge ratio")
@@ -324,8 +352,13 @@ def figures(summary, frame, training, validations, iterations, budget):
                     ms=4,
                 )
         ax.set_xticks(range(4), FAMILIES)
-        ax.set(ylabel=metric, ylim=(0.45, 1.01) if metric == "optimality_ratio" else (-0.02, 1.01))
-    fig.suptitle("n=24: each seed at 12,800 rollouts (left) and curriculum completion (right)")
+        ax.set(
+            ylabel="Mean edge ratio" if metric == "optimality_ratio" else "Exact success rate",
+            ylim=(0.45, 1.01) if metric == "optimality_ratio" else (-0.02, 1.01),
+        )
+    fig.suptitle(
+        "n=24: each seed at 12,800 training rollouts (left) and curriculum completion (right)"
+    )
     fig.savefig(FIG / "budget_comparison.png", dpi=180)
     plt.close(fig)
 
@@ -336,7 +369,7 @@ def main():
     verification = json.loads((ROOT / "study/verification.json").read_text())
     if not all(x["valid"] for x in verification.values()):
         raise ValueError("verification is required before reporting")
-    frame = pd.read_csv(ART / "evaluation.csv")
+    frame = pd.read_csv(ART / "evaluation.csv", low_memory=False)
     budget_frame = pd.read_csv(ART / "budget.csv")
     seed, summary = seed_summary(frame)
     bseed, bsummary = seed_summary(budget_frame)
@@ -353,6 +386,11 @@ def main():
         "validation": validation,
         "probes": probes,
         "stratified_examples": examples,
+        "outcome_quality": frame.groupby(["method", "n", "seed", "outcome"], as_index=False).agg(
+            episodes=("episode", "size"),
+            mean_ratio=("optimality_ratio", "mean"),
+            mean_gap=("absolute_gap", "mean"),
+        ),
     }
     if not probes.empty:
         probe_seed = probes.groupby(["method", "n", "seed"], as_index=False).mean(numeric_only=True)
@@ -371,13 +409,37 @@ def main():
         ROOT / "study/report_inputs.json",
         {
             "inputs": sources,
+            "training_inputs": {
+                str(p.relative_to(ROOT)): sha256_file(p)
+                for run in (ART / "training").glob("corrected-*-seed-*")
+                for p in [
+                    run / name
+                    for name in [
+                        "metrics.jsonl",
+                        "metadata.json",
+                        "completion.json",
+                        "best.pt",
+                        "budget-0050.pt",
+                    ]
+                ]
+            },
             "analysis_script_sha256": sha256_file(__file__),
             "graphs": len(frame),
             "budget_graphs": len(budget_frame),
             "training_runs": len(training),
             "failures": len(list(ART.glob("**/failure.json"))),
-            "generated_tables": {p.name: sha256_file(p) for p in OUT.glob("*.csv")},
-            "generated_figures": {p.name: sha256_file(p) for p in FIG.glob("*.png")},
+            "generated_tables": {
+                name + ".csv": sha256_file(OUT / (name + ".csv")) for name in tables
+            },
+            "generated_figures": {
+                name: sha256_file(FIG / name)
+                for name in [
+                    "transfer.png",
+                    "training_fixed_size.png",
+                    "failure_categories.png",
+                    "budget_comparison.png",
+                ]
+            },
         },
     )
     print(
