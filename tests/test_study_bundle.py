@@ -42,3 +42,23 @@ def test_atomic_evaluation_resume_and_independent_verification(tmp_path):
     target.write_bytes(target.read_bytes() + b"bad")
     with pytest.raises(ValueError, match="hash"):
         verify_bundle(tmp_path / "resumed")
+
+
+def test_numerical_evaluation_failure_is_retained(tmp_path, monkeypatch):
+    import torch
+
+    import extremal_graph.study as module
+
+    class NanPolicy(torch.nn.Module):
+        def forward(self, batch):
+            return torch.full_like(batch.candidate_features[:, :, 0], float("nan"))
+
+    monkeypatch.setattr(module, "build_model", lambda config: NanPolicy())
+    with pytest.raises(FloatingPointError):
+        module.evaluate_cell(output=tmp_path, method="untrained_gnn", seed=0, n=5, episodes=3)
+    cell = tmp_path / "untrained_gnn/seed-0/n-5"
+    failure = json.loads((cell / "failure.json").read_text())
+    assert failure["status"] == "numerical_failure"
+    assert not list(cell.glob("chunk-*.json.gz"))
+    with pytest.raises(ValueError, match="incomplete"):
+        module.verify_bundle(tmp_path)

@@ -190,3 +190,7 @@ If you use this software or its results, cite the metadata in
 ## License
 
 MIT
+
+## Corrected research study
+
+A separate, prospectively specified study repairs sampling and resume provenance, retrains GNN/MLP and simpler controls under one implementation, and retains every evaluated graph. See [the study guide](study/README.md), [frozen protocol](study/protocol.json), and [research report](study/RESEARCH_REPORT.md). Historical release artifacts above remain unchanged and should not be pooled with this study.

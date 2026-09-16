@@ -1,0 +1,11 @@
+{
+  "note": "Timing-only; quality not inspected; pilot seeds excluded.",
+  "seconds_per_eight_n40_episodes": {
+    "gnn_fresh": 7.024405874999502,
+    "gnn_parity": 10.212482666999676,
+    "uniform_parity": 9.507222000000183
+  },
+  "planned_cells": 60,
+  "planned_graphs": 6000,
+  "decision": "Keep the predeclared 100 episodes, five frozen model seeds and four sizes; four one-thread workers after primary study. Pilot was concurrent with training and is only a conservative resource estimate, not a comparative speed result."
+}

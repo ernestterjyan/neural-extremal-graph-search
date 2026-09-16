@@ -1,0 +1,57 @@
+[
+  {
+    "C8_bad_action_mass": 0.3333333432674408,
+    "C8_logit_spread": 0.0,
+    "balanced_terminal_embedding_max_difference": {
+      "14": 0.0,
+      "24": 0.0,
+      "6": 0.0
+    },
+    "checkpoint_sha256": "845204dd68892c83defc33e187d64e35cc8318083898f4a964b0a5fb2d176c3e",
+    "seed": 0
+  },
+  {
+    "C8_bad_action_mass": 0.3333333432674408,
+    "C8_logit_spread": 0.0,
+    "balanced_terminal_embedding_max_difference": {
+      "14": 0.0,
+      "24": 0.0,
+      "6": 0.0
+    },
+    "checkpoint_sha256": "e156b11d3610fae233be72545d2c66a6b934d02013ef58825102341fd2496e49",
+    "seed": 1
+  },
+  {
+    "C8_bad_action_mass": 0.3333333432674408,
+    "C8_logit_spread": 0.0,
+    "balanced_terminal_embedding_max_difference": {
+      "14": 0.0,
+      "24": 0.0,
+      "6": 0.0
+    },
+    "checkpoint_sha256": "ffe63937b805833f16c91d49ed033d82e995e6ea1ba1db56ae0ded11b69b5d38",
+    "seed": 2
+  },
+  {
+    "C8_bad_action_mass": 0.3333333432674408,
+    "C8_logit_spread": 0.0,
+    "balanced_terminal_embedding_max_difference": {
+      "14": 0.0,
+      "24": 0.0,
+      "6": 0.0
+    },
+    "checkpoint_sha256": "ae29183c47aa1edd24f6329efbdb3cd4e093c1e9bba7901b471667c9fb6ad6ce",
+    "seed": 3
+  },
+  {
+    "C8_bad_action_mass": 0.3333333432674408,
+    "C8_logit_spread": 0.0,
+    "balanced_terminal_embedding_max_difference": {
+      "14": 0.0,
+      "24": 0.0,
+      "6": 0.0
+    },
+    "checkpoint_sha256": "d6f61a9acd4e78c38b8903d8c336b847f72c1684025a2586feb0718eacdd8186",
+    "seed": 4
+  }
+]

@@ -427,6 +427,26 @@ def _train(
             },
         )
         if start_stage_index >= len(config.training.curriculum_sizes):
+            # A completed latest checkpoint has durable final weights, but the
+            # process may have stopped before writing the completion record.
+            if not (run_dir / "completion.json").exists():
+                if "trajectory_samples" not in payload:
+                    raise ValueError("legacy finished checkpoint lacks recovery samples")
+                trajectories_path.write_text(
+                    "".join(
+                        json.dumps(x, sort_keys=True) + "\n" for x in payload["trajectory_samples"]
+                    )
+                )
+                write_json(
+                    run_dir / "completion.json",
+                    {
+                        "completed_at_unix": time.time(),
+                        "global_steps": global_step,
+                        "best_checkpoint": str(run_dir / "best.pt"),
+                        "checkpoint_sha256": sha256_file(run_dir / "best.pt"),
+                        "recovered_finalization": True,
+                    },
+                )
             return run_dir / "best.pt"
         # A saved checkpoint defines the committed iteration boundary. Remove
         # a possible trailing metrics record written before an interrupted save.
@@ -570,30 +590,6 @@ def _train(
 
             next_stage = stage_index + 1 if stage_done else stage_index
             next_iteration = 1 if stage_done else iteration + 1
-            atomic_torch_save(
-                {
-                    "resume_contract_version": 2,
-                    "training_contract": contract,
-                    "random_state": capture_random_state(),
-                    **_latest_checkpoint(
-                        model=model,
-                        model_config=config.model,
-                        optimizer=optimizer,
-                        seed=seed,
-                        next_stage_index=next_stage,
-                        next_iteration=next_iteration,
-                        global_step=global_step,
-                        selection_rng=selection_rng,
-                        current_stage_index=stage_index,
-                        consecutive=consecutive,
-                        best_stage_score=best_stage_score,
-                        best_stage_state=best_stage_state,
-                        best_stage_optimizer_state=best_stage_optimizer_state,
-                        best_stage_iteration=best_stage_iteration,
-                    ),
-                },
-                run_dir / "latest.pt",
-            )
             if stage_done:
                 stage_path = run_dir / f"stage-n{current_size}.pt"
                 _save_best(
@@ -628,6 +624,37 @@ def _train(
                         "sampling_protocol": config.run.sampling_protocol,
                     },
                 )
+            atomic_torch_save(
+                {
+                    "resume_contract_version": 2,
+                    "training_contract": contract,
+                    "random_state": capture_random_state(),
+                    "trajectory_samples": [
+                        _trajectory_record(t)
+                        for t in sorted(
+                            latest_elite, key=lambda item: item.optimality_ratio, reverse=True
+                        )[: config.artifacts.trajectory_sample_count]
+                    ],
+                    **_latest_checkpoint(
+                        model=model,
+                        model_config=config.model,
+                        optimizer=optimizer,
+                        seed=seed,
+                        next_stage_index=next_stage,
+                        next_iteration=next_iteration,
+                        global_step=global_step,
+                        selection_rng=selection_rng,
+                        current_stage_index=stage_index,
+                        consecutive=consecutive,
+                        best_stage_score=best_stage_score,
+                        best_stage_state=best_stage_state,
+                        best_stage_optimizer_state=best_stage_optimizer_state,
+                        best_stage_iteration=best_stage_iteration,
+                    ),
+                },
+                run_dir / "latest.pt",
+            )
+            if stage_done:
                 break
 
     sample_count = config.artifacts.trajectory_sample_count

@@ -142,3 +142,49 @@ def test_actual_interrupted_resume_and_rejected_override(tmp_path, monkeypatch):
     assert (run / "metadata.json").read_bytes() == originals["metadata.json"]
     assert len((run / "resume_events.jsonl").read_text().splitlines()) == 1
     assert json.loads((run / "completion.json").read_text())["global_steps"] == 6
+
+
+@pytest.mark.parametrize("interrupted_step", [3, 6])
+def test_resume_at_stage_and_final_boundary(tmp_path, monkeypatch, interrupted_step):
+    import extremal_graph.training as module
+
+    baseline = train(_resume_config(tmp_path / "uninterrupted"))
+    config = _resume_config(tmp_path / "interrupted")
+    original = module.atomic_torch_save
+
+    def interrupted(value, path):
+        original(value, path)
+        if path.name == "latest.pt" and value["global_step"] == interrupted_step:
+            raise RuntimeError("simulated boundary interruption")
+
+    monkeypatch.setattr(module, "atomic_torch_save", interrupted)
+    with pytest.raises(RuntimeError, match="boundary interruption"):
+        train(config)
+    monkeypatch.setattr(module, "atomic_torch_save", original)
+    run = config.parent / "runs/test-seed-3"
+    resumed = train(config, resume=run / "latest.pt")
+    a = torch.load(baseline, weights_only=False)
+    b = torch.load(resumed, weights_only=False)
+    assert all(torch.equal(a["model_state"][k], b["model_state"][k]) for k in a["model_state"])
+    for name in ["stage-n4.pt", "stage-n5.pt", "completion.json"]:
+        assert (run / name).exists()
+    assert (run / "sample_trajectories.jsonl").read_bytes() == (
+        baseline.parent / "sample_trajectories.jsonl"
+    ).read_bytes()
+
+
+def test_numerical_training_failure_is_retained(tmp_path, monkeypatch):
+    import extremal_graph.training as module
+
+    config = _resume_config(tmp_path / "numerical")
+
+    def fail(*args, **kwargs):
+        raise FloatingPointError("injected numerical failure")
+
+    monkeypatch.setattr(module, "_collect_rollouts", fail)
+    with pytest.raises(FloatingPointError):
+        module.train(config)
+    run = config.parent / "runs/test-seed-3"
+    assert json.loads((run / "failure.json").read_text())["status"] == "numerical_failure"
+    assert not (run / "completion.json").exists()
+    assert not (run / "latest.pt").exists()

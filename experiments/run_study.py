@@ -23,14 +23,28 @@ def training_job(job):
     config = ROOT / f"experiments/configs/corrected-{family}.toml"
     run = ROOT / f"study/artifacts/training/corrected-{family}-seed-{seed}"
     if (run / "completion.json").exists():
-        return {"family": family, "seed": seed, "status": "already_complete"}
+        from extremal_graph.config import load_training_config
+
+        completion = json.loads((run / "completion.json").read_text())
+        metadata = json.loads((run / "metadata.json").read_text())
+        resolved = load_training_config(config, seed).as_dict()
+        if json.loads(json.dumps(resolved)) != metadata["configuration"]:
+            raise ValueError("completed training configuration differs from requested study")
+        if sha256_file(run / "best.pt") != completion["checkpoint_sha256"]:
+            raise ValueError("completed training checkpoint checksum mismatch")
+        return {
+            "family": family,
+            "seed": seed,
+            "status": "already_complete",
+            "sha256": completion["checkpoint_sha256"],
+        }
     latest = run / "latest.pt"
     checkpoint = train(config, seed_override=seed, resume=latest if latest.exists() else None)
     return {
         "family": family,
         "seed": seed,
         "status": "complete",
-        "checkpoint": str(checkpoint.relative_to(ROOT)),
+        "checkpoint": str(checkpoint.resolve().relative_to(ROOT)),
         "sha256": sha256_file(checkpoint),
     }
 
@@ -130,6 +144,21 @@ def verify_all(protocol):
             )
             if not manifest.exists():
                 raise ValueError(f"missing planned cell {manifest}")
+            contract = json.loads(manifest.read_text())["contract"]
+            for field in [
+                "method",
+                "seed",
+                "n",
+                "episodes",
+                "batch_size",
+                "sampling_protocol",
+                "diagnostic_episodes",
+            ]:
+                if contract[field] != job[field]:
+                    raise ValueError(f"planned cell contract mismatch: {manifest}: {field}")
+            expected_hash = sha256_file(job["checkpoint"]) if job["checkpoint"] else None
+            if contract["checkpoint_sha256"] != expected_hash:
+                raise ValueError(f"planned checkpoint mismatch: {manifest}")
         root = ROOT / f"study/artifacts/{name}"
         result[name] = verify_bundle(root)
         if (
