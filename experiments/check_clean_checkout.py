@@ -90,7 +90,8 @@ def main():
         raise ValueError(
             f"regenerated outputs differ: {[p for p, ok in matches.items() if not ok]}"
         )
-    replay_relative = "study/artifacts/clean-checkout-release-replay"
+    validation_relative = f"study/artifacts/clean-checkout-validations/{scratch.name}"
+    replay_relative = validation_relative + "/release-replay"
     if (checkout / replay_relative).exists():
         raise ValueError("fresh replay destination already exists in evidence archive")
     run(["experiments/reproduce_release.py", "--output", replay_relative])
@@ -123,10 +124,11 @@ def main():
     if destination.exists():
         raise ValueError("refusing to overwrite prior fresh-replay evidence")
     shutil.copytree(checkout / replay_relative, destination)
-    logs = ROOT / "study/artifacts/clean-checkout-validation-logs"
-    logs.mkdir(exist_ok=True)
+    logs = ROOT / validation_relative / "logs"
+    logs.mkdir(parents=True, exist_ok=True)
     for log in scratch.glob("command-*.log"):
         shutil.copy2(log, logs / log.name)
+    (ROOT / validation_relative / "validation.json").write_text(json.dumps(result, indent=2) + "\n")
     (ROOT / "study/clean_checkout_validation.json").write_text(json.dumps(result, indent=2) + "\n")
     print(json.dumps({"valid": True, "outputs_matched": len(matches), "fresh_replay_graphs": 640}))
 

@@ -19,3 +19,6 @@ Final completion counts, resource usage and evidence conclusions are recorded in
 - Additional audit: 250 independent trajectory annotations and 165 differently grouped checkpoint replays passed.
 - Serial primary and supplementary inference profiles completed after concurrent workers stopped; latency and amortized generation cost reported separately.
 - All five new figures and six historical figures regenerated from retained evidence. Portable archive and clean-checkout validation are documented separately with checksums.
+
+- Clean source commit `79223ed` plus the extracted archive reproduced 31 output files exactly (including all eleven figures), independently verified all 97,000 research graphs, and freshly replayed 640 historical graphs with matching edge counts. Its source import resolved to the clean clone. The same installed dependency environment was reused.
+- The full 64-test suite also passed in that clean clone (6.62 seconds); retained output is in `study/artifacts/clean-checkout-validation-logs/tests.log`. Subsequent changes are packaging/reproduction convenience and completion records, not core training or inference.

@@ -1,0 +1,22 @@
+{
+  "tests": {
+    "passed": 64,
+    "source_commit": "79223ed",
+    "clean_checkout": true,
+    "log": "study/artifacts/clean-checkout-validation-logs/tests.log",
+    "sha256": "a430d3b31220df903e3ad8f498e89a5d314119271f19cba1e33d8bd79306abd4"
+  },
+  "original_repository": {
+    "head": "87a6bc5a52f973b8025bdd5efeb0791fcc4dcb01",
+    "clean": true
+  },
+  "scientific_cohort_counts": {
+    "training_runs": 20,
+    "main_graphs": 87000,
+    "budget_graphs": 4000,
+    "supplementary_graphs": 6000
+  },
+  "note": "Historical replays, early diagnostic duplicates, serial timing runs and the boundary equivalence repetition are not additional research replicates.",
+  "lint": "passed",
+  "formatting": "60 Python files pass formatter check"
+}

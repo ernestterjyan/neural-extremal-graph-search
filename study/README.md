@@ -90,4 +90,21 @@ The GNN has 38,337 parameters, MLP 37,990, endpoint policy 13,185, and candidate
 
 ## Validate a portable checkout
 
-After committing the source and generating all outputs, `uv run python experiments/package_evidence.py` builds the deterministic local archive. `uv run python experiments/check_clean_checkout.py` clones the committed source into a temporary directory, verifies and extracts the archive, checks all 97,000 research graphs, regenerates every study table and all eleven figures, and performs a fresh 640-output release replay. It retains its logs and replay graphs. Rebuild the archive afterward to include those validation outputs. The check requires a fresh replay namespace and deliberately refuses to overwrite a prior validation. `clean_checkout_validation.json` records the actual source commit and scope. The same installed environment is reused; cross-machine installation and full retraining are separate reproduction exercises.
+After committing the source and generating all outputs, `uv run python experiments/package_evidence.py` builds the deterministic local archive. `uv run python experiments/check_clean_checkout.py` clones the committed source into a temporary directory, verifies and extracts the archive, checks all 97,000 research graphs, regenerates every study table and all eleven figures, and performs a fresh 640-output release replay. It retains its logs and replay graphs. Rebuild the archive afterward to include those validation outputs. Each new validation uses a fresh replay namespace and preserves its own logs. The first completed exercise predates this convenience change and retains its replay in `study/artifacts/clean-checkout-release-replay/`. `clean_checkout_validation.json` records the actual source commit and scope. The same installed environment is reused; cross-machine installation and full retraining are separate reproduction exercises.
+
+## Transfer the complete handoff
+
+`source-corrected-v1.bundle` contains the committed local branch and its history. It accompanies `evidence-corrected-v1.tar.gz`; `handoff-manifest.json` gives both checksums and the source revision. These local files have not been published to GitHub. Copy all three to the destination, then:
+
+```sh
+git clone -b research/corrected-transfer-study source-corrected-v1.bundle restored-study
+tar -xzf evidence-corrected-v1.tar.gz -C restored-study
+cd restored-study
+uv sync --locked --extra dev
+uv run python experiments/run_study.py verify
+uv run python experiments/analyze_study.py
+uv run python experiments/parity_intervention.py
+uv run python experiments/analyze_intervention.py
+```
+
+The supplementary command checks and reuses completed compatible cells. A fresh full rerun should use a separate source checkout without the extracted completed artifacts. The source bundle is made after the final local commit; its outer handoff manifest is kept alongside the bundles to avoid a self-referential checksum.

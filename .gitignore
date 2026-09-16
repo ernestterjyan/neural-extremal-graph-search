@@ -36,3 +36,5 @@ reports/figures/*
 study/artifacts/
 study/logs/
 study/evidence-*.tar.gz
+study/source-*.bundle
+study/handoff-manifest.json
