@@ -35,6 +35,3 @@ reports/figures/*
 # Corrected-study evidence is distributed as a separate checksummed bundle.
 study/artifacts/
 study/logs/
-study/evidence-*.tar.gz
-study/source-*.bundle
-study/handoff-manifest.json
