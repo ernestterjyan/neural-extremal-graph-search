@@ -6,6 +6,7 @@ import json
 import math
 import os
 import tempfile
+import warnings
 from pathlib import Path
 
 _CACHE_ROOT = Path(tempfile.gettempdir()) / "negs-report-cache"
@@ -247,7 +248,13 @@ def generate_report(results_path: str | Path) -> Path:
         output=figure_dir / "exact_optimum_rate.png",
     )
     run_name = source.parent.name
-    _plot_training_curve(run_name, figure_dir / "training_curve.png")
+    if not _plot_training_curve(run_name, figure_dir / "training_curve.png"):
+        warnings.warn(
+            "Training curve unavailable: required metrics.jsonl inputs are missing. "
+            "Evaluation figures only were generated.",
+            RuntimeWarning,
+            stacklevel=2,
+        )
 
     markdown_path = source.parent / "summary.md"
     columns = [

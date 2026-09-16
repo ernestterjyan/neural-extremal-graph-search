@@ -82,3 +82,35 @@ def run_baseline_episode(
         final_state=final_state,
         optimality_ratio=ratio,
     )
+
+
+class LookaheadPolicy:
+    """Minimize newly blocked legal edges using verified neighborhood-bitset deltas."""
+
+    @staticmethod
+    def losses(state: GraphState, legal_edges: Sequence[Edge]) -> list[int]:
+        neighbours = [0] * state.n
+        legal_masks = [0] * state.n
+        for u, v in state.edges:
+            neighbours[u] |= 1 << v
+            neighbours[v] |= 1 << u
+        for u, v in legal_edges:
+            legal_masks[u] |= 1 << v
+            legal_masks[v] |= 1 << u
+        return [
+            1
+            + (neighbours[u] & legal_masks[v]).bit_count()
+            + (neighbours[v] & legal_masks[u]).bit_count()
+            for u, v in legal_edges
+        ]
+
+    def select_action(
+        self, state: GraphState, legal_edges: Sequence[Edge], rng: random.Random
+    ) -> Edge:
+        if not legal_edges:
+            raise ValueError("cannot select from an empty legal-action set")
+        losses = self.losses(state, legal_edges)
+        best = min(losses)
+        return rng.choice(
+            [edge for edge, loss in zip(legal_edges, losses, strict=True) if loss == best]
+        )
