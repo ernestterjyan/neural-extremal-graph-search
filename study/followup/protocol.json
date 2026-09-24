@@ -1,0 +1,23 @@
+{
+  "study_id": "parity-mechanism-followup-v1",
+  "status": "frozen-before-new-evaluation-draws",
+  "parent_revision": "398f462",
+  "purpose": "Determine whether frozen message passing adds exact success after an identical bipartite constraint, compared with existing non-message-passing learned scorers and nonlearned controls.",
+  "methods": ["gnn_parity", "endpoint_parity", "candidate_parity", "uniform_parity", "balance_parity"],
+  "training_seeds": [0, 1, 2, 3, 4],
+  "sizes": [15, 24, 30, 40],
+  "episodes_per_cell": 100,
+  "batch_size": 32,
+  "workers": 4,
+  "threads_per_worker": 1,
+  "device": "cpu",
+  "seed_rule": "(201+training_seed)*1000000+n*10000+episode",
+  "primary_comparison": "gnn_parity minus endpoint_parity exact-success rate at n=40, paired over five original training seeds",
+  "secondary_comparisons": ["gnn_parity minus candidate_parity exact success at n=40", "gnn_parity minus balance_parity exact success at n=40", "gnn_parity minus uniform_parity exact success at n=40", "same differences at n=24", "edge ratio and absolute gap at all declared sizes"],
+  "uncertainty": "Five training seeds are the unit. Use paired seed-mean differences and two-sided t intervals with four degrees of freedom. All nonprimary contrasts and any intervals are descriptive and unadjusted for multiplicity. No seed additions after inspecting outcomes.",
+  "policy_information": "All five arms use the same triangle-free legal set and the same parity mask: reject same-component equal-color edges, allow cross-component merges. Frozen neural scorers see original features and score all original legal candidates before masking. The balancing control additionally computes the two color-class sizes already obtained by parity coloring; its explicit use of that information is labeled added domain knowledge. No balanced-completion subset-sum oracle is used.",
+  "balancing_rule": "Among parity-allowed edges, minimize the absolute color-class size difference of the connected component containing the new edge after that edge is added. The existing component's sizes are used for a within-component edge; merging sizes follow the endpoint-implied orientation. Break equal-score ties uniformly with each episode's independent torch generator. This is a myopic rule and does not inspect future completions or rewards.",
+  "evaluation": "Frozen corrected best checkpoints from prior study, no retraining or tuning. Main prior evaluation seeds are not reused. Each arm receives the same new evaluation seeds. Save all graphs and action sequences; verify persisted outputs independently for triangle-freeness, maximality, counts, and identities.",
+  "selection": "No model or heuristic parameter selection on the evaluation panel. Small-state unit checks and a timing-only n40 pilot with excluded seeds precede full execution.",
+  "limits": "The frozen models received unequal realized training budgets and different feature architectures. A favorable contrast does not by itself establish a message-passing causal effect. The balancing rule consumes component sizes explicitly. Full-study timings are descriptive because workers run concurrently."
+}
