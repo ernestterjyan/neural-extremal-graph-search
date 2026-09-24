@@ -1,0 +1,55 @@
+{
+  "protocol_sha256": "d7dc299f08553271460784f4aca4ba6a7bd95d0c4c7425047186d2c5b8326cd2",
+  "results": [
+    {
+      "maximal_frontier": 1,
+      "n": 2,
+      "states_discovered": 2,
+      "states_examined": 2,
+      "status": "exhaustive_no_failure"
+    },
+    {
+      "maximal_frontier": 4,
+      "n": 3,
+      "states_discovered": 7,
+      "states_examined": 7,
+      "status": "exhaustive_no_failure"
+    },
+    {
+      "maximal_frontier": 12,
+      "n": 4,
+      "states_discovered": 25,
+      "states_examined": 25,
+      "status": "exhaustive_no_failure"
+    },
+    {
+      "maximal_frontier": 67,
+      "n": 5,
+      "states_discovered": 186,
+      "states_examined": 186,
+      "status": "exhaustive_no_failure"
+    },
+    {
+      "maximal_frontier": 393,
+      "n": 6,
+      "states_discovered": 1121,
+      "states_examined": 1121,
+      "status": "exhaustive_no_failure"
+    },
+    {
+      "maximal_frontier": 2762,
+      "n": 7,
+      "states_discovered": 12027,
+      "states_examined": 12027,
+      "status": "exhaustive_no_failure"
+    },
+    {
+      "maximal_frontier": 20169,
+      "n": 8,
+      "states_discovered": 64464,
+      "states_examined": 64464,
+      "status": "exhaustive_no_failure"
+    }
+  ],
+  "script_sha256": "7023316a9dc9395377fe1fa10644062d4fdae46a82a140a9beea024e6683072c"
+}

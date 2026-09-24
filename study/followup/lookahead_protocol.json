@@ -1,0 +1,7 @@
+{
+  "purpose": "Search every state reachable from the empty graph under every tied minimum-loss look-ahead action, and seek a reachable action that destroys exact balanced-completion feasibility.",
+  "sizes": [2, 3, 4, 5, 6, 7, 8],
+  "max_states_per_size": 250000,
+  "method": "Labeled graph states are deduplicated by edge bitmask. Breadth-first traversal explores all actions tied for the smallest one-step legal-action loss. Each reached state is checked for balanced optimum feasibility. A failure witness is independently checked by enumerating all balanced bipartitions.",
+  "interpretation": "A witnessed loss is a counterexample for the specified tie-breaking support. Complete finite sizes without a witness are finite checks, not an arbitrary-size guarantee. If the state cap is reached, the size is explicitly marked incomplete."
+}

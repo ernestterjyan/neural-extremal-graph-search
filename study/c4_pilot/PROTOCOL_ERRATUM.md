@@ -1,0 +1,3 @@
+# Reference-table wording correction
+
+The frozen pilot protocol's `known_exact_source` says that neither the edge count `ne` nor the number of extremal graphs `ng` has a “≥” marker at the five selected sizes. That is too broad: at n=40, [Afzaly and McKay's table](https://users.cecs.anu.edu.au/~bdm/data/extremal.html) gives the exact edge count `ne = 127` but reports `ng ≥ 2` for the number of extremal graphs found. The pilot uses only the exact **edge count** as its reference, so no method, graph, score, or conclusion changes. The committed protocol and recorded hashes are kept intact; this note corrects its provenance wording.

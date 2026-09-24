@@ -1,0 +1,29 @@
+{
+  "protocol_sha256": "986a63c18a48603c0bad4fb4f4ca63c7f1f9a49b9e0a12e4808abadccedf9244",
+  "evaluation_sha256": "a112c739c5f2aa8ed0aac8d66985e82d71e4de692275a1aad2153c79eb90e922",
+  "baseline_sha256": "7d79a3496a1cb656f6f26062c1030d69113ba209f97e7d56f11ede594b0ed6a7",
+  "analysis_sha256": "ae824fdce8b0ce460137911a265e9aaa0dfe9ea3f47f811f58bda60ad1296beb",
+  "training_inputs": {
+    "study/c4_neural/artifacts/training/gnn-seed-0/best.pt": "1202b592598729854eae8d505c89cd13792df89f8c0cfa57a2e0a93999c8923b",
+    "study/c4_neural/artifacts/training/gnn-seed-0/metrics.jsonl": "98db2898cdf5c8aea3fc322727022639210fee400483b1021b01036c60a2eba3",
+    "study/c4_neural/artifacts/training/gnn-seed-1/best.pt": "1445d6707ccf27e635c88dc41dfbddf56f1f28c7fa31dd8e9d0c1a352d588859",
+    "study/c4_neural/artifacts/training/gnn-seed-1/metrics.jsonl": "5f6d82f3ab2cc0dfd47960b1bcb55cf36a52320073c4b1aeb731527b5b066133",
+    "study/c4_neural/artifacts/training/gnn-seed-2/best.pt": "274ce494ea91ffbe84a5d4359f6baf0487146541efcc29c67bdbeffebe12eec3",
+    "study/c4_neural/artifacts/training/gnn-seed-2/metrics.jsonl": "4a9108b7e5b70db6b5ba15cbf1c0946ed2ec152baadabf2191cbeb498a5836b7",
+    "study/c4_neural/artifacts/training/endpoint-seed-0/best.pt": "9e9563edfc94949b5f25c575f6c54df61fa9c79650093ec25440d91abaaa2daa",
+    "study/c4_neural/artifacts/training/endpoint-seed-0/metrics.jsonl": "c76e6306e95cbedc6728a1366f037db0090f75c6a66cb001e2ee2ce0815a45f5",
+    "study/c4_neural/artifacts/training/endpoint-seed-1/best.pt": "cd0e67a329c4de4acf6dda6eb8754dbef1086db999d7cc055aeb26ec8ae37803",
+    "study/c4_neural/artifacts/training/endpoint-seed-1/metrics.jsonl": "ead70601201a9efce4a909b9e8076df7470c78b859a06bf6f677425acfeecf81",
+    "study/c4_neural/artifacts/training/endpoint-seed-2/best.pt": "21826db0eaa47ab6b4a237cf0325991bb7633c04eb63b3ee570d60933a2055be",
+    "study/c4_neural/artifacts/training/endpoint-seed-2/metrics.jsonl": "77b8826f363b65e5f0bf626cd70655094e2b6487953b77288a7b45192bf8db76"
+  },
+  "graphs": 3000,
+  "tables": {
+    "seed_results.csv": "85c99eec35f43a616178399955dc32267cbdf6ee58a941333317468ddb016eeb",
+    "summary.csv": "1a257f326f184de82d9da8811a07ab343b5f26d151d983ad1672ad3efeb5c861",
+    "paired_contrasts.csv": "11376ed8a884130a8f0fcb913db0855270e5df69db82b2ce31ad5fa4408687a1",
+    "polarity_comparison.csv": "32a3e0bf7846d749070adf9c1d8356ae811e363653e0e4cd8a90d436f421a71c",
+    "training.csv": "dd67b5a8c167c3c19d3dad3b278f70a1add8a046fd2a3ce39e8639ea9a1da5ed"
+  },
+  "figure_sha256": "088c53f12de2df12e49d08267a109a00bd5f13f400b7f9f576ee2a2fad43d282"
+}

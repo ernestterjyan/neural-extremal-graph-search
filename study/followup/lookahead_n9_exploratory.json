@@ -1,0 +1,8 @@
+{
+  "n": 9,
+  "status": "state_cap",
+  "states_examined": 198293,
+  "states_discovered": 250000,
+  "max_states": 250000,
+  "status_context": "Exploratory extension after completed n<=8 search; capped and not a theorem."
+}

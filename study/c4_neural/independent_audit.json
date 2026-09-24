@@ -1,0 +1,6 @@
+{
+  "valid": true,
+  "reversed_pair_replays": 60,
+  "singleton_replays": 30,
+  "selection": "Episodes 0 and 1 in all 30 learned evaluation cells"
+}
