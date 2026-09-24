@@ -33,6 +33,18 @@ def main():
     )
     if subprocess.check_output(["git", "status", "--porcelain"], cwd=checkout).strip():
         raise ValueError("fresh follow-up source checkout is not clean")
+    parent_bundle = json.loads((ROOT / "study/bundle-manifest.json").read_text())
+    parent_archive = ROOT / parent_bundle["archive"]
+    if sha(parent_archive) != parent_bundle["sha256"]:
+        raise ValueError("parent-study evidence checksum mismatch")
+    parent_files = json.loads((ROOT / parent_bundle["file_manifest"]).read_text())
+    if sha(ROOT / parent_bundle["file_manifest"]) != parent_bundle["file_manifest_sha256"]:
+        raise ValueError("parent-study manifest checksum mismatch")
+    with tarfile.open(parent_archive) as handle:
+        handle.extractall(checkout, filter="data")
+    for relative, expected in parent_files.items():
+        if sha(checkout / relative) != expected["sha256"]:
+            raise ValueError(f"extracted parent-study evidence mismatch: {relative}")
     bundle = json.loads((STUDY / "bundle_manifest.json").read_text())
     archive = ROOT / bundle["archive"]
     if sha(archive) != bundle["sha256"]:
@@ -119,6 +131,8 @@ def main():
         "source_import": imported,
         "python": sys.executable,
         "input_archive_sha256": bundle["sha256"],
+        "parent_archive_sha256": parent_bundle["sha256"],
+        "parent_files_checked": len(parent_files),
         "extracted_files_checked": len(files),
         "regenerated_output_matches": matches,
         "commands": commands,
