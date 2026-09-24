@@ -1,0 +1,113 @@
+{
+  "valid": true,
+  "source_commit": "73580ee5b7dfe4ac0f4867866ba4098792106792",
+  "source_import": "/var/folders/88/mhls43mx6_d8c33q4gg9sjnr0000gn/T/negs-followup-check-jfzh5fux/checkout/src/extremal_graph/__init__.py",
+  "python": "/Users/ernestterjyan/Projects/neural-extremal-graph-search/.venv/bin/python",
+  "input_archive_sha256": "3716a37554f680bfb79c869c22313e6be36cc35160c457c090706342c1494d41",
+  "parent_archive_sha256": "dd8dc3332c9d04c7eac1e476c98f4b4ed7890814b458c5aaec795df1f57eff04",
+  "parent_files_checked": 5262,
+  "extracted_files_checked": 897,
+  "regenerated_output_matches": {
+    "study/followup/tables/parity_comparisons.csv": true,
+    "study/followup/tables/matched_training.csv": true,
+    "study/followup/tables/parity_summary.csv": true,
+    "study/followup/tables/matched_comparisons.csv": true,
+    "study/followup/tables/matched_seed_results.csv": true,
+    "study/followup/tables/parity_seed_results.csv": true,
+    "study/followup/tables/matched_validation_curves.csv": true,
+    "study/followup/tables/matched_summary.csv": true,
+    "study/followup/figures/matched_exposure.png": true,
+    "study/followup/figures/parity_controls.png": true,
+    "study/followup/lookahead_reachability.json": true,
+    "study/followup/independent_audit.json": true,
+    "study/followup/matched_independent_audit.json": true,
+    "study/followup/verification.json": true,
+    "study/followup/matched_verification.json": true,
+    "study/followup/parity_report_inputs.json": true,
+    "study/followup/matched_report_inputs.json": true
+  },
+  "commands": [
+    {
+      "arguments": [
+        "-c",
+        "import extremal_graph; print(extremal_graph.__file__)"
+      ],
+      "exit_code": 0,
+      "seconds": 0.5034188339996035,
+      "log": "/var/folders/88/mhls43mx6_d8c33q4gg9sjnr0000gn/T/negs-followup-check-jfzh5fux/command-0.log"
+    },
+    {
+      "arguments": [
+        "experiments/parity_followup.py",
+        "verify"
+      ],
+      "exit_code": 0,
+      "seconds": 5.980802416001097,
+      "log": "/var/folders/88/mhls43mx6_d8c33q4gg9sjnr0000gn/T/negs-followup-check-jfzh5fux/command-1.log"
+    },
+    {
+      "arguments": [
+        "experiments/matched_exposure.py",
+        "verify"
+      ],
+      "exit_code": 0,
+      "seconds": 2.992755582999962,
+      "log": "/var/folders/88/mhls43mx6_d8c33q4gg9sjnr0000gn/T/negs-followup-check-jfzh5fux/command-2.log"
+    },
+    {
+      "arguments": [
+        "experiments/analyze_parity_followup.py"
+      ],
+      "exit_code": 0,
+      "seconds": 10.064047458999994,
+      "log": "/var/folders/88/mhls43mx6_d8c33q4gg9sjnr0000gn/T/negs-followup-check-jfzh5fux/command-3.log"
+    },
+    {
+      "arguments": [
+        "experiments/analyze_matched_exposure.py"
+      ],
+      "exit_code": 0,
+      "seconds": 0.9722224580000329,
+      "log": "/var/folders/88/mhls43mx6_d8c33q4gg9sjnr0000gn/T/negs-followup-check-jfzh5fux/command-4.log"
+    },
+    {
+      "arguments": [
+        "experiments/audit_followup.py"
+      ],
+      "exit_code": 0,
+      "seconds": 28.098895709001226,
+      "log": "/var/folders/88/mhls43mx6_d8c33q4gg9sjnr0000gn/T/negs-followup-check-jfzh5fux/command-5.log"
+    },
+    {
+      "arguments": [
+        "experiments/audit_matched_followup.py"
+      ],
+      "exit_code": 0,
+      "seconds": 13.780777957999817,
+      "log": "/var/folders/88/mhls43mx6_d8c33q4gg9sjnr0000gn/T/negs-followup-check-jfzh5fux/command-6.log"
+    },
+    {
+      "arguments": [
+        "experiments/lookahead_reachability.py"
+      ],
+      "exit_code": 0,
+      "seconds": 1.7647485830020742,
+      "log": "/var/folders/88/mhls43mx6_d8c33q4gg9sjnr0000gn/T/negs-followup-check-jfzh5fux/command-7.log"
+    },
+    {
+      "arguments": [
+        "-m",
+        "pytest",
+        "-q",
+        "-p",
+        "no:cacheprovider"
+      ],
+      "exit_code": 0,
+      "seconds": 4.389864791999571,
+      "log": "/var/folders/88/mhls43mx6_d8c33q4gg9sjnr0000gn/T/negs-followup-check-jfzh5fux/command-8.log"
+    }
+  ],
+  "parity_graphs": 10000,
+  "matched_graphs": 5500,
+  "scope": "Clean source clone and checksummed evidence extraction using the same preinstalled Python environment. This does not independently retrain twenty models or test a new machine."
+}

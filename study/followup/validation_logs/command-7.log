@@ -1,0 +1,14 @@
+{'n': 2, 'status': 'exhaustive_no_failure', 'states_examined': 2, 'states_discovered': 2, 'maximal_frontier': 1}
+{'n': 3, 'status': 'exhaustive_no_failure', 'states_examined': 7, 'states_discovered': 7, 'maximal_frontier': 4}
+{'n': 4, 'status': 'exhaustive_no_failure', 'states_examined': 25, 'states_discovered': 25, 'maximal_frontier': 12}
+{'n': 5, 'status': 'exhaustive_no_failure', 'states_examined': 186, 'states_discovered': 186, 'maximal_frontier': 67}
+{'n': 6, 'status': 'exhaustive_no_failure', 'states_examined': 1121, 'states_discovered': 1121, 'maximal_frontier': 393}
+look-ahead n=7: 10000 states examined
+{'n': 7, 'status': 'exhaustive_no_failure', 'states_examined': 12027, 'states_discovered': 12027, 'maximal_frontier': 2762}
+look-ahead n=8: 10000 states examined
+look-ahead n=8: 20000 states examined
+look-ahead n=8: 30000 states examined
+look-ahead n=8: 40000 states examined
+look-ahead n=8: 50000 states examined
+look-ahead n=8: 60000 states examined
+{'n': 8, 'status': 'exhaustive_no_failure', 'states_examined': 64464, 'states_discovered': 64464, 'maximal_frontier': 20169}

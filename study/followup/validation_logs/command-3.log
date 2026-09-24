@@ -1,0 +1,44 @@
+Matplotlib is building the font cache; this may take a moment.
+          method  n           metric     mean  ci95_halfwidth  seed_count
+  balance_parity 15 optimality_ratio 1.000000        0.000000           5
+  balance_parity 15    exact_optimum 1.000000        0.000000           5
+  balance_parity 24 optimality_ratio 1.000000        0.000000           5
+  balance_parity 24    exact_optimum 1.000000        0.000000           5
+  balance_parity 30 optimality_ratio 1.000000        0.000000           5
+  balance_parity 30    exact_optimum 1.000000        0.000000           5
+  balance_parity 40 optimality_ratio 1.000000        0.000000           5
+  balance_parity 40    exact_optimum 1.000000        0.000000           5
+candidate_parity 15 optimality_ratio 0.998500        0.001190           5
+candidate_parity 15    exact_optimum 0.958000        0.033317           5
+candidate_parity 24 optimality_ratio 0.996236        0.000750           5
+candidate_parity 24    exact_optimum 0.530000        0.036200           5
+candidate_parity 30 optimality_ratio 0.996658        0.000934           5
+candidate_parity 30    exact_optimum 0.480000        0.090820           5
+candidate_parity 40 optimality_ratio 0.997440        0.000378           5
+candidate_parity 40    exact_optimum 0.360000        0.078530           5
+ endpoint_parity 15 optimality_ratio 0.999714        0.000578           5
+ endpoint_parity 15    exact_optimum 0.992000        0.016189           5
+ endpoint_parity 24 optimality_ratio 0.997806        0.001327           5
+ endpoint_parity 24    exact_optimum 0.714000        0.131581           5
+ endpoint_parity 30 optimality_ratio 0.997538        0.001589           5
+ endpoint_parity 30    exact_optimum 0.548000        0.173700           5
+ endpoint_parity 40 optimality_ratio 0.997855        0.001531           5
+ endpoint_parity 40    exact_optimum 0.498000        0.210973           5
+      gnn_parity 15 optimality_ratio 1.000000        0.000000           5
+      gnn_parity 15    exact_optimum 1.000000        0.000000           5
+      gnn_parity 24 optimality_ratio 0.999208        0.000753           5
+      gnn_parity 24    exact_optimum 0.886000        0.108459           5
+      gnn_parity 30 optimality_ratio 0.999289        0.000701           5
+      gnn_parity 30    exact_optimum 0.846000        0.146548           5
+      gnn_parity 40 optimality_ratio 0.999515        0.000338           5
+      gnn_parity 40    exact_optimum 0.806000        0.135336           5
+  uniform_parity 15 optimality_ratio 0.986714        0.001190           5
+  uniform_parity 15    exact_optimum 0.690000        0.039265           5
+  uniform_parity 24 optimality_ratio 0.989028        0.001275           5
+  uniform_parity 24    exact_optimum 0.320000        0.091243           5
+  uniform_parity 30 optimality_ratio 0.991093        0.001180           5
+  uniform_parity 30    exact_optimum 0.290000        0.052679           5
+  uniform_parity 40 optimality_ratio 0.993550        0.001853           5
+  uniform_parity 40    exact_optimum 0.240000        0.075015           5
+ n                   comparison        metric  difference  ci95_low  ci95_high                                                            seed_differences planned_role                                                           interval_note
+40 gnn_parity - endpoint_parity exact_optimum       0.308  0.110618   0.505382 [0.55, 0.20000000000000007, 0.39, 0.21999999999999997, 0.18000000000000005]      primary Five paired seed means; secondary intervals unadjusted for multiplicity
