@@ -48,4 +48,4 @@ python experiments/package_followup.py check
 python experiments/check_followup_checkout.py
 ```
 
-The [research note](RESEARCH_NOTE.md) states the conclusions and claim boundaries. The bundle manifest and clean-checkout validation record describe exactly which artifacts were checked. The clean checkout reuses the installed Python environment and does not rerun all twenty training jobs.
+The [research note](RESEARCH_NOTE.md) states the conclusions and claim boundaries. The frozen-weight parity comparison also requires the corrected study's `study/evidence-corrected-v1.tar.gz` archive; the clean-checkout check extracts and verifies both archives. The bundle manifests and clean-checkout validation record describe exactly which artifacts were checked. The clean checkout reuses the installed Python environment and does not rerun all twenty training jobs.
