@@ -1,0 +1,33 @@
+Matplotlib is building the font cache; this may take a moment.
+ n   family     metric       mean  minimum_seed_mean  maximum_seed_mean  descriptive_ci95_low  descriptive_ci95_high  training_seeds
+20 endpoint edge_count  40.216667              39.95              40.42             39.617205              40.816128               3
+20 endpoint      exact   0.000000               0.00               0.00              0.000000               0.000000               3
+20      gnn edge_count  40.546667              40.18              41.27             38.990491              42.102842               3
+20      gnn      exact   0.000000               0.00               0.00              0.000000               0.000000               3
+24 endpoint edge_count  52.140000              52.00              52.31             51.749587              52.530413               3
+24 endpoint      exact   0.000000               0.00               0.00              0.000000               0.000000               3
+24      gnn edge_count  52.540000              51.86              53.70             50.032128              55.047872               3
+24      gnn      exact   0.000000               0.00               0.00              0.000000               0.000000               3
+30 endpoint edge_count  70.923333              70.77              71.07             70.550437              71.296230               3
+30 endpoint      exact   0.000000               0.00               0.00              0.000000               0.000000               3
+30      gnn edge_count  72.143333              70.93              74.21             67.674831              76.611836               3
+30      gnn      exact   0.000000               0.00               0.00              0.000000               0.000000               3
+35 endpoint edge_count  87.840000              87.68              88.11             87.255831              88.424169               3
+35 endpoint      exact   0.000000               0.00               0.00              0.000000               0.000000               3
+35      gnn edge_count  89.360000              87.71              92.14             83.344539              95.375461               3
+35      gnn      exact   0.000000               0.00               0.00              0.000000               0.000000               3
+40 endpoint edge_count 106.106667             106.00             106.17            105.875851             106.337482               3
+40 endpoint      exact   0.000000               0.00               0.00              0.000000               0.000000               3
+40      gnn edge_count 107.970000             105.99             111.79             99.750094             116.189906               3
+40      gnn      exact   0.000000               0.00               0.00              0.000000               0.000000               3
+ n     metric  gnn_minus_endpoint  descriptive_ci95_low  descriptive_ci95_high                                                seed_differences                                                             note
+20 edge_count            0.330000             -0.865745               1.525745 [0.23999999999999488, 0.8500000000000014, -0.10000000000000142] Exploratory; three paired training seeds; not a superiority test
+20      exact            0.000000              0.000000               0.000000                                                 [0.0, 0.0, 0.0] Exploratory; three paired training seeds; not a superiority test
+24 edge_count            0.400000             -1.764338               2.564338               [-0.25, 1.3900000000000006, 0.060000000000002274] Exploratory; three paired training seeds; not a superiority test
+24      exact            0.000000              0.000000               0.000000                                                 [0.0, 0.0, 0.0] Exploratory; three paired training seeds; not a superiority test
+30 edge_count            1.220000             -3.286913               5.726913   [0.5200000000000102, 3.279999999999987, -0.13999999999998636] Exploratory; three paired training seeds; not a superiority test
+30      exact            0.000000              0.000000               0.000000                                                 [0.0, 0.0, 0.0] Exploratory; three paired training seeds; not a superiority test
+35 edge_count            1.520000             -3.926043               6.966043  [0.5499999999999972, 4.030000000000001, -0.020000000000010232] Exploratory; three paired training seeds; not a superiority test
+35      exact            0.000000              0.000000               0.000000                                                 [0.0, 0.0, 0.0] Exploratory; three paired training seeds; not a superiority test
+40 edge_count            1.863333             -6.226506               9.953172  [0.12999999999999545, 5.6200000000000045, -0.1600000000000108] Exploratory; three paired training seeds; not a superiority test
+40      exact            0.000000              0.000000               0.000000                                                 [0.0, 0.0, 0.0] Exploratory; three paired training seeds; not a superiority test
