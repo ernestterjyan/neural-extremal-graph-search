@@ -4,7 +4,6 @@ from __future__ import annotations
 
 import json
 import os
-import shutil
 import subprocess
 import sys
 import tarfile
@@ -132,7 +131,7 @@ def main() -> None:
     logs = STUDY / "validation_logs"
     logs.mkdir(exist_ok=True)
     for path in scratch.glob("command-*.log"):
-        shutil.copy2(path, logs / path.name)
+        (logs / path.name).write_text(path.read_text().rstrip() + "\n")
     (STUDY / "clean_validation.json").write_text(json.dumps(result, indent=2) + "\n")
     print(
         json.dumps(
