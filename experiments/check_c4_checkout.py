@@ -81,7 +81,7 @@ def main() -> None:
                 "arguments": arguments,
                 "exit_code": result.returncode,
                 "seconds": time.perf_counter() - start,
-                "log": str(log),
+                "log": str((STUDY / "validation_logs" / log.name).relative_to(ROOT)),
             }
         )
         if result.returncode:
