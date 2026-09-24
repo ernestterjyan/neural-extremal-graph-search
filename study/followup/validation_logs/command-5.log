@@ -1,0 +1,1 @@
+{'independent_prefix_annotations': 200, 'reversed_pair_replays': 100, 'singleton_replays': 50, 'selection': 'episodes 0 and 1, every method/seed/size; replays at n24 and n40', 'valid': True}

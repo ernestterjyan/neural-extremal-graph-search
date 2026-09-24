@@ -1,0 +1,31 @@
+               mean       min       max
+method                                 
+candidate  0.767592  0.753061  0.773878
+endpoint   0.993224  0.985102  0.998367
+gnn        0.994857  0.980204  0.998980
+mlp        0.760735  0.752041  0.772041
+   method  n           metric     mean  ci95_halfwidth  seed_count
+candidate 14 optimality_ratio 0.761633        0.014759           5
+candidate 14    exact_optimum 0.004000        0.011106           5
+candidate 24 optimality_ratio 0.635139        0.008806           5
+candidate 24    exact_optimum 0.000000        0.000000           5
+candidate 40 optimality_ratio 0.532040        0.003687           5
+candidate 40    exact_optimum 0.000000        0.000000           5
+ endpoint 14 optimality_ratio 0.991388        0.004711           5
+ endpoint 14    exact_optimum 0.716000        0.115013           5
+ endpoint 24 optimality_ratio 0.983069        0.008668           5
+ endpoint 24    exact_optimum 0.486000        0.113325           5
+ endpoint 40 optimality_ratio 0.957400        0.017946           5
+ endpoint 40    exact_optimum 0.164000        0.025748           5
+      gnn 14 optimality_ratio 0.993306        0.009825           5
+      gnn 14    exact_optimum 0.778000        0.188798           5
+      gnn 24 optimality_ratio 0.991403        0.017398           5
+      gnn 24    exact_optimum 0.640000        0.242522           5
+      gnn 40 optimality_ratio 0.979080        0.039807           5
+      gnn 40    exact_optimum 0.464000        0.216242           5
+      mlp 14 optimality_ratio 0.754367        0.015553           5
+      mlp 14    exact_optimum 0.014000        0.011106           5
+      mlp 24 optimality_ratio 0.635167        0.007047           5
+      mlp 24    exact_optimum 0.000000        0.000000           5
+ n     comparison        metric  difference  ci95_low  ci95_high                                                             seed_differences planned_role                                                               interval_note
+24 gnn - endpoint exact_optimum       0.154 -0.079882   0.387882 [0.08999999999999997, 0.41, 0.19, -0.10999999999999999, 0.18999999999999995]      primary Five paired training seeds; secondary intervals unadjusted for multiplicity
