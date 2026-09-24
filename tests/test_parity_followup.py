@@ -2,11 +2,15 @@
 
 import random
 import sys
+from collections import deque
+from itertools import combinations
 from pathlib import Path
 
 import networkx as nx
 
 from extremal_graph.env import GraphConstructionEnv
+from extremal_graph.features import legal_edges_from_state
+from extremal_graph.graph import GraphState
 from extremal_graph.study import independent_verify
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "experiments"))
@@ -51,3 +55,30 @@ def test_balancing_trajectories_are_batch_order_independent_and_valid():
         graph.add_edges_from(actual.final_state.edges)
         assert nx.is_bipartite(graph)
     assert together[0].actions == generate_balance(8, seeds[:1])[0].actions
+
+
+def test_all_balancing_tie_choices_reach_optimum_through_six_vertices():
+    for n in range(2, 7):
+        initial = GraphState(n, 2)
+        queue = deque([initial])
+        seen = {initial.edges}
+        while queue:
+            state = queue.popleft()
+            legal = legal_edges_from_state(state)
+            if not legal:
+                assert state.edge_count == n * n // 4
+                continue
+            scores = balance_scores(state, legal)
+            best = min(value for value in scores if value is not None)
+            for edge, value in zip(legal, scores, strict=True):
+                if value != best:
+                    continue
+                child = GraphState(n, 2, state.edges + (edge,))
+                assert any(
+                    all((u in side) != (v in side) for u, v in child.edges)
+                    for side_tuple in combinations(range(n), n // 2)
+                    for side in [set(side_tuple)]
+                )
+                if child.edges not in seen:
+                    seen.add(child.edges)
+                    queue.append(child)

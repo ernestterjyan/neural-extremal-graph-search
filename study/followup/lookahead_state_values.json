@@ -1,0 +1,452 @@
+{
+  "graph": {
+    "schema_version": 1,
+    "n": 6,
+    "r": 2,
+    "edges": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        0,
+        3
+      ]
+    ]
+  },
+  "enumerated_subsets": 512,
+  "feasible_subsets": 124,
+  "maximum_edges": 9,
+  "actions": [
+    {
+      "edge": [
+        0,
+        4
+      ],
+      "exact_continuation_max": 8,
+      "witness_edges": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          1,
+          5
+        ],
+        [
+          2,
+          5
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          4,
+          5
+        ]
+      ],
+      "one_step_loss": 4
+    },
+    {
+      "edge": [
+        0,
+        5
+      ],
+      "exact_continuation_max": 8,
+      "witness_edges": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          0,
+          5
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          4,
+          5
+        ]
+      ],
+      "one_step_loss": 4
+    },
+    {
+      "edge": [
+        1,
+        4
+      ],
+      "exact_continuation_max": 9,
+      "witness_edges": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          1,
+          5
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          2,
+          5
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          3,
+          5
+        ]
+      ],
+      "one_step_loss": 2
+    },
+    {
+      "edge": [
+        1,
+        5
+      ],
+      "exact_continuation_max": 9,
+      "witness_edges": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          1,
+          5
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          2,
+          5
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          3,
+          5
+        ]
+      ],
+      "one_step_loss": 2
+    },
+    {
+      "edge": [
+        2,
+        4
+      ],
+      "exact_continuation_max": 9,
+      "witness_edges": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          1,
+          5
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          2,
+          5
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          3,
+          5
+        ]
+      ],
+      "one_step_loss": 2
+    },
+    {
+      "edge": [
+        2,
+        5
+      ],
+      "exact_continuation_max": 9,
+      "witness_edges": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          1,
+          5
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          2,
+          5
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          3,
+          5
+        ]
+      ],
+      "one_step_loss": 2
+    },
+    {
+      "edge": [
+        3,
+        4
+      ],
+      "exact_continuation_max": 9,
+      "witness_edges": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          1,
+          5
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          2,
+          5
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          3,
+          5
+        ]
+      ],
+      "one_step_loss": 2
+    },
+    {
+      "edge": [
+        3,
+        5
+      ],
+      "exact_continuation_max": 9,
+      "witness_edges": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          1,
+          5
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          2,
+          5
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          3,
+          5
+        ]
+      ],
+      "one_step_loss": 2
+    },
+    {
+      "edge": [
+        4,
+        5
+      ],
+      "exact_continuation_max": 8,
+      "witness_edges": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          0,
+          5
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          4,
+          5
+        ]
+      ],
+      "one_step_loss": 1
+    }
+  ],
+  "structural_action_groups": [
+    [
+      0,
+      1
+    ],
+    [
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    [
+      8
+    ]
+  ],
+  "mixed_value_groups": 0,
+  "statewise_counterexample_action": [
+    4,
+    5
+  ],
+  "note": "Exploratory partial-state example after n<=8 empty-start exhaustive search; subset enumeration and NetworkX witnesses independent of rollout policy.",
+  "exact_diagnostics_script_sha256": "76d5db8b1e6494e2a75762e72daa54e915f30362a2afc6d0dde5c646335045f7"
+}
