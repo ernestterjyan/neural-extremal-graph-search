@@ -1,0 +1,15 @@
+{
+  "study_id": "c4-free-solver-feasibility-pilot-v1",
+  "status": "frozen-before-evaluation-draws",
+  "question": "Does the C4-free construction task leave material headroom above simple search and algebraic-construction baselines at sizes with independently published exact values?",
+  "sizes": [20, 24, 30, 35, 40],
+  "known_exact_values": {"20": 46, "24": 59, "30": 85, "35": 106, "40": 127},
+  "known_exact_source": "Afzaly and McKay, Extremal Graphs and Turan numbers, H={C4}, https://users.cecs.anu.edu.au/~bdm/data/extremal.html, accessed 2026-09-24; exact entries have neither ne nor ng prefixed by >= at these sizes",
+  "methods": ["uniform", "min_degree", "lookahead16", "swap200", "polarity", "polarity_swap200"],
+  "replications": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
+  "seed_offset": 4000000,
+  "policy_details": "uniform samples any C4-legal edge; min_degree samples among minimum endpoint-degree-sum edges; lookahead16 samples up to 16 legal candidate edges and picks the one leaving most legal actions; polarity builds an orthogonal-polarity graph for the smallest supported prime order covering n, greedily deletes minimum-degree vertices with random ties, then refills by min_degree. swap200 starts from min_degree and polarity_swap200 from polarity; each makes 200 trials of one or two random edge deletions followed by min_degree refill, retaining the best graph and accepting worse current states with exp(edge_change / temperature), where temperature falls linearly from 0.85 to about 0.05.",
+  "selection": "No method parameter adjustment or seed expansion after results. All methods share n/replication seed keys, but action streams differ. Reference values are used only for reporting and validity checks, not for search decisions.",
+  "evidence": "Save every full final graph, validate C4-freeness and maximality with an independent NetworkX implementation, record wall time. This is a feasibility pilot, not an equal-compute solver comparison or neural-model study.",
+  "success_gate": "Proceed to a separately frozen learned-solver study only if at least one size has meaningful headroom for search relative to both the simple methods and polarity baseline, and a feasible compute budget. Any learned improvement must be compared under equal wall-time/search budgets and to published constructions; no new mathematical bound is claimed without independent literature and graph verification."
+}
