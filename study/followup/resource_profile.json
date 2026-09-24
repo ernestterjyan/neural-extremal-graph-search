@@ -1,0 +1,29 @@
+{
+  "results": [
+    {
+      "episodes": 4,
+      "method": "balance_parity",
+      "n": 40,
+      "seconds_per_episode": 0.11410987499994008
+    },
+    {
+      "episodes": 4,
+      "method": "gnn_parity",
+      "n": 40,
+      "seconds_per_episode": 0.3624836875001165
+    },
+    {
+      "episodes": 4,
+      "method": "endpoint_parity",
+      "n": 40,
+      "seconds_per_episode": 0.33704182275005223
+    },
+    {
+      "episodes": 4,
+      "method": "candidate_parity",
+      "n": 40,
+      "seconds_per_episode": 0.31843250000019907
+    }
+  ],
+  "timing_seeds_excluded": true
+}

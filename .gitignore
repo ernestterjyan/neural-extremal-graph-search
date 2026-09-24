@@ -34,4 +34,5 @@ reports/figures/*
 
 # Corrected-study evidence is distributed as a separate checksummed bundle.
 study/artifacts/
+study/followup/artifacts/
 study/logs/
