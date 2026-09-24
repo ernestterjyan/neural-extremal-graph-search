@@ -1,0 +1,178 @@
+{"event": "launch", "jobs": 100, "protocol_sha256": "1e976115316a699cbe67994b23ab00d20a3a742b944fa4a977cc3235ef03ddd1", "time": 1790274230.883719}
+{"cell": "study/followup/artifacts/gnn_parity/seed-0/n-15", "event": "complete", "time": 1790274233.299712}
+{"cell": "study/followup/artifacts/gnn_parity/seed-0/n-24", "event": "complete", "time": 1790274238.4805188}
+{"cell": "study/followup/artifacts/gnn_parity/seed-0/n-30", "event": "complete", "time": 1790274247.2146409}
+{"cell": "study/followup/artifacts/gnn_parity/seed-0/n-40", "event": "complete", "time": 1790274281.5050292}
+{"cell": "study/followup/artifacts/gnn_parity/seed-1/n-15", "event": "complete", "time": 1790274281.505569}
+{"cell": "study/followup/artifacts/gnn_parity/seed-1/n-24", "event": "complete", "time": 1790274281.505692}
+{"cell": "study/followup/artifacts/gnn_parity/seed-1/n-30", "event": "complete", "time": 1790274281.505756}
+{"cell": "study/followup/artifacts/gnn_parity/seed-1/n-40", "event": "complete", "time": 1790274290.973126}
+{"cell": "study/followup/artifacts/gnn_parity/seed-2/n-15", "event": "complete", "time": 1790274290.973535}
+{"cell": "study/followup/artifacts/gnn_parity/seed-2/n-24", "event": "complete", "time": 1790274290.973671}
+{"cell": "study/followup/artifacts/gnn_parity/seed-2/n-30", "event": "complete", "time": 1790274290.9737449}
+{"cell": "study/followup/artifacts/gnn_parity/seed-2/n-40", "event": "complete", "time": 1790274307.110385}
+{"cell": "study/followup/artifacts/gnn_parity/seed-3/n-15", "event": "complete", "time": 1790274307.110611}
+{"cell": "study/followup/artifacts/gnn_parity/seed-3/n-24", "event": "complete", "time": 1790274307.110688}
+{"cell": "study/followup/artifacts/gnn_parity/seed-3/n-30", "event": "complete", "time": 1790274307.1107562}
+{"cell": "study/followup/artifacts/gnn_parity/seed-3/n-40", "event": "complete", "time": 1790274336.2475672}
+{"cell": "study/followup/artifacts/gnn_parity/seed-4/n-15", "event": "complete", "time": 1790274336.247921}
+{"cell": "study/followup/artifacts/gnn_parity/seed-4/n-24", "event": "complete", "time": 1790274336.248092}
+{"cell": "study/followup/artifacts/gnn_parity/seed-4/n-30", "event": "complete", "time": 1790274336.2481751}
+{"cell": "study/followup/artifacts/gnn_parity/seed-4/n-40", "event": "complete", "time": 1790274355.945444}
+{"cell": "study/followup/artifacts/endpoint_parity/seed-0/n-15", "event": "complete", "time": 1790274355.9457731}
+{"cell": "study/followup/artifacts/endpoint_parity/seed-0/n-24", "event": "complete", "time": 1790274355.945944}
+{"cell": "study/followup/artifacts/endpoint_parity/seed-0/n-30", "event": "complete", "time": 1790274355.9460301}
+{"cell": "study/followup/artifacts/endpoint_parity/seed-0/n-40", "event": "complete", "time": 1790274366.1772742}
+{"cell": "study/followup/artifacts/endpoint_parity/seed-1/n-15", "event": "complete", "time": 1790274366.1775858}
+{"cell": "study/followup/artifacts/endpoint_parity/seed-1/n-24", "event": "complete", "time": 1790274366.1776938}
+{"cell": "study/followup/artifacts/endpoint_parity/seed-1/n-30", "event": "complete", "time": 1790274366.177877}
+{"cell": "study/followup/artifacts/endpoint_parity/seed-1/n-40", "event": "complete", "time": 1790274396.492755}
+{"cell": "study/followup/artifacts/endpoint_parity/seed-2/n-15", "event": "complete", "time": 1790274396.493084}
+{"cell": "study/followup/artifacts/endpoint_parity/seed-2/n-24", "event": "complete", "time": 1790274396.4932532}
+{"cell": "study/followup/artifacts/endpoint_parity/seed-2/n-30", "event": "complete", "time": 1790274396.493338}
+{"cell": "study/followup/artifacts/endpoint_parity/seed-2/n-40", "event": "complete", "time": 1790274416.7505689}
+{"cell": "study/followup/artifacts/endpoint_parity/seed-3/n-15", "event": "complete", "time": 1790274416.7508612}
+{"cell": "study/followup/artifacts/endpoint_parity/seed-3/n-24", "event": "complete", "time": 1790274416.7509649}
+{"cell": "study/followup/artifacts/endpoint_parity/seed-3/n-30", "event": "complete", "time": 1790274416.751059}
+{"cell": "study/followup/artifacts/endpoint_parity/seed-3/n-40", "event": "complete", "time": 1790274428.699351}
+{"cell": "study/followup/artifacts/endpoint_parity/seed-4/n-15", "event": "complete", "time": 1790274428.6996338}
+{"cell": "study/followup/artifacts/endpoint_parity/seed-4/n-24", "event": "complete", "time": 1790274428.6997151}
+{"cell": "study/followup/artifacts/endpoint_parity/seed-4/n-30", "event": "complete", "time": 1790274428.699774}
+{"cell": "study/followup/artifacts/endpoint_parity/seed-4/n-40", "event": "complete", "time": 1790274454.060543}
+{"cell": "study/followup/artifacts/candidate_parity/seed-0/n-15", "event": "complete", "time": 1790274454.060864}
+{"cell": "study/followup/artifacts/candidate_parity/seed-0/n-24", "event": "complete", "time": 1790274454.061053}
+{"cell": "study/followup/artifacts/candidate_parity/seed-0/n-30", "event": "complete", "time": 1790274454.061151}
+{"cell": "study/followup/artifacts/candidate_parity/seed-0/n-40", "event": "complete", "time": 1790274471.421652}
+{"cell": "study/followup/artifacts/candidate_parity/seed-1/n-15", "event": "complete", "time": 1790274471.421956}
+{"cell": "study/followup/artifacts/candidate_parity/seed-1/n-24", "event": "complete", "time": 1790274471.422074}
+{"cell": "study/followup/artifacts/candidate_parity/seed-1/n-30", "event": "complete", "time": 1790274471.422163}
+{"cell": "study/followup/artifacts/candidate_parity/seed-1/n-40", "event": "complete", "time": 1790274486.507355}
+{"cell": "study/followup/artifacts/candidate_parity/seed-2/n-15", "event": "complete", "time": 1790274486.50762}
+{"cell": "study/followup/artifacts/candidate_parity/seed-2/n-24", "event": "complete", "time": 1790274486.507838}
+{"cell": "study/followup/artifacts/candidate_parity/seed-2/n-30", "event": "complete", "time": 1790274486.507977}
+{"cell": "study/followup/artifacts/candidate_parity/seed-2/n-40", "event": "complete", "time": 1790274508.067512}
+{"cell": "study/followup/artifacts/candidate_parity/seed-3/n-15", "event": "complete", "time": 1790274508.0678}
+{"cell": "study/followup/artifacts/candidate_parity/seed-3/n-24", "event": "complete", "time": 1790274508.067947}
+{"cell": "study/followup/artifacts/candidate_parity/seed-3/n-30", "event": "complete", "time": 1790274508.068099}
+{"cell": "study/followup/artifacts/candidate_parity/seed-3/n-40", "event": "complete", "time": 1790274529.810072}
+{"cell": "study/followup/artifacts/candidate_parity/seed-4/n-15", "event": "complete", "time": 1790274529.810393}
+{"cell": "study/followup/artifacts/candidate_parity/seed-4/n-24", "event": "complete", "time": 1790274529.8105102}
+{"cell": "study/followup/artifacts/candidate_parity/seed-4/n-30", "event": "complete", "time": 1790274529.810611}
+{"cell": "study/followup/artifacts/candidate_parity/seed-4/n-40", "event": "complete", "time": 1790274546.239625}
+{"cell": "study/followup/artifacts/uniform_parity/seed-0/n-15", "event": "complete", "time": 1790274546.2399979}
+{"cell": "study/followup/artifacts/uniform_parity/seed-0/n-24", "event": "complete", "time": 1790274546.240164}
+{"cell": "study/followup/artifacts/uniform_parity/seed-0/n-30", "event": "complete", "time": 1790274546.2402618}
+{"cell": "study/followup/artifacts/uniform_parity/seed-0/n-40", "event": "complete", "time": 1790274565.3324559}
+{"cell": "study/followup/artifacts/uniform_parity/seed-1/n-15", "event": "complete", "time": 1790274565.332839}
+{"cell": "study/followup/artifacts/uniform_parity/seed-1/n-24", "event": "complete", "time": 1790274565.3329751}
+{"cell": "study/followup/artifacts/uniform_parity/seed-1/n-30", "event": "complete", "time": 1790274565.333076}
+{"cell": "study/followup/artifacts/uniform_parity/seed-1/n-40", "event": "complete", "time": 1790274583.692464}
+{"cell": "study/followup/artifacts/uniform_parity/seed-2/n-15", "event": "complete", "time": 1790274583.692771}
+{"cell": "study/followup/artifacts/uniform_parity/seed-2/n-24", "event": "complete", "time": 1790274583.6929128}
+{"cell": "study/followup/artifacts/uniform_parity/seed-2/n-30", "event": "complete", "time": 1790274583.6930041}
+{"cell": "study/followup/artifacts/uniform_parity/seed-2/n-40", "event": "complete", "time": 1790274604.16565}
+{"cell": "study/followup/artifacts/uniform_parity/seed-3/n-15", "event": "complete", "time": 1790274604.1660259}
+{"cell": "study/followup/artifacts/uniform_parity/seed-3/n-24", "event": "complete", "time": 1790274604.166191}
+{"cell": "study/followup/artifacts/uniform_parity/seed-3/n-30", "event": "complete", "time": 1790274604.166311}
+{"cell": "study/followup/artifacts/uniform_parity/seed-3/n-40", "event": "complete", "time": 1790274623.0264618}
+{"cell": "study/followup/artifacts/uniform_parity/seed-4/n-15", "event": "complete", "time": 1790274623.026788}
+{"cell": "study/followup/artifacts/uniform_parity/seed-4/n-24", "event": "complete", "time": 1790274623.026915}
+{"cell": "study/followup/artifacts/uniform_parity/seed-4/n-30", "event": "complete", "time": 1790274623.027016}
+{"cell": "study/followup/artifacts/uniform_parity/seed-4/n-40", "event": "complete", "time": 1790274643.887247}
+{"cell": "study/followup/artifacts/balance_parity/seed-0/n-15", "event": "complete", "time": 1790274643.887646}
+{"cell": "study/followup/artifacts/balance_parity/seed-0/n-24", "event": "complete", "time": 1790274643.887764}
+{"cell": "study/followup/artifacts/balance_parity/seed-0/n-30", "event": "complete", "time": 1790274643.887847}
+{"cell": "study/followup/artifacts/balance_parity/seed-0/n-40", "event": "complete", "time": 1790274643.887925}
+{"cell": "study/followup/artifacts/balance_parity/seed-1/n-15", "event": "complete", "time": 1790274643.8879879}
+{"cell": "study/followup/artifacts/balance_parity/seed-1/n-24", "event": "complete", "time": 1790274643.888046}
+{"cell": "study/followup/artifacts/balance_parity/seed-1/n-30", "event": "complete", "time": 1790274643.888101}
+{"cell": "study/followup/artifacts/balance_parity/seed-1/n-40", "event": "complete", "time": 1790274645.50403}
+{"cell": "study/followup/artifacts/balance_parity/seed-2/n-15", "event": "complete", "time": 1790274645.5043368}
+{"cell": "study/followup/artifacts/balance_parity/seed-2/n-24", "event": "complete", "time": 1790274645.5044742}
+{"cell": "study/followup/artifacts/balance_parity/seed-2/n-30", "event": "complete", "time": 1790274645.5045729}
+{"cell": "study/followup/artifacts/balance_parity/seed-2/n-40", "event": "complete", "time": 1790274650.476736}
+{"cell": "study/followup/artifacts/balance_parity/seed-3/n-15", "event": "complete", "time": 1790274650.476944}
+{"cell": "study/followup/artifacts/balance_parity/seed-3/n-24", "event": "complete", "time": 1790274650.477021}
+{"cell": "study/followup/artifacts/balance_parity/seed-3/n-30", "event": "complete", "time": 1790274650.4770849}
+{"cell": "study/followup/artifacts/balance_parity/seed-3/n-40", "event": "complete", "time": 1790274663.286721}
+{"cell": "study/followup/artifacts/balance_parity/seed-4/n-15", "event": "complete", "time": 1790274663.286916}
+{"cell": "study/followup/artifacts/balance_parity/seed-4/n-24", "event": "complete", "time": 1790274663.286983}
+{"cell": "study/followup/artifacts/balance_parity/seed-4/n-30", "event": "complete", "time": 1790274663.287036}
+{"cell": "study/followup/artifacts/balance_parity/seed-4/n-40", "event": "complete", "time": 1790274666.8154712}
+{"event": "matched_launch", "jobs": 20, "protocol_sha256": "d0e479d56abe13b125d0f58e17189a472ba6a94ad9f2b6ae4c67b2e50cd46f90", "stage": "train", "time": 1790274685.597794}
+{"cell": "/Users/ernestterjyan/.codex/.chatgpt-projects/g-p-6a6bd217ed048191939d14cf8ea7ac0e/neural-extremal-graph-search-study/study/followup/artifacts/matched_training/gnn-seed-0", "event": "matched_complete", "stage": "train", "time": 1790274965.508438}
+{"cell": "/Users/ernestterjyan/.codex/.chatgpt-projects/g-p-6a6bd217ed048191939d14cf8ea7ac0e/neural-extremal-graph-search-study/study/followup/artifacts/matched_training/endpoint-seed-0", "event": "matched_complete", "stage": "train", "time": 1790274965.509043}
+{"cell": "/Users/ernestterjyan/.codex/.chatgpt-projects/g-p-6a6bd217ed048191939d14cf8ea7ac0e/neural-extremal-graph-search-study/study/followup/artifacts/matched_training/candidate-seed-0", "event": "matched_complete", "stage": "train", "time": 1790274965.509174}
+{"cell": "/Users/ernestterjyan/.codex/.chatgpt-projects/g-p-6a6bd217ed048191939d14cf8ea7ac0e/neural-extremal-graph-search-study/study/followup/artifacts/matched_training/mlp-seed-0", "event": "matched_complete", "stage": "train", "time": 1790274965.509336}
+{"cell": "/Users/ernestterjyan/.codex/.chatgpt-projects/g-p-6a6bd217ed048191939d14cf8ea7ac0e/neural-extremal-graph-search-study/study/followup/artifacts/matched_training/gnn-seed-1", "event": "matched_complete", "stage": "train", "time": 1790275163.088856}
+{"cell": "/Users/ernestterjyan/.codex/.chatgpt-projects/g-p-6a6bd217ed048191939d14cf8ea7ac0e/neural-extremal-graph-search-study/study/followup/artifacts/matched_training/endpoint-seed-1", "event": "matched_complete", "stage": "train", "time": 1790275163.089217}
+{"cell": "/Users/ernestterjyan/.codex/.chatgpt-projects/g-p-6a6bd217ed048191939d14cf8ea7ac0e/neural-extremal-graph-search-study/study/followup/artifacts/matched_training/candidate-seed-1", "event": "matched_complete", "stage": "train", "time": 1790275163.0893471}
+{"cell": "/Users/ernestterjyan/.codex/.chatgpt-projects/g-p-6a6bd217ed048191939d14cf8ea7ac0e/neural-extremal-graph-search-study/study/followup/artifacts/matched_training/mlp-seed-1", "event": "matched_complete", "stage": "train", "time": 1790275173.762516}
+{"cell": "/Users/ernestterjyan/.codex/.chatgpt-projects/g-p-6a6bd217ed048191939d14cf8ea7ac0e/neural-extremal-graph-search-study/study/followup/artifacts/matched_training/gnn-seed-2", "event": "matched_complete", "stage": "train", "time": 1790275450.931057}
+{"cell": "/Users/ernestterjyan/.codex/.chatgpt-projects/g-p-6a6bd217ed048191939d14cf8ea7ac0e/neural-extremal-graph-search-study/study/followup/artifacts/matched_training/endpoint-seed-2", "event": "matched_complete", "stage": "train", "time": 1790275450.931382}
+{"cell": "/Users/ernestterjyan/.codex/.chatgpt-projects/g-p-6a6bd217ed048191939d14cf8ea7ac0e/neural-extremal-graph-search-study/study/followup/artifacts/matched_training/candidate-seed-2", "event": "matched_complete", "stage": "train", "time": 1790275450.931563}
+{"cell": "/Users/ernestterjyan/.codex/.chatgpt-projects/g-p-6a6bd217ed048191939d14cf8ea7ac0e/neural-extremal-graph-search-study/study/followup/artifacts/matched_training/mlp-seed-2", "event": "matched_complete", "stage": "train", "time": 1790275450.931813}
+{"cell": "/Users/ernestterjyan/.codex/.chatgpt-projects/g-p-6a6bd217ed048191939d14cf8ea7ac0e/neural-extremal-graph-search-study/study/followup/artifacts/matched_training/gnn-seed-3", "event": "matched_complete", "stage": "train", "time": 1790275688.1305768}
+{"cell": "/Users/ernestterjyan/.codex/.chatgpt-projects/g-p-6a6bd217ed048191939d14cf8ea7ac0e/neural-extremal-graph-search-study/study/followup/artifacts/matched_training/endpoint-seed-3", "event": "matched_complete", "stage": "train", "time": 1790275696.583979}
+{"cell": "/Users/ernestterjyan/.codex/.chatgpt-projects/g-p-6a6bd217ed048191939d14cf8ea7ac0e/neural-extremal-graph-search-study/study/followup/artifacts/matched_training/candidate-seed-3", "event": "matched_complete", "stage": "train", "time": 1790275696.5843048}
+{"cell": "/Users/ernestterjyan/.codex/.chatgpt-projects/g-p-6a6bd217ed048191939d14cf8ea7ac0e/neural-extremal-graph-search-study/study/followup/artifacts/matched_training/mlp-seed-3", "event": "matched_complete", "stage": "train", "time": 1790275696.584484}
+{"cell": "/Users/ernestterjyan/.codex/.chatgpt-projects/g-p-6a6bd217ed048191939d14cf8ea7ac0e/neural-extremal-graph-search-study/study/followup/artifacts/matched_training/gnn-seed-4", "event": "matched_complete", "stage": "train", "time": 1790275958.65255}
+{"cell": "/Users/ernestterjyan/.codex/.chatgpt-projects/g-p-6a6bd217ed048191939d14cf8ea7ac0e/neural-extremal-graph-search-study/study/followup/artifacts/matched_training/endpoint-seed-4", "event": "matched_complete", "stage": "train", "time": 1790275958.65276}
+{"cell": "/Users/ernestterjyan/.codex/.chatgpt-projects/g-p-6a6bd217ed048191939d14cf8ea7ac0e/neural-extremal-graph-search-study/study/followup/artifacts/matched_training/candidate-seed-4", "event": "matched_complete", "stage": "train", "time": 1790275958.652822}
+{"cell": "/Users/ernestterjyan/.codex/.chatgpt-projects/g-p-6a6bd217ed048191939d14cf8ea7ac0e/neural-extremal-graph-search-study/study/followup/artifacts/matched_training/mlp-seed-4", "event": "matched_complete", "stage": "train", "time": 1790275958.6529028}
+{"event": "matched_launch", "jobs": 55, "protocol_sha256": "d0e479d56abe13b125d0f58e17189a472ba6a94ad9f2b6ae4c67b2e50cd46f90", "stage": "evaluate", "time": 1790275970.975708}
+{"cell": "study/followup/artifacts/matched_evaluation/gnn/seed-301/n-14", "event": "matched_complete", "stage": "evaluate", "time": 1790275973.403572}
+{"cell": "study/followup/artifacts/matched_evaluation/gnn/seed-301/n-24", "event": "matched_complete", "stage": "evaluate", "time": 1790275979.753315}
+{"cell": "study/followup/artifacts/matched_evaluation/gnn/seed-301/n-40", "event": "matched_complete", "stage": "evaluate", "time": 1790276022.0}
+{"cell": "study/followup/artifacts/matched_evaluation/gnn/seed-302/n-14", "event": "matched_complete", "stage": "evaluate", "time": 1790276022.000309}
+{"cell": "study/followup/artifacts/matched_evaluation/gnn/seed-302/n-24", "event": "matched_complete", "stage": "evaluate", "time": 1790276022.00042}
+{"cell": "study/followup/artifacts/matched_evaluation/gnn/seed-302/n-40", "event": "matched_complete", "stage": "evaluate", "time": 1790276023.768158}
+{"cell": "study/followup/artifacts/matched_evaluation/gnn/seed-303/n-14", "event": "matched_complete", "stage": "evaluate", "time": 1790276023.768509}
+{"cell": "study/followup/artifacts/matched_evaluation/gnn/seed-303/n-24", "event": "matched_complete", "stage": "evaluate", "time": 1790276023.768713}
+{"cell": "study/followup/artifacts/matched_evaluation/gnn/seed-303/n-40", "event": "matched_complete", "stage": "evaluate", "time": 1790276031.4385412}
+{"cell": "study/followup/artifacts/matched_evaluation/gnn/seed-304/n-14", "event": "matched_complete", "stage": "evaluate", "time": 1790276031.438904}
+{"cell": "study/followup/artifacts/matched_evaluation/gnn/seed-304/n-24", "event": "matched_complete", "stage": "evaluate", "time": 1790276031.4390998}
+{"cell": "study/followup/artifacts/matched_evaluation/gnn/seed-304/n-40", "event": "matched_complete", "stage": "evaluate", "time": 1790276043.444515}
+{"cell": "study/followup/artifacts/matched_evaluation/gnn/seed-305/n-14", "event": "matched_complete", "stage": "evaluate", "time": 1790276043.444864}
+{"cell": "study/followup/artifacts/matched_evaluation/gnn/seed-305/n-24", "event": "matched_complete", "stage": "evaluate", "time": 1790276043.444968}
+{"cell": "study/followup/artifacts/matched_evaluation/gnn/seed-305/n-40", "event": "matched_complete", "stage": "evaluate", "time": 1790276078.550338}
+{"cell": "study/followup/artifacts/matched_evaluation/endpoint/seed-301/n-14", "event": "matched_complete", "stage": "evaluate", "time": 1790276078.550712}
+{"cell": "study/followup/artifacts/matched_evaluation/endpoint/seed-301/n-24", "event": "matched_complete", "stage": "evaluate", "time": 1790276078.550924}
+{"cell": "study/followup/artifacts/matched_evaluation/endpoint/seed-301/n-40", "event": "matched_complete", "stage": "evaluate", "time": 1790276081.166334}
+{"cell": "study/followup/artifacts/matched_evaluation/endpoint/seed-302/n-14", "event": "matched_complete", "stage": "evaluate", "time": 1790276081.166715}
+{"cell": "study/followup/artifacts/matched_evaluation/endpoint/seed-302/n-24", "event": "matched_complete", "stage": "evaluate", "time": 1790276081.16685}
+{"cell": "study/followup/artifacts/matched_evaluation/endpoint/seed-302/n-40", "event": "matched_complete", "stage": "evaluate", "time": 1790276094.9739368}
+{"cell": "study/followup/artifacts/matched_evaluation/endpoint/seed-303/n-14", "event": "matched_complete", "stage": "evaluate", "time": 1790276094.974321}
+{"cell": "study/followup/artifacts/matched_evaluation/endpoint/seed-303/n-24", "event": "matched_complete", "stage": "evaluate", "time": 1790276094.9745002}
+{"cell": "study/followup/artifacts/matched_evaluation/endpoint/seed-303/n-40", "event": "matched_complete", "stage": "evaluate", "time": 1790276108.712042}
+{"cell": "study/followup/artifacts/matched_evaluation/endpoint/seed-304/n-14", "event": "matched_complete", "stage": "evaluate", "time": 1790276108.7124212}
+{"cell": "study/followup/artifacts/matched_evaluation/endpoint/seed-304/n-24", "event": "matched_complete", "stage": "evaluate", "time": 1790276108.71255}
+{"cell": "study/followup/artifacts/matched_evaluation/endpoint/seed-304/n-40", "event": "matched_complete", "stage": "evaluate", "time": 1790276135.584897}
+{"cell": "study/followup/artifacts/matched_evaluation/endpoint/seed-305/n-14", "event": "matched_complete", "stage": "evaluate", "time": 1790276135.5852318}
+{"cell": "study/followup/artifacts/matched_evaluation/endpoint/seed-305/n-24", "event": "matched_complete", "stage": "evaluate", "time": 1790276135.5854468}
+{"cell": "study/followup/artifacts/matched_evaluation/endpoint/seed-305/n-40", "event": "matched_complete", "stage": "evaluate", "time": 1790276146.325749}
+{"cell": "study/followup/artifacts/matched_evaluation/candidate/seed-301/n-14", "event": "matched_complete", "stage": "evaluate", "time": 1790276146.326108}
+{"cell": "study/followup/artifacts/matched_evaluation/candidate/seed-301/n-24", "event": "matched_complete", "stage": "evaluate", "time": 1790276146.326297}
+{"cell": "study/followup/artifacts/matched_evaluation/candidate/seed-301/n-40", "event": "matched_complete", "stage": "evaluate", "time": 1790276146.326399}
+{"cell": "study/followup/artifacts/matched_evaluation/candidate/seed-302/n-14", "event": "matched_complete", "stage": "evaluate", "time": 1790276146.3264792}
+{"cell": "study/followup/artifacts/matched_evaluation/candidate/seed-302/n-24", "event": "matched_complete", "stage": "evaluate", "time": 1790276146.3265548}
+{"cell": "study/followup/artifacts/matched_evaluation/candidate/seed-302/n-40", "event": "matched_complete", "stage": "evaluate", "time": 1790276146.326622}
+{"cell": "study/followup/artifacts/matched_evaluation/candidate/seed-303/n-14", "event": "matched_complete", "stage": "evaluate", "time": 1790276146.326685}
+{"cell": "study/followup/artifacts/matched_evaluation/candidate/seed-303/n-24", "event": "matched_complete", "stage": "evaluate", "time": 1790276146.326744}
+{"cell": "study/followup/artifacts/matched_evaluation/candidate/seed-303/n-40", "event": "matched_complete", "stage": "evaluate", "time": 1790276148.49254}
+{"cell": "study/followup/artifacts/matched_evaluation/candidate/seed-304/n-14", "event": "matched_complete", "stage": "evaluate", "time": 1790276148.492913}
+{"cell": "study/followup/artifacts/matched_evaluation/candidate/seed-304/n-24", "event": "matched_complete", "stage": "evaluate", "time": 1790276148.493098}
+{"cell": "study/followup/artifacts/matched_evaluation/candidate/seed-304/n-40", "event": "matched_complete", "stage": "evaluate", "time": 1790276155.5960882}
+{"cell": "study/followup/artifacts/matched_evaluation/candidate/seed-305/n-14", "event": "matched_complete", "stage": "evaluate", "time": 1790276155.596328}
+{"cell": "study/followup/artifacts/matched_evaluation/candidate/seed-305/n-24", "event": "matched_complete", "stage": "evaluate", "time": 1790276155.596443}
+{"cell": "study/followup/artifacts/matched_evaluation/candidate/seed-305/n-40", "event": "matched_complete", "stage": "evaluate", "time": 1790276160.9581382}
+{"cell": "study/followup/artifacts/matched_evaluation/mlp/seed-301/n-14", "event": "matched_complete", "stage": "evaluate", "time": 1790276160.958268}
+{"cell": "study/followup/artifacts/matched_evaluation/mlp/seed-301/n-24", "event": "matched_complete", "stage": "evaluate", "time": 1790276160.958326}
+{"cell": "study/followup/artifacts/matched_evaluation/mlp/seed-302/n-14", "event": "matched_complete", "stage": "evaluate", "time": 1790276160.958372}
+{"cell": "study/followup/artifacts/matched_evaluation/mlp/seed-302/n-24", "event": "matched_complete", "stage": "evaluate", "time": 1790276160.958414}
+{"cell": "study/followup/artifacts/matched_evaluation/mlp/seed-303/n-14", "event": "matched_complete", "stage": "evaluate", "time": 1790276160.958452}
+{"cell": "study/followup/artifacts/matched_evaluation/mlp/seed-303/n-24", "event": "matched_complete", "stage": "evaluate", "time": 1790276160.958508}
+{"cell": "study/followup/artifacts/matched_evaluation/mlp/seed-304/n-14", "event": "matched_complete", "stage": "evaluate", "time": 1790276160.958546}
+{"cell": "study/followup/artifacts/matched_evaluation/mlp/seed-304/n-24", "event": "matched_complete", "stage": "evaluate", "time": 1790276160.958584}
+{"cell": "study/followup/artifacts/matched_evaluation/mlp/seed-305/n-14", "event": "matched_complete", "stage": "evaluate", "time": 1790276160.958622}
+{"cell": "study/followup/artifacts/matched_evaluation/mlp/seed-305/n-24", "event": "matched_complete", "stage": "evaluate", "time": 1790276160.9586592}

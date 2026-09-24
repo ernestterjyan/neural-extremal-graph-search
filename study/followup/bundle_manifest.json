@@ -1,0 +1,14 @@
+{
+  "archive": "study/followup/evidence-v1.tar.gz",
+  "sha256": "3716a37554f680bfb79c869c22313e6be36cc35160c457c090706342c1494d41",
+  "bytes": 20676337,
+  "files": 897,
+  "uncompressed_bytes": 26684789,
+  "artifact_manifest": "study/followup/artifact_manifest.json",
+  "artifact_manifest_sha256": "01afbf2b718a4e74b4221e57e140445508407414aa16b483de4db0920dcdbefa",
+  "parity_protocol_sha256": "1e976115316a699cbe67994b23ab00d20a3a742b944fa4a977cc3235ef03ddd1",
+  "matched_protocol_sha256": "d0e479d56abe13b125d0f58e17189a472ba6a94ad9f2b6ae4c67b2e50cd46f90",
+  "parity_graphs": 10000,
+  "matched_graphs": 5500,
+  "note": "Includes graph chunks, trajectories, source snapshots, complete training records, checkpoints, and both CSV evaluations. The source checkout and tracked analysis reports accompany this archive."
+}

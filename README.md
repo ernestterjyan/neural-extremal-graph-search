@@ -1,6 +1,6 @@
 # Neural Extremal Graph Search
 
-**Corrected study (September 2026):** twenty new training runs and 97,000 verified research graphs. See the [research assessment](study/RESEARCH_REPORT.md) and [reproduction guide](study/README.md). The v0.1/v0.2 discussion below is preserved historical context; its GNN–MLP comparison used different training versions.
+**Corrected study (September 2026):** twenty new training runs and 97,000 verified research graphs. See the [research assessment](study/RESEARCH_REPORT.md) and [reproduction guide](study/README.md). The subsequent [parity mechanism follow-up](study/followup/README.md) tests the main unresolved mechanism against stronger controls. The v0.1/v0.2 discussion below is preserved historical context; its GNN–MLP comparison used different training versions.
 
 [![CI](https://github.com/ernestterjyan/neural-extremal-graph-search/actions/workflows/ci.yml/badge.svg)](https://github.com/ernestterjyan/neural-extremal-graph-search/actions/workflows/ci.yml)
 [![Release](https://img.shields.io/github/v/release/ernestterjyan/neural-extremal-graph-search)](https://github.com/ernestterjyan/neural-extremal-graph-search/releases/latest)

@@ -1,0 +1,23 @@
+{
+  "n": 6,
+  "state_edges": [
+    [
+      0,
+      1
+    ],
+    [
+      0,
+      2
+    ],
+    [
+      0,
+      3
+    ]
+  ],
+  "bad_minimum_loss_edge": [
+    4,
+    5
+  ],
+  "loss": 1,
+  "examined": 8
+}

@@ -1,5 +1,7 @@
 # Corrected Neural Extremal Graph Search study
 
+**Subsequent work:** The separate [parity mechanism follow-up](followup/README.md) executes priorities 1, 2, and part of 4 below. Read its newer results and assessment alongside this historical report; the experiments and evaluation draws are not pooled.
+
 **Assessment, 16 September 2026.** The project now supports a reproducible empirical study of learned construction and irreversible failures on a known-optimum graph task. It does not establish a superior extremal-graph solver or a new graph-theoretic result. The most useful findings are the strength of simple controls, the separation of edge quality from exact success, and a controlled intervention showing that learned action ranking remains useful when an explicit bipartite constraint prevents structural mistakes.
 
 Twenty canonical training runs, 87,000 main evaluation graphs, 4,000 fixed-budget graphs and 6,000 supplementary graphs completed. Every persisted research graph passed independent triangle-freeness and maximality checks. No numerical or graph-verification failures occurred. Historical replays and engineering repetitions are separate validation exercises, not additional research replicates.

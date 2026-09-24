@@ -1,0 +1,13 @@
+{
+  "analysis_sha256": "fe12f853fa4914fc524ce9efa7a3890ad400b9723b22556257f963daf9b90176",
+  "evaluation_sha256": "e17bc44d2e1c2dc4b06dd999277f54daf86c95f75f01d7ef58cc4b01d355bd14",
+  "figure_sha256": "a63849a6408d2189aec9110546ae59f3d723df60ccd8646e1a11013aa90d4262",
+  "graphs": 10000,
+  "protocol_sha256": "1e976115316a699cbe67994b23ab00d20a3a742b944fa4a977cc3235ef03ddd1",
+  "seed_count": 5,
+  "tables": {
+    "parity_comparisons.csv": "44cbd4810bdf7b9f3629c1e21f9a698473b56284f515d0f62056280a047765f6",
+    "parity_seed_results.csv": "cec9cbc31ff364b8f776f2a9c885a6f1570d05fe5363566aa3db2f72612e7f41",
+    "parity_summary.csv": "ad34a1c4abb9c47fee8ce648a0a8468dd86928f966563fe1bb087cb6bad97f59"
+  }
+}
