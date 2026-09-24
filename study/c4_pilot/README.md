@@ -4,6 +4,8 @@ This is a feasibility pilot for replacing the known-optimum triangle-free benchm
 
 The [frozen protocol](protocol.json) declares five sizes, six methods and ten independent replications per method and size before results are generated. The published exact values used only for scoring come from [Afzaly and McKay's primary data](https://users.cecs.anu.edu.au/~bdm/data/extremal.html). Orthogonal-polarity graphs are established C4-free constructions; for general context see [He, Ma and Yang](https://arxiv.org/abs/1912.00986). A pilot win over the simple methods would not establish superiority to all known constructions or search programs.
 
+The protocol's description of the source table's graph-count marker at n=40 has a [wording correction](PROTOCOL_ERRATUM.md). The exact edge-count reference used by the experiment remains correct.
+
 From the repository root:
 
 ```sh
@@ -14,4 +16,4 @@ python experiments/c4_solver_pilot.py report
 
 All final graphs, seeds, construction times and code/protocol checksums are retained in `results.jsonl`; `summary.csv` is regenerated after verification. This branch keeps the C4 pilot separate from the corrected triangle-free study and its frozen evidence.
 
-The [baseline results](BASELINE_RESULTS.md) show substantial difficulty for unguided construction and a strong algebraic control. The next, separately frozen [neural pilot](../c4_neural/README.md) tests whether learning can close any of the remaining gap.
+The [baseline results](BASELINE_RESULTS.md) show substantial difficulty for unguided construction and a strong algebraic control. The separately frozen [neural pilot](../c4_neural/README.md) tested whether learning could close the remaining gap; its first attempt did not.

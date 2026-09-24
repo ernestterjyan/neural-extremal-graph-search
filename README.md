@@ -2,6 +2,8 @@
 
 **Corrected study (September 2026):** twenty new training runs and 97,000 verified research graphs. See the [research assessment](study/RESEARCH_REPORT.md) and [reproduction guide](study/README.md). The subsequent [parity mechanism follow-up](study/followup/README.md) tests the main unresolved mechanism against stronger controls. The v0.1/v0.2 discussion below is preserved historical context; its GNN–MLP comparison used different training versions.
 
+**Harder solver pilot:** A separate [C4-free graph study](study/c4_neural/RESEARCH_NOTE.md) evaluates fresh neural policies against exact finite references and strong algebraic constructions. The first neural attempt did not beat the polarity baseline; all graphs and checkpoints are retained for review.
+
 [![CI](https://github.com/ernestterjyan/neural-extremal-graph-search/actions/workflows/ci.yml/badge.svg)](https://github.com/ernestterjyan/neural-extremal-graph-search/actions/workflows/ci.yml)
 [![Release](https://img.shields.io/github/v/release/ernestterjyan/neural-extremal-graph-search)](https://github.com/ernestterjyan/neural-extremal-graph-search/releases/latest)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)

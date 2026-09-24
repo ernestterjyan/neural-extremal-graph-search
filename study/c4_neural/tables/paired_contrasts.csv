@@ -1,0 +1,11 @@
+n,metric,gnn_minus_endpoint,descriptive_ci95_low,descriptive_ci95_high,seed_differences,note
+20,edge_count,0.3299999999999983,-0.8657453063735585,1.525745306373555,"[0.23999999999999488, 0.8500000000000014, -0.10000000000000142]",Exploratory; three paired training seeds; not a superiority test
+20,exact,0.0,0.0,0.0,"[0.0, 0.0, 0.0]",Exploratory; three paired training seeds; not a superiority test
+24,edge_count,0.40000000000000097,-1.7643383940855946,2.5643383940855964,"[-0.25, 1.3900000000000006, 0.060000000000002274]",Exploratory; three paired training seeds; not a superiority test
+24,exact,0.0,0.0,0.0,"[0.0, 0.0, 0.0]",Exploratory; three paired training seeds; not a superiority test
+30,edge_count,1.2200000000000035,-3.2869132084159425,5.726913208415949,"[0.5200000000000102, 3.279999999999987, -0.13999999999998636]",Exploratory; three paired training seeds; not a superiority test
+30,exact,0.0,0.0,0.0,"[0.0, 0.0, 0.0]",Exploratory; three paired training seeds; not a superiority test
+35,edge_count,1.519999999999996,-3.926043494668468,6.96604349466846,"[0.5499999999999972, 4.030000000000001, -0.020000000000010232]",Exploratory; three paired training seeds; not a superiority test
+35,exact,0.0,0.0,0.0,"[0.0, 0.0, 0.0]",Exploratory; three paired training seeds; not a superiority test
+40,edge_count,1.8633333333333297,-6.226505638600372,9.953172305267032,"[0.12999999999999545, 5.6200000000000045, -0.1600000000000108]",Exploratory; three paired training seeds; not a superiority test
+40,exact,0.0,0.0,0.0,"[0.0, 0.0, 0.0]",Exploratory; three paired training seeds; not a superiority test

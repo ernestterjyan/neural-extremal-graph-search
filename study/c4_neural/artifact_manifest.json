@@ -1,0 +1,50 @@
+{
+  "study/c4_neural/artifacts/training/endpoint-seed-0/best.pt": {
+    "bytes": 56419,
+    "sha256": "9e9563edfc94949b5f25c575f6c54df61fa9c79650093ec25440d91abaaa2daa"
+  },
+  "study/c4_neural/artifacts/training/endpoint-seed-0/metrics.jsonl": {
+    "bytes": 11314,
+    "sha256": "c76e6306e95cbedc6728a1366f037db0090f75c6a66cb001e2ee2ce0815a45f5"
+  },
+  "study/c4_neural/artifacts/training/endpoint-seed-1/best.pt": {
+    "bytes": 56419,
+    "sha256": "cd0e67a329c4de4acf6dda6eb8754dbef1086db999d7cc055aeb26ec8ae37803"
+  },
+  "study/c4_neural/artifacts/training/endpoint-seed-1/metrics.jsonl": {
+    "bytes": 11308,
+    "sha256": "ead70601201a9efce4a909b9e8076df7470c78b859a06bf6f677425acfeecf81"
+  },
+  "study/c4_neural/artifacts/training/endpoint-seed-2/best.pt": {
+    "bytes": 56419,
+    "sha256": "21826db0eaa47ab6b4a237cf0325991bb7633c04eb63b3ee570d60933a2055be"
+  },
+  "study/c4_neural/artifacts/training/endpoint-seed-2/metrics.jsonl": {
+    "bytes": 11297,
+    "sha256": "77b8826f363b65e5f0bf626cd70655094e2b6487953b77288a7b45192bf8db76"
+  },
+  "study/c4_neural/artifacts/training/gnn-seed-0/best.pt": {
+    "bytes": 159833,
+    "sha256": "1202b592598729854eae8d505c89cd13792df89f8c0cfa57a2e0a93999c8923b"
+  },
+  "study/c4_neural/artifacts/training/gnn-seed-0/metrics.jsonl": {
+    "bytes": 11304,
+    "sha256": "98db2898cdf5c8aea3fc322727022639210fee400483b1021b01036c60a2eba3"
+  },
+  "study/c4_neural/artifacts/training/gnn-seed-1/best.pt": {
+    "bytes": 159833,
+    "sha256": "1445d6707ccf27e635c88dc41dfbddf56f1f28c7fa31dd8e9d0c1a352d588859"
+  },
+  "study/c4_neural/artifacts/training/gnn-seed-1/metrics.jsonl": {
+    "bytes": 11298,
+    "sha256": "5f6d82f3ab2cc0dfd47960b1bcb55cf36a52320073c4b1aeb731527b5b066133"
+  },
+  "study/c4_neural/artifacts/training/gnn-seed-2/best.pt": {
+    "bytes": 159833,
+    "sha256": "274ce494ea91ffbe84a5d4359f6baf0487146541efcc29c67bdbeffebe12eec3"
+  },
+  "study/c4_neural/artifacts/training/gnn-seed-2/metrics.jsonl": {
+    "bytes": 11320,
+    "sha256": "4a9108b7e5b70db6b5ba15cbf1c0946ed2ec152baadabf2191cbeb498a5836b7"
+  }
+}

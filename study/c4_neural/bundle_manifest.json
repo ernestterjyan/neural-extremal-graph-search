@@ -1,0 +1,11 @@
+{
+  "archive": "study/c4_neural/training-evidence-v1.tar.gz",
+  "sha256": "fa7728e00c4fa1c7aa3bf86f7ebd3a86ba4ac73fd8f9d58b9c6f9f6fd8c323d3",
+  "bytes": 600728,
+  "files": 12,
+  "artifact_manifest": "study/c4_neural/artifact_manifest.json",
+  "artifact_manifest_sha256": "b6691b35eba8209f8f4d4f91d74d8a96fee10ab2330524ed1af6b91447a54bb7",
+  "protocol_sha256": "986a63c18a48603c0bad4fb4f4ca63c7f1f9a49b9e0a12e4808abadccedf9244",
+  "evaluation_sha256": "a112c739c5f2aa8ed0aac8d66985e82d71e4de692275a1aad2153c79eb90e922",
+  "scope": "Six selected neural checkpoints and complete 80-iteration training logs; the separate tracked results.jsonl retains all 3,000 held-out final graphs."
+}
