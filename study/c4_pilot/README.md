@@ -13,3 +13,5 @@ python experiments/c4_solver_pilot.py report
 ```
 
 All final graphs, seeds, construction times and code/protocol checksums are retained in `results.jsonl`; `summary.csv` is regenerated after verification. This branch keeps the C4 pilot separate from the corrected triangle-free study and its frozen evidence.
+
+The [baseline results](BASELINE_RESULTS.md) show substantial difficulty for unguided construction and a strong algebraic control. The next, separately frozen [neural pilot](../c4_neural/README.md) tests whether learning can close any of the remaining gap.
