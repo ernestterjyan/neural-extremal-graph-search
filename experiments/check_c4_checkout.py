@@ -94,7 +94,7 @@ def main() -> None:
         .read_text()
         .strip()
     )
-    if not imported.startswith(str(checkout / "experiments")):
+    if not Path(imported).resolve().is_relative_to((checkout / "experiments").resolve()):
         raise ValueError("C4 clean validation imported source outside clone")
     run(["experiments/c4_solver_pilot.py", "verify"])
     run(["experiments/c4_solver_pilot.py", "report"])
