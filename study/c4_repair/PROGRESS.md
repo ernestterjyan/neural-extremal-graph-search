@@ -57,6 +57,30 @@ and controlled comparison if gates pass, independent environment reproduction, c
 break-even where supported, and an outcome-matched manuscript. A failed gate alone
 does not establish that all learned repair directions are infeasible.
 
+## 2026-10-02 — repair revision and replay
+
+- Changed separation to stop immediately on an invalid solver callback and add cuts
+  within the remaining original deadline. Incumbent witnesses are now materialized
+  before crediting their timestamps; new records retain improvement events.
+- `profile_v3`: two strong states, regions 3/4/5, one-second repairs, no improvements.
+  `profile_v4`: two fresh strong states, regions 3/5/7, three-second repairs, no
+  improvements. These small probes neither prove infeasibility nor justify learning.
+- Full suite still **107 passed** after the repair change. Seven campaign tests also
+  passed after matching label/search configurations. Lint and formatting pass.
+- Installed the v1 source and exact locked dependencies into a **fresh virtual
+  environment**. Replayed a declared six-cell subset (first three locally certified
+  cells at each size), preserving original regions/seeds/one-second limits. All six
+  edge counts, local certificates, and complete witnesses matched; additionally
+  verified by explicit C4 enumeration. This is the same physical machine, not an
+  independent hardware replication or full timed study reproduction.
+- `research/c4-learned-repair` has been pushed with the first failed gate retained.
+- Next revision: freeze `feasibility_v2` with fresh seed offset 2,800,000, the revised
+  engine, region sizes 3/4/5, four candidates per family/size, and two seconds per
+  repair. At most 36 candidates per state (duplicates removed): <=2 local worker-hours
+  plus overhead. Keep the original 10/100 threshold, strong state rule, all 100 states,
+  all failure records, and independent witness verification. Do not train unless it
+  passes. If it passes, labels and validation search must use this same repair recipe.
+
 ## Hypotheses and risks
 
 1. Incident-edge regions can escape the polarity plateau under practical time limits.

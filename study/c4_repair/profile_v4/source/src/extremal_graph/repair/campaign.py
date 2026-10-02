@@ -86,13 +86,6 @@ def require_feasibility(directory: Path) -> None:
 
 def collect(args) -> None:
     require_feasibility(args.feasibility)
-    gate = verify_contract(args.feasibility)["protocol"]
-    if (
-        args.seconds != gate["repair_seconds"]
-        or args.per_family != gate["per_family"]
-        or list(args.region_sizes) != gate["region_sizes"]
-    ):
-        raise ValueError("collect labels with the region pool and limits that passed feasibility")
     sizes = TRAIN_SIZES if args.split == "train" else VALIDATION_SIZES
     protocol = {
         "stage": "collection",
@@ -191,17 +184,11 @@ def train(args) -> None:
         VALIDATION_SIZES
     ):
         raise ValueError("declared learning size panels required")
-    repair_configuration = {
-        key: training[key] for key in ["region_sizes", "per_family", "repair_seconds"]
-    }
-    if any(validation[key] != value for key, value in repair_configuration.items()):
-        raise ValueError("training and validation labels used different repair configurations")
     protocol = {
         "stage": "training",
         "families": ["gnn", "mlp"],
         "training_seeds": list(range(args.seed, args.seed + 8)),
         "epochs": args.epochs,
-        "repair_configuration": repair_configuration,
         "learning_rate": args.learning_rate,
         "data_sha256": sha(args.data / "results.jsonl"),
         "validation_data_sha256": sha(args.validation_data / "results.jsonl"),
@@ -278,13 +265,6 @@ def evaluate(args) -> None:
         )
     else:
         require_feasibility(args.feasibility)
-        learned_recipe = verify_contract(args.checkpoints)["protocol"]["repair_configuration"]
-        if (
-            args.repair_seconds != learned_recipe["repair_seconds"]
-            or args.per_family != learned_recipe["per_family"]
-            or list(args.region_sizes) != learned_recipe["region_sizes"]
-        ):
-            raise ValueError("end-to-end search must use the common repair recipe used for labels")
         config = SearchConfig(
             seconds=60,
             region_sizes=tuple(args.region_sizes),

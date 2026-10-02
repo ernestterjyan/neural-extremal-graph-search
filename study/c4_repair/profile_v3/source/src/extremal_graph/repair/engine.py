@@ -33,11 +33,6 @@ class RepairResult:
     def gain(self) -> int:
         return self.graph.m - self.initial_edges
 
-    def event_records(self) -> list[dict]:
-        return [
-            {k: v for k, v in event.items() if k != "completed_at"} for event in self.improvements
-        ]
-
 
 def repair(
     graph: Graph,

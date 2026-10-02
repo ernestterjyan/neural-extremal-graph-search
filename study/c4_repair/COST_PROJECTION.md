@@ -6,6 +6,7 @@ is €500; development effort and local research time are recorded separately.
 | Workload | Declared search time, single CPU worker |
 |---|---:|
 | One feasibility panel, 100 states × at most 18 regions × 1 s | at most 0.50 h, plus generation/verification |
+| Revised feasibility panel, 100 states × at most 36 regions × 2 s | at most 2.00 h, plus generation/verification |
 | Example labels, (6+5) sizes × 16 states × 18 regions × 1 s | at most 0.88 h, plus generation/verification |
 | End-to-end validation, 5 sizes × 8 blocks × 10 starts × 4 methods × 60 s | 26.67 h |
 | Controlled evaluation, 8 sizes × 8 blocks × 10 starts × 4 methods × 60 s | 42.67 h |

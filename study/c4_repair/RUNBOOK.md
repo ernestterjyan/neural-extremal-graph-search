@@ -46,6 +46,11 @@ These commands are blocked until a verified feasibility gate passes. The example
 data breadth is provisional development tuning; the final eight training seeds are
 mandatory. Train and validation sizes cannot be interchanged.
 
+Set collection `--seconds`, `--per-family` and `--region-sizes` to the exact values
+that passed feasibility; set validation `--repair-seconds`, `--per-family` and
+`--region-sizes` to that same recipe. The defaults below illustrate the first recipe,
+which failed and therefore does **not** authorize training.
+
 ```sh
 .venv/bin/python experiments/c4_repair.py collect --feasibility study/c4_repair/feasibility_NAME --split train --output study/c4_repair/labels_train_NAME --seed 4000000 --states-per-size 16
 .venv/bin/python experiments/c4_repair.py collect --feasibility study/c4_repair/feasibility_NAME --split validation --output study/c4_repair/labels_validation_NAME --seed 5000000 --states-per-size 16

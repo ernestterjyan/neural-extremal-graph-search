@@ -66,7 +66,6 @@ def profile(args) -> None:
                     "local_optimal": result.local_optimal,
                     "rounds": result.rounds,
                     "cuts": result.cuts,
-                    "incumbent_events": result.event_records(),
                     "edges": result.graph.edges(),
                 }
             )
@@ -178,7 +177,6 @@ def feasibility(args) -> None:
                             "local_optimal": outcome.local_optimal,
                             "rounds": outcome.rounds,
                             "cuts": outcome.cuts,
-                            "incumbent_events": outcome.event_records(),
                             "edges": outcome.graph.edges(),
                         }
                     )
@@ -281,16 +279,6 @@ def verify(args) -> list[dict]:
             repaired = Graph.from_edges(n, outcome["edges"])
             if outcome["gain"] != repaired.m - initial.m:
                 raise ValueError("repair gain mismatch")
-            if "incumbent_events" in outcome:
-                events = outcome["incumbent_events"]
-                for event in events:
-                    verify_witness(n, event["graph_edges"])
-                    if event["seconds"] > protocol["repair_seconds"] or event["edges"] != len(
-                        event["graph_edges"]
-                    ):
-                        raise ValueError("repair improvement outside its budget or count mismatch")
-                if max([initial.m, *[e["edges"] for e in events]]) != repaired.m:
-                    raise ValueError("repair result lacks a within-budget improvement event")
             outside = set(range(n)) - set(outcome["region"]["vertices"])
             if any(
                 initial.has(u, v) != repaired.has(u, v) for u in outside for v in outside if u < v
@@ -314,9 +302,6 @@ def verify(args) -> list[dict]:
                 )
                 if witness != expected_witness:
                     raise ValueError("checkpoint does not match the improvement history")
-        for start in record.get("starting_pool", record.get("pool", [])):
-            if isinstance(start.get("edges"), list):
-                verify_witness(n, start["edges"])
     if len(keys) != len(set(keys)):
         raise ValueError("duplicate experimental cells")
     if protocol["stage"] == "feasibility":
