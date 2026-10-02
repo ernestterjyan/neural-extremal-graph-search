@@ -373,3 +373,16 @@ does not establish that all learned repair directions are infeasible.
   verification. Paid cost €0. Any failure stops subsequent stages and is retained.
   Do not restart the whole script after interruption: inspect the handle and
   resume the actual incomplete stage using its archived source.
+
+## 2026-10-02 — launch real labels and training
+
+- Frozen label contracts and sequential plan committed/pushed before outcomes
+  (f624693). Started and confirmed execution handle **60924** live. Current
+  phase is training-label collection; later phases proceed sequentially only
+  after complete independent verification. All execution uses the archived source.
+- Temporary idle-sleep prevention is tied to the job lifetime; no permanent OS
+  preference or paid resource was changed. Expected label states: 96 train / 80
+  validation; later sixteen actual models and matched overhead/cost evidence.
+- No end-to-end validation or held-out search is included in this running sequence.
+  Poll its live handle rather than treating ACTIVE_RUN metadata as liveness proof.
+  No concurrent tests or second experiment/training process. Goal remains active.
