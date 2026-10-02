@@ -282,3 +282,26 @@ does not establish that all learned repair directions are infeasible.
    relaxations. Log rounds/cuts/status and retain the original feasible graph.
 4. Timed solver behavior varies with hardware. Freeze CPU concurrency and record
    initialization time, deadline overshoot, backend versions and source hashes.
+
+## 2026-10-02 — complete classical development tuning
+
+- All **96/96** frozen tuning cells completed. The original execution handle had
+  expired when revisited; retained lock metadata reports normal release and an OS
+  lock probe confirmed no worker remained. No run was restarted.
+- The independent full audit verified **745 graph occurrences**, no failed cells.
+  All 96 complete initial starting pools replayed from the archived source. This
+  replay does not reproduce timed search trajectories or elapsed performance.
+- All **162 tests pass**, including the eleven deferred provenance/input-replay
+  cases; repository-wide lint/format and diff checks pass. The passed feasibility
+  evidence still satisfies the strengthened guards.
+- The predeclared selection rule chooses **tabu/reactive_h5** (mean 96.000 edges
+  at 60s, tied with fixed_h5 but ahead at earlier checkpoints) and
+  **adaptive/explore_stagnation10** (mean 94.583; remaining tie resolved by ID).
+  These means pool n25/31/35/40 and describe tuning only, not unseen performance.
+- Retained all eight recipes, seed-level graphs, complete audit/replay sources,
+  SELECTION.json and TUNING_REPORT.md. Results SHA:
+  `0c7f97ee3a804ea4a27ef4829876afab4bec42996fd37bb954ce00907d0eeb33`.
+- Search time was 1.600 local hours, paid expenditure €0. Next: sixty-second
+  calibration using the selected recipe on the same development sizes/seeds,
+  then real label collection, eight-seed training and end-to-end validation.
+  No trained research model, learned benefit, held-out search or new bound yet.
