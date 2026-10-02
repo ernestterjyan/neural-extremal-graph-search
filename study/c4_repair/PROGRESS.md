@@ -81,6 +81,38 @@ does not establish that all learned repair directions are infeasible.
   all failure records, and independent witness verification. Do not train unless it
   passes. If it passes, labels and validation search must use this same repair recipe.
 
+## 2026-10-02 — independent audit and input replay
+
+- Added a separate standard-library auditor that imports no solver code. It checks
+  common-neighbor feasibility, complete cell/seed panels, source snapshots, fixed
+  complements, model identities, required search records and within-budget history.
+- Re-audited all first-panel evidence: **5/100 FAIL**, 2,297 graph occurrences,
+  527 claimed local certificates checked for status consistency. This is not an
+  independent optimality-proof audit; v1 predates incumbent-event timing records.
+- Replayed **all 100 v1 starting states and complete ordered candidate pools** from
+  archived source and seeds. Preserved replay and auditor dependencies with hashes.
+  Repair outcomes and timed performance were not rerun by this input-only check.
+- **19 new integrity/replay tests pass**. They include real archived development
+  inputs, a retained standalone replay, partial lines and deliberately omitted labels.
+  Full solver tests are deferred until the timed job ends to avoid concurrent load.
+- Identified the host as **Apple M5** through a permitted read and retained the
+  measurement separately. Already-sealed v2 metadata stays unchanged; the primary
+  freeze still needs a supported hardware-recording path.
+- Documented an incorrect strengthening comment: adjacent selected vertices can
+  still participate in C4s before lazy separation. Verified outputs remain feasible.
+- The stricter audit also disclosed equal-score final repair witnesses that differ
+  from the strict-improvement event graph. Frozen `accept()` permits this before the
+  deadline. The event graph proves the timed gain; the replacement is verified and
+  disclosed without assigning it the earlier graph's timestamp.
+- v2 remains live with unchanged source/protocol. At the completed **71-state**
+  audit: **22 improved** (n35:16, n40:6), no failures, 2,552 timed repair records,
+  2,962 graph occurrences checked. This is a partial panel and does not authorize
+  training. Numerical gate success alone will not establish escape from the best
+  construction plateau or any learned-search advantage.
+- Paid expenditure remains **€0**. Next: finish all 100 v2 states, retain its complete
+  independent audit/input replay and costs, then resolve the comparator, timing and
+  freeze gaps in `FORMULATION_AUDIT.md` before collecting/training research models.
+
 ## Hypotheses and risks
 
 1. Incident-edge regions can escape the polarity plateau under practical time limits.

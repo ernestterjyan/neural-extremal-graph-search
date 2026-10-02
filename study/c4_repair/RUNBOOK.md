@@ -32,6 +32,11 @@ as not improved and remain in the evidence. Pass requires at least 10 of 100 sta
 If it fails, revise the repair neighborhoods/limits on development evidence and run
 a separately frozen, clearly identified gate. Do not train around a failed gate.
 
+Before authorizing downstream work, run the separate standard-library audit and
+deterministic input replay with new retained output files, as described in
+`EVIDENCE_AUDIT.md`. Witness feasibility, input completeness, local optimality and
+wall-clock reproduction are distinct checks; do not describe one as proving another.
+
 Every batch contains its protocol, environment, source hashes and a source snapshot.
 If interrupted without source changes, feasibility resumes completed cells. To resume
 an old batch after changing source, use its snapshot with its own `src` on PYTHONPATH:

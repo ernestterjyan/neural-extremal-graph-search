@@ -1,0 +1,27 @@
+{
+  "auditor_sha256": "8561094f1a0a5079560d011d9d2d493e9905f89935d0adbf63beba4466a65fcd",
+  "claimed_local_certificates_checked": 527,
+  "complete_panel": true,
+  "eligible_for_inference": false,
+  "expected_records": 100,
+  "failed_records": [],
+  "feasibility_passed": false,
+  "improved_states_by_size": {
+    "35": 1,
+    "40": 4
+  },
+  "legacy_timing_records": 1797,
+  "limitations": [
+    "Set-based witness checks, not a separate CP optimality proof checker.",
+    "Stored monotonic timestamps are checked for consistency, not externally remeasured."
+  ],
+  "local_certificates_independently_proved": false,
+  "protocol_sha256": "cc5383d918ab9f575003912d363e9618b428c1506d4f7554c4e44c49bf6e698f",
+  "records": 100,
+  "results_sha256": "760c2aab96efb23d2f0eac608fb6ee13e6d096295d18624b5b32e034f60992f8",
+  "source_sha256": "0056e529e14cd8668c9e0c6333c669f090135cee0600a9baefd66d577e350430",
+  "stage": "feasibility",
+  "timed_repair_records": 0,
+  "unfinished_line_bytes": 0,
+  "verified_graphs": 2297
+}

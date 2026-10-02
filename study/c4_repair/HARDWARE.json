@@ -1,0 +1,12 @@
+{
+  "measured_at_utc": "2026-10-02 12:14:50 UTC",
+  "cpu_model": "Apple M5",
+  "architecture": "arm64",
+  "logical_cpus": 10,
+  "platform": "macOS-27.0-arm64-arm-64bit",
+  "cpu_model_measurement": "sysctl -n machdep.cpu.brand_string, permitted read on the research host",
+  "other_fields_source": "feasibility_v2 environment metadata",
+  "same_machine_as_feasibility_v2": true,
+  "cpu_affinity_enforced": false,
+  "fixed_clock_frequency_enforced": false
+}
