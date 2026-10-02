@@ -6,7 +6,7 @@
   "log": "study/c4_repair/tuning_v1/run.log",
   "next_action": "Poll the same live handle; after terminal completion test pending replay guards, audit/replay all 96 cells, retain selection, run the 36-search 60s development calibration, then collect/train.",
   "paid_eur": 0.0,
-  "pending_software_tests": 6,
+  "pending_software_tests": 11,
   "protocol_sha256": "5651469eaebfe3269ef95ea06a913ae93be8810737bf23662c54d7b234fd26c0",
   "retained_audited_prefix_cells": 16,
   "source_commit": "ab684ea",

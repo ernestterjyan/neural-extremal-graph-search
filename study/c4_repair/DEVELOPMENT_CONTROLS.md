@@ -104,7 +104,7 @@ smoke does not establish its sixty-second performance. Keep its scope separate
 from learned-model validation and the untouched evaluation panel.
 
 Input replay is being extended to complete starting pools from timed search and
-the selector profile's ordered candidates. The additional six tests await the end
+the selector profile's ordered candidates. The additional six replay tests await the end
 of the timed job; formatting/lint pass. Replay explicitly does not rerun timed
 trajectories or certify performance reproduction. The stricter production guard
 checks every cell rather than accepting summary flags alone, and the evaluation
@@ -114,3 +114,7 @@ The [Afzaly–McKay table](https://users.cecs.anu.edu.au/~bdm/data/extremal.html
 2026-10-02, gives exact C4-only values n25:63, n31:90, n35:106 and n40:127. Its graph
 counts and edge counts are distinct; a ≥ on the graph count does not make the edge
 count a lower bound. Do not download target-size witnesses for controlled starting pools.
+
+Checkpoint panels additionally bind the serialized family/seed/architecture to
+the declared rows and require eight distinct integer seeds. Five additional tests
+use untrained fixtures; these tests await the end of the timed worker too.

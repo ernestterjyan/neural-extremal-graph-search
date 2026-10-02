@@ -244,6 +244,22 @@ does not establish that all learned repair directions are infeasible.
   The complete tuning panel must finish and be audited before parameter selection,
   labels/training and end-to-end validation. Held-out sizes remain untouched.
 
+## 2026-10-02 — bind checkpoint panel identities
+
+- Reviewed checkpoint provenance while the archived tuning worker remained live.
+  Added checks binding each binary checkpoint header to its declared family,
+  architecture and training seed; declared seeds must be eight distinct integers.
+  Matching a byte hash alone does not establish model/seed identity.
+- Added five tests using explicitly untrained binary fixtures: valid header binding,
+  hash-matching files with wrong seed/family/architecture, and duplicate declared
+  seed rejection. They establish no trained model or search-performance result.
+- Eleven added test cases now await the end of timed tuning; lint/formatting pass.
+  No local test or second solver workload has run concurrently with it. The seven
+  repair/classical/tuning source files remain byte-identical to the frozen contract.
+- GitHub confirms the earlier research branch PR11 was merged. Its passing CI
+  covered commit 177f974, not these later changes. No new CI or paid resource was
+  launched to avoid making that old success stand in for pending verification.
+
 ## Hypotheses and risks
 
 1. Incident-edge regions can escape the polarity plateau under practical time limits.

@@ -34,7 +34,7 @@ from .evidence import (
 from .graph import Graph, greedy_fill, verify_witness
 from .regions import candidate_regions
 from .search import SearchConfig, neighborhood_search, tabu_search
-from .selectors import model_selector
+from .selectors import RegionGNN, RegionMLP, model_selector
 from .training import load_model, train_family
 
 
@@ -248,6 +248,8 @@ def checkpoint_manifest(directory: Path) -> list[dict]:
     expected = {(family, seed) for family in ["gnn", "mlp"] for seed in seeds}
     if (
         len(seeds) != 8
+        or len(set(seeds)) != 8
+        or any(type(seed) is not int for seed in seeds)
         or len(models) != 16
         or {(m["family"], m["seed"]) for m in models} != expected
     ):
@@ -256,6 +258,20 @@ def checkpoint_manifest(directory: Path) -> list[dict]:
         path = directory / model["family"] / str(model["seed"]) / "best.pt"
         if sha(path) != model["checkpoint_sha256"]:
             raise ValueError("training checkpoint was changed")
+        header = torch.load(path, map_location="cpu", weights_only=True)
+        architecture = {"gnn": RegionGNN.architecture, "mlp": RegionMLP.architecture}[
+            model["family"]
+        ]
+        if (
+            header.get("family") != model["family"]
+            or type(header.get("seed")) is not int
+            or header["seed"] != model["seed"]
+            or header.get("architecture") != architecture
+            or model["architecture"] != architecture
+        ):
+            raise ValueError(
+                "checkpoint family, training seed or architecture differs from its panel"
+            )
         if (
             model["train_results_sha256"] != contract["protocol"]["data_sha256"]
             or model["validation_results_sha256"] != contract["protocol"]["validation_data_sha256"]
