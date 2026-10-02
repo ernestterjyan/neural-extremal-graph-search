@@ -16,12 +16,24 @@
     "stage": "completed_validation_labels"
   },
   "last_validation_observation": {
-    "completed_searches_at_least": 1,
+    "completed_group": {
+      "block": 0,
+      "methods": [
+        "gnn",
+        "mlp",
+        "adaptive",
+        "tabu"
+      ],
+      "n": 22,
+      "paired_starts": 10,
+      "searches": 40
+    },
+    "completed_searches_at_least": 40,
     "counts_are_snapshot_only": true,
     "liveness_evidence": "Execution handle 98945 returned still-running.",
-    "observed_at_utc": "2026-10-02T20:45:11.173715+00:00",
+    "observed_at_utc": "2026-10-02T21:24:11.408444+00:00",
     "stage": "end_to_end_validation",
-    "startup_log": "0 22 0 gnn 52 complete"
+    "verification_scope": "Stage-log completion checks only; full independent witness audit and input replay follow the entire panel."
   },
   "next_action": "Poll actual execution session 98945; inspect validation_v1_run.log and validation_sequence_v1.log. Complete all 1600 searches sequentially, then audit/replay/report costs and apply the unchanged learning gate. No concurrent heavy job and no held-out or record search. Do not restart RUN_VALIDATION_v1.sh after interruption; inspect and resume the incomplete stage from the frozen archived source.",
   "paid_eur": 0.0,
@@ -41,5 +53,5 @@
   "status": "running",
   "validation_protocol_sha256": "84a4479fbc241a8dfd9b964c527dcc3229097c3281c5b7979428767f80e68596",
   "validation_source_sha256": "13dfb0462b19f14913184fc98c10d234c6c66ea247d9efb1dc4899b66b16eafb",
-  "verified_live": "Unified execution session 98945 returned still-running at 2026-10-02T20:45:11.173715+00:00. Re-poll this handle for current liveness."
+  "verified_live": "Unified execution session 98945 returned still-running immediately before the 2026-10-02T21:24:11.408444+00:00 handoff. Re-poll the handle for current liveness."
 }
