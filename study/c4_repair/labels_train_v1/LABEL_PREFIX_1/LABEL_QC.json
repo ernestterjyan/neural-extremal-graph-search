@@ -1,0 +1,72 @@
+{
+  "all_inputs_replayed": true,
+  "by_state_type": {
+    "best": {
+      "informative_ranking_states": 0,
+      "initial_edge_counts": {
+        "46": 3
+      },
+      "positive_outcomes": 0,
+      "repair_outcomes": 108,
+      "states": 3
+    },
+    "extend": {
+      "informative_ranking_states": 3,
+      "initial_edge_counts": {
+        "41": 1,
+        "42": 1,
+        "43": 1
+      },
+      "positive_outcomes": 75,
+      "repair_outcomes": 107,
+      "states": 3
+    },
+    "perturbed best": {
+      "informative_ranking_states": 2,
+      "initial_edge_counts": {
+        "42": 1,
+        "43": 1
+      },
+      "positive_outcomes": 60,
+      "repair_outcomes": 72,
+      "states": 2
+    },
+    "trim": {
+      "informative_ranking_states": 0,
+      "initial_edge_counts": {
+        "46": 3
+      },
+      "positive_outcomes": 0,
+      "repair_outcomes": 108,
+      "states": 3
+    },
+    "uniform": {
+      "informative_ranking_states": 3,
+      "initial_edge_counts": {
+        "38": 1,
+        "39": 1,
+        "40": 1
+      },
+      "positive_outcomes": 107,
+      "repair_outcomes": 107,
+      "states": 3
+    }
+  },
+  "completed_states": 14,
+  "declared_training_states": 96,
+  "gain_histogram": {
+    "0": 260,
+    "1": 107,
+    "2": 58,
+    "3": 49,
+    "4": 24,
+    "5": 4
+  },
+  "informative_ranking_states": 8,
+  "positive_outcomes": 242,
+  "repair_outcomes": 502,
+  "results_sha256": "10f7ca07dbe647dc60f2b915a4bc80ef09c6be7eb03462db6982002edb4b9ce3",
+  "scope": "partial supervised labels at already-observed development sizes; no trained model or search-performance result",
+  "source_sha256": "13dfb0462b19f14913184fc98c10d234c6c66ea247d9efb1dc4899b66b16eafb",
+  "verified_graph_occurrences": 987
+}

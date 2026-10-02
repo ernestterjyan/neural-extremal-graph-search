@@ -386,3 +386,25 @@ does not establish that all learned repair directions are infeasible.
 - No end-to-end validation or held-out search is included in this running sequence.
   Poll its live handle rather than treating ACTIVE_RUN metadata as liveness proof.
   No concurrent tests or second experiment/training process. Goal remains active.
+
+## 2026-10-02 — first actual label-quality evidence
+
+- Confirmed sequence handle **60924** live; the training collection advanced
+  through n20 states. It was not restarted, and no concurrent solver/test ran.
+- Retained an immutable **14/96 training-state prefix**, separately from the live
+  journal. Independent set-based audit checked **987 graph occurrences** and
+  **502 repair outcomes**, with no failures; all 14 generated states and complete
+  ordered candidate pools replayed from the archived source.
+- **242 outcomes improve their original state**, and **8/14 states have differing
+  region gains**, providing actual ranking signal. This is partial n20 data, not
+  a trained selector or an end-to-end performance result. State-mix stratification
+  is retained; improvements to weak starts must not be confused with improving
+  the strongest construction. Seventeen equal-score replacements have no strict
+  gain event and are disclosed by the audit. Solver-local optimal flags are not
+  independently certified global optima.
+- Prefix results SHA
+  `10f7ca07dbe647dc60f2b915a4bc80ef09c6be7eb03462db6982002edb4b9ce3`;
+  source remains `13dfb0462b19f14913184fc98c10d234c6c66ea247d9efb1dc4899b66b16eafb`.
+- Keep the fixed 96/80 labels, eight seeds per family and later validation panel.
+  Partial-label costs are not double-counted; the sequence books completed stage
+  costs once. Paid resources remain €0; held-out sizes remain untouched.
