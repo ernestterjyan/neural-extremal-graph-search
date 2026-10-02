@@ -358,3 +358,18 @@ does not establish that all learned repair directions are infeasible.
 - Next: actual labels, eight independent training seeds per learned family,
   matched trained inference profile, and the full end-to-end learning gate.
   Held-out sizes remain untouched; the campaign remains active.
+
+## 2026-10-02 — freeze actual label/training sequence
+
+- Prepared source/seed/recipe contracts before outcomes for **96 training states**
+  and **80 validation-label states**. Both use source SHA
+  `13dfb0462b19f14913184fc98c10d234c6c66ea247d9efb1dc4899b66b16eafb`,
+  which passed 179 software tests. Recipe remains r3/4/5, four draws, 2s per repair.
+- Retained a single sequential launch script and its hash: collect/audit/replay
+  each split; train eight independent seeds per family for 30 epochs; profile
+  all actual checkpoints against adaptive selection; audit/replay and report
+  costs. No end-to-end validation or held-out experiment is included in this job.
+- Max nominal label budget is 3.52 local hours plus preprocessing, training and
+  verification. Paid cost €0. Any failure stops subsequent stages and is retained.
+  Do not restart the whole script after interruption: inspect the handle and
+  resume the actual incomplete stage using its archived source.

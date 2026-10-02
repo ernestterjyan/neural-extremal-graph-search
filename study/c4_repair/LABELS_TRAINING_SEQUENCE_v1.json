@@ -1,0 +1,18 @@
+{
+  "concurrency": "one stage at a time; host-wide experiment lease",
+  "end_to_end_validation_searches": 0,
+  "held_out_searches": 0,
+  "order": [
+    "96 training label states",
+    "independent audit/input replay",
+    "80 validation label states",
+    "independent audit/input replay",
+    "eight GNN and eight MLP models, 30 epochs",
+    "matched trained selection profile, audit/replay",
+    "cost and label diagnostics"
+  ],
+  "paid_eur": 0.0,
+  "resume_policy": "Never rerun this whole sequence blindly; inspect the live handle and resume only the incomplete stage from its archived source.",
+  "script_sha256": "dde45e9afbe750c14458a5915bd1031af01c801fa06136b44001bd5f01be8cf1",
+  "source_sha256": "13dfb0462b19f14913184fc98c10d234c6c66ea247d9efb1dc4899b66b16eafb"
+}
