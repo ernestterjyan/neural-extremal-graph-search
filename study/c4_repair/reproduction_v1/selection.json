@@ -1,0 +1,38 @@
+{
+  "selection_rule": "First three locally certified repair cells in recorded order at each development size, declared before rerun",
+  "cells": [
+    {
+      "n": 35,
+      "replication": 0,
+      "region_index": 0
+    },
+    {
+      "n": 35,
+      "replication": 0,
+      "region_index": 1
+    },
+    {
+      "n": 35,
+      "replication": 0,
+      "region_index": 2
+    },
+    {
+      "n": 40,
+      "replication": 0,
+      "region_index": 0
+    },
+    {
+      "n": 40,
+      "replication": 0,
+      "region_index": 1
+    },
+    {
+      "n": 40,
+      "replication": 0,
+      "region_index": 2
+    }
+  ],
+  "original_results_sha256": "760c2aab96efb23d2f0eac608fb6ee13e6d096295d18624b5b32e034f60992f8",
+  "source_contract_sha256": "6e1c14d363e361155e8f976d0f009ffde18bce0b98ad9275d110a0f6dae8f8ff",
+  "configuration_rule": "same original region, seed, and one-second repair limit; no configuration changes"
+}

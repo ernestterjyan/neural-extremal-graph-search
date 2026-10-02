@@ -351,7 +351,6 @@ dependencies = [
 [package.optional-dependencies]
 dev = [
     { name = "hypothesis" },
-    { name = "ortools" },
     { name = "pytest" },
     { name = "pytest-cov" },
     { name = "ruff" },
@@ -366,7 +365,6 @@ requires-dist = [
     { name = "matplotlib", specifier = ">=3.9,<4" },
     { name = "networkx", specifier = ">=3.3,<4" },
     { name = "numpy", specifier = ">=2.0,<3" },
-    { name = "ortools", marker = "extra == 'dev'", specifier = ">=9.12,<10" },
     { name = "ortools", marker = "extra == 'repair'", specifier = ">=9.12,<10" },
     { name = "pandas", specifier = ">=2.2,<4" },
     { name = "pytest", marker = "extra == 'dev'", specifier = ">=8.2,<10" },

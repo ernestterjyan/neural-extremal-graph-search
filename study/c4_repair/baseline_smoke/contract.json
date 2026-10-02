@@ -1,0 +1,60 @@
+{
+  "environment": {
+    "cpu_workers": 1,
+    "machine": "arm64",
+    "packages": {
+      "networkx": "3.6.1",
+      "numpy": "2.5.1",
+      "ortools": "9.15.6755",
+      "torch": "2.13.0"
+    },
+    "pid": 5062,
+    "platform": "macOS-27.0-arm64-arm-64bit",
+    "processor": "arm",
+    "python": "3.12.13"
+  },
+  "git_commit": "55f2af2a8160bb525231b0736e80091c4b69c006",
+  "protocol": {
+    "configuration": {
+      "per_family": 2,
+      "region_sizes": [
+        3,
+        5,
+        7
+      ],
+      "repair_seconds": 1.0,
+      "seconds": 2.0,
+      "stagnation_repairs": 10,
+      "tabu_penalty": 1.0,
+      "tabu_restart_iterations": 400,
+      "tabu_tenure_max": 15,
+      "tabu_tenure_min": 7
+    },
+    "methods": [
+      "tabu",
+      "adaptive"
+    ],
+    "replications": 1,
+    "seed_offset": 910000,
+    "sizes": [
+      20,
+      35,
+      40
+    ],
+    "stage": "development_baseline"
+  },
+  "protocol_sha256": "2bcaa542acce7d415b3cdbcd26638ecd0fa4855861a3145637832bfb2186e15a",
+  "source": {
+    "experiments/c4_repair.py": "df096d331fa94441361b00476f5beb2215ba4f94e6431c5bceda2105cdc0d1fa",
+    "pyproject.toml": "698a48105b809be3a600c5e1c558d6681eb8145165989514519d77a2d3d69d5d",
+    "src/extremal_graph/repair/__init__.py": "c595ca86175a2a3913af85a2cbe89de3ab013523e7fe76a59c0da7fa042fdcd1",
+    "src/extremal_graph/repair/constructions.py": "b9127fc7266fe65185ce9e3036a9d10b4d1866ddba5731c4dec969eaf9eeac43",
+    "src/extremal_graph/repair/engine.py": "7ffd3bd2b8d6ea944cfab5bbbe6e61c70cef6614632d944eeaea5556eec80c42",
+    "src/extremal_graph/repair/evidence.py": "ad7b9a5a58198a7bf10ce7b92c62b39aa7d35edc063c52a807936918a7ebc255",
+    "src/extremal_graph/repair/graph.py": "3462384e00f5af740c230a4613bf6c6df96e535667d9bf884b13f3e201a3c52d",
+    "src/extremal_graph/repair/regions.py": "e1668549f03ab1f94fcfa9e496a0e8b7163fa62ff1261ee687b5b5b6f0a965b4",
+    "src/extremal_graph/repair/search.py": "0a04282f989ceeeae0018e744d1502b618814fe19a57fca5e17727db2881ecee",
+    "uv.lock": "2a3abac36fef8816ef27eb11b9877452a794c406a8601cbf98971d0faf443d3a"
+  },
+  "source_sha256": "e7b724de054de19d374177187094530b53fe613923844d51aa72c5427f79a62a"
+}
