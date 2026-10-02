@@ -316,3 +316,45 @@ does not establish that all learned repair directions are infeasible.
   cells, reject changed runtime and reject duplicate cells. Full suite: **166
   passed**; repository-wide lint and diff checks pass. Classical search, candidate
   pool and repair engine remain unchanged from the completed tuning.
+
+## 2026-10-02 — launch development calibration
+
+- Committed/pushed calibration source and protocol before outcomes (8d1cd24).
+  Running its archived source through verified execution handle **77296**: 36
+  paired sixty-second searches at n25/31/35/40, three seeds, random region
+  selection / construction / simple repair, using the retained tuning recipe.
+- Source SHA `661c9bd5623d06724372713a0a27a85622b2deb3639ece33d8580e7685918816`;
+  protocol SHA `aad2262b1217b71fdc0941ee66fdf9feae09c9d3422e1725ec1165d83fc7159e`.
+  One local Apple M5 worker, projected 0.60 hours, paid cost €0.
+- No concurrent tests, model training or second solver workload. The recorded
+  handle must be polled before any restart; complete verification precedes labels.
+
+## 2026-10-02 — verified calibration and final-stage software
+
+- Development calibration completed **36/36** cells (execution handle 77296
+  exited 0): independent audit checked **267 graph occurrences**, no failures.
+  All initial pools replayed and exactly match their corresponding tuning pools.
+  Retained full source, results, log, audit/replay programs, summary and report.
+- Mean final edges over n25/31/35/40: construction **95.000**, simple repair
+  **94.917**, random region selection **94.583**. Tuned tabu had **96.000**
+  and adaptive **94.583** on the paired development seeds. These are descriptive
+  development results, not trained-model replication or held-out inference.
+- Simple repair reaches 103 edges in two n35 draws, while construction stays 102;
+  tabu already reaches known optimum 106. No new bound or learned benefit.
+- Calibration used 0.600 local hours, €0 paid. Results SHA:
+  `2d0d52b99c17f2c79e60c0c4790ed143b72a28dabb6ff2f995a9b57447a8ab6c`.
+- Added the prospectively fixed twelve-cell reproduction subset to future
+  controlled protocols, with a distinct locked-environment runner. It verifies
+  unchanged source/models, charges loading to timed search, retains discrepancies
+  and explicitly distinguishes fresh software environment from separate hardware.
+- Added matched cached-selection profiling of all sixteen future checkpoints
+  against adaptive choice and separate training/label/tuning cost reporting.
+  Thirty decisions per search is a declared conditional inference-only scenario;
+  zero/negative savings mean no finite recovery count. This cannot replace the
+  end-to-end quality target or prove acceleration.
+- **179 tests pass**, including thirteen new reproduction/cost cases. Their mock
+  binaries are untrained software fixtures, not research models. Repository-wide
+  lint/format/diff checks pass. Core repair/classical machinery remains unchanged.
+- Next: actual labels, eight independent training seeds per learned family,
+  matched trained inference profile, and the full end-to-end learning gate.
+  Held-out sizes remain untouched; the campaign remains active.

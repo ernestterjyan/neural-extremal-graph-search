@@ -10,12 +10,14 @@ import os
 import platform
 import shutil
 import subprocess
+import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[3]
 TRAIN_SIZES = (20, 24, 28, 32, 36, 40)
 VALIDATION_SIZES = (22, 26, 30, 34, 38)
 EVALUATION_SIZES = (44, 48, 52, 56, 64, 72, 80, 96)
+REPRODUCTION_SIZES = {"validation": (22, 30, 38), "evaluation": (44, 64, 96)}
 
 
 def sha(path: Path) -> str:
@@ -49,6 +51,8 @@ def environment() -> dict:
         "machine": platform.machine(),
         "processor": platform.processor(),
         "python": platform.python_version(),
+        "python_executable": str(Path(sys.executable).resolve()),
+        "python_prefix": str(Path(sys.prefix).resolve()),
         "cpu_workers": 1,
         "hardware": {
             "cpu_model": cpu_model,

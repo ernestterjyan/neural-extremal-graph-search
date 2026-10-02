@@ -1,0 +1,38 @@
+{
+  "methods": {
+    "construction": {
+      "complete": 12,
+      "failed": 0,
+      "mean_edges_by_size": {
+        "25": 63,
+        "31": 90,
+        "35": 102,
+        "40": 125
+      },
+      "mean_final_edges": 95
+    },
+    "random": {
+      "complete": 12,
+      "failed": 0,
+      "mean_edges_by_size": {
+        "25": 63,
+        "31": 90,
+        "35": 101.33333333333333,
+        "40": 124
+      },
+      "mean_final_edges": 94.58333333333333
+    },
+    "simple_repair": {
+      "complete": 12,
+      "failed": 0,
+      "mean_edges_by_size": {
+        "25": 63,
+        "31": 90,
+        "35": 102.66666666666667,
+        "40": 124
+      },
+      "mean_final_edges": 94.91666666666667
+    }
+  },
+  "scope": "development calibration; not a controlled learned comparison"
+}

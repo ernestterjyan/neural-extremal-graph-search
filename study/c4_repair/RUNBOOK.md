@@ -45,23 +45,33 @@ an old batch after changing source, use its snapshot with its own `src` on PYTHO
 PYTHONPATH=study/c4_repair/feasibility_NAME/source/src .venv/bin/python study/c4_repair/feasibility_NAME/source/experiments/c4_repair.py feasibility --batch study/c4_repair/feasibility_NAME
 ```
 
-## 3. Collect supervised outcomes and train
+## 3. Finish development controls, collect outcomes and train
 
 These commands are blocked until a verified feasibility gate passes. The example
 data breadth is provisional development tuning; the final eight training seeds are
 mandatory. Train and validation sizes cannot be interchanged.
 
-Set collection `--seconds`, `--per-family` and `--region-sizes` to the exact values
-that passed feasibility; set validation `--repair-seconds`, `--per-family` and
-`--region-sizes` to that same recipe. The defaults below illustrate the first recipe,
-which failed and therefore does **not** authorize training.
+The completed gate is `feasibility_v2`: region sizes 3/4/5, four candidates per
+family/size and two seconds per repair. Collection must use exactly that recipe.
+Do not use the original one-second defaults, whose feasibility panel failed.
+
+Classical tuning is retained in `tuning_v1/SELECTION.json`. Development calibration
+is separately frozen before outcomes and runs from that archived source:
 
 ```sh
-.venv/bin/python experiments/c4_repair.py collect --feasibility study/c4_repair/feasibility_NAME --split train --output study/c4_repair/labels_train_NAME --seed 4000000 --states-per-size 16
-.venv/bin/python experiments/c4_repair.py collect --feasibility study/c4_repair/feasibility_NAME --split validation --output study/c4_repair/labels_validation_NAME --seed 5000000 --states-per-size 16
+.venv/bin/python experiments/c4_repair.py prepare-baseline --configuration study/c4_repair/tuning_v1/SELECTION.json --output study/c4_repair/development_calibration_NAME --sizes 25 31 35 40 --replications 3 --seed 10000000 --methods random construction simple_repair
+PYTHONPATH=study/c4_repair/development_calibration_NAME/source/src .venv/bin/python study/c4_repair/development_calibration_NAME/source/experiments/c4_repair.py run-baseline --batch study/c4_repair/development_calibration_NAME
+```
+
+Retain its complete audit and input replay before proceeding. A resume skips failed
+cells but does not hide them or authorize treating an incomplete study as complete.
+
+```sh
+.venv/bin/python experiments/c4_repair.py collect --feasibility study/c4_repair/feasibility_v2 --split train --output study/c4_repair/labels_train_NAME --seed 4000000 --states-per-size 16 --region-sizes 3 4 5 --per-family 4 --seconds 2
+.venv/bin/python experiments/c4_repair.py collect --feasibility study/c4_repair/feasibility_v2 --split validation --output study/c4_repair/labels_validation_NAME --seed 5000000 --states-per-size 16 --region-sizes 3 4 5 --per-family 4 --seconds 2
 .venv/bin/python experiments/c4_repair.py verify --batch study/c4_repair/labels_train_NAME
 .venv/bin/python experiments/c4_repair.py verify --batch study/c4_repair/labels_validation_NAME
-.venv/bin/python experiments/c4_repair.py train --feasibility study/c4_repair/feasibility_NAME --data study/c4_repair/labels_train_NAME --validation-data study/c4_repair/labels_validation_NAME --output study/c4_repair/models_NAME --seed 6000000 --epochs 30
+.venv/bin/python experiments/c4_repair.py train --feasibility study/c4_repair/feasibility_v2 --data study/c4_repair/labels_train_NAME --validation-data study/c4_repair/labels_validation_NAME --output study/c4_repair/models_NAME --seed 6000000 --epochs 30
 ```
 
 The label target is improvement actually obtained within the common repair limit,
@@ -70,10 +80,23 @@ rank the same candidate pools. Eight independent initialization/shuffling seeds
 are used for each family. Common training data do not provide eight independent
 datasets; the declared replicates are trained models.
 
+The `train` stage requires complete independent audits and input replay for both
+label batches. Record each batch's actual elapsed cost once. Fit all sixteen
+models, record their preprocessing/training costs, then profile cached selection:
+
+```sh
+.venv/bin/python experiments/c4_repair_trained_profile.py --checkpoints study/c4_repair/models_NAME --configuration study/c4_repair/tuning_v1/SELECTION.json --output study/c4_repair/trained_profile_NAME
+```
+
+After auditing and replaying that profile, `c4_repair_cost_report.py` consumes the
+checkpoint panel, profile and cost ledger. Its fixed thirty-decision scenario
+cannot replace observed end-to-end performance. Report no finite inference-only
+break-even when learned selection does not save latency.
+
 ## 4. End-to-end learning gate
 
 ```sh
-.venv/bin/python experiments/c4_repair.py evaluate --split validation --feasibility study/c4_repair/feasibility_NAME --checkpoints study/c4_repair/models_NAME --output study/c4_repair/validation_NAME
+.venv/bin/python experiments/c4_repair.py evaluate --split validation --feasibility study/c4_repair/feasibility_v2 --configuration study/c4_repair/tuning_v1/SELECTION.json --checkpoints study/c4_repair/models_NAME --output study/c4_repair/validation_NAME
 .venv/bin/python experiments/c4_repair.py report --batch study/c4_repair/validation_NAME
 ```
 
@@ -115,7 +138,25 @@ Recheck the current literature, document which lower bound and date are exceeded
 and verify the candidate with the independent set-based common-neighbor checker
 and explicit C4 enumeration. A new witness proves a lower bound, not exact optimality.
 
-Reproduce a declared subset in a second environment using the source/lock snapshot.
+Reproduce the prospectively declared subset in a second environment using the
+reference's source/lock snapshot. Validation uses block 0 / starting replicate 0,
+all four methods, n22/30/38; evaluation uses the same block/replicate at n44/64/96.
+Each subset contains twelve sixty-second searches. The reference must already be
+complete, independently audited and input-replayed. Use a distinct Python prefix
+with the original locked package versions. Executing against the reference source
+is mandatory, even if the live repository has changed:
+
+```sh
+PYTHONPATH=study/c4_repair/REFERENCE/source/src /path/to/fresh-environment/bin/python study/c4_repair/REFERENCE/source/experiments/c4_repair_reproduce.py prepare --reference study/c4_repair/REFERENCE --checkpoints study/c4_repair/models_NAME --output study/c4_repair/reproduction_NAME
+PYTHONPATH=study/c4_repair/reproduction_NAME/source/src /path/to/fresh-environment/bin/python study/c4_repair/reproduction_NAME/source/experiments/c4_repair_reproduce.py run --batch study/c4_repair/reproduction_NAME --checkpoints study/c4_repair/models_NAME
+```
+
+Retain a complete independent audit and input replay before the reproduction
+`report` stage. It compares all declared cells and explicitly enumerates C4s in
+every final graph. Timed trajectories may vary; report checkpoint/witness
+discrepancies. A fresh environment on the same physical CPU is not independent
+hardware. Reproduction cannot authorize a new gate or replace the primary panel.
+
 Record deterministic work-limit replay separately from timed replay. Report all
 failures, source/checkpoint hashes, seed-level outcomes, graph witnesses, paid and
 local costs, and training/tuning break-even where supported. Write claims matching

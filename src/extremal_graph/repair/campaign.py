@@ -17,6 +17,7 @@ from .controls import balanced_method_order
 from .engine import repair
 from .evidence import (
     EVALUATION_SIZES,
+    REPRODUCTION_SIZES,
     TRAIN_SIZES,
     VALIDATION_SIZES,
     append_record,
@@ -342,6 +343,21 @@ def evaluate(args) -> None:
             "configuration": asdict(config),
             "method_order": "seeded permutation per size/replication; rotate across blocks",
             "tuning_selection_sha256": sha(args.configuration),
+            "reproduction_subset": {
+                "block": 0,
+                "replication": 0,
+                "sizes": list(REPRODUCTION_SIZES["validation"]),
+                "methods": ["gnn", "mlp", "adaptive", "tabu"],
+            },
+            "cost_analysis": {
+                "matched_profile_sizes": [20, 35, 40],
+                "profile_repetitions": 20,
+                "profile_warmups": 1,
+                "profile_seed_offset": 12000000,
+                "inference_only_decisions_per_search_scenario": 30,
+                "nonpositive_latency_saving": "no finite inference-only recovery count",
+                "scope": "conditional cached-selection cost; cannot replace end-to-end quality",
+            },
         }
     contract = prepare_or_resume(args.output, protocol)
     path = args.output / "results.jsonl"
@@ -460,6 +476,12 @@ def freeze(args) -> None:
         "stage": "evaluation",
         "sizes": list(EVALUATION_SIZES),
         "seed_offset": 17000000,
+        "reproduction_subset": {
+            "block": 0,
+            "replication": 0,
+            "sizes": list(REPRODUCTION_SIZES["evaluation"]),
+            "methods": ["gnn", "mlp", "adaptive", "tabu"],
+        },
         "analysis": {
             "primary_seconds": 60,
             "secondary_seconds": [1, 10],

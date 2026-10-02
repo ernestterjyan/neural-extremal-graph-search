@@ -1,0 +1,9 @@
+{
+  "diff_check": "pass",
+  "ruff_check": "repository-wide pass",
+  "ruff_format": "173 files pass",
+  "scope": "software verification; mocked checkpoint fixtures are untrained and establish no research result",
+  "source_sha256": "13dfb0462b19f14913184fc98c10d234c6c66ea247d9efb1dc4899b66b16eafb",
+  "test_seconds": 48.84,
+  "tests_passed": 179
+}

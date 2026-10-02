@@ -54,6 +54,11 @@ selection, shared timed calibration, balanced method order, and a host-wide
 process lease. See `DEVELOPMENT_CONTROLS.md` for the classical tuning contract.
 There are no trained research selectors or controlled validation results yet.
 
+Classical tuning is complete: 96 verified searches selected reactive tenure-5
+tabu and adaptive selection with 40% exploration by the predeclared rule. See
+`tuning_v1/TUNING_REPORT.md`; these are development choices. The subsequent
+36-search, sixty-second calibration is running from its committed source snapshot.
+
 ## Next stages
 
 Run commands from the repository root using its locked environment. All timed jobs
@@ -79,6 +84,24 @@ snapshot for each batch and use that snapshot to resume long runs.
 5. Only a completed, independently audited positive learning gate allows `freeze`.
    The subsequent held-out panel is 2,560 searches / 42.67 hours. Source, runtime,
    CPU identity, models and configuration must match the frozen contract.
+
+Before labels, finish and audit `development_calibration_v1`: random selection,
+construction and simple repair on the same development sizes/seeds as tuning.
+The `prepare-baseline` / `run-baseline` stages freeze before outcomes and resume
+without replacing completed or failed cells. Cost is 0.60 local worker-hours.
+
+After training, profile all sixteen checkpoints against adaptive selection on
+identical development pools using `experiments/c4_repair_trained_profile.py`.
+The cost report declares a **conditional** scenario of thirty selections per
+search. If learned selection is slower, there is no finite inference-only recovery
+count. Even a positive latency saving cannot establish an end-to-end advantage.
+
+The controlled protocols prospectively declare twelve reproduction cells:
+block 0, starting replicate 0, all four methods at n22/30/38 for validation,
+or n44/64/96 for evaluation. `experiments/c4_repair_reproduce.py` requires the
+reference's exact archived source, unchanged checkpoints and a distinct locked
+Python environment. Repeating on the same CPU is a software-environment
+reproduction, not an independent-hardware replication. Discrepancies are retained.
 
 The estimates exclude preprocessing, auditing and training, which must be recorded
 separately. No paid resources have been provisioned. Reduce tuning breadth before
