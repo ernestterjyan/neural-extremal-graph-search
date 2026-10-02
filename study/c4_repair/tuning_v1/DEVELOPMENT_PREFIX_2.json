@@ -1,0 +1,299 @@
+{
+  "audit": {
+    "auditor_sha256": "563992bd0f0d8cfa791060ba1659fb6adecaa6c13582405d552eca71786e24cd",
+    "claimed_local_certificates_checked": 0,
+    "complete_panel": false,
+    "eligible_for_inference": false,
+    "expected_records": 96,
+    "failed_records": [],
+    "feasibility_passed": false,
+    "improved_states_by_size": {},
+    "legacy_timing_records": 0,
+    "limitations": [
+      "Set-based witness checks, not a separate CP optimality proof checker.",
+      "Stored monotonic timestamps are checked for consistency, not externally remeasured.",
+      "Repair equal-score replacement witnesses may lack an event; only the recorded improvement witness receives its timestamp."
+    ],
+    "local_certificates_independently_proved": false,
+    "protocol_sha256": "5651469eaebfe3269ef95ea06a913ae93be8810737bf23662c54d7b234fd26c0",
+    "records": 68,
+    "repair_equal_score_replacements_without_event": 0,
+    "results_bytes": 971451,
+    "results_sha256": "f40cff22905b3358b220b3b55c14a0ecf136bb046ba4dd9b3e744c6a74dd7b43",
+    "source_sha256": "7f9b5d259e057f6d1ba8d029e2fd4d91eb4426413bfc7433a3c024af96dde312",
+    "stage": "development_tuning",
+    "timed_repair_records": 0,
+    "unfinished_line_bytes": 0,
+    "verified_graphs": 538
+  },
+  "audit_status": "valid_completed_prefix",
+  "completed_cells": 68,
+  "descriptive_methods": {
+    "adaptive/explore_stagnation10": {
+      "1": {
+        "by_block": {
+          "0": {
+            "completed_searches": 9,
+            "mean_edges": 84.66666666666667
+          }
+        },
+        "completed_searches": 9,
+        "mean_edges": 84.66666666666667
+      },
+      "10": {
+        "by_block": {
+          "0": {
+            "completed_searches": 9,
+            "mean_edges": 84.77777777777777
+          }
+        },
+        "completed_searches": 9,
+        "mean_edges": 84.77777777777777
+      },
+      "60": {
+        "by_block": {
+          "0": {
+            "completed_searches": 9,
+            "mean_edges": 84.77777777777777
+          }
+        },
+        "completed_searches": 9,
+        "mean_edges": 84.77777777777777
+      }
+    },
+    "adaptive/stagnation10": {
+      "1": {
+        "by_block": {
+          "0": {
+            "completed_searches": 8,
+            "mean_edges": 82.625
+          }
+        },
+        "completed_searches": 8,
+        "mean_edges": 82.625
+      },
+      "10": {
+        "by_block": {
+          "0": {
+            "completed_searches": 8,
+            "mean_edges": 82.75
+          }
+        },
+        "completed_searches": 8,
+        "mean_edges": 82.75
+      },
+      "60": {
+        "by_block": {
+          "0": {
+            "completed_searches": 8,
+            "mean_edges": 82.75
+          }
+        },
+        "completed_searches": 8,
+        "mean_edges": 82.75
+      }
+    },
+    "adaptive/stagnation20": {
+      "1": {
+        "by_block": {
+          "0": {
+            "completed_searches": 8,
+            "mean_edges": 82.625
+          }
+        },
+        "completed_searches": 8,
+        "mean_edges": 82.625
+      },
+      "10": {
+        "by_block": {
+          "0": {
+            "completed_searches": 8,
+            "mean_edges": 82.75
+          }
+        },
+        "completed_searches": 8,
+        "mean_edges": 82.75
+      },
+      "60": {
+        "by_block": {
+          "0": {
+            "completed_searches": 8,
+            "mean_edges": 82.75
+          }
+        },
+        "completed_searches": 8,
+        "mean_edges": 82.75
+      }
+    },
+    "adaptive/stagnation5": {
+      "1": {
+        "by_block": {
+          "0": {
+            "completed_searches": 8,
+            "mean_edges": 82.625
+          }
+        },
+        "completed_searches": 8,
+        "mean_edges": 82.625
+      },
+      "10": {
+        "by_block": {
+          "0": {
+            "completed_searches": 8,
+            "mean_edges": 82.625
+          }
+        },
+        "completed_searches": 8,
+        "mean_edges": 82.625
+      },
+      "60": {
+        "by_block": {
+          "0": {
+            "completed_searches": 8,
+            "mean_edges": 82.625
+          }
+        },
+        "completed_searches": 8,
+        "mean_edges": 82.625
+      }
+    },
+    "tabu/fixed_h5": {
+      "1": {
+        "by_block": {
+          "0": {
+            "completed_searches": 9,
+            "mean_edges": 85.44444444444444
+          }
+        },
+        "completed_searches": 9,
+        "mean_edges": 85.44444444444444
+      },
+      "10": {
+        "by_block": {
+          "0": {
+            "completed_searches": 9,
+            "mean_edges": 86.33333333333333
+          }
+        },
+        "completed_searches": 9,
+        "mean_edges": 86.33333333333333
+      },
+      "60": {
+        "by_block": {
+          "0": {
+            "completed_searches": 9,
+            "mean_edges": 86.33333333333333
+          }
+        },
+        "completed_searches": 9,
+        "mean_edges": 86.33333333333333
+      }
+    },
+    "tabu/reactive_h12_25": {
+      "1": {
+        "by_block": {
+          "0": {
+            "completed_searches": 8,
+            "mean_edges": 83
+          }
+        },
+        "completed_searches": 8,
+        "mean_edges": 83
+      },
+      "10": {
+        "by_block": {
+          "0": {
+            "completed_searches": 8,
+            "mean_edges": 83.25
+          }
+        },
+        "completed_searches": 8,
+        "mean_edges": 83.25
+      },
+      "60": {
+        "by_block": {
+          "0": {
+            "completed_searches": 8,
+            "mean_edges": 83.625
+          }
+        },
+        "completed_searches": 8,
+        "mean_edges": 83.625
+      }
+    },
+    "tabu/reactive_h5": {
+      "1": {
+        "by_block": {
+          "0": {
+            "completed_searches": 9,
+            "mean_edges": 85.66666666666667
+          }
+        },
+        "completed_searches": 9,
+        "mean_edges": 85.66666666666667
+      },
+      "10": {
+        "by_block": {
+          "0": {
+            "completed_searches": 9,
+            "mean_edges": 86.33333333333333
+          }
+        },
+        "completed_searches": 9,
+        "mean_edges": 86.33333333333333
+      },
+      "60": {
+        "by_block": {
+          "0": {
+            "completed_searches": 9,
+            "mean_edges": 86.33333333333333
+          }
+        },
+        "completed_searches": 9,
+        "mean_edges": 86.33333333333333
+      }
+    },
+    "tabu/reactive_h7_15": {
+      "1": {
+        "by_block": {
+          "0": {
+            "completed_searches": 9,
+            "mean_edges": 84.77777777777777
+          }
+        },
+        "completed_searches": 9,
+        "mean_edges": 84.77777777777777
+      },
+      "10": {
+        "by_block": {
+          "0": {
+            "completed_searches": 9,
+            "mean_edges": 86
+          }
+        },
+        "completed_searches": 9,
+        "mean_edges": 86
+      },
+      "60": {
+        "by_block": {
+          "0": {
+            "completed_searches": 9,
+            "mean_edges": 86.33333333333333
+          }
+        },
+        "completed_searches": 9,
+        "mean_edges": 86.33333333333333
+      }
+    }
+  },
+  "failed_cells": 0,
+  "failures": [],
+  "inferential_result_available": false,
+  "limitations": [
+    "Descriptive report; controlled claims require the frozen paired block analysis.",
+    "Incomplete panels and failed searches cannot be silently excluded from inference.",
+    "Witness checks do not independently prove CP-SAT optimum certificates."
+  ],
+  "report_auditor_sha256": "563992bd0f0d8cfa791060ba1659fb6adecaa6c13582405d552eca71786e24cd",
+  "report_program_sha256": "e2abd97b369e6903ca3cd88bfb1d3e97614634567b54257ad97b9232b48c9495"
+}

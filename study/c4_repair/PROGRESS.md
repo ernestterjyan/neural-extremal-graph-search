@@ -260,6 +260,18 @@ does not establish that all learned repair directions are infeasible.
   covered commit 177f974, not these later changes. No new CI or paid resource was
   launched to avoid making that old success stand in for pending verification.
 
+## 2026-10-02 — second independent tuning prefix
+
+- Retained DEVELOPMENT_PREFIX_2 with exact raw bytes, reporting program and auditor:
+  **68/96 completed cells**, **538 graph occurrences**, no failures. The source and
+  parameter-choice rule remain unchanged. This is still an incomplete panel.
+- Confirmed execution handle 22072 still running at 15:12:19 UTC; the live journal
+  had subsequently advanced into n40 trials. No restart, no parallel solver/test job,
+  no parameter selection, no trained research model and no held-out search.
+- Eleven new provenance/replay test cases remain pending until the worker is terminal.
+  Both retained prefixes and pending code are committed separately from the live
+  append-only journal. Paid local campaign expenditure remains €0.
+
 ## Hypotheses and risks
 
 1. Incident-edge regions can escape the polarity plateau under practical time limits.
