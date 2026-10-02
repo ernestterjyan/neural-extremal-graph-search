@@ -1,0 +1,37 @@
+{
+  "labels_train_v1": {
+    "gain_histogram": {
+      "0": 2330,
+      "1": 411,
+      "2": 268,
+      "3": 223,
+      "4": 135,
+      "5": 61,
+      "6": 12,
+      "7": 5
+    },
+    "informative_ranking_states": 49,
+    "positive_outcomes": 1115,
+    "repair_outcomes": 3445,
+    "results_sha256": "b35d4010ffd185626f1f5ed0b14b2a3173e4aa062955cfea6c9b0f2cdad185ea",
+    "scope": "supervised labels only; not end-to-end validation",
+    "states": 96
+  },
+  "labels_validation_v1": {
+    "gain_histogram": {
+      "0": 1996,
+      "1": 345,
+      "2": 256,
+      "3": 174,
+      "4": 62,
+      "5": 24,
+      "6": 2
+    },
+    "informative_ranking_states": 42,
+    "positive_outcomes": 863,
+    "repair_outcomes": 2859,
+    "results_sha256": "feff8fcbd2bc8e5a68b3448d29e121d4aa44864e82323c277a9c01b008a5a353",
+    "scope": "supervised labels only; not end-to-end validation",
+    "states": 80
+  }
+}

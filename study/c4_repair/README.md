@@ -52,15 +52,33 @@ repair); it does not demonstrate a learned advantage or a new lower bound.
 The current runner includes marked-region GNN inference, family/size adaptive
 selection, shared timed calibration, balanced method order, and a host-wide
 process lease. See `DEVELOPMENT_CONTROLS.md` for the classical tuning contract.
-There are no trained research selectors or controlled validation results yet.
+All sixteen research selectors are now trained. Controlled validation results
+are still pending; trained weights alone do not establish a solver advantage.
 
 The complete **96-state training-label dataset** has passed independent witness
 audit and deterministic input replay: 3,445 repair outcomes, 1,115 positive gains
 and 49 states with differing region gains. See `labels_train_v1/LABEL_QC.json` for
 stratification and evidence hashes. Most signal comes from weaker or perturbed
 starts; the best repaired count at each size matches the best initial graph in
-this dataset. The sequence is collecting validation labels before training the
-sixteen models. These labels establish supervision, not a learned advantage.
+this dataset. These labels establish supervision, not a learned advantage.
+
+The complete **80-state validation-label dataset** also passed independent audit
+and input replay: 2,859 repair outcomes, 863 positive gains and 42 informative
+ranking states. No best-of-pool state improved. Best repaired counts at n22/26/30/
+34/38 equal the best initial counts, 52/67/85/99/116. Its `LABEL_QC.json` retains
+the strata and hashes; it is supervision for checkpoint selection, not the
+end-to-end learning gate.
+
+`models_v1/` retains eight GNN and eight MLP seeds, thirty epochs each, best/last
+weights and complete loss/metadata records. `TRAINING_REVIEW_v1.json` binds the
+reviewed checkpoints to real labels, unchanged source and profiling evidence.
+The matched trained profile has seventeen conditions on each of n20/35/40, with
+twenty repetitions after warmup. Mean graph-median selection times are about
+1.38 ms for GNNs, 0.87 ms for MLPs and 0.005 ms for cached adaptive selection.
+Every learned selector is slower in this profile; `COST_REPORT_v1.json` reports
+no finite inference-only break-even. The fixed-time comparison must establish
+any graph-quality advantage after charging inference and other search overhead.
+Completed retained work totals 6.508 local worker-hours and €0 paid resources.
 
 `MANUSCRIPT_DRAFT.md` describes the implemented mathematics and methods, fixed
 comparison, completed development evidence and outstanding work.
@@ -71,8 +89,9 @@ Classical tuning is complete: 96 verified searches selected reactive tenure-5
 tabu and adaptive selection with 40% exploration by the predeclared rule. See
 `tuning_v1/TUNING_REPORT.md`; these are development choices. The subsequent
 36-search, sixty-second calibration is complete, independently audited and input
-replayed. The source-frozen real-label/training sequence is now running; consult
-`ACTIVE_RUN.json` to locate its handle and logs, then confirm actual liveness.
+replayed. The source-frozen label/training/profile sequence exited successfully
+and its complete evidence was reviewed. Consult `ACTIVE_RUN.json` for the next
+stage and confirm its actual execution handle rather than assuming liveness.
 
 ## Next stages
 

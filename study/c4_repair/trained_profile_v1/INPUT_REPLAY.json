@@ -1,0 +1,46 @@
+{
+  "all_completed_inputs_replayed": true,
+  "cells": [
+    {
+      "block": 0,
+      "candidate_regions": 36,
+      "input_replayed": true,
+      "method": "repair",
+      "n": 20,
+      "replication": 0,
+      "starting_sha256": "d86d6f834d145d52dee472a16d4469ae39e6dac69fb156b7acdab7645f5b49c3",
+      "status": "replayed"
+    },
+    {
+      "block": 0,
+      "candidate_regions": 36,
+      "input_replayed": true,
+      "method": "repair",
+      "n": 35,
+      "replication": 0,
+      "starting_sha256": "380cfdfc88691908ebf9af1b6de138890666e2a7cf959edf40351de060a5c550",
+      "status": "replayed"
+    },
+    {
+      "block": 0,
+      "candidate_regions": 36,
+      "input_replayed": true,
+      "method": "repair",
+      "n": 40,
+      "replication": 0,
+      "starting_sha256": "273a3fc7a9a770ba31e45d9743733dde3614c62584e18663ce09cf98053e1176",
+      "status": "replayed"
+    }
+  ],
+  "complete_panel": true,
+  "independent_auditor_sha256": "26932bfa0248b95f145eeae76772d0c777fd03d6dae6e1515979bcbd6a364701",
+  "protocol_sha256": "75b7fb44d49a2ec4c23e7e98c25ee894cca63003fc1fdec4a7881f6ddb5c48f2",
+  "repair_outcomes_rerun": false,
+  "replay_program_sha256": "38633a58e00c45f4e4aec2ad5fb432469e899722ebed99c9c45b1028140384fd",
+  "results_bytes": 88625,
+  "results_sha256": "30d98012a87d741e221dd077c42f7e217ee677ecad0e711341cbee13ac3f593f",
+  "scope": "complete generated repair states and ordered candidate pools",
+  "source_sha256": "13dfb0462b19f14913184fc98c10d234c6c66ea247d9efb1dc4899b66b16eafb",
+  "timed_performance_reproduced": false,
+  "timed_search_trajectories_rerun": false
+}

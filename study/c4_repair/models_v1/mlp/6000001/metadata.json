@@ -1,0 +1,16 @@
+{
+  "architecture": "region-mlp-v1",
+  "best_epoch": 24,
+  "checkpoint_sha256": "9e8de310f10ac5847e8b52f76ceba9014df6f1905fd1609fd047e9073fbfee0e",
+  "elapsed_seconds": 1.4366300830006367,
+  "epochs": 30,
+  "family": "mlp",
+  "learning_rate": 0.001,
+  "parameters": 5569,
+  "seed": 6000001,
+  "train_contract_sha256": "8c99c025086106c25c68917a3b98089bb50a1182d949f5cabe51945f7536256c",
+  "train_results_sha256": "b35d4010ffd185626f1f5ed0b14b2a3173e4aa062955cfea6c9b0f2cdad185ea",
+  "validation_contract_sha256": "c3af1bddcf63bc131b0a1e280acc1ff839063ddfee0dbdace7647f965514e43b",
+  "validation_loss": 3.4942078679800033,
+  "validation_results_sha256": "feff8fcbd2bc8e5a68b3448d29e121d4aa44864e82323c277a9c01b008a5a353"
+}

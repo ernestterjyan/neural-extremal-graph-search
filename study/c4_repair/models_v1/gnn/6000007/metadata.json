@@ -1,0 +1,16 @@
+{
+  "architecture": "marked-region-gnn-v1",
+  "best_epoch": 27,
+  "checkpoint_sha256": "ce0587a7e0b7a71d9df59dfd8c980e916f1d4995f0ac19e9c50fa06f0ec7022b",
+  "elapsed_seconds": 5.9648063340009685,
+  "epochs": 30,
+  "family": "gnn",
+  "learning_rate": 0.001,
+  "parameters": 10433,
+  "seed": 6000007,
+  "train_contract_sha256": "8c99c025086106c25c68917a3b98089bb50a1182d949f5cabe51945f7536256c",
+  "train_results_sha256": "b35d4010ffd185626f1f5ed0b14b2a3173e4aa062955cfea6c9b0f2cdad185ea",
+  "validation_contract_sha256": "c3af1bddcf63bc131b0a1e280acc1ff839063ddfee0dbdace7647f965514e43b",
+  "validation_loss": 3.4677811056375503,
+  "validation_results_sha256": "feff8fcbd2bc8e5a68b3448d29e121d4aa44864e82323c277a9c01b008a5a353"
+}

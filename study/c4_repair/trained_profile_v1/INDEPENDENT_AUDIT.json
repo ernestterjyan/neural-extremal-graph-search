@@ -1,0 +1,27 @@
+{
+  "auditor_sha256": "26932bfa0248b95f145eeae76772d0c777fd03d6dae6e1515979bcbd6a364701",
+  "claimed_local_certificates_checked": 0,
+  "complete_panel": true,
+  "eligible_for_inference": false,
+  "expected_records": 3,
+  "failed_records": [],
+  "feasibility_passed": false,
+  "improved_states_by_size": {},
+  "legacy_timing_records": 0,
+  "limitations": [
+    "Set-based witness checks, not a separate CP optimality proof checker.",
+    "Stored monotonic timestamps are checked for consistency, not externally remeasured.",
+    "Repair equal-score replacement witnesses may lack an event; only the recorded improvement witness receives its timestamp."
+  ],
+  "local_certificates_independently_proved": false,
+  "protocol_sha256": "75b7fb44d49a2ec4c23e7e98c25ee894cca63003fc1fdec4a7881f6ddb5c48f2",
+  "records": 3,
+  "repair_equal_score_replacements_without_event": 0,
+  "results_bytes": 88625,
+  "results_sha256": "30d98012a87d741e221dd077c42f7e217ee677ecad0e711341cbee13ac3f593f",
+  "source_sha256": "13dfb0462b19f14913184fc98c10d234c6c66ea247d9efb1dc4899b66b16eafb",
+  "stage": "development_trained_selector_profile",
+  "timed_repair_records": 0,
+  "unfinished_line_bytes": 0,
+  "verified_graphs": 3
+}
