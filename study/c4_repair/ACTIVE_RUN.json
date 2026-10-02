@@ -1,10 +1,18 @@
 {
-  "batch": "study/c4_repair/labels_train_v1",
+  "batch": "study/c4_repair/labels_validation_v1",
   "execution_session_id": 60924,
   "expected_models": 16,
   "expected_train_states": 96,
   "expected_validation_label_states": 80,
   "frozen_sequence_commit": "f624693",
+  "last_collection_observation": {
+    "counts_are_snapshot_only": true,
+    "liveness_evidence": "Unified execution session 60924 returned still-running immediately before this snapshot.",
+    "observed_at_utc": "2026-10-02T20:12:10.565525+00:00",
+    "recorded_failures": 0,
+    "retained_validation_label_states": 50,
+    "stage": "collection_validation"
+  },
   "next_action": "Poll handle 60924 and inspect the current stage log. The sequence collects/verifies both splits, trains sixteen actual models, profiles/verifies overhead and writes costs. No tests or second solver job concurrently. Do not restart the whole sequence.",
   "paid_eur": 0.0,
   "progress_metadata_only": true,
@@ -13,7 +21,7 @@
   "sequence_log": "study/c4_repair/labels_training_sequence_v1.log",
   "software_tests_passed": 179,
   "source_sha256": "13dfb0462b19f14913184fc98c10d234c6c66ea247d9efb1dc4899b66b16eafb",
-  "stage": "collection_train",
+  "stage": "collection_validation",
   "status": "running",
-  "verified_live": "Unified execution handle 60924 returned still-running after launch on 2026-10-02."
+  "verified_live": "Unified execution handle 60924 returned still-running at the 2026-10-02T20:12:10.565525+00:00 handoff observation. Re-poll the handle for current liveness."
 }
