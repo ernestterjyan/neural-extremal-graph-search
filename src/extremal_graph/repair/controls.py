@@ -1,4 +1,4 @@
-"""Development controls staged for integration after the live frozen gate finishes.
+"""Adaptive selection, balanced order and process exclusion for the repair campaign.
 
 This module does not launch a solver. It supplies a family/size adaptive selector,
 balanced method ordering and a POSIX process lease for sequential timed experiments.

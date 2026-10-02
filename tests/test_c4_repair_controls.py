@@ -11,7 +11,7 @@ from pathlib import Path
 
 import pytest
 
-SCRIPT = Path(__file__).resolve().parents[1] / "experiments/c4_repair_controls.py"
+SCRIPT = Path(__file__).resolve().parents[1] / "src/extremal_graph/repair/controls.py"
 spec = importlib.util.spec_from_file_location("repair_controls", SCRIPT)
 controls = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(controls)

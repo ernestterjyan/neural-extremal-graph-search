@@ -10,8 +10,11 @@ from extremal_graph.repair.graph import Graph
 from extremal_graph.repair.regions import Region
 from extremal_graph.repair.selectors import RegionGNN, features
 
-SCRIPT = Path(__file__).resolve().parents[1] / "experiments/c4_repair_region_gnn.py"
-spec = importlib.util.spec_from_file_location("marked_gnn", SCRIPT)
+SCRIPT = (
+    Path(__file__).resolve().parents[1]
+    / "study/c4_repair/feasibility_v2/source/src/extremal_graph/repair/selectors.py"
+)
+spec = importlib.util.spec_from_file_location("extremal_graph.repair.archived_selectors", SCRIPT)
 module = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(module)
 
@@ -29,9 +32,9 @@ def test_membership_messages_can_distinguish_joint_region_geometry():
     # Equal per-node structural features and no internal selected edges mean the
     # current unmarked GNN cannot distinguish these sets, regardless of its weights.
     assert torch.equal(tensors[2][0], tensors[2][1])
-    previous = RegionGNN()(*tensors, regions)
+    previous = module.RegionGNN()(*tensors, regions)
     assert previous[0].item() == pytest.approx(previous[1].item(), abs=1e-7)
-    model = module.MarkedRegionGNN()
+    model = RegionGNN()
     scores = model(*tensors, regions)
     assert abs((scores[0] - scores[1]).item()) > 1e-5
     # This proves an expressive distinction, not a better repair outcome.
@@ -48,7 +51,7 @@ def test_scores_follow_vertex_and_candidate_permutations():
         Region(tuple(sorted(permutation[u] for u in region.vertices)), region.family)
         for region in regions
     ]
-    model = module.MarkedRegionGNN()
+    model = RegionGNN()
     original = model(*features(graph, regions), regions)
     changed = model(*features(renamed, renamed_regions[::-1]), renamed_regions[::-1])
     assert torch.allclose(original, changed.flip(0), atol=1e-6, rtol=1e-5)
@@ -59,7 +62,7 @@ def test_single_and_batched_region_scores_agree_and_gradients_are_finite():
     torch.manual_seed(19)
     graph = cycle()
     regions = [Region((0, 2), "random"), Region((0, 4), "random")]
-    model = module.MarkedRegionGNN()
+    model = RegionGNN()
     batch = model(*features(graph, regions), regions)
     singles = torch.cat([model(*features(graph, [region]), [region]) for region in regions])
     assert torch.allclose(batch, singles, atol=1e-6)

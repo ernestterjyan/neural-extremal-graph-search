@@ -156,6 +156,48 @@ does not establish that all learned repair directions are infeasible.
   seconds/repair, then train eight independent models per family. Any functional
   repair-machinery change needs fresh gated evidence. The full campaign is unfinished.
 
+## 2026-10-02 — integrate controls before classical tuning
+
+- Integrated family/size adaptive selection, balanced method order and host-wide
+  experiment exclusion into the production runner; shared repair machinery is
+  byte-identical to the passed v2 source. The complete independently audited gate
+  and retained input replay are still accepted.
+- Integrated the marked-region GNN with architecture-tagged checkpoints. Loading
+  research panels rejects changes to model/training source. No research model has
+  yet been trained; expressivity and gradient tests are not performance results.
+- Added timed construction and perturb/refill calibration, retaining the original
+  pilot. An actual timed test confirms matching start pools, feasible witnesses,
+  and within-budget event credit across both calibrations and both comparators.
+- Implemented paired classical tuning (96 searches, four recipes per family,
+  n25/31/35/40, three seeds, 60s), complete-evidence parameter selection and source
+  compatibility checks. Its outcomes have not yet been observed or selected.
+- Production training now requires complete independent label audit/input replay;
+  evaluation freeze requires a complete independent validation audit. MLP outcomes
+  are reported as secondary controls and cannot replace the primary GNN result.
+- **151 tests pass**, including tenure behavior, panel completeness, retained
+  parameter-selection tampering, and real process exclusion. Lint/formatting pass.
+- Next: profile current selector overhead, independently audit a small timed
+  calibration/classical workload, commit/push integration, then freeze and execute
+  the full development tuning panel. Evaluation sizes remain untouched. Paid €0.
+
+## 2026-10-02 — profile and timed calibration smoke
+
+- Profiled untrained GNN/MLP selectors on n20/35/40, 36 regions, twenty scored
+  repetitions per family. GNN median feature-plus-inference overhead was 1.194,
+  1.447 and 1.541 ms respectively; MLP 0.752, 0.906 and 0.923 ms. These random
+  models provide timing evidence only. Cold checkpoint loading remains unmeasured.
+- Ran all four classical/calibration methods for two seconds on n20/35/40 with
+  identical pools. Twelve completed, no failures; independently audited 93 graph
+  occurrences and timing history. Tabu attained n35:106 at 1.174s; explicit cycle
+  enumeration additionally passed. It matches a known optimum, not a new record.
+- One seed per size cannot establish general baseline strength. Retained all
+  outcomes: n20 all46; n35 tabu106/others102; n40 construction125/others124.
+- Both new experiment contracts identify the actual Apple M5 CPU as verified.
+  Retained complete audits/programs, source snapshots, reports and costs (€0).
+- Next: commit integration and profile evidence, freeze tuning_v1 before outcomes,
+  then execute its 96 paired sixty-second searches sequentially. No research models
+  or held-out experiments have been run; the full campaign remains active.
+
 ## Hypotheses and risks
 
 1. Incident-edge regions can escape the polarity plateau under practical time limits.

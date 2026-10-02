@@ -1,13 +1,14 @@
-# Controls prepared during the live feasibility run
+# Development controls and classical tuning
 
-The following revisions are staged as separate development modules. They are tested
-but **not yet integrated into the live runner or used in solver experiments**. The
-frozen v2 source remains unchanged. Integrate and test them after that process ends,
-then retain the exact methods in subsequent source snapshots.
+The following revisions are integrated in the current runner after the completed
+feasibility v2 experiment. Its archived source and evidence remain unchanged.
+The full software suite passes 151 tests. Integration tests are not evidence of a
+learned search advantage or of classical comparator strength; development tuning
+and real training/validation are still required.
 
 ## Adaptive neighborhood selector and experiment execution
 
-`experiments/c4_repair_controls.py` provides:
+`src/extremal_graph/repair/controls.py` provides:
 
 - A non-neural adaptive selector over **family × actual region size**, with an
   explicit exploration floor. It updates from obtained repair gain per elapsed repair
@@ -26,12 +27,12 @@ These tests are software evidence, not end-to-end validation or baseline-strengt
 
 ## Region-conditioned GNN
 
-The current GNN embeds an unmarked graph once and then pools selected vertices.
+The archived v2 GNN embeds an unmarked graph once and then pools selected vertices.
 On C8, R={0,2} and R={0,4} have identical per-node/engineered features and identical
 unmarked node embeddings. The scores therefore coincide for every parameter choice,
 despite different joint geometry. This does not prove different repair gains.
 
-`experiments/c4_repair_region_gnn.py` adds a region-membership bit before message
+The current `RegionGNN` in `selectors.py` adds a region-membership bit before message
 passing and batches the candidate-specific marked graphs. Hidden width 32 and three
 message-passing layers remain compact; the same twenty engineered features also
 remain available to the MLP. Three tests check the geometry distinction, graph and
@@ -58,10 +59,10 @@ program and auditor dependency.
 
 ## Classical tuning before the final validation batch
 
-Use only development sizes. A proposed bounded panel is n=25,31,35,40, three paired
+Use only development sizes. The implemented bounded panel is n=25,31,35,40, three paired
 starting/search seeds per size, four configurations per classical family, sixty seconds
-per search: 96 searches / 1.60 worker-hours, plus overhead. This is a design proposal,
-not a frozen or executed experiment. Freeze the actual source, configurations and
+per search: 96 searches / 1.60 worker-hours, plus overhead. At integration time it
+has not yet been executed. Freeze the actual source, configurations and
 seed schedule after integration and profiling, before running the tuning panel.
 
 Include a fixed-penalty, fixed-history-five, restart-1000 tabu recipe inspired by
@@ -75,6 +76,24 @@ then freeze them for the separate end-to-end validation and untouched evaluation
 Confirm tabu tenure means the declared number of subsequent banned moves; do not
 retain an off-by-one interpretation as a hidden hyperparameter. Tune adaptive
 exploration and shared stagnation controls with the same budget and record all trials.
+
+`development.py` retains four recipes per family, shuffled trial order per paired
+group, and all outcomes. The predeclared selection rule is highest mean at 60s,
+then 10s, then 1s, then lexicographic trial ID. Selection requires a complete,
+nonfailed independent audit. Loading it rechecks hashes, regenerates the selection,
+and rejects changes to the tuned search machinery. The selected adaptive settings
+also govern shared stagnation/diversification for the learned selectors.
+
+`calibration.py` adds repeated construction and the original one/two-edge
+perturb/refill with 200-step cooling, adapted to the common time limit and repeated
+with restarts. Both receive the same initial pool as the designated comparators.
+They are calibration controls; neither replaces tabu or adaptive search in the
+primary learned comparison. The original iteration-count pilot stays frozen.
+
+The production campaign additionally requires retained deterministic input replay
+before training and a full independent validation audit before the evaluation
+freeze. Checkpoints record and check their architecture. MLP outcomes and secondary
+comparisons are reported, but cannot replace a failed GNN primary result.
 
 The [Afzaly–McKay table](https://users.cecs.anu.edu.au/~bdm/data/extremal.html), rechecked
 2026-10-02, gives exact C4-only values n25:63, n31:90, n35:106 and n40:127. Its graph

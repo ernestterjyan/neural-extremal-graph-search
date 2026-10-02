@@ -1,0 +1,45 @@
+{
+  "methods": {
+    "adaptive": {
+      "complete": 3,
+      "failed": 0,
+      "mean_edges_by_size": {
+        "20": 46,
+        "35": 102,
+        "40": 124
+      },
+      "mean_final_edges": 90.66666666666667
+    },
+    "construction": {
+      "complete": 3,
+      "failed": 0,
+      "mean_edges_by_size": {
+        "20": 46,
+        "35": 102,
+        "40": 125
+      },
+      "mean_final_edges": 91
+    },
+    "simple_repair": {
+      "complete": 3,
+      "failed": 0,
+      "mean_edges_by_size": {
+        "20": 46,
+        "35": 102,
+        "40": 124
+      },
+      "mean_final_edges": 90.66666666666667
+    },
+    "tabu": {
+      "complete": 3,
+      "failed": 0,
+      "mean_edges_by_size": {
+        "20": 46,
+        "35": 106,
+        "40": 124
+      },
+      "mean_final_edges": 92
+    }
+  },
+  "scope": "development calibration; not a controlled learned comparison"
+}

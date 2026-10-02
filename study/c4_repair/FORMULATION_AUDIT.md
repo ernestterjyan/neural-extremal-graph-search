@@ -1,8 +1,9 @@
 # Formulation audit during feasibility v2
 
-The v2 source/protocol remain frozen and its process is live. This audit changes
-neither its constraints nor its outcome rule. The findings below apply to the
-source archived with commit `177f974`.
+This audit was recorded during the live v2 run; that run has now completed.
+Its source/protocol remain frozen. The formulation findings and the original
+gap list below describe the source archived with commit `177f974`. Later
+implementation progress is recorded separately at the end of this document.
 
 ## What the formulation establishes
 
@@ -88,6 +89,28 @@ Do not retroactively describe v2 as using them.
 
 These are unfinished campaign requirements. None authorizes changing a live frozen
 gate, running held-out sizes before freezing, or claiming a learned search advantage.
+
+## Implementation progress after v2 completion
+
+The revised gate passed 28/100, but its best repaired graphs did not exceed the
+strongest initial construction at either size. No learned advantage is established.
+
+The current runner integrates full independent audit and input-replay requirements,
+MLP reporting, timed construction/simple-repair calibration, paired method-order
+balancing, process-level exclusion, descriptive failure reporting, and adaptive
+family/size selection. Architecture and training-source compatibility are checked
+when loading research checkpoint panels. A development-only classical tuning
+runner now retains all trials and its predeclared selection rule.
+
+These are implementation changes with 151 passing software tests. Classical tuning,
+training, end-to-end validation and the final held-out freeze remain unfinished.
+Hardware identification is available through a permitted CPU-model read; future
+timed contracts must actually retain a verified model and preserve that environment
+on resume. Existing unverified frozen metadata is not retroactively altered.
+
+The initial-strengthening comment and equal-score repair-event limitation above
+remain disclosed errata for the unchanged repair machinery. No adjacent-pair cuts
+or new tie-acceptance behavior have been introduced into the passed v2 recipe.
 
 ## Equal-score incumbent witnesses
 

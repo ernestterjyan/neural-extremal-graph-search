@@ -71,6 +71,19 @@ def test_incomplete_and_failed_panels_cannot_be_silently_analyzed():
         analyze(records, [22, 26, 30, 34, 38])
 
 
+def test_missing_mlp_cannot_pass_and_positive_mlp_cannot_replace_primary():
+    records = panel(EVALUATION_SIZES, [0] * 8)
+    with pytest.raises(ValueError, match="MLP"):
+        analyze([r for r in records if r["method"] != "mlp"], list(EVALUATION_SIZES))
+    for record in records:
+        if record["method"] == "mlp":
+            record["checkpoints"]["60"]["edges"] = 103
+    result = analyze(records, list(EVALUATION_SIZES))
+    assert result["method_means"]["mlp"]["mean_edges"] == 103
+    assert result["secondary_mlp_comparisons"]["adaptive"]["mean"] == 3
+    assert not result["primary_passed"] and not result["learning_gate_passed"]
+
+
 def test_held_out_orders_rejected_by_development_runner():
     require_development([20, 35, 40])
     for n in EVALUATION_SIZES:
