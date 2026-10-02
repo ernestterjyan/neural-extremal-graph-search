@@ -1,0 +1,86 @@
+{
+  "analysis": "eight paired model-seed block means; simultaneous 95% paired t intervals across GNN vs tabu/adaptive, reported alongside validation gate",
+  "checkpoint_panel": "sixteen actual trained models; exact model manifest enters batch contract before first search",
+  "checkpoints_seconds": [
+    1,
+    10,
+    60
+  ],
+  "concurrency": "one search worker; host-wide process lease; CPU/torch/CP-SAT threads controlled",
+  "configuration": "study/c4_repair/tuning_v1/SELECTION.json",
+  "configuration_sha256": "94786ea1b83875929bf5e8c7bb97530df4b22eb17094c2eac331cd055eaed8c2",
+  "created_at": "2026-10-02T19:10:16.702561+00:00",
+  "failed_gate_next": "stop larger neural/held-out/record campaign; retain results, reproduce declared twelve cells in a distinct locked environment and write candid negative report",
+  "held_out_searches_in_this_launch": 0,
+  "learning_gate": "GNN minus adaptive mean edges > 0 at 60 seconds after charging loading/initialization/generation/inference/repair",
+  "methods": [
+    "gnn",
+    "mlp",
+    "adaptive",
+    "tabu"
+  ],
+  "nominal_search_hours": 26.666666666666668,
+  "paid_eur": 0.0,
+  "positive_gate_next": "freeze held-out protocol/source/models before any evaluation solver experiment",
+  "preconditions": [
+    "authoritative zero exit from label/training sequence, reviewed by the operator",
+    "complete independent audits and input replay for 96 training/80 validation states and matched profiling",
+    "eight independent checkpoints per learned family; header, architecture, seed, data and weight hashes checked",
+    "unchanged selected classical configurations and source/runtime verified",
+    "no concurrent experiment, training or CPU-heavy test workload"
+  ],
+  "primary_seconds": 60,
+  "record_searches_in_this_launch": 0,
+  "reproduction_subset": {
+    "block": 0,
+    "methods": [
+      "gnn",
+      "mlp",
+      "adaptive",
+      "tabu"
+    ],
+    "replication": 0,
+    "sizes": [
+      22,
+      30,
+      38
+    ]
+  },
+  "resume_policy": "Verify live handle before starting anything. Resume actual incomplete stage from archived source; preserve failed/completed cells. Do not rerun the whole script blindly after interruption. Audit/replay artifacts are immutable.",
+  "script": "study/c4_repair/RUN_VALIDATION_v1.sh",
+  "script_sha256": "4fa5db3e721a29eadef0055a65a07215af29784f0f297297558f9c803cb216df",
+  "searches": 1600,
+  "seed_offset": 7000000,
+  "selected_configuration": {
+    "adaptive_exploration": 0.4,
+    "adaptive_reward_scale": 5.0,
+    "adaptive_smoothing": 0.2,
+    "per_family": 4,
+    "region_sizes": [
+      3,
+      4,
+      5
+    ],
+    "repair_seconds": 2.0,
+    "seconds": 60,
+    "stagnation_repairs": 10,
+    "tabu_adaptive_penalty": true,
+    "tabu_penalty": 1.0,
+    "tabu_restart_iterations": 1000,
+    "tabu_tenure_max": 5,
+    "tabu_tenure_min": 5
+  },
+  "sizes": [
+    22,
+    26,
+    30,
+    34,
+    38
+  ],
+  "source_sha256": "13dfb0462b19f14913184fc98c10d234c6c66ea247d9efb1dc4899b66b16eafb",
+  "stage": "validation_execution_plan",
+  "starting_search_seeds_per_block_size": 10,
+  "status": "prepared_not_launched",
+  "syntax_validation": "zsh -n and AST parsing of both Python preflight/finalization blocks; no actual models or solver experiments used",
+  "training_blocks": 8
+}

@@ -408,3 +408,11 @@ does not establish that all learned repair directions are infeasible.
 - Keep the fixed 96/80 labels, eight seeds per family and later validation panel.
   Partial-label costs are not double-counted; the sequence books completed stage
   costs once. Paid resources remain €0; held-out sizes remain untouched.
+
+## 2026-10-02 — predeclare full validation execution
+
+- Confirmed real-data sequence handle **60924** live. Training labels have 72/96 retained states with 0 recorded failures at this observation; this is still incomplete data, not a trained-model result.
+- Prepared the next launch script and its immutable execution plan before validation outcomes: all four methods, five validation sizes, eight model blocks, ten paired search seeds, 60 seconds each (**1,600 cells / 26.67 nominal hours**). No held-out or record search is included.
+- Launch requires an authoritative successful exit and complete reviewed evidence from the current sequence. Preflight checks real labels, all sixteen checkpoints, matched profiling, source and cost bindings. The runner freezes the full source/models/runtime contract before its first search; post-run stages audit, replay, analyze and book costs.
+- Shell syntax and both embedded Python blocks parse; all current source-manifest bytes remain identical to the passed 179-test source snapshot. No tests or second solver/training process ran alongside the live worker. This execution wrapper is not evidence that the validation gate passed.
+- A failed learning gate leads to the declared distinct-environment reproduction and negative report. A passed gate permits the later held-out freeze. Paid spend remains €0.

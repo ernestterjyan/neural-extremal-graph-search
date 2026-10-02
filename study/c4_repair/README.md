@@ -57,7 +57,9 @@ There are no trained research selectors or controlled validation results yet.
 Classical tuning is complete: 96 verified searches selected reactive tenure-5
 tabu and adaptive selection with 40% exploration by the predeclared rule. See
 `tuning_v1/TUNING_REPORT.md`; these are development choices. The subsequent
-36-search, sixty-second calibration is running from its committed source snapshot.
+36-search, sixty-second calibration is complete, independently audited and input
+replayed. The source-frozen real-label/training sequence is now running; consult
+`ACTIVE_RUN.json` to locate its handle and logs, then confirm actual liveness.
 
 ## Next stages
 
@@ -85,10 +87,21 @@ snapshot for each batch and use that snapshot to resume long runs.
    The subsequent held-out panel is 2,560 searches / 42.67 hours. Source, runtime,
    CPU identity, models and configuration must match the frozen contract.
 
-Before labels, finish and audit `development_calibration_v1`: random selection,
-construction and simple repair on the same development sizes/seeds as tuning.
-The `prepare-baseline` / `run-baseline` stages freeze before outcomes and resume
-without replacing completed or failed cells. Cost is 0.60 local worker-hours.
+Completed `development_calibration_v1` compares random selection, construction and
+simple repair on the same development sizes/seeds as tuning. The retained
+`prepare-baseline` / `run-baseline` stages freeze before outcomes and resume
+without replacing completed or failed cells. Cost was 0.60 local worker-hours.
+
+`VALIDATION_EXECUTION_PLAN_v1.json` and `RUN_VALIDATION_v1.sh` fix the next launch
+before validation outcomes. Run it only after the current label/training sequence
+has an authoritative zero exit and its complete evidence has been reviewed.
+It checks all labels, sixteen checkpoint headers/hashes, matched profiling and
+cost bindings before running the unchanged 1,600-cell validation panel, followed
+by independent audit, input replay, analysis and cost booking. Its run creates the
+full source/model/environment contract before its first search. This launch does
+not run held-out sizes or exploratory records. After interruption, inspect the
+worker and resume the incomplete stage; immutable audit/replay files make blindly
+rerunning the whole script inappropriate.
 
 After training, profile all sixteen checkpoints against adaptive selection on
 identical development pools using `experiments/c4_repair_trained_profile.py`.
