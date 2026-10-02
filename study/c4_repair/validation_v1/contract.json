@@ -1,0 +1,275 @@
+{
+  "environment": {
+    "cpu_workers": 1,
+    "hardware": {
+      "architecture": "arm64",
+      "cpu_model": "Apple M5",
+      "logical_cpus": 10,
+      "verified_cpu_model": true
+    },
+    "machine": "arm64",
+    "packages": {
+      "networkx": "3.6.1",
+      "numpy": "2.5.1",
+      "ortools": "9.15.6755",
+      "torch": "2.13.0"
+    },
+    "pid": 7637,
+    "platform": "macOS-27.0-arm64-arm-64bit",
+    "processor": "arm",
+    "python": "3.12.13",
+    "python_executable": "/Users/ernestterjyan/.local/share/uv/python/cpython-3.12.13-macos-aarch64-none/bin/python3.12",
+    "python_prefix": "/Users/ernestterjyan/.codex/.chatgpt-projects/g-p-6a6bd217ed048191939d14cf8ea7ac0e/neural-extremal-graph-search-study/.venv"
+  },
+  "git_commit": "b6572e74801a50fc0631f548f3af2bd1f633394e",
+  "protocol": {
+    "blocks": 8,
+    "configuration": {
+      "adaptive_exploration": 0.4,
+      "adaptive_reward_scale": 5.0,
+      "adaptive_smoothing": 0.2,
+      "per_family": 4,
+      "region_sizes": [
+        3,
+        4,
+        5
+      ],
+      "repair_seconds": 2.0,
+      "seconds": 60,
+      "stagnation_repairs": 10,
+      "tabu_adaptive_penalty": true,
+      "tabu_penalty": 1.0,
+      "tabu_restart_iterations": 1000,
+      "tabu_tenure_max": 5,
+      "tabu_tenure_min": 5
+    },
+    "cost_analysis": {
+      "inference_only_decisions_per_search_scenario": 30,
+      "matched_profile_sizes": [
+        20,
+        35,
+        40
+      ],
+      "nonpositive_latency_saving": "no finite inference-only recovery count",
+      "profile_repetitions": 20,
+      "profile_seed_offset": 12000000,
+      "profile_warmups": 1,
+      "scope": "conditional cached-selection cost; cannot replace end-to-end quality"
+    },
+    "method_order": "seeded permutation per size/replication; rotate across blocks",
+    "methods": [
+      "gnn",
+      "mlp",
+      "adaptive",
+      "tabu"
+    ],
+    "models": [
+      {
+        "architecture": "marked-region-gnn-v1",
+        "block": 0,
+        "checkpoint_sha256": "de0fbfad239f5927285f5e1734562c2292a49d309ad27c73ff0f1bc70cadb92a",
+        "family": "gnn",
+        "seed": 6000000,
+        "training_seconds": 6.4354784170009225
+      },
+      {
+        "architecture": "marked-region-gnn-v1",
+        "block": 1,
+        "checkpoint_sha256": "c15cd199d00c784b2f00497a5ff5e82694e5fbafb13c5f1c663ee772a01831d4",
+        "family": "gnn",
+        "seed": 6000001,
+        "training_seconds": 5.966166999998677
+      },
+      {
+        "architecture": "marked-region-gnn-v1",
+        "block": 2,
+        "checkpoint_sha256": "17171797d33f145ae5111de09209d3f8eabcaf9b5cceb364533a44d2b02be9f4",
+        "family": "gnn",
+        "seed": 6000002,
+        "training_seconds": 5.984945249998418
+      },
+      {
+        "architecture": "marked-region-gnn-v1",
+        "block": 3,
+        "checkpoint_sha256": "de67a13cde477c8d21696d178c5e1bf00b63c3c5e9a0a3c811d3e6c9b57ac922",
+        "family": "gnn",
+        "seed": 6000003,
+        "training_seconds": 5.960757458000444
+      },
+      {
+        "architecture": "marked-region-gnn-v1",
+        "block": 4,
+        "checkpoint_sha256": "bf60b50a64eeacf47daaeb05462916f0ef7dd7ffb70c0dd28f86d5647ae02198",
+        "family": "gnn",
+        "seed": 6000004,
+        "training_seconds": 5.993276208999305
+      },
+      {
+        "architecture": "marked-region-gnn-v1",
+        "block": 5,
+        "checkpoint_sha256": "4974b0928b88b62c61d4f039ab92b7dfae3f7ce66620fc59ccf6cb3cb307e497",
+        "family": "gnn",
+        "seed": 6000005,
+        "training_seconds": 5.969670167000004
+      },
+      {
+        "architecture": "marked-region-gnn-v1",
+        "block": 6,
+        "checkpoint_sha256": "71e9126d42d186d4ebfa56aa841ee323c288e80ab1c267b23a7ec5a8f23b32b7",
+        "family": "gnn",
+        "seed": 6000006,
+        "training_seconds": 6.002456334001181
+      },
+      {
+        "architecture": "marked-region-gnn-v1",
+        "block": 7,
+        "checkpoint_sha256": "ce0587a7e0b7a71d9df59dfd8c980e916f1d4995f0ac19e9c50fa06f0ec7022b",
+        "family": "gnn",
+        "seed": 6000007,
+        "training_seconds": 5.9648063340009685
+      },
+      {
+        "architecture": "region-mlp-v1",
+        "block": 0,
+        "checkpoint_sha256": "b3a6a96e8e2646d7ed82c6b1812533d12d19039eb52920f71581ebc24eba2f21",
+        "family": "mlp",
+        "seed": 6000000,
+        "training_seconds": 1.4572967090007296
+      },
+      {
+        "architecture": "region-mlp-v1",
+        "block": 1,
+        "checkpoint_sha256": "9e8de310f10ac5847e8b52f76ceba9014df6f1905fd1609fd047e9073fbfee0e",
+        "family": "mlp",
+        "seed": 6000001,
+        "training_seconds": 1.4366300830006367
+      },
+      {
+        "architecture": "region-mlp-v1",
+        "block": 2,
+        "checkpoint_sha256": "8b3d4eace7e11942731b3021fae4051b001713b816b2b6dbd8304dea835994ee",
+        "family": "mlp",
+        "seed": 6000002,
+        "training_seconds": 1.459967916000096
+      },
+      {
+        "architecture": "region-mlp-v1",
+        "block": 3,
+        "checkpoint_sha256": "eea51bfdf9357a656bd9f1bb6440dc0dc41fee176554becd4a2353bba7eec04d",
+        "family": "mlp",
+        "seed": 6000003,
+        "training_seconds": 1.4342694169990864
+      },
+      {
+        "architecture": "region-mlp-v1",
+        "block": 4,
+        "checkpoint_sha256": "fab4a56704b02c53dba54eeea52d8e0048ae49f3d1d162bbf849feb6931e00ee",
+        "family": "mlp",
+        "seed": 6000004,
+        "training_seconds": 1.4520540420016914
+      },
+      {
+        "architecture": "region-mlp-v1",
+        "block": 5,
+        "checkpoint_sha256": "17d8a216c8f84668a6bdd50fea49b48cc96a16651952ccdb6bc7bf985ddcfbd7",
+        "family": "mlp",
+        "seed": 6000005,
+        "training_seconds": 1.4333828750004614
+      },
+      {
+        "architecture": "region-mlp-v1",
+        "block": 6,
+        "checkpoint_sha256": "cf6ba9e02739eb1f24e9b30ce277847a83a558ad7a3dc9ed1c8124dbfdb457a1",
+        "family": "mlp",
+        "seed": 6000006,
+        "training_seconds": 1.4545192500008852
+      },
+      {
+        "architecture": "region-mlp-v1",
+        "block": 7,
+        "checkpoint_sha256": "ed0222051d3989c6deec9c78bd0c10da03a4e12e63af12d8c2a63737c0637862",
+        "family": "mlp",
+        "seed": 6000007,
+        "training_seconds": 1.434641499999998
+      }
+    ],
+    "replications": 10,
+    "reproduction_subset": {
+      "block": 0,
+      "methods": [
+        "gnn",
+        "mlp",
+        "adaptive",
+        "tabu"
+      ],
+      "replication": 0,
+      "sizes": [
+        22,
+        30,
+        38
+      ]
+    },
+    "seed_offset": 7000000,
+    "sizes": [
+      22,
+      26,
+      30,
+      34,
+      38
+    ],
+    "stage": "validation",
+    "tuning_selection_sha256": "94786ea1b83875929bf5e8c7bb97530df4b22eb17094c2eac331cd055eaed8c2"
+  },
+  "protocol_sha256": "84a4479fbc241a8dfd9b964c527dcc3229097c3281c5b7979428767f80e68596",
+  "source": {
+    "LICENSE": "64e153e0620e43a55ec05d50b70e9449d49b99fc024cf242f76d7755fe95aac4",
+    "README.md": "c8f7b7414fe6a8a6cde3ce8e6e0cc5645d2c42a2e85614fe4f3884fe92640ab4",
+    "experiments/c4_repair.py": "6e3d0749b3a9a6f5106fbf362e9951aad40ee132f3ca935f33f862df54d5fb7a",
+    "experiments/c4_repair_audit.py": "26932bfa0248b95f145eeae76772d0c777fd03d6dae6e1515979bcbd6a364701",
+    "experiments/c4_repair_cost_report.py": "d6b3b44b0d4432ad685f17b9edcb773db0d162830a4f76bd66036b4d4f3470c7",
+    "experiments/c4_repair_replay_inputs.py": "38633a58e00c45f4e4aec2ad5fb432469e899722ebed99c9c45b1028140384fd",
+    "experiments/c4_repair_reproduce.py": "551531e16115e9b96af47068ee6b24b4e4cc572ad624b53d3ea668a89aee1179",
+    "experiments/c4_repair_selector_profile.py": "aaf0174c4acfb5f6fb7502f6641742f319c0980e3b860a53240ff9e3f0dc174b",
+    "experiments/c4_repair_state_report.py": "e2abd97b369e6903ca3cd88bfb1d3e97614634567b54257ad97b9232b48c9495",
+    "experiments/c4_repair_trained_profile.py": "77c8b9d3653b08306904d69fd660678446ad2e63ae26293dcce24abd4390c5c9",
+    "pyproject.toml": "2545dacf909435288b052014861bda2e31191e47843d9643eb183541d5ab000f",
+    "src/extremal_graph/__init__.py": "c29a99a83e6cd0743f03098229333f965200a05138f348d92bd3673d2ac14f48",
+    "src/extremal_graph/baselines.py": "2e53c6c7c2ba78143bbc701d23f0c21d70c944038830662d75b1342b4e6f5e57",
+    "src/extremal_graph/cli.py": "8ecd96bd663e2fbff5bd0752b020772b2f96950e59a4188274d89b9a41cb87b4",
+    "src/extremal_graph/config.py": "6de606b69973e238840632408b605fcc55de8a3b6101846c308f0f6575d0b942",
+    "src/extremal_graph/controls.py": "5aac8a72eb793edd57d40a7cbc670b8cea38fb4bad8413a320a21c2ef8dc0b8e",
+    "src/extremal_graph/diagnostics.py": "ed62a8bc64cd02c5682255df2500b2c739f52c35610cd9b768af1fcda77f4e9e",
+    "src/extremal_graph/env.py": "bc052ce4e0b818e9ce80b9e361f6d1abb50f3c8a35e4c5c487cbd549dcc36bea",
+    "src/extremal_graph/evaluation.py": "b18b2520483b3b0c5e9b703663a14db59ee85e634620187c82647247f4163a4d",
+    "src/extremal_graph/features.py": "91bfb4cf5507fead28a3fb79311c6e978b50cef8daf981efe8f35e83ff824ce4",
+    "src/extremal_graph/graph.py": "d25f3db43ff2015b71d347a2676a5c9bfc4212e26e8485a4af0a0475e4093c76",
+    "src/extremal_graph/mlp_policy.py": "ed0a76104e2b6f183b262ee4d8e88b689315992ee81c9d21f5a0b8c8d1471b5d",
+    "src/extremal_graph/policy.py": "0f73ebdcd1a06887418807d7896cea4eb000f8b40073ecb8b18562a784583257",
+    "src/extremal_graph/repair/__init__.py": "c595ca86175a2a3913af85a2cbe89de3ab013523e7fe76a59c0da7fa042fdcd1",
+    "src/extremal_graph/repair/analysis.py": "67cc5050670c7956da9ad5f251df885a7ba5e0ac097265e6d177dbbcfa6f3ba3",
+    "src/extremal_graph/repair/calibration.py": "3b80857542a0bd9cf5514b1ebf24a21d7ac707c447bc8f74311d7893dee3c4a4",
+    "src/extremal_graph/repair/campaign.py": "69a61dc2910c312a357834324effb65e8803bbfa0f89015992545f8c815517ee",
+    "src/extremal_graph/repair/constructions.py": "b9127fc7266fe65185ce9e3036a9d10b4d1866ddba5731c4dec969eaf9eeac43",
+    "src/extremal_graph/repair/controls.py": "17efdabe669c2c5f48e50d1374eadc1a6f2f20751a3f3224650588afa1ebf86a",
+    "src/extremal_graph/repair/cost_analysis.py": "84169ca0f11098abc256b006d0b28cf1f69cfdac8a4bb5fdcb8d42240a623690",
+    "src/extremal_graph/repair/development.py": "b726e3090dd0afcba37c4008471d52498c9a217d0d66304b0bf3721f6acf2591",
+    "src/extremal_graph/repair/engine.py": "ec9b238924912beedfd9bf7cce168f359b84cd7f58bcef327c23ae8eea4317aa",
+    "src/extremal_graph/repair/evidence.py": "4aff5e892598222f5d9d4cec11e9a5d304c54a09ed5159b623591799c8929bd9",
+    "src/extremal_graph/repair/graph.py": "3462384e00f5af740c230a4613bf6c6df96e535667d9bf884b13f3e201a3c52d",
+    "src/extremal_graph/repair/regions.py": "e1668549f03ab1f94fcfa9e496a0e8b7163fa62ff1261ee687b5b5b6f0a965b4",
+    "src/extremal_graph/repair/reproduction.py": "f9afa54e40ca8e2214be24bd9a3d13ce32140af59cdc5a2f7c9b8601ffcc2af0",
+    "src/extremal_graph/repair/search.py": "395d70d838dd64bfaf9003cf234d2156748fa1a2e0a2f3f51a3ceb845ffdff58",
+    "src/extremal_graph/repair/selectors.py": "4f2f353cf026b477079c49e09a47744e8efa6015b387a04b7df536a5a14a33de",
+    "src/extremal_graph/repair/training.py": "c7d7444c2eb9a58c2e6d8d30da94cbf8833075dd30732dc17bbee3c020c5345d",
+    "src/extremal_graph/reporting.py": "fa11e1c39b01dcd223d22661e81f213210548f9ae1ab31780a835fa7ca4a13a7",
+    "src/extremal_graph/rollouts.py": "46fd5856ad783ada6c5cfc101ab1e43da81d2ceea1a8172bcc90d65f34539976",
+    "src/extremal_graph/serialization.py": "5b712214809deedab10117dba5ebb5d9f1c798c9c2f930698cd42231714311fa",
+    "src/extremal_graph/study.py": "3db2ced970c2a56533fa4170665b53c2cd0789fed2d3b336efe94d596c457147",
+    "src/extremal_graph/training.py": "d4ad6047ac9f64c135a8d514e0561cda93e574752f06b618f2e6b1f6d7538bd2",
+    "src/extremal_graph/turan.py": "54225d5c9cb1b9938b850919c462489cd39fa345e06ce7ea573970cf071e0949",
+    "src/extremal_graph/utils.py": "6023e3c77b855e7c260d6aa35a3508699e7c97e6d63ee620193e27feb0f3a0b7",
+    "src/extremal_graph/verification.py": "39ae9a39f57cbec17266bdec2b7a0449916636bec5a1db57a5553b44fb2a4f85",
+    "uv.lock": "3680d30d7535c032577840d8a0468841b751664efffef1d8c1bddfe3c19c36d5"
+  },
+  "source_sha256": "13dfb0462b19f14913184fc98c10d234c6c66ea247d9efb1dc4899b66b16eafb"
+}

@@ -1,14 +1,11 @@
 {
-  "authoritative_terminal_exit": {
-    "exit_code": 0,
-    "observed_at_utc": "2026-10-02T20:42:06.292647+00:00",
-    "session_id": 60924
-  },
-  "batch": "study/c4_repair/models_v1",
-  "execution_session_id": null,
+  "batch": "study/c4_repair/validation_v1",
+  "completed_training_evidence_commit": "b6572e7",
+  "execution_session_id": 98945,
   "expected_models": 16,
   "expected_train_states": 96,
   "expected_validation_label_states": 80,
+  "expected_validation_searches": 1600,
   "frozen_sequence_commit": "f624693",
   "last_collection_observation": {
     "counts_are_snapshot_only": true,
@@ -18,15 +15,31 @@
     "retained_validation_label_states": 80,
     "stage": "completed_validation_labels"
   },
-  "next_action": "Completed labels, sixteen actual models and matched profile independently reviewed. Commit/push complete evidence, then launch RUN_VALIDATION_v1.sh sequentially using archived source and verified CPU identity. No held-out experiments before a positive learning gate and final freeze.",
+  "last_validation_observation": {
+    "completed_searches_at_least": 1,
+    "counts_are_snapshot_only": true,
+    "liveness_evidence": "Execution handle 98945 returned still-running.",
+    "observed_at_utc": "2026-10-02T20:45:11.173715+00:00",
+    "stage": "end_to_end_validation",
+    "startup_log": "0 22 0 gnn 52 complete"
+  },
+  "next_action": "Poll actual execution session 98945; inspect validation_v1_run.log and validation_sequence_v1.log. Complete all 1600 searches sequentially, then audit/replay/report costs and apply the unchanged learning gate. No concurrent heavy job and no held-out or record search. Do not restart RUN_VALIDATION_v1.sh after interruption; inspect and resume the incomplete stage from the frozen archived source.",
   "paid_eur": 0.0,
+  "preceding_sequence_terminal_exit": {
+    "exit_code": 0,
+    "observed_at_utc": "2026-10-02T20:42:06.292647+00:00",
+    "session_id": 60924
+  },
   "progress_metadata_only": true,
-  "script": "study/c4_repair/RUN_LABELS_AND_TRAIN_v1.sh",
-  "script_sha256": "dde45e9afbe750c14458a5915bd1031af01c801fa06136b44001bd5f01be8cf1",
-  "sequence_log": "study/c4_repair/labels_training_sequence_v1.log",
+  "script": "study/c4_repair/RUN_VALIDATION_v1.sh",
+  "script_sha256": "4fa5db3e721a29eadef0055a65a07215af29784f0f297297558f9c803cb216df",
+  "sequence_log": "study/c4_repair/validation_sequence_v1.log",
   "software_tests_passed": 179,
   "source_sha256": "13dfb0462b19f14913184fc98c10d234c6c66ea247d9efb1dc4899b66b16eafb",
-  "stage": "labels_training_and_profile_completed",
-  "status": "completed",
-  "verified_live": null
+  "stage": "end_to_end_validation",
+  "stage_log": "study/c4_repair/validation_v1_run.log",
+  "status": "running",
+  "validation_protocol_sha256": "84a4479fbc241a8dfd9b964c527dcc3229097c3281c5b7979428767f80e68596",
+  "validation_source_sha256": "13dfb0462b19f14913184fc98c10d234c6c66ea247d9efb1dc4899b66b16eafb",
+  "verified_live": "Unified execution session 98945 returned still-running at 2026-10-02T20:45:11.173715+00:00. Re-poll this handle for current liveness."
 }
