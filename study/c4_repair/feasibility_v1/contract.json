@@ -1,0 +1,79 @@
+{
+  "environment": {
+    "cpu_workers": 1,
+    "machine": "arm64",
+    "packages": {
+      "networkx": "3.6.1",
+      "numpy": "2.5.1",
+      "ortools": "9.15.6755",
+      "torch": "2.13.0"
+    },
+    "pid": 5657,
+    "platform": "macOS-27.0-arm64-arm-64bit",
+    "processor": "arm",
+    "python": "3.12.13"
+  },
+  "git_commit": "55f2af2a8160bb525231b0736e80091c4b69c006",
+  "protocol": {
+    "decision": "pass iff >=10 of 100 states have verified positive gain",
+    "failure_rule": "failed states count as not improved; preserve exception records",
+    "known_exact_values": {
+      "35": 106,
+      "40": 127
+    },
+    "paid_compute_eur": 0.0,
+    "per_family": 2,
+    "region_sizes": [
+      3,
+      4,
+      5
+    ],
+    "repair_rule": "each candidate independently repairs the original state; run entire pool",
+    "repair_seconds": 1.0,
+    "seed_offset": 2700000,
+    "sizes": [
+      35,
+      40
+    ],
+    "stage": "feasibility",
+    "state_rule": "best of identical generated start pool; skip exact optima, log exclusions",
+    "states_per_size": 50
+  },
+  "protocol_sha256": "cc5383d918ab9f575003912d363e9618b428c1506d4f7554c4e44c49bf6e698f",
+  "source": {
+    "LICENSE": "64e153e0620e43a55ec05d50b70e9449d49b99fc024cf242f76d7755fe95aac4",
+    "README.md": "3177138e108643bb26e5545f026bf955183b8ba01a92b0a6c6aad9b2090c8475",
+    "experiments/c4_repair.py": "f5b65d44293433df6c1c180ec35d87ce9c82ebc52df2b59bb49f7d2c107e889b",
+    "pyproject.toml": "698a48105b809be3a600c5e1c558d6681eb8145165989514519d77a2d3d69d5d",
+    "src/extremal_graph/__init__.py": "c29a99a83e6cd0743f03098229333f965200a05138f348d92bd3673d2ac14f48",
+    "src/extremal_graph/baselines.py": "2e53c6c7c2ba78143bbc701d23f0c21d70c944038830662d75b1342b4e6f5e57",
+    "src/extremal_graph/cli.py": "8ecd96bd663e2fbff5bd0752b020772b2f96950e59a4188274d89b9a41cb87b4",
+    "src/extremal_graph/config.py": "6de606b69973e238840632408b605fcc55de8a3b6101846c308f0f6575d0b942",
+    "src/extremal_graph/controls.py": "5aac8a72eb793edd57d40a7cbc670b8cea38fb4bad8413a320a21c2ef8dc0b8e",
+    "src/extremal_graph/diagnostics.py": "ed62a8bc64cd02c5682255df2500b2c739f52c35610cd9b768af1fcda77f4e9e",
+    "src/extremal_graph/env.py": "bc052ce4e0b818e9ce80b9e361f6d1abb50f3c8a35e4c5c487cbd549dcc36bea",
+    "src/extremal_graph/evaluation.py": "b18b2520483b3b0c5e9b703663a14db59ee85e634620187c82647247f4163a4d",
+    "src/extremal_graph/features.py": "91bfb4cf5507fead28a3fb79311c6e978b50cef8daf981efe8f35e83ff824ce4",
+    "src/extremal_graph/graph.py": "d25f3db43ff2015b71d347a2676a5c9bfc4212e26e8485a4af0a0475e4093c76",
+    "src/extremal_graph/mlp_policy.py": "ed0a76104e2b6f183b262ee4d8e88b689315992ee81c9d21f5a0b8c8d1471b5d",
+    "src/extremal_graph/policy.py": "0f73ebdcd1a06887418807d7896cea4eb000f8b40073ecb8b18562a784583257",
+    "src/extremal_graph/repair/__init__.py": "c595ca86175a2a3913af85a2cbe89de3ab013523e7fe76a59c0da7fa042fdcd1",
+    "src/extremal_graph/repair/constructions.py": "b9127fc7266fe65185ce9e3036a9d10b4d1866ddba5731c4dec969eaf9eeac43",
+    "src/extremal_graph/repair/engine.py": "7ffd3bd2b8d6ea944cfab5bbbe6e61c70cef6614632d944eeaea5556eec80c42",
+    "src/extremal_graph/repair/evidence.py": "de1597cf4d914bcf5f7d30f6b25f82a5baac89a367a767f5d3893cd49f6040d0",
+    "src/extremal_graph/repair/graph.py": "3462384e00f5af740c230a4613bf6c6df96e535667d9bf884b13f3e201a3c52d",
+    "src/extremal_graph/repair/regions.py": "e1668549f03ab1f94fcfa9e496a0e8b7163fa62ff1261ee687b5b5b6f0a965b4",
+    "src/extremal_graph/repair/search.py": "0a04282f989ceeeae0018e744d1502b618814fe19a57fca5e17727db2881ecee",
+    "src/extremal_graph/repair/selectors.py": "9ac737710c11264b12e7d8d03cbf8af734ec57c109e95611a4d7cd3859524c0a",
+    "src/extremal_graph/reporting.py": "fa11e1c39b01dcd223d22661e81f213210548f9ae1ab31780a835fa7ca4a13a7",
+    "src/extremal_graph/rollouts.py": "46fd5856ad783ada6c5cfc101ab1e43da81d2ceea1a8172bcc90d65f34539976",
+    "src/extremal_graph/serialization.py": "5b712214809deedab10117dba5ebb5d9f1c798c9c2f930698cd42231714311fa",
+    "src/extremal_graph/study.py": "3db2ced970c2a56533fa4170665b53c2cd0789fed2d3b336efe94d596c457147",
+    "src/extremal_graph/training.py": "d4ad6047ac9f64c135a8d514e0561cda93e574752f06b618f2e6b1f6d7538bd2",
+    "src/extremal_graph/turan.py": "54225d5c9cb1b9938b850919c462489cd39fa345e06ce7ea573970cf071e0949",
+    "src/extremal_graph/utils.py": "6023e3c77b855e7c260d6aa35a3508699e7c97e6d63ee620193e27feb0f3a0b7",
+    "src/extremal_graph/verification.py": "39ae9a39f57cbec17266bdec2b7a0449916636bec5a1db57a5553b44fb2a4f85",
+    "uv.lock": "2a3abac36fef8816ef27eb11b9877452a794c406a8601cbf98971d0faf443d3a"
+  },
+  "source_sha256": "0056e529e14cd8668c9e0c6333c669f090135cee0600a9baefd66d577e350430"
+}

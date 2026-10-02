@@ -1,0 +1,46 @@
+{
+  "environment": {
+    "cpu_workers": 1,
+    "machine": "arm64",
+    "packages": {
+      "networkx": "3.6.1",
+      "numpy": "2.5.1",
+      "ortools": "9.15.6755",
+      "torch": "2.13.0"
+    },
+    "pid": 5024,
+    "platform": "macOS-27.0-arm64-arm-64bit",
+    "processor": "arm",
+    "python": "3.12.13"
+  },
+  "git_commit": "55f2af2a8160bb525231b0736e80091c4b69c006",
+  "protocol": {
+    "per_family": 1,
+    "region_sizes": [
+      3,
+      5,
+      7
+    ],
+    "repair_seconds": 1.0,
+    "seed_offset": 810000,
+    "sizes": [
+      35,
+      40
+    ],
+    "stage": "development_profile"
+  },
+  "protocol_sha256": "f6d7c7d99d3a594a77756948eba698b5c6910cde9bb587ff884a766e98d05d59",
+  "source": {
+    "experiments/c4_repair.py": "80f07dac2b505215d7c9a5b76fc860d71b453c25437e82243c72398467a715a9",
+    "pyproject.toml": "698a48105b809be3a600c5e1c558d6681eb8145165989514519d77a2d3d69d5d",
+    "src/extremal_graph/repair/__init__.py": "c595ca86175a2a3913af85a2cbe89de3ab013523e7fe76a59c0da7fa042fdcd1",
+    "src/extremal_graph/repair/constructions.py": "b9127fc7266fe65185ce9e3036a9d10b4d1866ddba5731c4dec969eaf9eeac43",
+    "src/extremal_graph/repair/engine.py": "7ffd3bd2b8d6ea944cfab5bbbe6e61c70cef6614632d944eeaea5556eec80c42",
+    "src/extremal_graph/repair/evidence.py": "ad7b9a5a58198a7bf10ce7b92c62b39aa7d35edc063c52a807936918a7ebc255",
+    "src/extremal_graph/repair/graph.py": "3462384e00f5af740c230a4613bf6c6df96e535667d9bf884b13f3e201a3c52d",
+    "src/extremal_graph/repair/regions.py": "e1668549f03ab1f94fcfa9e496a0e8b7163fa62ff1261ee687b5b5b6f0a965b4",
+    "src/extremal_graph/repair/search.py": "0a04282f989ceeeae0018e744d1502b618814fe19a57fca5e17727db2881ecee",
+    "uv.lock": "2a3abac36fef8816ef27eb11b9877452a794c406a8601cbf98971d0faf443d3a"
+  },
+  "source_sha256": "a89b8c8c9af86c5473b8ad520172618bc45d232e8eb947c8f78f5e9df41133ec"
+}

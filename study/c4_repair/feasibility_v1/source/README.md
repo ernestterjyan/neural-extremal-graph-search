@@ -4,11 +4,6 @@
 
 **Harder solver pilot:** A separate [C4-free graph study](study/c4_neural/RESEARCH_NOTE.md) evaluates fresh neural policies against exact finite references and strong algebraic constructions. The first neural attempt did not beat the polarity baseline; all graphs and checkpoints are retained for review.
 
-**Learned repair campaign (in progress):** [Protocol and progress](study/c4_repair/README.md)
-for repairing strong C4-free graphs with CP-SAT, classical search and learned region
-selection. The feasibility and learning gates must pass before held-out evaluation.
-No learned repair advantage has yet been established.
-
 [![CI](https://github.com/ernestterjyan/neural-extremal-graph-search/actions/workflows/ci.yml/badge.svg)](https://github.com/ernestterjyan/neural-extremal-graph-search/actions/workflows/ci.yml)
 [![Release](https://img.shields.io/github/v/release/ernestterjyan/neural-extremal-graph-search)](https://github.com/ernestterjyan/neural-extremal-graph-search/releases/latest)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)

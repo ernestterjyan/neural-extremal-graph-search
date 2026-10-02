@@ -1,0 +1,4 @@
+{"date":"2026-10-02","stage":"infrastructure","paid_eur":0.0,"resource":"local CPU","note":"No paid resources provisioned; profile before proposing paid runs."}
+{"date": "2026-10-02", "local_wall_seconds": 15.681314707999263, "paid_eur": 0.0, "resource": "local CPU", "results_sha256": "8f99efa917d1db25c8cce201d8e104431a3831c8c1decc10dd46c5cd3d404321", "stage": "profile_v2"}
+{"date": "2026-10-02", "local_wall_seconds": 12.022085335001975, "paid_eur": 0.0, "resource": "local CPU", "results_sha256": "dc7d41b719eab078265ee95647b829d3f211d05daacee711a6f13f8379e936b8", "stage": "baseline_smoke"}
+{"date": "2026-10-02", "local_wall_seconds": 1440.5540830010086, "paid_eur": 0.0, "resource": "local CPU", "results_sha256": "760c2aab96efb23d2f0eac608fb6ee13e6d096295d18624b5b32e034f60992f8", "stage": "feasibility_v1"}
