@@ -23,6 +23,7 @@ from extremal_graph.repair.evidence import (
     json_sha,
     load_records,
     prepare_batch,
+    prepare_or_resume,
     require_development,
     source_manifest,
     verify_contract,
@@ -200,7 +201,7 @@ def feasibility(args) -> None:
             )
 
 
-def baseline(args) -> None:
+def baseline_protocol(args) -> dict:
     require_development(args.sizes)
     if getattr(args, "configuration", None) is not None:
         from extremal_graph.repair.development import load_tuning
@@ -226,14 +227,61 @@ def baseline(args) -> None:
         from extremal_graph.repair.evidence import sha
 
         protocol["tuning_selection_sha256"] = sha(args.configuration)
-    contract = prepare_batch(args.output, protocol)
-    for n in args.sizes:
-        for replication in range(args.replications):
-            seed = args.seed + 10000 * n + replication
+    return protocol
+
+
+def prepare_baseline(args) -> None:
+    protocol = baseline_protocol(args)
+    prepare_batch(args.output, protocol)
+    print(f"Frozen development calibration: {args.output}")
+
+
+def baseline(args) -> None:
+    protocol = baseline_protocol(args)
+    prepare_or_resume(args.output, protocol)
+    run_baseline(argparse.Namespace(batch=args.output))
+
+
+def run_baseline(args) -> None:
+    contract = verify_contract(args.batch)
+    protocol = contract["protocol"]
+    if protocol["stage"] != "development_baseline":
+        raise ValueError("not a development baseline batch")
+    require_development(protocol["sizes"])
+    prepare_or_resume(args.batch, protocol)
+    config = SearchConfig(
+        **{
+            **protocol["configuration"],
+            "region_sizes": tuple(protocol["configuration"]["region_sizes"]),
+        }
+    )
+    path = args.batch / "results.jsonl"
+    existing = load_records(path) if path.exists() else []
+    expected = {
+        (n, replication, method)
+        for n in protocol["sizes"]
+        for replication in range(protocol["replications"])
+        for method in protocol["methods"]
+    }
+    done = {(r["n"], r["replication"], r["method"]) for r in existing}
+    if len(done) != len(existing) or not done.issubset(expected):
+        raise ValueError("duplicate or unexpected development baseline cell")
+    if existing:
+        independent_audit(args.batch, allow_partial=True)
+    for n in protocol["sizes"]:
+        for replication in range(protocol["replications"]):
+            seed = protocol["seed_offset"] + 10000 * n + replication
             order = balanced_method_order(
-                args.methods, seed_offset=args.seed, n=n, replication=replication, block=0
+                protocol["methods"],
+                seed_offset=protocol["seed_offset"],
+                n=n,
+                replication=replication,
+                block=0,
             )
             for position, method in enumerate(order):
+                # Failed cells remain visible and are not silently rerun.
+                if (n, replication, method) in done:
+                    continue
                 try:
                     if method in {"construction", "simple_repair"}:
                         result = calibration_search(n, seed, config, method=method)
@@ -260,7 +308,7 @@ def baseline(args) -> None:
                         "source_sha256": contract["source_sha256"],
                         "protocol_sha256": contract["protocol_sha256"],
                     }
-                append_record(args.output / "results.jsonl", result)
+                append_record(path, result)
                 print(
                     n, method, replication, result.get("edge_count"), result["status"], flush=True
                 )
@@ -550,16 +598,16 @@ def report(args) -> None:
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     commands = parser.add_subparsers(dest="stage", required=True)
-    for name in ["profile", "prepare", "baseline"]:
+    for name in ["profile", "prepare", "baseline", "prepare-baseline"]:
         command = commands.add_parser(name)
         command.add_argument("--output", type=Path, required=True)
         command.add_argument("--seed", type=int, default=2700000)
         command.add_argument("--region-sizes", type=int, nargs="+", default=[3, 5, 7])
-        command.add_argument("--seconds", type=float, default=1.0 if name != "baseline" else 60.0)
+        command.add_argument("--seconds", type=float, default=60.0 if "baseline" in name else 1.0)
         command.add_argument("--per-family", type=int, default=2)
         if name != "prepare":
             command.add_argument("--sizes", type=int, nargs="+", default=[35, 40])
-        if name == "baseline":
+        if "baseline" in name:
             command.add_argument(
                 "--configuration",
                 type=Path,
@@ -573,7 +621,7 @@ def main() -> None:
                 choices=["tabu", "adaptive", "random", "construction", "simple_repair"],
                 default=["tabu", "adaptive"],
             )
-    for name in ["feasibility", "verify", "report"]:
+    for name in ["feasibility", "verify", "report", "run-baseline"]:
         command = commands.add_parser(name)
         command.add_argument("--batch", type=Path, required=True)
     command = commands.add_parser("collect")
@@ -622,6 +670,8 @@ def main() -> None:
         "prepare": prepare,
         "feasibility": feasibility,
         "baseline": baseline,
+        "prepare-baseline": prepare_baseline,
+        "run-baseline": run_baseline,
         "verify": verify,
         "report": report,
         "collect": collect,
@@ -632,7 +682,16 @@ def main() -> None:
         "tune": tune,
         "report-tuning": report_tuning,
     }[args.stage]
-    if args.stage in {"profile", "feasibility", "baseline", "collect", "train", "evaluate", "tune"}:
+    if args.stage in {
+        "profile",
+        "feasibility",
+        "baseline",
+        "run-baseline",
+        "collect",
+        "train",
+        "evaluate",
+        "tune",
+    }:
         batch = getattr(args, "output", getattr(args, "batch", Path(".")))
         with ExperimentLease(stage=args.stage, batch=batch):
             handler(args)

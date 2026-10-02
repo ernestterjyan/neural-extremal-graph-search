@@ -305,3 +305,14 @@ does not establish that all learned repair directions are infeasible.
   calibration using the selected recipe on the same development sizes/seeds,
   then real label collection, eight-seed training and end-to-end validation.
   No trained research model, learned benefit, held-out search or new bound yet.
+
+## 2026-10-02 — resumable development calibration
+
+- Split preparation from execution for the next timed calibration. Its source,
+  configuration, sizes and seeds can now be committed before any outcomes, and a
+  stopped runner can resume only on the same runtime/source/protocol. Completed
+  and failed cells stay append-only; failures are never silently retried.
+- Four meaningful resume checks pass: preserve a completed prefix, retain failed
+  cells, reject changed runtime and reject duplicate cells. Full suite: **166
+  passed**; repository-wide lint and diff checks pass. Classical search, candidate
+  pool and repair engine remain unchanged from the completed tuning.
