@@ -1,0 +1,271 @@
+{
+  "environment": {
+    "cpu_workers": 1,
+    "hardware": {
+      "architecture": "arm64",
+      "cpu_model": "Apple M5",
+      "logical_cpus": 10,
+      "verified_cpu_model": true
+    },
+    "machine": "arm64",
+    "packages": {
+      "networkx": "3.6.1",
+      "numpy": "2.5.1",
+      "ortools": "9.15.6755",
+      "torch": "2.13.0"
+    },
+    "pid": 13556,
+    "platform": "macOS-27.0-arm64-arm-64bit",
+    "processor": "arm",
+    "python": "3.12.13"
+  },
+  "git_commit": "ab684ea92f1e11f3f7eef2b328d1ad73498283a8",
+  "protocol": {
+    "feasibility_results_sha256": "c03a113333604a884afef6015ec197c916a41e6a6233794f05196402eee02273",
+    "paid_compute_eur": 0,
+    "replications": 3,
+    "seed_offset": 10000000,
+    "selection": "largest mean edges at 60s, then 10s, then 1s, then lexicographic trial id",
+    "sizes": [
+      25,
+      31,
+      35,
+      40
+    ],
+    "stage": "development_tuning",
+    "trial_order": "seeded shuffle per size/replication using search seed + 500000000",
+    "trials": [
+      {
+        "configuration": {
+          "adaptive_exploration": 0.15,
+          "adaptive_reward_scale": 5.0,
+          "adaptive_smoothing": 0.2,
+          "per_family": 4,
+          "region_sizes": [
+            3,
+            4,
+            5
+          ],
+          "repair_seconds": 2.0,
+          "seconds": 60,
+          "stagnation_repairs": 10,
+          "tabu_adaptive_penalty": false,
+          "tabu_penalty": 1.0,
+          "tabu_restart_iterations": 1000,
+          "tabu_tenure_max": 5,
+          "tabu_tenure_min": 5
+        },
+        "id": "tabu/fixed_h5",
+        "method": "tabu"
+      },
+      {
+        "configuration": {
+          "adaptive_exploration": 0.15,
+          "adaptive_reward_scale": 5.0,
+          "adaptive_smoothing": 0.2,
+          "per_family": 4,
+          "region_sizes": [
+            3,
+            4,
+            5
+          ],
+          "repair_seconds": 2.0,
+          "seconds": 60,
+          "stagnation_repairs": 10,
+          "tabu_adaptive_penalty": true,
+          "tabu_penalty": 1.0,
+          "tabu_restart_iterations": 1000,
+          "tabu_tenure_max": 5,
+          "tabu_tenure_min": 5
+        },
+        "id": "tabu/reactive_h5",
+        "method": "tabu"
+      },
+      {
+        "configuration": {
+          "adaptive_exploration": 0.15,
+          "adaptive_reward_scale": 5.0,
+          "adaptive_smoothing": 0.2,
+          "per_family": 4,
+          "region_sizes": [
+            3,
+            4,
+            5
+          ],
+          "repair_seconds": 2.0,
+          "seconds": 60,
+          "stagnation_repairs": 10,
+          "tabu_adaptive_penalty": true,
+          "tabu_penalty": 1.0,
+          "tabu_restart_iterations": 400,
+          "tabu_tenure_max": 15,
+          "tabu_tenure_min": 7
+        },
+        "id": "tabu/reactive_h7_15",
+        "method": "tabu"
+      },
+      {
+        "configuration": {
+          "adaptive_exploration": 0.15,
+          "adaptive_reward_scale": 5.0,
+          "adaptive_smoothing": 0.2,
+          "per_family": 4,
+          "region_sizes": [
+            3,
+            4,
+            5
+          ],
+          "repair_seconds": 2.0,
+          "seconds": 60,
+          "stagnation_repairs": 10,
+          "tabu_adaptive_penalty": true,
+          "tabu_penalty": 0.5,
+          "tabu_restart_iterations": 1000,
+          "tabu_tenure_max": 25,
+          "tabu_tenure_min": 12
+        },
+        "id": "tabu/reactive_h12_25",
+        "method": "tabu"
+      },
+      {
+        "configuration": {
+          "adaptive_exploration": 0.15,
+          "adaptive_reward_scale": 5.0,
+          "adaptive_smoothing": 0.2,
+          "per_family": 4,
+          "region_sizes": [
+            3,
+            4,
+            5
+          ],
+          "repair_seconds": 2.0,
+          "seconds": 60,
+          "stagnation_repairs": 5,
+          "tabu_adaptive_penalty": true,
+          "tabu_penalty": 1.0,
+          "tabu_restart_iterations": 400,
+          "tabu_tenure_max": 15,
+          "tabu_tenure_min": 7
+        },
+        "id": "adaptive/stagnation5",
+        "method": "adaptive"
+      },
+      {
+        "configuration": {
+          "adaptive_exploration": 0.15,
+          "adaptive_reward_scale": 5.0,
+          "adaptive_smoothing": 0.2,
+          "per_family": 4,
+          "region_sizes": [
+            3,
+            4,
+            5
+          ],
+          "repair_seconds": 2.0,
+          "seconds": 60,
+          "stagnation_repairs": 10,
+          "tabu_adaptive_penalty": true,
+          "tabu_penalty": 1.0,
+          "tabu_restart_iterations": 400,
+          "tabu_tenure_max": 15,
+          "tabu_tenure_min": 7
+        },
+        "id": "adaptive/stagnation10",
+        "method": "adaptive"
+      },
+      {
+        "configuration": {
+          "adaptive_exploration": 0.4,
+          "adaptive_reward_scale": 5.0,
+          "adaptive_smoothing": 0.2,
+          "per_family": 4,
+          "region_sizes": [
+            3,
+            4,
+            5
+          ],
+          "repair_seconds": 2.0,
+          "seconds": 60,
+          "stagnation_repairs": 10,
+          "tabu_adaptive_penalty": true,
+          "tabu_penalty": 1.0,
+          "tabu_restart_iterations": 400,
+          "tabu_tenure_max": 15,
+          "tabu_tenure_min": 7
+        },
+        "id": "adaptive/explore_stagnation10",
+        "method": "adaptive"
+      },
+      {
+        "configuration": {
+          "adaptive_exploration": 0.15,
+          "adaptive_reward_scale": 5.0,
+          "adaptive_smoothing": 0.2,
+          "per_family": 4,
+          "region_sizes": [
+            3,
+            4,
+            5
+          ],
+          "repair_seconds": 2.0,
+          "seconds": 60,
+          "stagnation_repairs": 20,
+          "tabu_adaptive_penalty": true,
+          "tabu_penalty": 1.0,
+          "tabu_restart_iterations": 400,
+          "tabu_tenure_max": 15,
+          "tabu_tenure_min": 7
+        },
+        "id": "adaptive/stagnation20",
+        "method": "adaptive"
+      }
+    ]
+  },
+  "protocol_sha256": "5651469eaebfe3269ef95ea06a913ae93be8810737bf23662c54d7b234fd26c0",
+  "source": {
+    "LICENSE": "64e153e0620e43a55ec05d50b70e9449d49b99fc024cf242f76d7755fe95aac4",
+    "README.md": "c8f7b7414fe6a8a6cde3ce8e6e0cc5645d2c42a2e85614fe4f3884fe92640ab4",
+    "experiments/c4_repair.py": "f8c31794d39fe70739023130e96033286844fed276ada04fcf073bb3ba6c64eb",
+    "experiments/c4_repair_audit.py": "563992bd0f0d8cfa791060ba1659fb6adecaa6c13582405d552eca71786e24cd",
+    "experiments/c4_repair_replay_inputs.py": "a47828a1bebf8468eece54f3b18e9c7eff8adecb2bcbfd8a08b4f18af6db4347",
+    "experiments/c4_repair_selector_profile.py": "aaf0174c4acfb5f6fb7502f6641742f319c0980e3b860a53240ff9e3f0dc174b",
+    "experiments/c4_repair_state_report.py": "19ce9ac0877044ad1c0e0bb318dbd99e2f5ae0eaa91aac522e13a50170821d98",
+    "pyproject.toml": "2545dacf909435288b052014861bda2e31191e47843d9643eb183541d5ab000f",
+    "src/extremal_graph/__init__.py": "c29a99a83e6cd0743f03098229333f965200a05138f348d92bd3673d2ac14f48",
+    "src/extremal_graph/baselines.py": "2e53c6c7c2ba78143bbc701d23f0c21d70c944038830662d75b1342b4e6f5e57",
+    "src/extremal_graph/cli.py": "8ecd96bd663e2fbff5bd0752b020772b2f96950e59a4188274d89b9a41cb87b4",
+    "src/extremal_graph/config.py": "6de606b69973e238840632408b605fcc55de8a3b6101846c308f0f6575d0b942",
+    "src/extremal_graph/controls.py": "5aac8a72eb793edd57d40a7cbc670b8cea38fb4bad8413a320a21c2ef8dc0b8e",
+    "src/extremal_graph/diagnostics.py": "ed62a8bc64cd02c5682255df2500b2c739f52c35610cd9b768af1fcda77f4e9e",
+    "src/extremal_graph/env.py": "bc052ce4e0b818e9ce80b9e361f6d1abb50f3c8a35e4c5c487cbd549dcc36bea",
+    "src/extremal_graph/evaluation.py": "b18b2520483b3b0c5e9b703663a14db59ee85e634620187c82647247f4163a4d",
+    "src/extremal_graph/features.py": "91bfb4cf5507fead28a3fb79311c6e978b50cef8daf981efe8f35e83ff824ce4",
+    "src/extremal_graph/graph.py": "d25f3db43ff2015b71d347a2676a5c9bfc4212e26e8485a4af0a0475e4093c76",
+    "src/extremal_graph/mlp_policy.py": "ed0a76104e2b6f183b262ee4d8e88b689315992ee81c9d21f5a0b8c8d1471b5d",
+    "src/extremal_graph/policy.py": "0f73ebdcd1a06887418807d7896cea4eb000f8b40073ecb8b18562a784583257",
+    "src/extremal_graph/repair/__init__.py": "c595ca86175a2a3913af85a2cbe89de3ab013523e7fe76a59c0da7fa042fdcd1",
+    "src/extremal_graph/repair/analysis.py": "67cc5050670c7956da9ad5f251df885a7ba5e0ac097265e6d177dbbcfa6f3ba3",
+    "src/extremal_graph/repair/calibration.py": "3b80857542a0bd9cf5514b1ebf24a21d7ac707c447bc8f74311d7893dee3c4a4",
+    "src/extremal_graph/repair/campaign.py": "2c5306979792156d800fbd05184fc480fc030ae6f92dfe32eb74b14262df4323",
+    "src/extremal_graph/repair/constructions.py": "b9127fc7266fe65185ce9e3036a9d10b4d1866ddba5731c4dec969eaf9eeac43",
+    "src/extremal_graph/repair/controls.py": "17efdabe669c2c5f48e50d1374eadc1a6f2f20751a3f3224650588afa1ebf86a",
+    "src/extremal_graph/repair/development.py": "b726e3090dd0afcba37c4008471d52498c9a217d0d66304b0bf3721f6acf2591",
+    "src/extremal_graph/repair/engine.py": "ec9b238924912beedfd9bf7cce168f359b84cd7f58bcef327c23ae8eea4317aa",
+    "src/extremal_graph/repair/evidence.py": "9d4235faf35d5b414e6be80a769cf57a19adecb4fe7370a7a0274068d64ca84d",
+    "src/extremal_graph/repair/graph.py": "3462384e00f5af740c230a4613bf6c6df96e535667d9bf884b13f3e201a3c52d",
+    "src/extremal_graph/repair/regions.py": "e1668549f03ab1f94fcfa9e496a0e8b7163fa62ff1261ee687b5b5b6f0a965b4",
+    "src/extremal_graph/repair/search.py": "395d70d838dd64bfaf9003cf234d2156748fa1a2e0a2f3f51a3ceb845ffdff58",
+    "src/extremal_graph/repair/selectors.py": "4f2f353cf026b477079c49e09a47744e8efa6015b387a04b7df536a5a14a33de",
+    "src/extremal_graph/repair/training.py": "c7d7444c2eb9a58c2e6d8d30da94cbf8833075dd30732dc17bbee3c020c5345d",
+    "src/extremal_graph/reporting.py": "fa11e1c39b01dcd223d22661e81f213210548f9ae1ab31780a835fa7ca4a13a7",
+    "src/extremal_graph/rollouts.py": "46fd5856ad783ada6c5cfc101ab1e43da81d2ceea1a8172bcc90d65f34539976",
+    "src/extremal_graph/serialization.py": "5b712214809deedab10117dba5ebb5d9f1c798c9c2f930698cd42231714311fa",
+    "src/extremal_graph/study.py": "3db2ced970c2a56533fa4170665b53c2cd0789fed2d3b336efe94d596c457147",
+    "src/extremal_graph/training.py": "d4ad6047ac9f64c135a8d514e0561cda93e574752f06b618f2e6b1f6d7538bd2",
+    "src/extremal_graph/turan.py": "54225d5c9cb1b9938b850919c462489cd39fa345e06ce7ea573970cf071e0949",
+    "src/extremal_graph/utils.py": "6023e3c77b855e7c260d6aa35a3508699e7c97e6d63ee620193e27feb0f3a0b7",
+    "src/extremal_graph/verification.py": "39ae9a39f57cbec17266bdec2b7a0449916636bec5a1db57a5553b44fb2a4f85",
+    "uv.lock": "3680d30d7535c032577840d8a0468841b751664efffef1d8c1bddfe3c19c36d5"
+  },
+  "source_sha256": "7f9b5d259e057f6d1ba8d029e2fd4d91eb4426413bfc7433a3c024af96dde312"
+}

@@ -198,6 +198,20 @@ does not establish that all learned repair directions are infeasible.
   then execute its 96 paired sixty-second searches sequentially. No research models
   or held-out experiments have been run; the full campaign remains active.
 
+## 2026-10-02 — freeze classical development tuning
+
+- Frozen tuning_v1 before observing any outcome: 96 paired searches, n25/31/35/40,
+  three seeds, four tabu and four adaptive recipes, 60s each. Source SHA
+  `7f9b5d259e057f6d1ba8d029e2fd4d91eb4426413bfc7433a3c024af96dde312`.
+- All methods use the same passed repair recipe and identical initial pools.
+  Trial order is seeded independently of scores. Selection and tie-breaking are
+  retained in the contract; no unsuccessful trial may be silently omitted.
+- Runtime retains verified Apple M5 identity and exact package versions. Projected
+  local search time is 1.60h plus overhead; no paid resources have been provisioned.
+- Source will execute from its archived snapshot with the host-wide lease, retaining
+  append-only cells and a run log. The protocol/source are committed before launch.
+  Subsequent work must not change this sealed source or restart a live process.
+
 ## Hypotheses and risks
 
 1. Incident-edge regions can escape the polarity plateau under practical time limits.

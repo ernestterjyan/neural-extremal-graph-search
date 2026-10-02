@@ -1,0 +1,25 @@
+{
+  "later_stage_nominal_worker_hours": {
+    "evaluation_searches_if_learning_gate_passes": 42.666666666666664,
+    "label_repairs_maximum": 3.52,
+    "validation_searches": 26.666666666666668
+  },
+  "nominal_worker_hours": 1.6,
+  "nominal_worker_seconds": 5760,
+  "not_included_in_estimates": [
+    "training",
+    "preprocessing",
+    "verification",
+    "deadline overshoot",
+    "independent reproduction"
+  ],
+  "paid_resources_provisioned": false,
+  "projected_paid_eur": 0.0,
+  "protocol_sha256": "5651469eaebfe3269ef95ea06a913ae93be8810737bf23662c54d7b234fd26c0",
+  "replication_policy": "preserve eight model seeds and ten searches per block/size; reduce tuning breadth before freeze if needed",
+  "resource": "local Apple M5 CPU, one campaign process, one CP-SAT/Torch worker",
+  "search_budget_seconds": 60,
+  "searches": 96,
+  "source_sha256": "7f9b5d259e057f6d1ba8d029e2fd4d91eb4426413bfc7433a3c024af96dde312",
+  "stage": "development_tuning"
+}
