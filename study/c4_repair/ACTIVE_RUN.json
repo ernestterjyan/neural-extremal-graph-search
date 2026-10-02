@@ -1,6 +1,8 @@
 {
   "batch": "study/c4_repair/tuning_v1",
+  "execution_session_id": 22072,
   "expected_cells": 96,
+  "frozen_protocol_commit": "e6a85dc",
   "log": "study/c4_repair/tuning_v1/run.log",
   "next_action": "Launch archived-source tune sequentially, then verify all cells, replay inputs and retain classical selection before labels/training.",
   "paid_eur": 0.0,
@@ -8,5 +10,6 @@
   "source_commit": "ab684ea",
   "source_sha256": "7f9b5d259e057f6d1ba8d029e2fd4d91eb4426413bfc7433a3c024af96dde312",
   "stage": "development_tuning",
-  "status": "prepared"
+  "status": "running",
+  "verified_live": "unified execution handle returned still-running on 2026-10-02"
 }

@@ -212,6 +212,16 @@ does not establish that all learned repair directions are infeasible.
   append-only cells and a run log. The protocol/source are committed before launch.
   Subsequent work must not change this sealed source or restart a live process.
 
+## 2026-10-02 — launch frozen tuning
+
+- Started the archived tuning_v1 runner, confirmed execution handle **22072** live.
+  Source/protocol were committed before launch (e6a85dc); append-only results and
+  run.log are retained. ACTIVE_RUN.json records the handle, not a claim that its
+  owner JSON alone proves liveness. Poll the same handle; never restart on timeout.
+- No concurrent solver, training, or test workload is permitted during the timed
+  run. Useful reporting/input-replay development may proceed without changing the
+  archived source. No parameter selection or learned benefit is claimed yet.
+
 ## Hypotheses and risks
 
 1. Incident-edge regions can escape the polarity plateau under practical time limits.
