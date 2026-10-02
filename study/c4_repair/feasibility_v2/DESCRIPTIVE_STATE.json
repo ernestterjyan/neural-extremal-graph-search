@@ -1,0 +1,77 @@
+{
+  "audit": {
+    "auditor_sha256": "f71649bf3045f16d25f5592afe111bfc77fcf4d19f5559b36f85111ffbdd73e5",
+    "claimed_local_certificates_checked": 1268,
+    "complete_panel": true,
+    "eligible_for_inference": false,
+    "expected_records": 100,
+    "failed_records": [],
+    "feasibility_passed": true,
+    "improved_states_by_size": {
+      "35": 16,
+      "40": 12
+    },
+    "legacy_timing_records": 0,
+    "limitations": [
+      "Set-based witness checks, not a separate CP optimality proof checker.",
+      "Stored monotonic timestamps are checked for consistency, not externally remeasured.",
+      "Repair equal-score replacement witnesses may lack an event; only the recorded improvement witness receives its timestamp."
+    ],
+    "local_certificates_independently_proved": false,
+    "protocol_sha256": "ec20414c295cbcd029ee1afc6d1359ba94b5ba68d8c4a6bb6022f0f868568cb3",
+    "records": 100,
+    "repair_equal_score_replacements_without_event": 177,
+    "results_bytes": 5334763,
+    "results_sha256": "c03a113333604a884afef6015ec197c916a41e6a6233794f05196402eee02273",
+    "source_sha256": "b723c0319a458bf833d8ad23fdd64154a3371c842591fb8f612cf790517f5c55",
+    "stage": "feasibility",
+    "timed_repair_records": 3593,
+    "unfinished_line_bytes": 0,
+    "verified_graphs": 4174
+  },
+  "audit_status": "valid_completed_prefix",
+  "completed_cells": 100,
+  "failed_cells": 0,
+  "failures": [],
+  "feasibility": {
+    "by_size": {
+      "35": {
+        "completed_states": 50,
+        "improved_states": 16,
+        "initial_edge_counts": {
+          "101": 18,
+          "102": 32
+        },
+        "states_exceeding_strongest_observed_initial": 0,
+        "strongest_initial": 102,
+        "strongest_repaired": 102
+      },
+      "40": {
+        "completed_states": 50,
+        "improved_states": 12,
+        "initial_edge_counts": {
+          "122": 1,
+          "123": 7,
+          "124": 34,
+          "125": 8
+        },
+        "states_exceeding_strongest_observed_initial": 0,
+        "strongest_initial": 125,
+        "strongest_repaired": 125
+      }
+    },
+    "declared_states": 100,
+    "failed_states_count_as_not_improved": true,
+    "gate_status": "PASS",
+    "improved_states": 28,
+    "threshold": 10
+  },
+  "inferential_result_available": false,
+  "limitations": [
+    "Descriptive report; controlled claims require the frozen paired block analysis.",
+    "Incomplete panels and failed searches cannot be silently excluded from inference.",
+    "Witness checks do not independently prove CP-SAT optimum certificates."
+  ],
+  "report_auditor_sha256": "f71649bf3045f16d25f5592afe111bfc77fcf4d19f5559b36f85111ffbdd73e5",
+  "report_program_sha256": "cbf8f41cb5d10a202aff79e4fc1f380f1ebdfb99e00378f5c64879b4a766d011"
+}

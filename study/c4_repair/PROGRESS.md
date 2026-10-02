@@ -113,6 +113,49 @@ does not establish that all learned repair directions are infeasible.
   independent audit/input replay and costs, then resolve the comparator, timing and
   freeze gaps in `FORMULATION_AUDIT.md` before collecting/training research models.
 
+## 2026-10-02 — controls staged for integration after v2
+
+- Prepared and tested family/size adaptive selection, balanced paired method order
+  and a host-wide process lease. Eight tests include real process exclusion and
+  recovery from a terminated owner. The live runner has not yet adopted these controls.
+- Added audited descriptive reporting for partial/failed/invalid evidence. Retained
+  the full v1 report, including its construction-plateau comparison. Four tests pass.
+- Confirmed an expressivity blind spot in the current unmarked GNN on C8, and added
+  a candidate-membership GNN revision with three passing permutation/gradient tests.
+  This establishes model behavior, not improved repair or search performance.
+- `DEVELOPMENT_CONTROLS.md` records the integration and classical-tuning requirements.
+  Rechecked the primary references and preserved the C4-only/girth-five distinction.
+- At 97 completed v2 states: 28 improvements (n35:16, n40:12), no failures. The
+  original source and all held-out sizes remain untouched. Paid expenditure: €0.
+
+## 2026-10-02 — complete revised feasibility gate
+
+- The confirmed live process finished normally. `feasibility_v2`: **28/100 PASS**
+  against the unchanged 10/100 threshold; n35:16/50 and n40:12/50; no failed states.
+- Independently checked **4,174 graph occurrences**, including all **3,593 timed
+  repair records**, and 1,268 local-optimum/status claims. Optimality certificates
+  are not independently proved. Disclosed 177 equal-score final-witness replacements
+  without their own strict-improvement event; timed gains use recorded event witnesses.
+- Replayed **all 100 starting states and complete ordered candidate pools** from
+  the archived v2 source and seed schedule. Source/protocol stayed unchanged until
+  the process exited and complete verification finished.
+- Repairs: 3,514 zero gains, 77 one-edge gains, two two-edge gains. Best n35 graph:
+  **102 edges**; best n40 graph: **125 edges**. Neither exceeds the strongest observed
+  initial construction at that size. Known exact values remain 106 and 127.
+- This meets the declared repair-availability gate, but demonstrates recovery of
+  weaker starts rather than escape from the best construction plateau. No learned
+  advantage, held-out transfer, or record has been established.
+- Retained the full runner report, independent audit, input replay and descriptive
+  report with source dependencies. Measured state execution totals **1.441 local
+  hours**, recorded in `costs.jsonl`. Paid expenditure remains **€0**.
+- After the timed process ended, the full software suite passed: **141 tests**,
+  including the new controls, model and evidence checks. Lint/formatting pass. The
+  campaign's feasibility guard also accepts the independently checked completed panel.
+- Next: integrate/test the staged controls and GNN, tune strong classical search on
+  development data, collect labels with sizes 3/4/5, four draws/family/size and two
+  seconds/repair, then train eight independent models per family. Any functional
+  repair-machinery change needs fresh gated evidence. The full campaign is unfinished.
+
 ## Hypotheses and risks
 
 1. Incident-edge regions can escape the polarity plateau under practical time limits.

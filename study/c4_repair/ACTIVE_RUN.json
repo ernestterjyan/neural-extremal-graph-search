@@ -1,10 +1,13 @@
 {
   "stage": "feasibility_v2",
-  "status": "running",
+  "status": "complete",
   "execution_session_id": 51184,
   "frozen_commit": "177f974",
   "source_sha256": "b723c0319a458bf833d8ad23fdd64154a3371c842591fb8f612cf790517f5c55",
   "protocol_sha256": "ec20414c295cbcd029ee1afc6d1359ba94b5ba68d8c4a6bb6022f0f868568cb3",
   "log": "study/c4_repair/feasibility_v2/run.log",
-  "next_action": "Await all 100 states; independently verify and report without changing this source/protocol. Training remains blocked until at least 10 verified improved states."
+  "next_action": "Integrate staged controls and region-conditioned GNN; strengthen classical development comparison; collect/train only with the passed repair recipe. The full campaign remains active.",
+  "process_exit_code": 0,
+  "feasibility_passed": true,
+  "results_sha256": "c03a113333604a884afef6015ec197c916a41e6a6233794f05196402eee02273"
 }
