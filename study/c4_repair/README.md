@@ -62,6 +62,11 @@ starts; the best repaired count at each size matches the best initial graph in
 this dataset. The sequence is collecting validation labels before training the
 sixteen models. These labels establish supervision, not a learned advantage.
 
+`MANUSCRIPT_DRAFT.md` describes the implemented mathematics and methods, fixed
+comparison, completed development evidence and outstanding work.
+`MANUSCRIPT_EVIDENCE_v1.json` binds its current results to their sources. The
+draft precedes trained checkpoints and controlled performance outcomes.
+
 Classical tuning is complete: 96 verified searches selected reactive tenure-5
 tabu and adaptive selection with 40% exploration by the predeclared rule. See
 `tuning_v1/TUNING_REPORT.md`; these are development choices. The subsequent

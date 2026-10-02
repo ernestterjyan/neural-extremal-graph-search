@@ -1,0 +1,68 @@
+{
+  "authoring_checks": [
+    "source bytes unchanged",
+    "completed supervision numbers and all five table strata checked against bound diagnostics",
+    "local evidence links resolved",
+    "fences balanced",
+    "existing repository Markdown format",
+    "test coverage description checked against actual exhaustive order-four repair and order-five update tests"
+  ],
+  "created_at": "2026-10-02T19:42:43.563609+00:00",
+  "cutoff": {
+    "controlled_validation_complete": false,
+    "final_timed_reproduction_complete": false,
+    "held_out_solver_experiments_run": false,
+    "trained_research_models_complete": false
+  },
+  "evidence_files": {
+    "SOFTWARE_CHECKS_179.json": "7e258eb704419ac15995c37a64ed2ce1594619e12080e68a72357d4bdc459ecf",
+    "VALIDATION_EXECUTION_PLAN_v1.json": "7fa4b8f6cf0d4282cd10c67f8405aeeee18adfb288f493ba7e1e332b9687ca01",
+    "costs.jsonl": "4316592807941fd22aa2ee4cfb611a1ae25fe8774315190d1d2b629de148ec7e",
+    "development_calibration_v1/summary.json": "805fdf964f705b8042507e63bb07b01f5357f0b1112e2e498d0279a70ca806b3",
+    "feasibility_v1/INDEPENDENT_AUDIT.json": "9f0523944688ae29efb341b40042fcddead80d7f94d558fc2c03ae8e260bfdeb",
+    "feasibility_v2/DESCRIPTIVE_STATE.json": "54abc61431dff1994db878efbd0b5779fae38738dc324b047c5102a2015e4863",
+    "labels_train_v1/INDEPENDENT_AUDIT.json": "2a7efd3d49021dbffa43a174287b894de3ae6691332b7352ee32270fa0e0c6a1",
+    "labels_train_v1/INPUT_REPLAY.json": "e99b023f2354e298ecfe912ef4126c5cd438d1af8ba0a28f66f6523dc3f0d8a7",
+    "labels_train_v1/LABEL_QC.json": "8757eeff2008efbbc9551ffd7f9b6e1798166cf02d4ee89769e2624152e8b066",
+    "labels_train_v1/contract.json": "8c99c025086106c25c68917a3b98089bb50a1182d949f5cabe51945f7536256c",
+    "labels_train_v1/results.jsonl": "b35d4010ffd185626f1f5ed0b14b2a3173e4aa062955cfea6c9b0f2cdad185ea",
+    "tuning_v1/SELECTION.json": "94786ea1b83875929bf5e8c7bb97530df4b22eb17094c2eac331cd055eaed8c2"
+  },
+  "layout_scope": "text and table source checked; no PDF or final publication layout claimed",
+  "manuscript_sha256": "9de7bff0f0d21fecf1276830de735a47231e44301480f3651845aac75bc6e376",
+  "reference_checks": [
+    {
+      "checked_on": "2026-10-02",
+      "development_exact_edge_counts": {
+        "20": 46,
+        "24": 59,
+        "28": 76,
+        "32": 92,
+        "35": 106,
+        "36": 110,
+        "40": 127
+      },
+      "scope": "development table values only; no certification of current records",
+      "section": "H={C4}; ne is exact where unprefixed, independently of ng",
+      "title": "Afzaly and McKay extremal graph data",
+      "url": "https://users.cecs.anu.edu.au/~bdm/data/extremal.html",
+      "witness_files_downloaded": false
+    },
+    {
+      "checked_on": "2026-10-02",
+      "scope": "related C3/C4 exclusion problem; not a matched reproduction",
+      "sections": "abstract; sections 5 and 6",
+      "title": "Finding Increasingly Large Extremal Graphs with AlphaZero and Tabu Search",
+      "url": "https://www.ijcai.org/proceedings/2024/0772.pdf"
+    },
+    {
+      "checked_on": "2026-10-02",
+      "scope": "solver status semantics; no independent proof certification",
+      "section": "CP-SAT return values",
+      "title": "CP-SAT Solver",
+      "url": "https://developers.google.com/optimization/cp/cp_solver"
+    }
+  ],
+  "scope": "methods and completed development evidence; draft is not a completed campaign or a trained-performance result",
+  "source_sha256": "13dfb0462b19f14913184fc98c10d234c6c66ea247d9efb1dc4899b66b16eafb"
+}
