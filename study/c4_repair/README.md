@@ -54,6 +54,14 @@ selection, shared timed calibration, balanced method order, and a host-wide
 process lease. See `DEVELOPMENT_CONTROLS.md` for the classical tuning contract.
 There are no trained research selectors or controlled validation results yet.
 
+The complete **96-state training-label dataset** has passed independent witness
+audit and deterministic input replay: 3,445 repair outcomes, 1,115 positive gains
+and 49 states with differing region gains. See `labels_train_v1/LABEL_QC.json` for
+stratification and evidence hashes. Most signal comes from weaker or perturbed
+starts; the best repaired count at each size matches the best initial graph in
+this dataset. The sequence is collecting validation labels before training the
+sixteen models. These labels establish supervision, not a learned advantage.
+
 Classical tuning is complete: 96 verified searches selected reactive tenure-5
 tabu and adaptive selection with 40% exploration by the predeclared rule. See
 `tuning_v1/TUNING_REPORT.md`; these are development choices. The subsequent

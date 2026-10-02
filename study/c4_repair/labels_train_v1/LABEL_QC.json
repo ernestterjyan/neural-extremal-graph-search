@@ -1,0 +1,512 @@
+{
+  "best_by_size": [
+    {
+      "best_initial": 46,
+      "best_repaired": 46,
+      "n": 20
+    },
+    {
+      "best_initial": 59,
+      "best_repaired": 59,
+      "n": 24
+    },
+    {
+      "best_initial": 76,
+      "best_repaired": 76,
+      "n": 28
+    },
+    {
+      "best_initial": 92,
+      "best_repaired": 92,
+      "n": 32
+    },
+    {
+      "best_initial": 106,
+      "best_repaired": 106,
+      "n": 36
+    },
+    {
+      "best_initial": 125,
+      "best_repaired": 125,
+      "n": 40
+    }
+  ],
+  "cost_booking": "full sequential launch books completed label/training/profile costs once; do not book these labels twice",
+  "equal_score_replacements_without_strict_gain_event": 122,
+  "gain_histogram": {
+    "0": 2330,
+    "1": 411,
+    "2": 268,
+    "3": 223,
+    "4": 135,
+    "5": 61,
+    "6": 12,
+    "7": 5
+  },
+  "independent_audit_sha256": "2a7efd3d49021dbffa43a174287b894de3ae6691332b7352ee32270fa0e0c6a1",
+  "informative_ranking_states": 49,
+  "input_replay_sha256": "e99b023f2354e298ecfe912ef4126c5cd438d1af8ba0a28f66f6523dc3f0d8a7",
+  "interpretation": "Actual region-ranking signal exists in 49/96 states, mainly weaker/perturbed starts. Four best-of-pool draws improve at n36/n40, but no repaired graph exceeds the best initial edge count at its size within this dataset. This is not evidence of learned solver advantage.",
+  "label_collection_wall_seconds": 4756.584478957002,
+  "local_certificates_independently_proved": false,
+  "local_status_flags_checked": 1432,
+  "positive_outcomes": 1115,
+  "protocol_sha256": "4f7fe70e50383d7f59dd943c31be0a1a47c3ef65017e54b76c26acea56198e51",
+  "repair_outcomes": 3445,
+  "results_sha256": "b35d4010ffd185626f1f5ed0b14b2a3173e4aa062955cfea6c9b0f2cdad185ea",
+  "scope": "complete training supervision only; no trained-model, validation-performance, transfer or new-bound claim",
+  "source_sha256": "13dfb0462b19f14913184fc98c10d234c6c66ea247d9efb1dc4899b66b16eafb",
+  "states": 96,
+  "strata": [
+    {
+      "improved_states": 0,
+      "informative_ranking_states": 0,
+      "initial_edge_counts": {
+        "46": 4
+      },
+      "kind": "best",
+      "maximum_gain": 0,
+      "n": 20,
+      "positive_outcomes": 0,
+      "repair_outcomes": 143,
+      "state_type": 0,
+      "states": 4
+    },
+    {
+      "improved_states": 0,
+      "informative_ranking_states": 0,
+      "initial_edge_counts": {
+        "46": 3
+      },
+      "kind": "trim",
+      "maximum_gain": 0,
+      "n": 20,
+      "positive_outcomes": 0,
+      "repair_outcomes": 108,
+      "state_type": 1,
+      "states": 3
+    },
+    {
+      "improved_states": 3,
+      "informative_ranking_states": 3,
+      "initial_edge_counts": {
+        "41": 1,
+        "42": 1,
+        "43": 1
+      },
+      "kind": "extend",
+      "maximum_gain": 3,
+      "n": 20,
+      "positive_outcomes": 75,
+      "repair_outcomes": 107,
+      "state_type": 2,
+      "states": 3
+    },
+    {
+      "improved_states": 3,
+      "informative_ranking_states": 3,
+      "initial_edge_counts": {
+        "38": 1,
+        "39": 1,
+        "40": 1
+      },
+      "kind": "uniform",
+      "maximum_gain": 5,
+      "n": 20,
+      "positive_outcomes": 107,
+      "repair_outcomes": 107,
+      "state_type": 3,
+      "states": 3
+    },
+    {
+      "improved_states": 3,
+      "informative_ranking_states": 3,
+      "initial_edge_counts": {
+        "42": 2,
+        "43": 1
+      },
+      "kind": "perturbed_best",
+      "maximum_gain": 4,
+      "n": 20,
+      "positive_outcomes": 89,
+      "repair_outcomes": 107,
+      "state_type": 4,
+      "states": 3
+    },
+    {
+      "improved_states": 0,
+      "informative_ranking_states": 0,
+      "initial_edge_counts": {
+        "59": 4
+      },
+      "kind": "best",
+      "maximum_gain": 0,
+      "n": 24,
+      "positive_outcomes": 0,
+      "repair_outcomes": 144,
+      "state_type": 0,
+      "states": 4
+    },
+    {
+      "improved_states": 0,
+      "informative_ranking_states": 0,
+      "initial_edge_counts": {
+        "59": 3
+      },
+      "kind": "trim",
+      "maximum_gain": 0,
+      "n": 24,
+      "positive_outcomes": 0,
+      "repair_outcomes": 108,
+      "state_type": 1,
+      "states": 3
+    },
+    {
+      "improved_states": 0,
+      "informative_ranking_states": 0,
+      "initial_edge_counts": {
+        "59": 3
+      },
+      "kind": "extend",
+      "maximum_gain": 0,
+      "n": 24,
+      "positive_outcomes": 0,
+      "repair_outcomes": 108,
+      "state_type": 2,
+      "states": 3
+    },
+    {
+      "improved_states": 3,
+      "informative_ranking_states": 3,
+      "initial_edge_counts": {
+        "48": 1,
+        "51": 1,
+        "52": 1
+      },
+      "kind": "uniform",
+      "maximum_gain": 6,
+      "n": 24,
+      "positive_outcomes": 107,
+      "repair_outcomes": 107,
+      "state_type": 3,
+      "states": 3
+    },
+    {
+      "improved_states": 3,
+      "informative_ranking_states": 3,
+      "initial_edge_counts": {
+        "55": 3
+      },
+      "kind": "perturbed_best",
+      "maximum_gain": 4,
+      "n": 24,
+      "positive_outcomes": 79,
+      "repair_outcomes": 108,
+      "state_type": 4,
+      "states": 3
+    },
+    {
+      "improved_states": 0,
+      "informative_ranking_states": 0,
+      "initial_edge_counts": {
+        "76": 4
+      },
+      "kind": "best",
+      "maximum_gain": 0,
+      "n": 28,
+      "positive_outcomes": 0,
+      "repair_outcomes": 143,
+      "state_type": 0,
+      "states": 4
+    },
+    {
+      "improved_states": 0,
+      "informative_ranking_states": 0,
+      "initial_edge_counts": {
+        "76": 3
+      },
+      "kind": "trim",
+      "maximum_gain": 0,
+      "n": 28,
+      "positive_outcomes": 0,
+      "repair_outcomes": 108,
+      "state_type": 1,
+      "states": 3
+    },
+    {
+      "improved_states": 2,
+      "informative_ranking_states": 2,
+      "initial_edge_counts": {
+        "70": 1,
+        "71": 1,
+        "73": 1
+      },
+      "kind": "extend",
+      "maximum_gain": 2,
+      "n": 28,
+      "positive_outcomes": 18,
+      "repair_outcomes": 108,
+      "state_type": 2,
+      "states": 3
+    },
+    {
+      "improved_states": 3,
+      "informative_ranking_states": 3,
+      "initial_edge_counts": {
+        "63": 1,
+        "64": 1,
+        "65": 1
+      },
+      "kind": "uniform",
+      "maximum_gain": 5,
+      "n": 28,
+      "positive_outcomes": 106,
+      "repair_outcomes": 108,
+      "state_type": 3,
+      "states": 3
+    },
+    {
+      "improved_states": 3,
+      "informative_ranking_states": 3,
+      "initial_edge_counts": {
+        "69": 2,
+        "70": 1
+      },
+      "kind": "perturbed_best",
+      "maximum_gain": 7,
+      "n": 28,
+      "positive_outcomes": 64,
+      "repair_outcomes": 108,
+      "state_type": 4,
+      "states": 3
+    },
+    {
+      "improved_states": 0,
+      "informative_ranking_states": 0,
+      "initial_edge_counts": {
+        "92": 4
+      },
+      "kind": "best",
+      "maximum_gain": 0,
+      "n": 32,
+      "positive_outcomes": 0,
+      "repair_outcomes": 144,
+      "state_type": 0,
+      "states": 4
+    },
+    {
+      "improved_states": 0,
+      "informative_ranking_states": 0,
+      "initial_edge_counts": {
+        "88": 1,
+        "89": 2
+      },
+      "kind": "trim",
+      "maximum_gain": 0,
+      "n": 32,
+      "positive_outcomes": 0,
+      "repair_outcomes": 108,
+      "state_type": 1,
+      "states": 3
+    },
+    {
+      "improved_states": 0,
+      "informative_ranking_states": 0,
+      "initial_edge_counts": {
+        "92": 3
+      },
+      "kind": "extend",
+      "maximum_gain": 0,
+      "n": 32,
+      "positive_outcomes": 0,
+      "repair_outcomes": 108,
+      "state_type": 2,
+      "states": 3
+    },
+    {
+      "improved_states": 3,
+      "informative_ranking_states": 3,
+      "initial_edge_counts": {
+        "76": 1,
+        "77": 1,
+        "78": 1
+      },
+      "kind": "uniform",
+      "maximum_gain": 5,
+      "n": 32,
+      "positive_outcomes": 101,
+      "repair_outcomes": 107,
+      "state_type": 3,
+      "states": 3
+    },
+    {
+      "improved_states": 3,
+      "informative_ranking_states": 3,
+      "initial_edge_counts": {
+        "86": 1,
+        "87": 2
+      },
+      "kind": "perturbed_best",
+      "maximum_gain": 5,
+      "n": 32,
+      "positive_outcomes": 46,
+      "repair_outcomes": 108,
+      "state_type": 4,
+      "states": 3
+    },
+    {
+      "improved_states": 2,
+      "informative_ranking_states": 2,
+      "initial_edge_counts": {
+        "105": 3,
+        "106": 1
+      },
+      "kind": "best",
+      "maximum_gain": 1,
+      "n": 36,
+      "positive_outcomes": 11,
+      "repair_outcomes": 143,
+      "state_type": 0,
+      "states": 4
+    },
+    {
+      "improved_states": 0,
+      "informative_ranking_states": 0,
+      "initial_edge_counts": {
+        "104": 1,
+        "105": 2
+      },
+      "kind": "trim",
+      "maximum_gain": 0,
+      "n": 36,
+      "positive_outcomes": 0,
+      "repair_outcomes": 108,
+      "state_type": 1,
+      "states": 3
+    },
+    {
+      "improved_states": 1,
+      "informative_ranking_states": 1,
+      "initial_edge_counts": {
+        "104": 1,
+        "105": 1,
+        "106": 1
+      },
+      "kind": "extend",
+      "maximum_gain": 1,
+      "n": 36,
+      "positive_outcomes": 6,
+      "repair_outcomes": 107,
+      "state_type": 2,
+      "states": 3
+    },
+    {
+      "improved_states": 3,
+      "informative_ranking_states": 3,
+      "initial_edge_counts": {
+        "88": 1,
+        "89": 2
+      },
+      "kind": "uniform",
+      "maximum_gain": 6,
+      "n": 36,
+      "positive_outcomes": 108,
+      "repair_outcomes": 108,
+      "state_type": 3,
+      "states": 3
+    },
+    {
+      "improved_states": 3,
+      "informative_ranking_states": 3,
+      "initial_edge_counts": {
+        "100": 1,
+        "97": 1,
+        "99": 1
+      },
+      "kind": "perturbed_best",
+      "maximum_gain": 5,
+      "n": 36,
+      "positive_outcomes": 39,
+      "repair_outcomes": 108,
+      "state_type": 4,
+      "states": 3
+    },
+    {
+      "improved_states": 2,
+      "informative_ranking_states": 2,
+      "initial_edge_counts": {
+        "123": 1,
+        "124": 1,
+        "125": 2
+      },
+      "kind": "best",
+      "maximum_gain": 1,
+      "n": 40,
+      "positive_outcomes": 15,
+      "repair_outcomes": 143,
+      "state_type": 0,
+      "states": 4
+    },
+    {
+      "improved_states": 0,
+      "informative_ranking_states": 0,
+      "initial_edge_counts": {
+        "123": 1,
+        "124": 2
+      },
+      "kind": "trim",
+      "maximum_gain": 0,
+      "n": 40,
+      "positive_outcomes": 0,
+      "repair_outcomes": 108,
+      "state_type": 1,
+      "states": 3
+    },
+    {
+      "improved_states": 3,
+      "informative_ranking_states": 3,
+      "initial_edge_counts": {
+        "118": 2,
+        "119": 1
+      },
+      "kind": "extend",
+      "maximum_gain": 2,
+      "n": 40,
+      "positive_outcomes": 10,
+      "repair_outcomes": 108,
+      "state_type": 2,
+      "states": 3
+    },
+    {
+      "improved_states": 3,
+      "informative_ranking_states": 3,
+      "initial_edge_counts": {
+        "102": 2,
+        "109": 1
+      },
+      "kind": "uniform",
+      "maximum_gain": 7,
+      "n": 40,
+      "positive_outcomes": 87,
+      "repair_outcomes": 107,
+      "state_type": 3,
+      "states": 3
+    },
+    {
+      "improved_states": 3,
+      "informative_ranking_states": 3,
+      "initial_edge_counts": {
+        "116": 2,
+        "121": 1
+      },
+      "kind": "perturbed_best",
+      "maximum_gain": 5,
+      "n": 40,
+      "positive_outcomes": 47,
+      "repair_outcomes": 108,
+      "state_type": 4,
+      "states": 3
+    }
+  ],
+  "verified_graph_occurrences": 5950
+}
