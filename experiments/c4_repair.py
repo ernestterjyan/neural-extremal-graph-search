@@ -202,12 +202,17 @@ def feasibility(args) -> None:
 
 def baseline(args) -> None:
     require_development(args.sizes)
-    config = SearchConfig(
-        seconds=args.seconds,
-        region_sizes=tuple(args.region_sizes),
-        repair_seconds=args.repair_seconds,
-        per_family=args.per_family,
-    )
+    if getattr(args, "configuration", None) is not None:
+        from extremal_graph.repair.development import load_tuning
+
+        config = load_tuning(args.configuration)
+    else:
+        config = SearchConfig(
+            seconds=args.seconds,
+            region_sizes=tuple(args.region_sizes),
+            repair_seconds=args.repair_seconds,
+            per_family=args.per_family,
+        )
     protocol = {
         "stage": "development_baseline",
         "sizes": args.sizes,
@@ -217,6 +222,10 @@ def baseline(args) -> None:
         "configuration": asdict(config),
         "method_order": "seeded permutation per size/replication; rotate across blocks",
     }
+    if getattr(args, "configuration", None) is not None:
+        from extremal_graph.repair.evidence import sha
+
+        protocol["tuning_selection_sha256"] = sha(args.configuration)
     contract = prepare_batch(args.output, protocol)
     for n in args.sizes:
         for replication in range(args.replications):
@@ -551,6 +560,11 @@ def main() -> None:
         if name != "prepare":
             command.add_argument("--sizes", type=int, nargs="+", default=[35, 40])
         if name == "baseline":
+            command.add_argument(
+                "--configuration",
+                type=Path,
+                help="Retained tuning selection; takes precedence over individual config flags.",
+            )
             command.add_argument("--replications", type=int, default=10)
             command.add_argument("--repair-seconds", type=float, default=1.0)
             command.add_argument(

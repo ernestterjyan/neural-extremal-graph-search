@@ -222,6 +222,28 @@ does not establish that all learned repair directions are infeasible.
   run. Useful reporting/input-replay development may proceed without changing the
   archived source. No parameter selection or learned benefit is claimed yet.
 
+## 2026-10-02 — input integrity while tuning continues
+
+- Confirmed archived-source tuning execution handle 22072 remains live; no restart.
+  Retained DEVELOPMENT_PREFIX_1.json/md with its exact reporting/auditor programs:
+  16/96 cells complete, no failures, 119 graph occurrences checked. Partial results
+  do not authorize selecting parameters or establishing a learned advantage.
+- Extended the input replay checker to complete timed starting pools and selector
+  profile candidate pools. Its scope explicitly excludes timed trajectories and
+  performance reproduction. The production guard now checks actual cell identities
+  and completion, including omitted/duplicated-cell rejection. Six new tests are
+  written; execution is deferred until the timed worker finishes. Lint/format pass.
+- Tightened the future validation/evaluation freeze to require verified hardware
+  identity before validation, unchanged hardware when freezing, and complete input
+  replay. These checks do not alter the frozen tuning runner or repair machinery.
+- Added retained classical configuration loading for the calibration stage. Planned
+  after tuning: 36 paired development calibration searches at 60s, using identical
+  sizes/seeds and the selected shared recipe (0.60 local hours, €0). The two-second
+  smoke is useful software evidence but does not measure sixty-second performance.
+- Source changes and pending tests remain separate from the archived live job.
+  The complete tuning panel must finish and be audited before parameter selection,
+  labels/training and end-to-end validation. Held-out sizes remain untouched.
+
 ## Hypotheses and risks
 
 1. Incident-edge regions can escape the polarity plateau under practical time limits.

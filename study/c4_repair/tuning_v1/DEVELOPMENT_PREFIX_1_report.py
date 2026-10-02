@@ -54,7 +54,6 @@ def build_report(batch: Path) -> dict:
             "replication": r.get("replication", 0),
             "block": r.get("block", 0),
             "method": r.get("method", "repair"),
-            "trial": r.get("trial"),
             "error": r["error"],
         }
         for r in records
@@ -193,10 +192,9 @@ def markdown(report: dict) -> str:
     if report["failures"]:
         lines += ["## Retained failures", ""]
         for failure in report["failures"]:
-            trial = f", trial={failure['trial']}" if failure.get("trial") else ""
             lines += [
                 f"n={failure['n']}, block={failure['block']}, "
-                f"replication={failure['replication']}, method={failure['method']}{trial}",
+                f"replication={failure['replication']}, method={failure['method']}",
                 "",
                 "```text",
                 failure["error"].rstrip(),

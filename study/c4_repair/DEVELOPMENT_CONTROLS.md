@@ -95,6 +95,21 @@ before training and a full independent validation audit before the evaluation
 freeze. Checkpoints record and check their architecture. MLP outcomes and secondary
 comparisons are reported, but cannot replace a failed GNN primary result.
 
+After tuning, run the random-region, construction and simple-repair calibrations
+for the same 60s budget on the same n25/31/35/40 and three paired seeds: 36 further
+development searches / 0.60 local worker-hours. `baseline --configuration
+.../SELECTION.json` loads the verified selected recipe, including shared stagnation
+behavior. This checks calibration at the intended budget; the earlier two-second
+smoke does not establish its sixty-second performance. Keep its scope separate
+from learned-model validation and the untouched evaluation panel.
+
+Input replay is being extended to complete starting pools from timed search and
+the selector profile's ordered candidates. The additional six tests await the end
+of the timed job; formatting/lint pass. Replay explicitly does not rerun timed
+trajectories or certify performance reproduction. The stricter production guard
+checks every cell rather than accepting summary flags alone, and the evaluation
+freeze requires complete validation input replay and unchanged verified hardware.
+
 The [Afzaly–McKay table](https://users.cecs.anu.edu.au/~bdm/data/extremal.html), rechecked
 2026-10-02, gives exact C4-only values n25:63, n31:90, n35:106 and n40:127. Its graph
 counts and edge counts are distinct; a ≥ on the graph count does not make the edge

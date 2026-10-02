@@ -303,6 +303,8 @@ def evaluate(args) -> None:
         from .development import load_tuning
 
         require_feasibility(args.feasibility)
+        if not environment()["hardware"]["verified_cpu_model"]:
+            raise ValueError("identify and record the CPU model before end-to-end validation")
         if getattr(args, "configuration", None) is None:
             raise ValueError("retained classical development tuning required before validation")
         config = load_tuning(args.configuration)
@@ -415,6 +417,7 @@ def freeze(args) -> None:
     checked = independent_audit(args.validation)
     if not checked["eligible_for_inference"]:
         raise ValueError("complete independently audited validation required before freezing")
+    require_input_replay(args.validation)
     if not result["learning_gate_passed"]:
         raise ValueError(
             "learning gate failed; stop the larger neural campaign and report the result"
@@ -426,6 +429,10 @@ def freeze(args) -> None:
         raise ValueError("methods changed since validation; repeat validation before freezing")
     if not hardware["verified_cpu_model"]:
         raise ValueError("identify and record the CPU model before freezing primary evaluation")
+    if contract["environment"]["hardware"] != hardware:
+        raise ValueError(
+            "hardware identity changed since validation; repeat validation before freezing"
+        )
     runtime = {
         key: current_environment[key]
         for key in ["platform", "machine", "python", "packages", "cpu_workers"]
@@ -453,6 +460,7 @@ def freeze(args) -> None:
         "source": source_manifest(),
         "validation_results_sha256": sha(args.validation / "results.jsonl"),
         "validation_audit": checked,
+        "validation_input_replay_sha256": sha(args.validation / "INPUT_REPLAY.json"),
         "learning_gate": result,
         "evaluation_hardware": hardware,
         "evaluation_runtime": runtime,

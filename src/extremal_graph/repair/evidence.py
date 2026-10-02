@@ -97,6 +97,25 @@ def require_input_replay(directory: Path) -> None:
         or report["independent_auditor_sha256"] != sha(directory / "INPUT_REPLAY_auditor.py")
     ):
         raise ValueError("complete retained deterministic input replay required")
+    records = load_records(directory / "results.jsonl")
+
+    def identity(row):
+        return (
+            row["n"],
+            row.get("replication", 0),
+            row.get("block", 0),
+            row.get("trial", row.get("method", "repair")),
+        )
+
+    cells = report["cells"]
+    if len(cells) != len(records) or {identity(c) for c in cells} != {identity(r) for r in records}:
+        raise ValueError("input replay omitted or duplicated experimental cells")
+    actual = {identity(r): r for r in records}
+    if any(
+        c["input_replayed"] is not (actual[identity(c)].get("status", "complete") == "complete")
+        for c in cells
+    ):
+        raise ValueError("input replay completion differs from retained evidence")
 
 
 def prepare_batch(destination: Path, protocol: dict) -> dict:

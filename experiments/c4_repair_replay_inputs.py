@@ -2,6 +2,8 @@
 
 No repair optimization or model training is performed. Graph feasibility is audited
 separately by c4_repair_audit; this checks deterministic input generation/completeness.
+For timed search, only the complete initial starting pool is replayed, not the search
+trajectory, repair outcomes or elapsed-time performance.
 """
 
 from __future__ import annotations
@@ -36,9 +38,13 @@ def main() -> None:
     independent = audit(args.batch, allow_partial=args.allow_partial)
     metadata = json.loads((args.batch / "contract.json").read_text())
     protocol = metadata["protocol"]
+    stage = protocol["stage"]
+    timed = stage in {"development_baseline", "development_tuning", "validation", "evaluation"}
     ensure(
-        protocol["stage"] in {"feasibility", "collection", "development_profile"},
-        "this replay covers labelled repair states, not timed search trajectories",
+        timed
+        or stage
+        in {"feasibility", "collection", "development_profile", "development_selector_profile"},
+        "unsupported input replay stage",
     )
     source = (args.batch / "source/src").resolve()
     sys.path.insert(0, str(source))
@@ -60,11 +66,18 @@ def main() -> None:
     )
     records = [json.loads(line) for line in complete_bytes.splitlines() if line.strip()]
     for record in records:
+        identity = {
+            "n": record["n"],
+            "replication": record.get("replication", 0),
+            "block": record.get("block", 0),
+            "method": record.get("method", "repair"),
+        }
+        if "trial" in record:
+            identity["trial"] = record["trial"]
         if record.get("status") == "failed":
             results.append(
                 {
-                    "n": record["n"],
-                    "replication": record["replication"],
+                    **identity,
                     "status": "retained_failure",
                     "input_replayed": False,
                 }
@@ -74,7 +87,28 @@ def main() -> None:
         pool = constructions.starting_pool(n, seed)
         best = max(pool, key=lambda s: s.graph.m)
         initial = best.graph.copy()
-        stage = protocol["stage"]
+        if timed:
+            expected_pool = [
+                {
+                    "kind": s.kind,
+                    "field_order": s.field_order,
+                    "sha256": s.graph.digest(),
+                    "edges": [list(e) for e in s.graph.edges()],
+                }
+                for s in pool
+            ]
+            ensure(expected_pool == record["starting_pool"], "timed starting pool does not replay")
+            results.append(
+                {
+                    **identity,
+                    "status": "replayed",
+                    "input_replayed": True,
+                    "input_scope": "complete initial starting pool only",
+                    "starting_sha256": initial.digest(),
+                    "starting_graphs": len(pool),
+                }
+            )
+            continue
         if stage == "collection":
             state_type = record["replication"] % 5
             ensure(record["state_type"] == state_type, "collection state-type mismatch")
@@ -97,7 +131,7 @@ def main() -> None:
                 for s in pool
             ]
             ensure(expected_pool == record["pool"], "starting pool does not replay")
-        else:
+        elif stage == "development_profile":
             expected_pool = [
                 {"kind": s.kind, "field_order": s.field_order, "edges": s.graph.m} for s in pool
             ]
@@ -117,22 +151,24 @@ def main() -> None:
             sizes=tuple(protocol["region_sizes"]),
             per_family=protocol["per_family"],
         )
-        recorded = [
-            (tuple(r["region"]["vertices"]), r["region"]["family"]) for r in record["repairs"]
-        ]
+        if stage == "development_selector_profile":
+            recorded = [(tuple(r["vertices"]), r["family"]) for r in record["regions"]]
+        else:
+            recorded = [
+                (tuple(r["region"]["vertices"]), r["region"]["family"]) for r in record["repairs"]
+            ]
         expected = [(r.vertices, r.family) for r in regions]
         ensure(
             recorded == expected, "candidate pool is incomplete or differs from seeded generation"
         )
-        if stage != "development_profile":
+        if stage in {"feasibility", "collection"}:
             ensure(
                 all(r["seed"] == seed + 1000000 + j for j, r in enumerate(record["repairs"])),
                 "repair seed schedule changed",
             )
         results.append(
             {
-                "n": n,
-                "replication": record.get("replication", 0),
+                **identity,
                 "status": "replayed",
                 "input_replayed": True,
                 "starting_sha256": initial.digest(),
@@ -152,6 +188,13 @@ def main() -> None:
             r["input_replayed"] for r in results if r["status"] != "retained_failure"
         ),
         "repair_outcomes_rerun": False,
+        "timed_search_trajectories_rerun": False,
+        "timed_performance_reproduced": False,
+        "scope": (
+            "complete initial starting pools only; no timed search or repair trajectory replay"
+            if timed
+            else "complete generated repair states and ordered candidate pools"
+        ),
     }
     snapshot = args.output.with_name(args.output.stem + "_replay.py")
     ensure(not snapshot.exists(), "refusing to replace replay source")
